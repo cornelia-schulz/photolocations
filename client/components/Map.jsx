@@ -104,7 +104,7 @@ class Map extends React.Component {
   renderChildren(){
     const {children} = this.props;
     // if there are no children still display the map
-    if (!children) {
+    if (!children || children.some(a=> !a)) {
       return;
     }
 
