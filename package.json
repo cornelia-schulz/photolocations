@@ -1,0 +1,46 @@
+{
+  "name": "photo-opportunities",
+  "version": "0.2.1",
+  "description": "A site for anyone seeking good photo locations",
+  "repository": "https://github.com/cornelia-schulz/photo-opportunities",
+  "main": "server/index.js",
+  "author": "Cornelia Schulz",
+  "license": "ISC",
+  "scripts": {
+    "start": "webpack && node server",
+    "dev": "node server & webpack --watch",
+    "test": "jest --watchAll"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
+  "jest": {
+    "setupFiles": [
+      "./tests/setup.js"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "google-maps-react": "^2.0.2",
+    "prop-types": "^15.6.2",
+    "react-scripts": "1.0.13"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "google-maps": "^3.2.1",
+    "jest": "^22.1.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
+  }
+}

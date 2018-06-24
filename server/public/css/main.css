@@ -1,0 +1,118 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.logo {
+  font-size: 2em;
+  font-weight: 600;
+  height: 100%;
+  width: 200px;
+  display: inline;
+}
+
+.logo img {
+  height: 100%;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #1f1e1e;
+  height: 41px;
+}
+
+.dropdown{
+  overflow: hidden;
+  float: right;
+  height: 100%;
+
+}
+
+.fa, .fas {
+  color: #c59d59;
+  font-size: 1.8em;
+  vertical-align: middle;
+  margin-right: 3px;
+}
+
+.dropdown, .dropbtn {
+  border: none;
+  margin-bottom: 0;
+  font-size: 1em;
+  border-radius: 3%;
+  display: inline-block;
+}
+
+#search {
+  line-height: 2.4em;
+  border: 3px solid #1f1e1e;
+  border-radius: 7%;
+}
+
+.dropbtn {
+  background-color: #1f1e1e;
+  margin-right: 10px;
+  margin-left: 15px;
+}
+
+.dropbtn:hover {
+  background-color: #7e7e7e;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1f1e1e;
+  min-width: 260px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: #c59d59;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content a:hover {
+  background-color: #7e7e7e;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.map-container {
+  height: 90%;
+}
+
+/* always set map height explicitly, you also need to set the 
+height of the parent container explicitly otherwise the size of 
+the map will be set to 0 */
+#map {
+  height: 100vh;
+}
+
+h1 {
+  color: red;
+}
+@media only screen and (min-width: 900px) {
+
+  .map-container {
+      width: 960px;
+      margin: 0 auto;
+  }
+}
