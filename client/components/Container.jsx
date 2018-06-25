@@ -38,5 +38,5 @@ class Container extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'XXX'
+  apiKey: 'AIzaSyAPv7CZEnHS4ZJeuUA2x5Ls6YvX24D4WrI'
 })(Container)
