@@ -57,7 +57,8 @@ class Marker extends React.Component {
       icon,
       label,
       draggable,
-      title
+      title,
+      info
     } = this.props;
     if (!google) {
       return null
@@ -74,6 +75,7 @@ class Marker extends React.Component {
       icon: this.props.icon,
       label: this.props.label,
       title: this.props.title,
+      info: this.props.info,
       
       draggable: this.props.draggable
       //...this.props

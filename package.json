@@ -25,8 +25,11 @@
   "dependencies": {
     "express": "^4.16.2",
     "google-maps-react": "^2.0.2",
+    "knex": "^0.14.6",
     "prop-types": "^15.6.2",
-    "react-scripts": "1.0.13"
+    "react-scripts": "1.0.13",
+    "sqlite3": "^4.0.1",
+    "superagent": "^3.8.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
