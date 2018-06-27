@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 let evtNames = [
-  'onClick',
-  'onDblclick',
-  'onDragend',
-  'onMousedown',
-  'onMouseout',
-  'onMouseover',
-  'onMouseup',
-  'onRecenter',
+  'click',
+  'dblclick',
+  'dragend',
+  'mousedown',
+  'mouseout',
+  'mouseover',
+  'mouseup',
+  'recenter',
 ];
 
 const wrappedPromise = function () {

@@ -105,6 +105,7 @@ class Container extends React.Component {
         }
       ]
     }
+    this.onMarkerClick = this.onMarkerClick.bind(this)
   };
 
   onMarkerClick(props, marker, e){
@@ -131,11 +132,10 @@ class Container extends React.Component {
     }
 
     return (
-      <Map google={this.props.google} style={style} onClick={this.onMapClicked}>
-        {/* {this.state.markers.map(marker => {
-          return <Marker key={marker.id} onClick={this.onMarkerClick} title={marker.title} label={marker.label} position={marker.position} />
-        })} */}
-        <Marker key={1} onClick={this.onMarkerClick} title={"test"} label={"test"} position={{lat: -36.839914, lng: 174.747697}} />
+      <Map google={this.props.google} style={style} click={this.onMapClicked}>
+        {this.state.markers.map(marker => {
+          return <Marker key={marker.id} click={this.onMarkerClick} title={marker.title} label={marker.label} position={marker.position} />
+        })}
         <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
