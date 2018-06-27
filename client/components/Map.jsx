@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 const PropTypes = require ('prop-types')
 
-const evtNames = ['onReady', 'onClick', 'onDragend'];
+const evtNames = ['ready', 'click', 'dragend'];
 class Map extends React.Component {
   
   constructor(props) {
@@ -65,7 +65,7 @@ class Map extends React.Component {
       evtNames.forEach(e => {
         this.map.addListener(e, this.handleEvent(e));
       });
-      maps.event.trigger(this.map, 'onReady');
+      maps.event.trigger(this.map, 'ready');
 
       this.forceUpdate()
     }
@@ -136,13 +136,13 @@ Map.propTypes = {
   onMove: PropTypes.func
 }
 Map.defaultProps = {
-  zoom: 14,
+  zoom: 12,
   // Auckland, by default
   initialCenter: {
     lat: -36.855,
     lng: 174.77
   },
-  centerAroundCurrentLocation: false,
+  centerAroundCurrentLocation: true,
   onMove: function(){}
 }
 

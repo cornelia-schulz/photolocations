@@ -105,7 +105,8 @@ class Container extends React.Component {
         }
       ]
     }
-    this.onMarkerClick = this.onMarkerClick.bind(this)
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.onMapClicked = this.onMapClicked.bind(this);
   };
 
   onMarkerClick(props, marker, e){
