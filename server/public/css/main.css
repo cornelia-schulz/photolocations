@@ -35,15 +35,15 @@ html, body {
 .dropdown{
   overflow: hidden;
   float: right;
-  height: 100%;
-
+  height: 41px;
+  margin-right: 2px;
 }
 
 .fa, .fas {
   color: #c59d59;
   font-size: 1.8em;
   vertical-align: middle;
-  margin-right: 3px;
+  margin-left: 3px;
 }
 
 .dropdown, .dropbtn {
@@ -52,6 +52,14 @@ html, body {
   font-size: 1em;
   border-radius: 3%;
   display: inline-block;
+}
+
+.headerRight {
+  float: right;
+}
+
+.search {
+  float: left;
 }
 
 #search {
@@ -64,6 +72,8 @@ html, body {
   background-color: #1f1e1e;
   margin-right: 10px;
   margin-left: 15px;
+  height: 100%;
+  width: 60px;
 }
 
 .dropbtn:hover {
@@ -125,6 +135,9 @@ h1 {
   font-size: 3em;
   margin-bottom: 20px;
   margin-top: 20px;
+  background: -webkit-linear-gradient(#eee, #c59d59);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 @media only screen and (min-width: 900px) {
 
