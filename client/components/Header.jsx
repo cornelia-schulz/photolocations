@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 class Header extends React.Component {
   constructor(props) {
@@ -29,9 +30,9 @@ class Header extends React.Component {
               <i className="fa fa-bars" aria-hidden="true"></i>
             </button>
             <div className="dropdown-content">
-              <a href="/">Home</a>
-              <a href="#">About</a>
-              <a href="#">Contact</a>
+              <Link to="/">Home</Link>
+              <Link to="/about">About</Link>
+              <Link to="/contact">Contact</Link>
             </div>
           </div>
 
