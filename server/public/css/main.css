@@ -123,6 +123,27 @@ html, body {
   font-size: 1.2em;
 }
 
+.contactForm {
+  letter-spacing: 1px;
+  line-height: 1.5em;
+  margin-top: 1.8em;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.contactForm input, .contactForm textarea {
+  width: 386px;
+}
+
+#contactFormSubmit {
+  color: #1f1e1e;
+  background-color: #c59d59;
+  width: 100px;
+  font-size: 1.1em;
+  border: 1px solid whitesmoke;
+  border-radius: 2%;
+}
+
 /* always set map height explicitly, you also need to set the 
 height of the parent container explicitly otherwise the size of 
 the map will be set to 0 */
