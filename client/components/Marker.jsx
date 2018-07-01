@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 let evtNames = [
   'click',
@@ -58,7 +58,8 @@ class Marker extends React.Component {
       label,
       draggable,
       title,
-      info
+      info,
+      url
     } = this.props;
     if (!google) {
       return null
@@ -76,8 +77,8 @@ class Marker extends React.Component {
       label: this.props.label,
       title: this.props.title,
       info: this.props.info,
+      url: this.props.url,
       draggable: this.props.draggable
-      //...this.props
     }
     this.marker = new google.maps.Marker(pref);
 

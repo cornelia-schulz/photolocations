@@ -22,6 +22,7 @@ class Container extends React.Component {
   componentDidMount() {
     getAllLocations()
       .then(markers => {
+        console.log(markers)
         this.setState({markers})
       })
   }
@@ -60,6 +61,7 @@ class Container extends React.Component {
             visible={this.state.showingInfoWindow}>
               <div>
                 <h2>{this.state.selectedPlace.title}</h2>
+                <img src={this.state.selectedPlace.url} width="50px"/>
                 <p>{this.state.selectedPlace.info}</p>
               </div>
           </InfoWindow>
