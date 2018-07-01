@@ -2,7 +2,13 @@ import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import React from 'react';
 import Search from './Search';
 
-const Header = (props) => {
+class Header extends React.Component {
+  constructor(props){
+    super(props)
+  }
+  
+  
+  render(){
     return (
       <Router>
       <header>
@@ -11,7 +17,7 @@ const Header = (props) => {
             <img src="/images/Logo.PNG" alt="Photo Locations" />
           </div>
           <div className="headerRight">
-          <Route exact path='/' component={Search} />
+          <Route exact path='/' render={() => <Search onChange={this.props.onChange} />} />
           <div className="dropdown">
             <button className="dropbtn">
               <i className="fa fa-bars" aria-hidden="true"></i>
@@ -28,5 +34,6 @@ const Header = (props) => {
       </Router>
     )
   }
+}
 
 export default Header

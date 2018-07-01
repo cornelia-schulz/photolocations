@@ -19,7 +19,8 @@ class Search extends React.Component {
   keyPress(event) {
     if(event.keyCode == 13) {
       console.log('value', event.target.value);
-      // send to container?
+      // send to header?
+      this.props.onChange(this.state.search)
     }
   }
 

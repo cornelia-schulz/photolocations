@@ -43,6 +43,7 @@ class Container extends React.Component {
     }
   };
 
+
   render() {
     const style = {
       width: '100vh',
@@ -50,7 +51,7 @@ class Container extends React.Component {
     }
 
     return (
-      <Map google={this.props.google} style={style} click={this.onMapClicked}>
+      <Map google={this.props.google} style={style} searchString={this.props.searchString} click={this.onMapClicked}>
         {this.state.markers.map(marker => {
           return <Marker key={marker.id} click={this.onMarkerClick} info={marker.info} title={marker.title} label={marker.label} position={{lat: marker.lat, lng: marker.lng}}  />
         })}

@@ -8,12 +8,27 @@ import Location from './Location';
 
 
 class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      searchString: ''
+    }
+    this.onChange = this.onChange.bind(this);
+  }
+  
+  onChange(searchString) {
+    this.setState({
+      searchString: searchString
+    })
+    console.log("I changed in the app too");
+  }
+
   render(){
     return (
       <Router>
         <div className="container">
-          <Route path='/' component={Header} />
-          <Route exact path='/' component={Container} />
+          <Route path='/' render={() => <Header onChange={this.onChange} />} />
+          <Route exact path='/' render={() => <Container searchString={this.state.searchString} />} />
           <Route path='/contact' component={Contact} />
           <Route path='/about' component={About} />
           <Route path='/location/:name/:id' component={Location} />
