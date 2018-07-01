@@ -76,7 +76,6 @@ class Marker extends React.Component {
       label: this.props.label,
       title: this.props.title,
       info: this.props.info,
-      
       draggable: this.props.draggable
       //...this.props
     }

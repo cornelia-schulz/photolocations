@@ -106,6 +106,7 @@ children: PropTypes.element.isRequired,
 map: PropTypes.object,
 marker: PropTypes.object,
 position: PropTypes.object,
+info: PropTypes.object,
 visible: PropTypes.bool,
 
 // callbacks

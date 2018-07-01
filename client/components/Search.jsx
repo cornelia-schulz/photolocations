@@ -6,6 +6,8 @@ class Search extends React.Component {
     this.state = {
       search: ''
     }
+    this.updateSearch = this.updateSearch.bind(this);
+    this.keyPress = this.keyPress.bind(this);
   }
 
   updateSearch(event){
@@ -13,10 +15,18 @@ class Search extends React.Component {
       search: event.target.value.substr(0,50)
     })
   }
+
+  keyPress(event) {
+    if(event.keyCode == 13) {
+      console.log('value', event.target.value);
+      // send to container?
+    }
+  }
+
   render() {
     return (
       <div className="search">
-        <input type="text" name="search" id="search" value={this.state.search} onChange={this.updateSearch.bind(this)} />
+        <input type="text" name="search" id="search" value={this.state.search} onChange={this.updateSearch} onKeyDown={this.keyPress} />
         <label htmlFor="search"><i className="fa fa-search" aria-hidden="true"></i></label>
       </div>
     )
