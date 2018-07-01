@@ -65,7 +65,7 @@ class Container extends React.Component {
         <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
-              <div>
+              <div className="marker">
                 <h2>{this.state.selectedPlace.title}</h2>
                 <img src={this.state.selectedPlace.url} width="300px"/>
                 <p>{this.state.selectedPlace.info}</p>

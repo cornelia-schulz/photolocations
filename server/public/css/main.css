@@ -151,6 +151,21 @@ the map will be set to 0 */
   height: 100vh;
 }
 
+.marker {
+  text-align: center;
+}
+
+.marker p {
+  font-size: 1.3em;
+  font-weight: 400;
+  text-align: left;
+}
+
+h2 {
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
 h1 {
   font-weight: 600;
   font-size: 3em;
