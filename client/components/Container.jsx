@@ -54,14 +54,20 @@ class Container extends React.Component {
     return (
       <Map google={this.props.google} style={style} searchString={this.props.searchString} click={this.onMapClicked}>
         {this.state.markers.map(marker => {
-          return <Marker key={marker.id} click={this.onMarkerClick} info={marker.info} title={marker.title} label={marker.label} position={{lat: marker.lat, lng: marker.lng}}  />
+          return <Marker key={marker.id} 
+                          click={this.onMarkerClick} 
+                          info={marker.info} 
+                          title={marker.title} 
+                          label={marker.label} 
+                          position={{lat: marker.lat, lng: marker.lng}}
+                          url={marker.url}  />
         })}
         <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
               <div>
                 <h2>{this.state.selectedPlace.title}</h2>
-                <img src={this.state.selectedPlace.url} width="50px"/>
+                <img src={this.state.selectedPlace.url} width="300px"/>
                 <p>{this.state.selectedPlace.info}</p>
               </div>
           </InfoWindow>

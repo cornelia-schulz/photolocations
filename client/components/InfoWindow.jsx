@@ -10,7 +10,7 @@ class InfoWindow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {google, map} = this.props;
+    const { google, map } = this.props;
 
     if (!google || !map) {
       return;
@@ -34,89 +34,89 @@ class InfoWindow extends React.Component {
       this.props.visible ?
         this.openWindow() :
         this.closeWindow();
-  }
-}
-
-renderInfoWindow() {
-  const {
-    map,
-    google,
-    mapCenter
-  } = this.props;
-
-  if (!google || !google.maps) {
-    return;
+    }
   }
 
-  const iw = this.infowindow = new google.maps.InfoWindow({
-    content: ''
-  });
+  renderInfoWindow() {
+    const {
+      map,
+      google,
+      mapCenter
+    } = this.props;
 
-  google.maps.event
-    .addListener(iw, 'closeclick', this.onClose.bind(this))
-  google.maps.event
-    .addListener(iw, 'domready', this.onOpen.bind(this));
-}
+    if (!google || !google.maps) {
+      return;
+    }
 
-onOpen() {
-  if (this.props.onOpen) {
-    this.props.onOpen();
+    const iw = this.infowindow = new google.maps.InfoWindow({
+      content: ''
+    });
+
+    google.maps.event
+      .addListener(iw, 'closeclick', this.onClose.bind(this))
+    google.maps.event
+      .addListener(iw, 'domready', this.onOpen.bind(this));
   }
-}
 
-onClose() {
-  if (this.props.onClose) {
-    this.props.onClose();
+  onOpen() {
+    if (this.props.onOpen) {
+      this.props.onOpen();
+    }
   }
-}
 
-openWindow() {
-  this.infowindow.open(this.props.map, this.props.marker);
-}
-
-updatePosition() {
-  let pos = this.props.position;
-  if (!(pos instanceof google.maps.LatLng)) {
-    pos = pos && new google.maps.LatLng(pos.lat, pos.lng);
+  onClose() {
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
   }
-  this.infowindow.setPosition(pos);
-}
 
-updateContent() {
-  const content = this.renderChildren();
-  this.infowindow.setContent(content);
-}
+  openWindow() {
+    this.infowindow.open(this.props.map, this.props.marker);
+  }
 
-closeWindow() {
-  this.infowindow.close();
-}
+  updatePosition() {
+    let pos = this.props.position;
+    if (!(pos instanceof google.maps.LatLng)) {
+      pos = pos && new google.maps.LatLng(pos.lat, pos.lng);
+    }
+    this.infowindow.setPosition(pos);
+  }
 
-renderChildren() {
-  const {children} = this.props;
-  return ReactDOMServer.renderToString(children);
-}
+  updateContent() {
+    const content = this.renderChildren();
+    this.infowindow.setContent(content);
+  }
 
-render() {
-  return null;
-}
+  closeWindow() {
+    this.infowindow.close();
+  }
+
+  renderChildren() {
+    const { children } = this.props;
+    return ReactDOMServer.renderToString(children);
+  }
+
+  render() {
+    return null;
+  }
 }
 
 InfoWindow.propTypes = {
-children: PropTypes.element.isRequired,
-map: PropTypes.object,
-marker: PropTypes.object,
-position: PropTypes.object,
-info: PropTypes.object,
-url: PropTypes.object,
-visible: PropTypes.bool,
+  children: PropTypes.element.isRequired,
+  map: PropTypes.object,
+  marker: PropTypes.object,
+  position: PropTypes.object,
+  info: PropTypes.object,
+  url: PropTypes.object,
+  visible: PropTypes.bool,
 
-// callbacks
-onClose: PropTypes.func,
-onOpen: PropTypes.func
+  // callbacks
+  onClose: PropTypes.func,
+  onOpen: PropTypes.func
 }
 
 InfoWindow.defaultProps = {
-visible: false
+  visible: false
 }
 
 export default InfoWindow
