@@ -28,10 +28,10 @@ class App extends React.Component {
       <Router>
         <div className="container">
           <Route path='/' render={() => <Header onChange={this.onChange} />} />
-          <Route exact path='/' render={() => <Container searchString={this.state.searchString} />} />
+          <Route exact path='/' render={(props) => <Container searchString={this.state.searchString} {...props} />} />
           <Route path='/contact' component={Contact} />
           <Route path='/about' component={About} />
-          <Route path='/location/:name/:id' component={Location} />
+          <Route path='/location/:id' component={Location} />
         </div>
       
       </Router>

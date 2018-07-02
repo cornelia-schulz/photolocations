@@ -10,3 +10,14 @@ export function getAllLocations() {
       console.error(err)
     })
 }
+
+export function getLocation(id){
+  return request
+  .get('/api/v1/locatons')
+  .then(res => {
+    return res.body
+  })
+  .catch(err => {
+    console.error(err)
+  })
+}

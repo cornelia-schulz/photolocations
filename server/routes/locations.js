@@ -9,4 +9,11 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/', (req, res) => {
+  db.getLocation(id)
+  .then(location => {
+    res.json(location)
+  })
+} )
+
 module.exports = router

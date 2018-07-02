@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Marker from './Marker';
 import { GoogleApiWrapper } from 'google-maps-react';
 import Map from './Map';
@@ -22,12 +23,12 @@ class Container extends React.Component {
   componentDidMount() {
     getAllLocations()
       .then(markers => {
-        console.log(markers)
-        this.setState({markers})
+        //console.log(markers)
+        this.setState({ markers })
       })
   }
 
-  onMarkerClick(props, marker, e){
+  onMarkerClick(props, marker, e) {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -52,26 +53,31 @@ class Container extends React.Component {
     }
 
     return (
-      <Map google={this.props.google} style={style} searchString={this.props.searchString} click={this.onMapClicked}>
-        {this.state.markers.map(marker => {
-          return <Marker key={marker.id} 
-                          click={this.onMarkerClick} 
-                          info={marker.info} 
-                          title={marker.title} 
-                          label={marker.label} 
-                          position={{lat: marker.lat, lng: marker.lng}}
-                          url={marker.url}  />
-        })}
-        <InfoWindow
+        <Map google={this.props.google} style={style} searchString={this.props.searchString} click={this.onMapClicked}>
+          {this.state.markers.map(marker => {
+            return <Marker key={marker.id}
+              click={this.onMarkerClick}
+              info={marker.info}
+              title={marker.title}
+              label={marker.label}
+              id={marker.id}
+              position={{ lat: marker.lat, lng: marker.lng }}
+              url={marker.url} />
+          })}
+
+          <InfoWindow {...this.props}
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
-              <div className="marker">
-                <h2>{this.state.selectedPlace.title}</h2>
-                <img src={this.state.selectedPlace.url} width="300px"/>
-                <p>{this.state.selectedPlace.info}</p>
-              </div>
+            <div className="marker">
+              <h2>{this.state.selectedPlace.title}</h2>
+              <img src={this.state.selectedPlace.url} width="300px" />
+              <p>{this.state.selectedPlace.info}</p>
+              {/* <p>Read more
+                <Link to={`/location/${this.state.selectedPlace.id}`}>here</Link>
+              </p> */}
+            </div>
           </InfoWindow>
-      </Map>
+        </Map>
     )
   }
 }

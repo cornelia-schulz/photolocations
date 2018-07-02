@@ -109,6 +109,7 @@ InfoWindow.propTypes = {
   info: PropTypes.object,
   url: PropTypes.object,
   visible: PropTypes.bool,
+  id: PropTypes.object,
 
   // callbacks
   onClose: PropTypes.func,

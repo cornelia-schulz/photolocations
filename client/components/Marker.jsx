@@ -59,7 +59,8 @@ class Marker extends React.Component {
       draggable,
       title,
       info,
-      url
+      url,
+      id
     } = this.props;
     if (!google) {
       return null
@@ -78,6 +79,7 @@ class Marker extends React.Component {
       title: this.props.title,
       info: this.props.info,
       url: this.props.url,
+      id: this.props.id,
       draggable: this.props.draggable
     }
     this.marker = new google.maps.Marker(pref);
