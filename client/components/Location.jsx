@@ -11,10 +11,10 @@ class Location extends React.Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log(id);
+    //console.log(id);
     getLocation(id)
       .then(location => {
-        console.log(location);
+        //console.log(location);
         this.setState({ location })
       })
   }
@@ -26,12 +26,8 @@ class Location extends React.Component {
         <div className="locationText">
           <h1>{this.state.location.title}</h1>
           <p>
-
+            {this.state.location.info}
           </p>
-          <p>
-
-          </p>
-          <p></p>
         </div>
       </div>
     )
