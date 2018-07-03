@@ -31,7 +31,7 @@ class App extends React.Component {
           <Route exact path='/' render={(props) => <Container searchString={this.state.searchString} {...props} />} />
           <Route path='/contact' component={Contact} />
           <Route path='/about' component={About} />
-          <Route path='/location/:id' component={Location} />
+          <Route path='/location/:id/' component={Location} />
         </div>
       
       </Router>

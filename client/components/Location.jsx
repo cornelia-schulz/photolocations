@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {getLocation} from '../apiClient';
 
 class Location extends React.Component {
   constructor(props) {
@@ -9,10 +10,11 @@ class Location extends React.Component {
   }
 
   componentDidMount() {
-    const id = props.match.params.id
+    const id = this.props.match.params.id;
+    console.log(id);
     getLocation(id)
       .then(location => {
-        console.log(location)
+        console.log(location);
         this.setState({ location })
       })
   }
