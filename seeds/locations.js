@@ -15,6 +15,27 @@ exports.seed = function(knex, Promise) {
         {id: 8, title: 'Magazine Bay', label: 'Magazine Bay', lat: -36.883566, lng: 175.056192, info: 'Great for landscape and astro photography'},
         {id: 9, title: 'Piha', label: 'Piha', lat: -36.954760, lng: 174.468187, info: 'Great for sunsets and landscape work'},
         {id: 10, title: 'Hunua Falls', label: 'Hunua Falls', lat: -37.068781, lng: 175.089827, info: 'Great for landscapes and macro photography'},
+        {id: 11, title: 'Mt Vic', label: '', lat: -, lng: , info: ''},
+        {id: 12, title: 'Jack\'s Point', label: '', lat: -, lng: , info: ''},
+        {id: 13, title: 'Tangermuende Gate', label: '', lat: -, lng: , info: ''},
+        {id: 14, title: 'Uenglingen Gate', label: '', lat: -, lng: , info: ''},
+        {id: 15, title: 'Water', label: '', lat: -, lng: , info: ''},
+        {id: 16, title: 'City Wall', label: '', lat: -, lng: , info: ''},
+        {id: 17, title: 'Three Sisters', label: '', lat: -, lng: , info: ''},
+        {id: 18, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 19, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 20, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 21, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 22, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 23, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 24, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 25, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 26, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 27, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 28, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 29, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 30, title: '', label: '', lat: -, lng: , info: ''},
+        {id: 31, title: '', label: '', lat: -, lng: , info: ''}
       ]);
     });
 };
