@@ -13,7 +13,7 @@ export function getAllLocations() {
 
 export function getLocation(id){
   return request
-  .get('/api/v1/locations')
+  .get('/api/v1/locations/'+id)
   .then(res => {
     return res.body
   })

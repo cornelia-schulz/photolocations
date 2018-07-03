@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
+  const id = Number(req.params.id)
   db.getLocation(id)
   .then(location => {
     res.json(location)
