@@ -7,6 +7,30 @@ html, body {
   color: #c59d59;
 }
 
+h2 {
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 3em;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background: -webkit-linear-gradient(#eee, #c59d59);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+button, input[type=submit] {
+  background: -webkit-linear-gradient(#eee, #c59d59);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  height: 2.3em;
+  margin-right: 10px;
+  border-radius: 10%;
+}
+
 .container {
   height: 100%;
   width: 100%;
@@ -154,6 +178,11 @@ the map will be set to 0 */
   margin-bottom: 10px;
 }
 
+#starRating {
+  height: 80px;
+  margin: 0;
+}
+
 .infoWindow p {
   font-size: 1.3em;
   font-weight: 400;
@@ -162,20 +191,29 @@ the map will be set to 0 */
   margin-bottom: 10px;
 }
 
-h2 {
-  font-size: 2.5em;
-  font-weight: 600;
+
+
+/*
+====================================
+COMMENTS SECTION
+=====================================
+*/
+
+.addCommentForm textarea {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
-h1 {
-  font-weight: 600;
-  font-size: 3em;
-  margin-bottom: 20px;
+.comment {
   margin-top: 20px;
-  background: -webkit-linear-gradient(#eee, #c59d59);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
+
+.commentButtons {
+  margin-top: 10px;
+}
+
+
 
 
 @media only screen and (min-width: 900px) {

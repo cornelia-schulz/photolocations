@@ -1,5 +1,6 @@
 import React from 'react';
 import {getLocation} from '../apiClient';
+import Comments from './Comments'
 
 class Location extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class Location extends React.Component {
               brain is the seed of intelligence extraordinary claims require 
               extraordinary evidence.
           </p>
+          <Comments id={this.props.match.params.id}/>
         </div>
       </div>
     )

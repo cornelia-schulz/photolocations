@@ -21,3 +21,14 @@ export function getLocation(id){
     console.error(err)
   })
 }
+
+export function getAllComments(id){
+  return request
+  .get('/api/v1/comments/'+id)
+  .then(res => {
+    return res.body
+  })
+  .catch(err => {
+    console.error(err)
+  })
+}

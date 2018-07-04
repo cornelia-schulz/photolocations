@@ -70,6 +70,7 @@ class Container extends React.Component {
             <div className="infoWindow">
               <h2>{this.state.selectedPlace.title}</h2>
               <img src={this.state.selectedPlace.url} width="300px" />
+              <img id="starRating" src="/images/stars.png" alt="star-rating" />
               <p>{this.state.selectedPlace.info}</p>
               <p>Lorem ipsum dolor amet enamel pin blue bottle
                  portland humblebrag XOXO. Godard pour-over knausgaard 
