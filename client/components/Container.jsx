@@ -71,6 +71,13 @@ class Container extends React.Component {
               <h2>{this.state.selectedPlace.title}</h2>
               <img src={this.state.selectedPlace.url} width="300px" />
               <p>{this.state.selectedPlace.info}</p>
+              <p>Lorem ipsum dolor amet enamel pin blue bottle
+                 portland humblebrag XOXO. Godard pour-over knausgaard 
+                 sustainable migas. Man bun organic pop-up, ethical gastropub 
+                 hashtag 3 wolf moon ennui. Blue bottle truffaut la croix, 
+                 narwhal tousled vexillologist hot chicken sustainable celiac four loko.
+
+              </p>
               <p>Read more <a href={`/#/location/${this.state.selectedPlace.id}`}>here</a></p>
             </div>
           </InfoWindow>

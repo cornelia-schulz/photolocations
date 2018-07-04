@@ -115,15 +115,7 @@ html, body {
   width: 100%;
 }
 
-.aboutText p {
-  letter-spacing: 1px;
-  line-height: 1.5em;
-  margin-top: 1.8em;
-  margin-bottom: 10px;
-  font-size: 1.2em;
-}
-
-.contactForm {
+.aboutText p, .contactForm, .locationText p {
   letter-spacing: 1px;
   line-height: 1.5em;
   margin-top: 1.8em;
