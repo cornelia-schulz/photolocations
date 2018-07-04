@@ -32,3 +32,19 @@ export function getAllComments(id){
     console.error(err)
   })
 }
+
+export function delComment(id){
+  return request.del('/api/v1/comments')
+    .send({id: id})
+    .catch(err => {
+      console.error(err)
+    })
+}
+
+export function updateComment(comment) {
+  return request.put('/api/v1/comments')
+    .send(comment)
+    .catch(err => {
+      throw Error('Cannot update comment!', err)
+    })
+}

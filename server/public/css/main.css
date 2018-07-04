@@ -22,13 +22,13 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
-button, input[type=submit] {
+.commentButtons button, .addCommentForm input[type=submit], #contactFormSubmit {
   background: -webkit-linear-gradient(#eee, #c59d59);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   height: 2.3em;
   margin-right: 10px;
-  border-radius: 10%;
+  border-radius: 5%;
 }
 
 .container {
@@ -38,6 +38,11 @@ button, input[type=submit] {
   padding: 0;
 }
 
+/* 
+========================================
+NAVIGATION
+========================================
+*/
 .logo {
   font-size: 2em;
   font-weight: 600;
@@ -157,7 +162,6 @@ button, input[type=submit] {
   width: 100px;
   font-size: 1.1em;
   border: 1px solid whitesmoke;
-  border-radius: 2%;
 }
 
 /* always set map height explicitly, you also need to set the 
