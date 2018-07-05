@@ -33,6 +33,15 @@ export function getAllComments(id){
   })
 }
 
+export function addComment(comment){
+  return request
+  .post('/api/v1/comments')
+  .send(comment)
+  .catch(err => {
+    console.error(err)
+  })
+}
+
 export function delComment(id){
   return request.del('/api/v1/comments')
     .send({id: id})

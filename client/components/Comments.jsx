@@ -1,7 +1,7 @@
 import React from 'react'
 import Comment from './Comment'
 
-import { getAllComments } from '../apiClient'
+import { getAllComments, addComment } from '../apiClient'
 
 class Comments extends React.Component {
   constructor(props){
@@ -23,6 +23,20 @@ class Comments extends React.Component {
     .then(comments => {
       this.setState({comments})
     })
+  }
+
+  addNewComment(e){
+    e.preventDefault()
+    this.setState({error: null})
+    const newError = {task: this.state.comment}
+    addComment(comment)
+      .then(() => {
+        this.setState({comment: ''})
+      })
+      .then(() => {
+        this.reloadComments()
+      })
+      .catch(err => this.setState({error: err.message}))
   }
 
   updateComment(e) {
