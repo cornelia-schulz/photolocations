@@ -10,8 +10,11 @@ class Comments extends React.Component {
       comments: [],
       comment: '',
       id: null,
-      isHidden: true
+      isHidden: true,
+      error: null
     }
+    this.updateComment = this.updateComment.bind(this);
+    this.addNewComment = this.addNewComment.bind(this);
   }
 
   componentDidMount () {
@@ -28,8 +31,12 @@ class Comments extends React.Component {
   addNewComment(e){
     e.preventDefault()
     this.setState({error: null})
-    const newError = {task: this.state.comment}
-    addComment(comment)
+    const newComment = {
+      comment: this.state.comment,
+      location_id: this.props.id,
+      user_id: 1
+    }
+    addComment(newComment)
       .then(() => {
         this.setState({comment: ''})
       })
@@ -41,7 +48,7 @@ class Comments extends React.Component {
 
   updateComment(e) {
     this.setState({
-      comment: event.target.value.substr(0, 300)
+      comment: document.getElementById("addNewComment").value.substr(0, 300)
     })
   }
 
@@ -50,8 +57,8 @@ class Comments extends React.Component {
     return (
       <div className="comments">
         <h2>Comments</h2>
-        <form className="addCommentForm">
-          <textarea rows="4" cols="100" value={this.state.comment} onChange={this.updateComment}></textarea><br />
+        <form className="addCommentForm" onSubmit={this.addNewComment}>
+          <textarea id="addNewComment" rows="4" cols="100" value={this.state.comment} onChange={this.updateComment}></textarea><br />
           <input type="submit" id="addCommentButton" value = "Add comment" />
         </form>
         <ul>
