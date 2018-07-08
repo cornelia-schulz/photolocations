@@ -27,6 +27,8 @@
     "google-maps-react": "^2.0.2",
     "knex": "^0.14.6",
     "prop-types": "^15.6.2",
+    "react-facebook-login": "^4.0.1",
+    "react-google-login": "^3.2.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.0.13",

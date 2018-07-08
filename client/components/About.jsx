@@ -7,7 +7,7 @@ const About = (props) => {
       <div className="aboutText">
         <h1>About Photo Locations</h1>
         <p>Welcome to Photo Locations. The app is aimed at all of you
-          who like travelling and photography. I love to see new Locations
+          who like travelling and photography. I love to see and explore new places
           but sometimes struggle to find interesting places to photograph when I
           have only limited time to explore and would still like to come home with
           some amazing shots.

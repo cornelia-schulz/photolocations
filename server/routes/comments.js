@@ -35,7 +35,7 @@ router.put('/', (req, res) => {
 })
 
 router.delete('/', (req, res) => {
-  const {id} = req.body
+  const id = req.body.id
   db.delComment(id)
     .then(() => {
       console.error(err)
