@@ -4,6 +4,7 @@ import { GoogleApiWrapper } from 'google-maps-react';
 import Map from './Map';
 import InfoWindow from './InfoWindow'
 import { getAllLocations } from '../apiClient';
+import config from '../../config.json';
 
 class Container extends React.Component {
   constructor(props) {
@@ -88,5 +89,5 @@ class Container extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAPv7CZEnHS4ZJeuUA2x5Ls6YvX24D4WrI'
+  apiKey: `${config.GOOGLE_API_KEY}`
 })(Container)

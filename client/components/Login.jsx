@@ -1,6 +1,7 @@
 import React from 'react';
 import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
+import config from '../../config.json';
 
 class Login extends React.Component {
   constructor() {
@@ -21,9 +22,13 @@ class Login extends React.Component {
       })
   }
 
-  facebookResponse(e) {};
+  facebookResponse(response) {
+    console.log(response);
+  };
 
-  googleResponse(e) {};
+  googleResponse(response) {
+    console.log(response);
+  };
 
   onFailure(error) {
     console.log(error);
@@ -43,12 +48,12 @@ class Login extends React.Component {
     ) : (
       <div>
         <FacebookLogin
-          appId="XXXXXXXXXX"
+          appId={config.FACEBOOK_APP_ID}
           autoLoad={false}
           fields="name, email, picture"
           callback={this.facebookResponse} />
         <GoogleLogin
-          clientId="XXXXXXXXXX"
+          clientId={config.GOOGLE_CLIENT_ID}
           buttonText="Login with Google"
           onSuccess={this.googleResponse}
           onFailure={this.googleResponse} />
