@@ -23,17 +23,28 @@
     ]
   },
   "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
+    "express-generator": "^4.16.0",
+    "express-server-utils": "^1.1.0",
     "google-maps-react": "^2.0.2",
+    "jsonwebtoken": "^8.3.0",
     "knex": "^0.14.6",
+    "knex-upsert": "^0.0.3",
+    "passport": "^0.4.0",
+    "passport-facebook-token": "^3.3.0",
+    "passport-google-token": "^0.1.2",
     "prop-types": "^15.6.2",
     "react-facebook-login": "^4.0.1",
     "react-google-login": "^3.2.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.0.13",
+    "request": "^2.87.0",
     "sqlite3": "^4.0.1",
-    "superagent": "^3.8.3"
+    "superagent": "^3.8.3",
+    "utils": "^0.3.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

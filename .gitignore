@@ -3,3 +3,4 @@ static
 npm-debug.log
 bundle.*
 config.json
+config.js
