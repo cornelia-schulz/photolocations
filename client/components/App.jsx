@@ -5,6 +5,7 @@ import Container from './Container';
 import About from './About';
 import Contact from './Contact';
 import Location from './Location';
+import Login from './Login';
 
 
 class App extends React.Component {
@@ -32,6 +33,7 @@ class App extends React.Component {
           <Route path='/contact' component={Contact} />
           <Route path='/about' component={About} />
           <Route path='/location/:id/' component={Location} />
+          <Route path='/login' component={Login} />
         </div>
       
       </Router>

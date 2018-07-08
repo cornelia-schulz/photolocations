@@ -2,7 +2,7 @@ import React from 'react';
 import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 
-class Login extends Component {
+class Login extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -10,23 +10,22 @@ class Login extends Component {
       user: null,
       token: ''
     };
+    this.logout = this.logout.bind(this);
   }
 
-  logout = () => {
-    this.setState(
-      {
+  logout () {
+    this.setState({
         isAuthenticated: false,
-        token: '',
-        user: null
-      }
-    )
-  };
+        user: null,
+        token: ''
+      })
+  }
 
-  facebookResponse = (e) => {};
+  facebookResponse(e) {};
 
-  googleResponse = (e) => {};
+  googleResponse(e) {};
 
-  onFailure = (error) => {
+  onFailure(error) {
     console.log(error);
   }
 
@@ -50,7 +49,7 @@ class Login extends Component {
           callback={this.facebookResponse} />
         <GoogleLogin
           clientId="XXXXXXXXXX"
-          buttonText="Login"
+          buttonText="Login with Google"
           onSuccess={this.googleResponse}
           onFailure={this.googleResponse} />
       </div>
