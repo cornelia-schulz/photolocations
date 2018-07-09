@@ -1,7 +1,6 @@
 'use strict';
 require('express');
 const passport = require('passport');
-//const User = require('mongoose').model('User');
 const FacebookTokenStrategy = require('passport-facebook-token');
 const GoogleTokenStrategy = require('passport-google-token').Strategy;
 const config = require('./config');

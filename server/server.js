@@ -1,9 +1,9 @@
 const path = require('path');
 const express = require('express');
 const server = express();
-//const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const passport = require('passport')
 require('./public/passport.js')(passport)
 
 const locationRoutes = require('./routes/locations');
@@ -21,6 +21,7 @@ const corsOption = {
 server.set('views', path.join(__dirname, 'views'));
 server.set('view engine', 'jade');
 
+server.use(passport.initialize());
 server.use(cors(corsOption));
 server.use(express.json());
 server.use(cookieParser())

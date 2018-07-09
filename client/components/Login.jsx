@@ -76,7 +76,7 @@ class Login extends React.Component {
         </div>
       </div>
     ) : (
-        <div>
+        <div className="login">
           <FacebookLogin
             appId={config.FACEBOOK_APP_ID}
             autoLoad={false}
