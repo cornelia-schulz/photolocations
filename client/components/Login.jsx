@@ -84,7 +84,7 @@ class Login extends React.Component {
             callback={this.facebookResponse} />
           <GoogleLogin
             clientId={config.GOOGLE_CLIENT_ID}
-            buttonText="Login with Google"
+            buttonText="LOGIN WITH GOOGLE"
             onSuccess={this.googleResponse}
             onFailure={this.googleResponse} />
         </div>

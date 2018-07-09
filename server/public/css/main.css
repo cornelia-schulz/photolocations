@@ -236,14 +236,16 @@ LOGIN
 
 .login button {
   display: block;
-  width: 250px;
+  width: 250px !important;
   height: 60px;
+  font-family: 'Lato', sans-serif !important;
 }
 
 .kep-login-facebook {
   width: 100px;
   margin: 0 auto;
   margin-bottom: 20px;
+  font-family: 'Lato', sans-serif;
 }
 
 @media only screen and (min-width: 900px) {
