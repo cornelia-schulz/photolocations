@@ -42,7 +42,6 @@ class Login extends React.Component {
   };
 
   googleResponse(response) {
-    console.log(response);
     const tokenBlob = new Blob([JSON.stringify({ access_token: response.accessToken }, null, 2)], { type: 'application/json' });
     const options = {
       method: 'POST',
@@ -85,7 +84,7 @@ class Login extends React.Component {
           <GoogleLogin
             clientId={config.GOOGLE_CLIENT_ID}
             buttonText="LOGIN WITH GOOGLE"
-            onSuccess={this.googleResponse}
+            onSuccess={this.googleResponse.bind(this)}
             onFailure={this.googleResponse} />
         </div>
       );

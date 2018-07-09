@@ -4,8 +4,10 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary()
     table.string('full_name')
     table.string('email')
-    table.string('accessToken')
-    table.integer('social_id')
+    table.string('facebook_accessToken')
+    table.integer('facebook_id')
+    table.string('google_accessToken')
+    table.integer('google_id')
   })
 };
 
