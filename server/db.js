@@ -96,9 +96,11 @@ function googleUpsertUser(accessToken, refreshToken, profile, cb){
           google_accessToken: profile.accessToken,
           google_id: profile.googleId
         }
-        db('users')
-          .insert(newUser)
-          cb(null, newUser);
+        insertGoogleUser(newUser)
+          .then((newUser) => {
+            cb(null, newUser);
+          })
+          
       }
       else {
         console.log('found user');
@@ -113,4 +115,9 @@ function findGoogleUser(profile){
     .where('google_id', profile.id)
     .select()
     .first()
+}
+
+function insertGoogleUser(newUser){
+  return db('users')
+    .insert(newUser)
 }
