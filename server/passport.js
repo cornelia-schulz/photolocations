@@ -3,11 +3,7 @@ require('express');
 const passport = require('passport');
 const FacebookTokenStrategy = require('passport-facebook-token');
 const GoogleTokenStrategy = require('passport-google-token').Strategy;
-const config = require('./config');
-const knex = require('knex');
-const user = require('../db')
-const knexconfig = require('../../knexfile').development
-const db = knex(knexconfig);
+const config = require('./config.js');
 
 module.exports = function () {
   passport.use(new FacebookTokenStrategy({

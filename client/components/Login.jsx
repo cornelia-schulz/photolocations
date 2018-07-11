@@ -68,7 +68,8 @@ class Login extends React.Component {
       <div>
         <p>Authenticated</p>
         <div>
-          {this.state.user.email}
+          <p>Welcome {this.state.user.full_name}</p>
++         <p>{this.state.user.email}</p>
         </div>
         <div>
           <button onClick={this.logout} className="logoutButton"> Log out </button>

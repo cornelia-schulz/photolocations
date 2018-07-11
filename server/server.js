@@ -1,10 +1,9 @@
 const path = require('path');
 const express = require('express');
 const server = express();
-const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const passport = require('passport')
-require('./public/passport.js')(passport)
+require('./passport.js')(passport)
 
 const locationRoutes = require('./routes/locations');
 const commentRoutes = require('./routes/comments');
@@ -24,7 +23,6 @@ server.set('view engine', 'jade');
 server.use(passport.initialize());
 server.use(cors(corsOption));
 server.use(express.json());
-server.use(cookieParser())
 server.use(express.static(path.join(__dirname, './public')));
 server.use('/api/v1/locations', locationRoutes);
 server.use('/api/v1/comments', commentRoutes);
