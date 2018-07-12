@@ -42,6 +42,7 @@ class Login extends React.Component {
   };
 
   googleResponse(response) {
+    console.log(response);
     const tokenBlob = new Blob([JSON.stringify({ access_token: response.accessToken }, null, 2)], { type: 'application/json' });
     const options = {
       method: 'POST',
@@ -53,6 +54,7 @@ class Login extends React.Component {
       const token = r.headers.get('x-auth-token');
       r.json().then(user => {
         if (token) {
+          console.log('token received')
           this.setState({ isAuthenticated: true, user, token })
         }
       });
@@ -68,8 +70,8 @@ class Login extends React.Component {
       <div>
         <p>Authenticated</p>
         <div>
-          <p>Welcome {this.state.user.full_name}</p>
-+         <p>{this.state.user.email}</p>
+         <p>Welcome {this.state.user.full_name}</p>
+         <p>{this.state.user.email}</p>
         </div>
         <div>
           <button onClick={this.logout} className="logoutButton"> Log out </button>

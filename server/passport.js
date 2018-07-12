@@ -4,6 +4,7 @@ const passport = require('passport');
 const FacebookTokenStrategy = require('passport-facebook-token');
 const GoogleTokenStrategy = require('passport-google-token').Strategy;
 const config = require('./config.js');
+const user = require('./db');
 
 module.exports = function () {
   passport.use(new FacebookTokenStrategy({
@@ -23,6 +24,7 @@ module.exports = function () {
       },
      // upsert === update if doesn't exist
       function (accessToken, refreshToken, profile, done) {
+          console.log('passport google user')
           user.googleUpsertUser(accessToken, refreshToken, profile, function(err, user) {
               return done(err, user);
           });

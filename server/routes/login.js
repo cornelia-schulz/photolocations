@@ -22,6 +22,7 @@ router.route('/auth/facebook')
 router.route('/auth/google')
     .post(passport.authenticate('google-token', {session: false}), 
         function(req, res, next) {
+            console.log('routing')
         if (!req.user) {
             return res.send(401, 'User Not Authenticated');
         }

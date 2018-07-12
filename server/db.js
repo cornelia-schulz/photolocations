@@ -84,20 +84,21 @@ function findFacebookUser(profile){
 function googleUpsertUser(accessToken, refreshToken, profile, cb){
   return findGoogleUser(profile)
     .then((result) => {
+      const newUser = {
+        full_name : profile.displayName,
+        email: profile.emails[0].value,
+        facebook_accessToken: null,
+        facebook_id: null,
+        google_accessToken: accessToken,
+        google_id: profile.id
+      }
       console.log('find google user');
       if (result === undefined) {
         console.log('did not find user');
-        // if user does not exist, insert user
-        const newUser = {
-          full_name : profile.displayName,
-          email: profile.emails[0].value,
-          facebook_accessToken: null,
-          facebook_id: null,
-          google_accessToken: profile.accessToken,
-          google_id: profile.googleId
-        }
+        
         insertGoogleUser(newUser)
-          .then((newUser) => {
+          .then((user) => {
+            console.log('inserting user')
             cb(null, newUser);
           })
           
@@ -109,6 +110,7 @@ function googleUpsertUser(accessToken, refreshToken, profile, cb){
       }
     })
 }
+
 
 function findGoogleUser(profile){
   return db('users')
