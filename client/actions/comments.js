@@ -43,11 +43,31 @@ export function addComment(comment) {
     return request
       .post('/api/v1/comments')
       .send(comment)
-      // .then(res = > {
-      //   dispatch(receiveComment(res.body))
-      // })
       .catch(() => {
-        dispatch(showError('Problems saving comment'))
+        dispatch(showError('Could not save comment'))
       })
+  }
+}
+
+export function delComment(id) {
+  return (dispatch) => {
+    return request
+      .del('/api/v1/comments')
+      .send({id: id})
+      .catch(() => {
+        dispatch(showError('Could not delete comment'))
+      })
+  }
+}
+
+export function updateComment(comment) {
+  return (dispatch) => {
+    console.log(comment)
+  return request
+    .put('/api/v1/comments')
+    .send(comment)
+    .catch(() => {
+      dispatch(showError('Could not update comment'))
+    })
   }
 }

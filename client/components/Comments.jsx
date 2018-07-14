@@ -63,7 +63,7 @@ class Comments extends React.Component {
           {this.props.newComments.length > 0 && 
             this.props.newComments.map(comment => {
             return <li key={comment.id}>
-              <Comment comment={comment.comment} onChange={this.reloadComments.bind(this)} />
+              <Comment comment={comment.comment} id={comment.id} onChange={this.reloadComments.bind(this)} />
             </li>
           })}
         </ul>
