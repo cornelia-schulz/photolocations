@@ -1,7 +1,11 @@
 import {combineReducers} from 'redux'
-import comment from './comment'
+import receiveComments from './receiveComments'
+import errorMessage from './error-message'
+import waiting from './waiting'
 
 
 export default combineReducers({
-  comment
+  receiveComments,
+  errorMessage,
+  waiting
 })

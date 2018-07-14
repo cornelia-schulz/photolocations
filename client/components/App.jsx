@@ -21,7 +21,6 @@ class App extends React.Component {
     this.setState({
       searchString: searchString
     })
-    console.log("I changed in the app too");
   }
 
   render(){
