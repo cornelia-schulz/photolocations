@@ -1,6 +1,7 @@
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import React from 'react';
-import Search from './Search';
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
+import React from 'react'
+import Search from './Search'
+
 
 class Header extends React.Component {
   constructor(props) {

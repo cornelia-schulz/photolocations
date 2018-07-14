@@ -8,8 +8,8 @@ exports.up = (knex, Promise) => {
     table.integer('lng')
     table.string('info')
   })
-};
+}
 
 exports.down = (knex, Promise) => {
   return knex.schema.dropTable('locations')
-};
+}

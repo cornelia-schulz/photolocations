@@ -1,13 +1,14 @@
-import React from 'react';
+import React from 'react'
+import { connect } from 'react-redux'
 
 class Search extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       search: ''
     }
-    this.updateSearch = this.updateSearch.bind(this);
-    this.keyPress = this.keyPress.bind(this);
+    this.updateSearch = this.updateSearch.bind(this)
+    this.keyPress = this.keyPress.bind(this)
   }
 
   updateSearch(event){
@@ -18,8 +19,7 @@ class Search extends React.Component {
 
   keyPress(event) {
     if(event.keyCode == 13) {
-      console.log('value', event.target.value);
-      // send to header?
+      console.log('value', event.target.value)
       this.props.onChange(this.state.search)
     }
   }

@@ -1,6 +1,7 @@
-import React from 'react';
-import {getLocation} from '../apiClient';
+import React from 'react'
+import {getLocation} from '../apiClient'
 import Comments from './Comments'
+import { connect } from 'react-redux'
 
 class Location extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class Location extends React.Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const id = this.props.match.params.id
     //console.log(id);
     getLocation(id)
       .then(location => {

@@ -2,6 +2,7 @@ import React from 'react'
 import Comment from './Comment'
 
 import { getAllComments, addComment } from '../apiClient'
+import { connect } from 'react-redux'
 
 class Comments extends React.Component {
   constructor(props){
@@ -73,4 +74,10 @@ class Comments extends React.Component {
   }
 }
 
-export default Comments
+function mapDispatchToProps(dispatch) {
+  return {
+
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Comments)

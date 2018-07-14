@@ -1,6 +1,7 @@
 import React from 'react'
 import EditComment from './EditComment'
 import delComment from '../apiClient'
+import { connect } from 'react-redux'
 
 class Comment extends React.Component {
   constructor(props){
