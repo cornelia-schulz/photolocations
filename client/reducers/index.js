@@ -4,6 +4,7 @@ import errorMessage from './error-message'
 import waiting from './waiting'
 import receiveLocations from './receiveLocations'
 import receiveLocation from './receiveLocation'
+import receiveSearchString from './receiveSearchString'
 
 
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
   errorMessage,
   waiting,
   receiveLocations,
-  receiveLocation
+  receiveLocation,
+  receiveSearchString
 })

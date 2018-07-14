@@ -18,7 +18,7 @@ class Header extends React.Component {
               <img src="/images/Logo.PNG" alt="Photo Locations" />
             </div>
             <div className="headerRight">
-              <Route exact path='/' render={() => <Search onChange={this.props.onChange} />} />
+              <Route exact path='/' component={Search} />
               <div className="dropdown">
                 <button className="dropbtn">
                   <i className="fa fa-bars" aria-hidden="true"></i>

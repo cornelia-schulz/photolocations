@@ -49,7 +49,7 @@ class Container extends React.Component {
     }
 
     return (
-        <Map google={this.props.google} style={style} searchString={this.props.searchString} click={this.onMapClicked}>
+        <Map google={this.props.google} style={style} click={this.onMapClicked}>
           {this.props.locations.map(marker => {
             return <Marker key={marker.id}
               click={this.onMarkerClick}

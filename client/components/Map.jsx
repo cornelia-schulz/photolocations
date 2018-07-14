@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-const PropTypes = require('prop-types')
 import { connect } from 'react-redux'
-const evtNames = ['ready', 'click', 'dragend']
-class Map extends React.Component {
 
+const PropTypes = require('prop-types')
+const evtNames = ['ready', 'click', 'dragend']
+
+class Map extends React.Component {
   constructor(props) {
     super(props);
 
@@ -170,4 +171,10 @@ class Map extends React.Component {
   }
 
 
-  export default Map
+  function mapStateToProps(state) {
+    return {
+      searchString: state.receiveSearchString
+    }
+  }
+
+  export default connect(mapStateToProps, null)(Map)

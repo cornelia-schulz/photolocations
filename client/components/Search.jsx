@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { setSearchString } from '../actions/search'
 
 class Search extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class Search extends React.Component {
     this.state = {
       search: ''
     }
+    console.log("search props", this.props)
     this.updateSearch = this.updateSearch.bind(this)
     this.keyPress = this.keyPress.bind(this)
   }
@@ -19,7 +21,8 @@ class Search extends React.Component {
 
   keyPress(event) {
     if(event.keyCode == 13) {
-      this.props.onChange(this.state.search)
+      const searchString = this.state.search
+      this.props.setSearchString(searchString)
     }
   }
 
@@ -33,4 +36,12 @@ class Search extends React.Component {
   }
 }
 
-export default Search
+function mapDispatchToProps(dispatch) {
+  return {
+    setSearchString: (searchString) => {
+      return dispatch(setSearchString(searchString))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Search)
