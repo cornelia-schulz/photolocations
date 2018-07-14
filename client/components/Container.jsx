@@ -1,31 +1,27 @@
-import React from 'react';
-import Marker from './Marker';
-import { GoogleApiWrapper } from 'google-maps-react';
-import Map from './Map';
+import React from 'react'
+import Marker from './Marker'
+import { GoogleApiWrapper } from 'google-maps-react'
+import Map from './Map'
 import InfoWindow from './InfoWindow'
-import { getAllLocations } from '../apiClient';
-import config from '../../config.json';
+import { getAllLocations } from '../actions/locations'
+import config from '../../config.json'
+import { connect } from 'react-redux'
 
 class Container extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {},
-      markers: []
+      selectedPlace: {}
     }
-    this.onMarkerClick = this.onMarkerClick.bind(this);
-    this.onMapClicked = this.onMapClicked.bind(this);
+    this.onMarkerClick = this.onMarkerClick.bind(this)
+    this.onMapClicked = this.onMapClicked.bind(this)
   };
 
   componentDidMount() {
-    getAllLocations()
-      .then(markers => {
-        //console.log(markers)
-        this.setState({ markers })
-      })
+    this.props.getAllLocations()
   }
 
   onMarkerClick(props, marker, e) {
@@ -43,7 +39,7 @@ class Container extends React.Component {
         activeMarker: null
       })
     }
-  };
+  }
 
 
   render() {
@@ -54,7 +50,7 @@ class Container extends React.Component {
 
     return (
         <Map google={this.props.google} style={style} searchString={this.props.searchString} click={this.onMapClicked}>
-          {this.state.markers.map(marker => {
+          {this.props.locations.map(marker => {
             return <Marker key={marker.id}
               click={this.onMarkerClick}
               info={marker.info}
@@ -73,12 +69,12 @@ class Container extends React.Component {
               <img src={this.state.selectedPlace.url} width="300px" />
               <img id="starRating" src="/images/stars.png" alt="star-rating" />
               <p>{this.state.selectedPlace.info}</p>
-              <p>Lorem ipsum dolor amet enamel pin blue bottle
+              <p>
+                Lorem ipsum dolor amet enamel pin blue bottle
                  portland humblebrag XOXO. Godard pour-over knausgaard 
                  sustainable migas. Man bun organic pop-up, ethical gastropub 
                  hashtag 3 wolf moon ennui. Blue bottle truffaut la croix, 
                  narwhal tousled vexillologist hot chicken sustainable celiac four loko.
-
               </p>
               <p>Read more <a href={`/#/location/${this.state.selectedPlace.id}`}>here</a></p>
             </div>
@@ -88,6 +84,22 @@ class Container extends React.Component {
   }
 }
 
-export default GoogleApiWrapper({
+function mapStateToProps(state) {
+  return {
+    locations: state.receiveLocations
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getAllLocations: () => {
+      return dispatch(getAllLocations())
+    }
+  }
+}
+
+const WrappedContainer =  GoogleApiWrapper({
   apiKey: `${config.GOOGLE_API_KEY}`
 })(Container)
+
+export default connect(mapStateToProps, mapDispatchToProps)(WrappedContainer)

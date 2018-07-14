@@ -6,7 +6,7 @@ function receiveComments (state = [], action) {
       return action.comments
 
     default: 
-    return state
+      return state
   }
 }
 

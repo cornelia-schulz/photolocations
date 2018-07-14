@@ -1,22 +1,14 @@
 import React from 'react'
-import {getLocation} from '../apiClient'
+import {getLocation} from '../actions/locations'
 import Comments from './Comments'
 import { connect } from 'react-redux'
 
 class Location extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      location: {}
-    }
-  }
 
   componentDidMount() {
     const id = this.props.match.params.id
-    //console.log(id);
-    getLocation(id)
+    this.props.getLocation(id)
       .then(location => {
-        //console.log(location);
         this.setState({ location })
       })
   }
@@ -24,11 +16,11 @@ class Location extends React.Component {
   render() {
     return (
       <div className="location">
-        <img src={this.state.location.url} alt={this.state.location.title} />
+        <img src={this.props.location.url} alt={this.props.location.title} />
         <div className="locationText">
-          <h1>{this.state.location.title}</h1>
+          <h1>{this.props.location.title}</h1>
           <p>
-            {this.state.location.info}
+            {this.props.location.info}
           </p>
           <p>
           The sky calls to us dream of the mind's eye encyclopaedia
@@ -51,4 +43,19 @@ class Location extends React.Component {
     )
   }
 }
-export default Location
+
+function mapStateToProps(state) {
+  return {
+    location: state.receiveLocation
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getLocation: (id) => {
+      return dispatch(getLocation(id))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Location)

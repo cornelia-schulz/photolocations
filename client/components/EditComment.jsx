@@ -6,10 +6,9 @@ class EditComment extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      comment: props.comment,
+      comment: this.props.comment,
       error: null
     }
-    console.log("props", this.props)
     this.getComment = this.getComment.bind(this)
     this.editComment = this.editComment.bind(this)
   }
@@ -37,8 +36,8 @@ class EditComment extends React.Component {
 
   return (
     <form className="editComment" onSubmit={this.editComment} >
-      <input type="text" id="editComment" value={this.props.comment} onChange={this.getComment} />
-      <button id="submitComment"><i className="fas fa-paper-plane"></i>Submit</button>
+      <input type="text" id="editComment" value={this.state.comment} onChange={this.getComment} />
+      <button id="submitComment">Submit</button>
     </form>
   )
 }

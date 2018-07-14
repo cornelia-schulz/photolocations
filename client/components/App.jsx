@@ -1,7 +1,7 @@
 import React from 'react';
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import Header from './Header';
-import Container from './Container';
+import WrappedContainer from './Container';
 import About from './About';
 import Contact from './Contact';
 import Location from './Location';
@@ -28,7 +28,7 @@ class App extends React.Component {
       <Router>
         <div className="container">
           <Route path='/' render={() => <Header onChange={this.onChange} />} />
-          <Route exact path='/' render={(props) => <Container searchString={this.state.searchString} {...props} />} />
+          <Route exact path='/' render={(props) => <WrappedContainer searchString={this.state.searchString} {...props} />} />
           <Route path='/contact' component={Contact} />
           <Route path='/about' component={About} />
           <Route path='/location/:id/' component={Location} />
