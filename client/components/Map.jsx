@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { connect } from 'react-redux'
+
 const PropTypes = require('prop-types')
+const evtNames = ['ready', 'click', 'dragend']
 
-const evtNames = ['ready', 'click', 'dragend'];
 class Map extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -69,37 +70,37 @@ class Map extends React.Component {
     loadMap(){
       if (this.props && this.props.google) {
         // google is available
-        const { google } = this.props;
-        const maps = google.maps;
+        const { google } = this.props
+        const maps = google.maps
 
-        const mapRef = this.refs.map;
-        const node = ReactDOM.findDOMNode(mapRef);
+        const mapRef = this.refs.map
+        const node = ReactDOM.findDOMNode(mapRef)
 
-        let { initialCenter, zoom } = this.props;
-        const { lat, lng } = this.state.currentLocation;
-        const center = new maps.LatLng(lat, lng);
+        let { initialCenter, zoom } = this.props
+        const { lat, lng } = this.state.currentLocation
+        const center = new maps.LatLng(lat, lng)
         const mapConfig = Object.assign({}, {
           center: center,
           zoom: zoom
         })
-        this.map = new maps.Map(node, mapConfig);
+        this.map = new maps.Map(node, mapConfig)
 
 
         evtNames.forEach(e => {
-          this.map.addListener(e, this.handleEvent(e));
-        });
-        maps.event.trigger(this.map, 'ready');
+          this.map.addListener(e, this.handleEvent(e))
+        })
+        maps.event.trigger(this.map, 'ready')
 
         this.forceUpdate()
       }
     }
 
     recenterMap() {
-      const map = this.map;
-      const curr = this.state.currentLocation;
+      const map = this.map
+      const curr = this.state.currentLocation
 
-      const google = this.props.google;
-      const maps = google.maps;
+      const google = this.props.google
+      const maps = google.maps
 
       if (map) {
         let center = new maps.LatLng(curr.lat, curr.lng)
@@ -118,17 +119,17 @@ class Map extends React.Component {
         }
         timeout = setTimeout(() => {
           if (this.props[handlerName]) {
-            this.props[handlerName](this.props, this.map, e);
+            this.props[handlerName](this.props, this.map, e)
           }
         }, 0);
       }
     }
 
     renderChildren(){
-      const { children } = this.props;
+      const { children } = this.props
       // if there are no children still display the map
       if (!children || children.some(a => !a)) {
-        return;
+        return
       }
 
       return React.Children.map(children, c => {
@@ -136,7 +137,7 @@ class Map extends React.Component {
           map: this.map,
           google: this.props.google,
           mapCenter: this.state.currentLocation
-        });
+        })
       })
 
     }
@@ -170,4 +171,10 @@ class Map extends React.Component {
   }
 
 
-  export default Map
+  function mapStateToProps(state) {
+    return {
+      searchString: state.receiveSearchString
+    }
+  }
+
+  export default connect(mapStateToProps, null)(Map)

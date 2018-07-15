@@ -36,6 +36,6 @@ exports.seed = function(knex, Promise) {
         {id: 29, title: 'Tiritiri Matangi', label: '', lat: -36.602700, lng: 174.889106, info: ''},
         {id: 30, title: 'Musick Point', label: '', lat: -36.846405, lng: 174.900669, info: ''},
         {id: 31, title: 'Mangawhai Heads', label: '', lat: -36.080575, lng: 174.596958, info: ''}
-      ]);
-    });
-};
+      ])
+    })
+}

@@ -1,13 +1,15 @@
-import React from 'react';
+import React from 'react'
+import { connect } from 'react-redux'
+import { setSearchString } from '../actions/search'
 
 class Search extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       search: ''
     }
-    this.updateSearch = this.updateSearch.bind(this);
-    this.keyPress = this.keyPress.bind(this);
+    this.updateSearch = this.updateSearch.bind(this)
+    this.keyPress = this.keyPress.bind(this)
   }
 
   updateSearch(event){
@@ -18,9 +20,8 @@ class Search extends React.Component {
 
   keyPress(event) {
     if(event.keyCode == 13) {
-      console.log('value', event.target.value);
-      // send to header?
-      this.props.onChange(this.state.search)
+      const searchString = this.state.search
+      this.props.setSearchString(searchString)
     }
   }
 
@@ -34,4 +35,12 @@ class Search extends React.Component {
   }
 }
 
-export default Search
+function mapDispatchToProps(dispatch) {
+  return {
+    setSearchString: (searchString) => {
+      return dispatch(setSearchString(searchString))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Search)

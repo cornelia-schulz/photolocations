@@ -1,6 +1,7 @@
 import React from 'react'
 import EditComment from './EditComment'
-import delComment from '../apiClient'
+import {delComment} from '../actions/comments'
+import { connect } from 'react-redux'
 
 class Comment extends React.Component {
   constructor(props){
@@ -8,6 +9,7 @@ class Comment extends React.Component {
     this.state = {
       isHidden: true
     }
+    this.deleteComment = this.deleteComment.bind(this)
   }
 
 
@@ -24,9 +26,10 @@ handleChange () {
   this.props.onChange()
 }
 
-deleteComment(comment) {
+deleteComment() {
+  const id = this.props.id
   this.setState({ error: null })
-  this.deleteComment(comment.id)
+  this.props.delComment(id)
   .then(this.props.onChange)
 }
 
@@ -37,14 +40,23 @@ render() {
         {this.props.comment}
       </div>
       <div className="commentButtons">
-        <button id="editCommentButton" onClick={this.toggleHidden.bind(this)}>Edit</button>
+        <button id="editCommentButton" onClick={this.toggleHidden.bind(this)}>Update</button>
         <button id="deleteCommentButton" onClick={this.deleteComment.bind(this, this.props.comment)} onChange={this.onChange}>Delete</button>
       </div>
-      {!this.state.isHidden && <EditComment comment={this.props.comment} onChange={this.handleChange.bind(this)} />}
+      {!this.state.isHidden && <EditComment comment={this.props.comment} id={this.props.id} onChange={this.handleChange.bind(this)} />}
     </div>
   )
 }
-
 }
 
-export default Comment
+function mapDispatchToProps(dispatch) {
+  return {
+    delComment: (id) => {
+      return dispatch(delComment(id))
+    }
+  }
+}
+
+
+
+export default connect(null, mapDispatchToProps)(Comment)

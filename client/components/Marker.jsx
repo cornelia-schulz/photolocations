@@ -1,5 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 let evtNames = [
   'click',
@@ -15,20 +16,20 @@ let evtNames = [
 const wrappedPromise = function () {
   var wrappedPromise = {},
     promise = new Promise(function (resolve, reject) {
-      wrappedPromise.resolve = resolve;
-      wrappedPromise.reject = reject;
+      wrappedPromise.resolve = resolve
+      wrappedPromise.reject = reject
     });
-  wrappedPromise.then = promise.then.bind(promise);
-  wrappedPromise.catch = promise.catch.bind(promise);
-  wrappedPromise.promise = promise;
+  wrappedPromise.then = promise.then.bind(promise)
+  wrappedPromise.catch = promise.catch.bind(promise)
+  wrappedPromise.promise = promise
 
-  return wrappedPromise;
+  return wrappedPromise
 }
 
 class Marker extends React.Component {
   componentDidMount() {
-    this.markerPromise = wrappedPromise();
-    this.renderMarker();
+    this.markerPromise = wrappedPromise()
+    this.renderMarker()
   }
 
   componentDidUpdate(prevProps) {
@@ -36,15 +37,15 @@ class Marker extends React.Component {
       (this.props.position !== prevProps.position) ||
       (this.props.icon !== prevProps.icon)) {
       if (this.marker) {
-        this.marker.setMap(null);
+        this.marker.setMap(null)
       }
-      this.renderMarker();
+      this.renderMarker()
     }
   }
 
   componentWillUnmount() {
     if (this.marker) {
-      this.marker.setMap(null);
+      this.marker.setMap(null)
     }
   }
 
@@ -66,9 +67,9 @@ class Marker extends React.Component {
       return null
     }
 
-    let pos = position || mapCenter;
+    let pos = position || mapCenter
     if (!(pos instanceof google.maps.LatLng)) {
-      pos = new google.maps.LatLng(pos.lat, pos.lng);
+      pos = new google.maps.LatLng(pos.lat, pos.lng)
     }
 
     const pref = {
@@ -82,30 +83,30 @@ class Marker extends React.Component {
       id: this.props.id,
       draggable: this.props.draggable
     }
-    this.marker = new google.maps.Marker(pref);
+    this.marker = new google.maps.Marker(pref)
 
     evtNames.forEach(e => {
-      this.marker.addListener(e, this.handleEvent(e));
+      this.marker.addListener(e, this.handleEvent(e))
     });
 
-    this.markerPromise.resolve(this.marker);
+    this.markerPromise.resolve(this.marker)
   }
 
   getMarker() {
-    return this.markerPromise;
+    return this.markerPromise
   }
 
   handleEvent(evt) {
     return (e) => {
       const evtName = evt
       if (this.props[evtName]) {
-        this.props[evtName](this.props, this.marker, e);
+        this.props[evtName](this.props, this.marker, e)
       }
     }
   }
 
   render() {
-    return null;
+    return null
   }
 }
 
@@ -120,4 +121,4 @@ Marker.defaultProps = {
   name: 'Marker'
 }
 
-export default Marker;
+export default Marker

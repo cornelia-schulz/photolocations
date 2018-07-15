@@ -36,6 +36,6 @@ exports.seed = function(knex, Promise) {
         {id: 29, location_id: 7, title: 'Rangitoto', url: 'https://farm2.staticflickr.com/1639/26262031736_2d7b1ef01b_b.jpg'},
         {id: 30, location_id: 11, title: 'Wellington Sunset', url: 'https://farm9.staticflickr.com/8650/16642665015_47a7e0c49e_b.jpg'},
         {id: 31, location_id: 10, title: 'Hunua Falls', url: 'https://drscdn.500px.org/photo/115764073/m%3D900/v2?user_id=12354065&webp=true&sig=15471fa66fc82cc1f290f84591a3fafa86dc8a437057ce1fe415b478f97cbbc9'},
-      ]);
-    });
-};
+      ])
+    })
+}

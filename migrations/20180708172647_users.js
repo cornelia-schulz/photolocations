@@ -9,8 +9,8 @@ exports.up = function(knex, Promise) {
     table.string('google_accessToken')
     table.integer('google_id')
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('users')
-};
+}

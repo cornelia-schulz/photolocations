@@ -17,6 +17,6 @@ exports.seed = function(knex, Promise) {
         facebook_id: null,
         google_accessToken: 'a29.GlvyBc7zQiJHeO7fMjaHEn2AWaxCB0Rg9T-CxyHrLXx-m…tBg8l31yX6CNn7tA_2--lpovwicjXw2WeDmrfvmCxC5WHrqyC',
         google_id: 114952009621172879795 },
-      ]);
-    });
-};
+      ])
+    })
+}

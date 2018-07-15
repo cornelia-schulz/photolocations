@@ -36,6 +36,6 @@ exports.seed = function(knex, Promise) {
         {id: 29, location_id: 29, user_id: 2, comment: 'I have been there and thoroughly enjoyed it'},
         {id: 30, location_id: 30, user_id: 2, comment: 'I have been there and thoroughly enjoyed it'},
         {id: 31, location_id: 31, user_id: 2, comment: 'I have been there and thoroughly enjoyed it'},
-      ]);
-    });
-};
+      ])
+    })
+}

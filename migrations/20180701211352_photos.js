@@ -6,8 +6,8 @@ exports.up = (knex, Promise) => {
     table.string('title')
     table.string('url')
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('photos')
-};
+}

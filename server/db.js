@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 const knex = require('knex')
 const config = require('../knexfile').development
 const db = knex(config)
@@ -92,20 +92,20 @@ function googleUpsertUser(accessToken, refreshToken, profile, cb){
         google_accessToken: accessToken,
         google_id: profile.id
       }
-      console.log('find google user');
+      console.log('find google user')
       if (result === undefined) {
-        console.log('did not find user');
+        console.log('did not find user')
         
         insertGoogleUser(newUser)
           .then((user) => {
             console.log('inserting user')
-            cb(null, newUser);
+            cb(null, newUser)
           })
           
       }
       else {
-        console.log('found user');
-        cb(null, result);
+        console.log('found user')
+        cb(null, result)
         return result
       }
     })

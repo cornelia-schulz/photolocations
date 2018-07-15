@@ -1,13 +1,12 @@
 import React from 'react'
 import Comment from './Comment'
-
-import { getAllComments, addComment } from '../apiClient'
+import { getAllComments, addComment } from '../actions/comments'
+import { connect } from 'react-redux'
 
 class Comments extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      comments: [],
       comment: '',
       id: null,
       isHidden: true,
@@ -22,10 +21,8 @@ class Comments extends React.Component {
   }
 
   reloadComments () {
-    getAllComments(this.props.id)
-    .then(comments => {
-      this.setState({comments})
-    })
+    const id = this.props.id
+    this.props.getAllComments(id)
   }
 
   addNewComment(e){
@@ -36,7 +33,7 @@ class Comments extends React.Component {
       location_id: this.props.id,
       user_id: 1
     }
-    addComment(newComment)
+    this.props.addComment(newComment)
       .then(() => {
         this.setState({comment: ''})
       })
@@ -48,7 +45,8 @@ class Comments extends React.Component {
 
   updateComment(e) {
     this.setState({
-      comment: document.getElementById("addNewComment").value.substr(0, 300)
+      comment: document.getElementById("addNewComment").value.substr(0, 300),
+      newComments: this.props.newComments
     })
   }
 
@@ -62,9 +60,10 @@ class Comments extends React.Component {
           <input type="submit" id="addCommentButton" value = "Add comment" />
         </form>
         <ul>
-          {this.state.comments.map(comment => {
+          {this.props.newComments.length > 0 && 
+            this.props.newComments.map(comment => {
             return <li key={comment.id}>
-              <Comment comment={comment.comment} onChange={this.reloadComments.bind(this)} />
+              <Comment comment={comment.comment} id={comment.id} onChange={this.reloadComments.bind(this)} />
             </li>
           })}
         </ul>
@@ -73,4 +72,21 @@ class Comments extends React.Component {
   }
 }
 
-export default Comments
+function mapStateToProps(state) {
+  return {
+    newComments: state.receiveComments
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getAllComments: (id) => {
+      return dispatch(getAllComments(id))
+    },
+    addComment: (newComment) => {
+      return dispatch(addComment(newComment))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comments)
