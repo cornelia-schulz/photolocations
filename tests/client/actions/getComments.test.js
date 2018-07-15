@@ -8,7 +8,7 @@ jest.mock('superagent', () => {
           {
             comment: {
               id: 5, 
-              title: 'Viaduct'
+              comment: 'Nice place'
             }
           }
       ])})
@@ -24,12 +24,3 @@ test ('GetAllComments gets the correct actions', () => {
     })
 })
 
-// how to test if no id is passed in
-// test ('GetAllComments returns an error with incorrect url', () => {
-//   const dispatch = jest.fn()
-//   return getAllComments(1)(dispatch)
-//     .then(() => {
-//       console.log("mock", dispatch.mock.calls[1][0])
-//       expect(dispatch.mock.calls[0][0].type).toBe(SHOW_ERROR)
-//     })
-// })
