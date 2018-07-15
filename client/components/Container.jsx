@@ -85,6 +85,7 @@ class Container extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log("locations: ", state.receiveLocations)
   return {
     locations: state.receiveLocations
   }

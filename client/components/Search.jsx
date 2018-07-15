@@ -8,7 +8,6 @@ class Search extends React.Component {
     this.state = {
       search: ''
     }
-    console.log("search props", this.props)
     this.updateSearch = this.updateSearch.bind(this)
     this.keyPress = this.keyPress.bind(this)
   }

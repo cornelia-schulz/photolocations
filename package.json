@@ -18,14 +18,13 @@
     ]
   },
   "jest": {
-    "setupFiles": [
-      "./tests/setup.js"
-    ]
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
   },
   "dependencies": {
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "google-maps-react": "^2.0.2",
+    "jest-enzyme": "^6.0.2",
     "jsonwebtoken": "^8.3.0",
     "knex": "^0.14.6",
     "passport": "^0.4.0",

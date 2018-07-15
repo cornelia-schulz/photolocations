@@ -3,11 +3,11 @@ import {showError} from './error'
 
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
-export const REQUEST_POSTS = 'REQUEST_POSTS'
+export const REQUEST_COMMENTS = 'REQUEST_COMMENTS'
 
 export const requestComments = () => {
   return {
-    type: REQUEST_POSTS
+    type: REQUEST_COMMENTS
   }
 }
 
@@ -26,7 +26,6 @@ export const receiveComment = (id) => {
 
 export function getAllComments(id) {
   return (dispatch) => {
-    dispatch(requestComments())
     return request
       .get(`/api/v1/comments/${id}`)
       .then(res => {
@@ -62,7 +61,6 @@ export function delComment(id) {
 
 export function updateComment(comment) {
   return (dispatch) => {
-    console.log(comment)
   return request
     .put('/api/v1/comments')
     .send(comment)
