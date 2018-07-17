@@ -3,7 +3,7 @@ import EditComment from './EditComment'
 import {delComment} from '../actions/comments'
 import { connect } from 'react-redux'
 
-class Comment extends React.Component {
+export class Comment extends React.Component {
   constructor(props){
     super(props)
     this.state = {
