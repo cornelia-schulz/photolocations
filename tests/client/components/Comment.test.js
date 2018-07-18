@@ -1,6 +1,6 @@
 import React from 'react'
 import { Comment } from '../../../client/components/Comment'
-import { configure, shallow } from 'enzyme'
+import { configure, shallow, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
 configure({adapter: new Adapter()})
@@ -16,10 +16,10 @@ test('<Comment />', () => {
 test('When the delete button is clicked in <Comment />', () => {
   const id = 1
   const testDel = jest.fn()
-  const wrapper = shallow(<Comment dispatch={testDel} />)
+  const wrapper = mount(<Comment delComment={testDel} />)
     wrapper.find('#deleteCommentButton').simulate(
       'click',
       {preventDefault() {}}
     )
-    expect(testDel.calledOnce).to.equal(true)
+    expect(testDel.mock.calls.length).toBe(1)
   })
