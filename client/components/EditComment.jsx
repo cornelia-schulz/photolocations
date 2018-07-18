@@ -28,7 +28,6 @@ class EditComment extends React.Component {
       id: this.props.id
     }
     this.props.updateComment(comment)
-      .then(this.props.onChange)
       .catch(err => this.setState({error: err.message}))
   }
 

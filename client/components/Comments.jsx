@@ -60,7 +60,7 @@ class Comments extends React.Component {
           <input type="submit" id="addCommentButton" value = "Add comment" />
         </form>
         <ul>
-          {this.props.newComments.length > 0 && 
+          {this.props.newComments && this.props.newComments.length > 0 && 
             this.props.newComments.map(comment => {
             return <li key={comment.id}>
               <Comment comment={comment.comment} id={comment.id} onChange={this.reloadComments.bind(this)} />

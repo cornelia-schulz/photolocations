@@ -1,7 +1,7 @@
 'use strict'
 const knex = require('knex')
 const config = require('../knexfile').development
-const db = knex(config)
+const connection = knex(config)
 
 module.exports = {
   getAllLocations,
@@ -14,13 +14,15 @@ module.exports = {
   googleUpsertUser
 }
 
-function getAllLocations() {
+function getAllLocations(testDb) {
+  const db = testDb || connection
   return db('locations')
     .join('photos', 'locations.id', 'photos.location_id')
     .select('locations.id as id', 'locations.title as title', 'locations.label as label', 'locations.lat as lat', 'locations.lng as lng', 'locations.info as info', 'photos.title as imageTitle', 'photos.url as url')
 }
 
-function getLocation(id){
+function getLocation(id, testDb){
+  const db = testDb || connection
   return db('locations')
   .join('photos', 'locations.id', 'photos.location_id')
   .join('comments', 'locations.id', 'comments.location_id')
@@ -29,36 +31,41 @@ function getLocation(id){
   .first()
 }
 
-function getAllComments(id) {
+function getAllComments(id, testDb) {
+  const db = testDb || connection
   return db('comments')
     .where('location_id', id)
     .select()
 }
 
-function addComment(comment){
+function addComment(comment, testDb){
+  const db = testDb || connection
   return db('comments')
     .insert(comment)
 }
 
-function updateComment(comment){
+function updateComment(comment, testDb){
+  const db = testDb || connection
   return db('comments')
     .where('id', comment.id)
     .update(comment)
 }
 
-function delComment(id){
+function delComment(id, testDb){
+  const db = testDb || connection
   return db('comments')
     .where('id', id)
     .del()
 }
 
-function facebookUpsertUser(accessToken, refreshToken, profile, cb){
+function facebookUpsertUser(accessToken, refreshToken, profile, cb, testDb){
+  const db = testDb || connection
   return findFacebookUser(profile)
     .then((result) => {
       if (result === undefined) {
         // if user does not exist, insert user
         const newUser = {
-          full_name : profile.displayName,
+          full_name: profile.displayName,
           email: profile.emails[0].value,
           facebook_accessToken: profile.accessToken,
           facebook_id: profile.id,
@@ -74,7 +81,8 @@ function facebookUpsertUser(accessToken, refreshToken, profile, cb){
     })
 }
 
-function findFacebookUser(profile){
+function findFacebookUser(profile, testDb){
+  const db = testDb || connection
   return db('users')
     .where('facebook_id', profile.id)
     .select()
@@ -112,14 +120,16 @@ function googleUpsertUser(accessToken, refreshToken, profile, cb){
 }
 
 
-function findGoogleUser(profile){
+function findGoogleUser(profile, testDb){
+  const db = testDb || connection
   return db('users')
     .where('google_id', profile.id)
     .select()
     .first()
 }
 
-function insertGoogleUser(newUser){
+function insertGoogleUser(newUser, testDb){
+  const db = testDb || connection
   return db('users')
     .insert(newUser)
 }

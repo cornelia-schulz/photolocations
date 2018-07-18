@@ -3,13 +3,15 @@ import EditComment from './EditComment'
 import {delComment} from '../actions/comments'
 import { connect } from 'react-redux'
 
-class Comment extends React.Component {
+export class Comment extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       isHidden: true
     }
     this.deleteComment = this.deleteComment.bind(this)
+    this.toggleHidden = this.toggleHidden.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
 
@@ -23,14 +25,12 @@ handleChange () {
   this.setState({
     isHidden: true
   })
-  this.props.onChange()
 }
 
 deleteComment() {
   const id = this.props.id
   this.setState({ error: null })
   this.props.delComment(id)
-  .then(this.props.onChange)
 }
 
 render() {
@@ -40,10 +40,10 @@ render() {
         {this.props.comment}
       </div>
       <div className="commentButtons">
-        <button id="editCommentButton" onClick={this.toggleHidden.bind(this)}>Update</button>
-        <button id="deleteCommentButton" onClick={this.deleteComment.bind(this, this.props.comment)} onChange={this.onChange}>Delete</button>
+        <button id="editCommentButton" onClick={this.toggleHidden}>Update</button>
+        <button id="deleteCommentButton" onClick={this.deleteComment} >Delete</button>
       </div>
-      {!this.state.isHidden && <EditComment comment={this.props.comment} id={this.props.id} onChange={this.handleChange.bind(this)} />}
+      {!this.state.isHidden && <EditComment comment={this.props.comment} id={this.props.id} onChange={this.handleChange} />}
     </div>
   )
 }

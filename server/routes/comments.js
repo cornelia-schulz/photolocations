@@ -38,7 +38,6 @@ router.delete('/', (req, res) => {
   const id = req.body.id
   db.delComment(id)
     .then(() => {
-      console.error(err)
       res.status(500).send('Unable to delete comment from database')
     })
 })
