@@ -4,7 +4,7 @@ const passport = require('passport')
 const FacebookTokenStrategy = require('passport-facebook-token')
 const GoogleTokenStrategy = require('passport-google-token').Strategy
 const config = require('./config.js')
-const user = require('./db')
+const user = require('./db/db')
 
 module.exports = function () {
   passport.use(new FacebookTokenStrategy({

@@ -1,4 +1,4 @@
-const db = require ('../../../server/db')
+const db = require ('../../../server/db/db')
 const env = require('./testEnvironment')
 
 let testDb = null

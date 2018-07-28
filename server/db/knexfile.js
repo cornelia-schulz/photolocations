@@ -6,7 +6,13 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './dev.sqlite3'
+      filename: path.join(__dirname, './dev.sqlite3')
+    },
+    migrations: {
+      directory: path.join(__dirname, './migrations')
+    },
+    seeds: {
+      directory: path.join(__dirname, '../../tests/server/db/seeds')
     },
     useNullAsDefault: true
   },
@@ -20,7 +26,7 @@ module.exports = {
       directory: path.join(__dirname, './migrations')
     },
     seeds: {
-      directory: path.join(__dirname, './seeds')
+      directory: path.join(__dirname, '../../tests/server/db/seeds')
     },
     useNullAsDefault: true
   },
@@ -43,17 +49,16 @@ module.exports = {
 
   production: {
     client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
+    connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
       tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: path.join(__dirname, '../../tests/server/db/seeds')
     }
   }
 
