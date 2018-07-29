@@ -5,6 +5,7 @@ import waiting from './waiting'
 import receiveLocations from './receiveLocations'
 import receiveLocation from './receiveLocation'
 import receiveSearchString from './receiveSearchString'
+import setNewLocation from './setNewLocation'
 
 
 export default combineReducers({
@@ -13,5 +14,6 @@ export default combineReducers({
   waiting,
   receiveLocations,
   receiveLocation,
-  receiveSearchString
+  receiveSearchString,
+  setNewLocation
 })

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
+import {setLocation} from '../actions/map'
 
 const PropTypes = require('prop-types')
 const evtNames = ['ready', 'click', 'dragend', 'rightclick']
@@ -84,12 +85,6 @@ class Map extends React.Component {
       })
       this.map = new maps.Map(node, mapConfig)
 
-      // google.maps.event.addListener(this.map, "rightclick", function (event) {
-      //   const lat = event.latLng.lat()
-      //   const lng = event.latLng.lng()
-        // alert("Lat=" + lat + ", Lng=" + lng)
-      // })
-
       evtNames.forEach(e => {
         this.map.addListener(e, this.handleEvent(e))
       })
@@ -127,9 +122,9 @@ class Map extends React.Component {
             lat: e.latLng.lat(),
             lng: e.latLng.lng()
           }
-          console.log(location)
+          //console.log(location)
+          this.props.setLocation(location)
           this.props[handlerName](this.props, this.map, e)
-          this.props.setNewLocation(location)
         }
       }, 0);
     }
@@ -189,8 +184,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setNewLocation: (location) => {
-      return dispatch(setNewLocation(location))
+    setLocation: (location) => {
+      return dispatch(setLocation(location))
     }
   }
 }

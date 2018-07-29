@@ -68,8 +68,7 @@ class Container extends React.Component {
     }
   }
 
-  onMapRightClicked(e) {
-    console.log(e)
+  onMapRightClicked() {
     this.openModal()
   }
 
@@ -119,7 +118,9 @@ class Container extends React.Component {
             ariaHideApp={false}
           >
             <h4>Add new location</h4>
-            <p>here</p>
+            {this.props.newLocation && <p>
+              {this.props.newLocation.lat}<br />
+              {this.props.newLocation.lng}</p>}
             <button type='button' className='button' onClick={this.closeModal}>Submit</button>
           </Modal>
         </Map>
@@ -129,7 +130,8 @@ class Container extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    locations: state.receiveLocations
+    locations: state.receiveLocations,
+    newLocation: state.setNewLocation
   }
 }
 
