@@ -1,5 +1,5 @@
 import React from 'react';
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
 import Header from './Header';
 import WrappedContainer from './Container';
 import About from './About';
@@ -25,7 +25,7 @@ class App extends React.Component {
 
   render(){
     return (
-      <Router>
+      <BrowserRouter>
         <div className="container">
           <Route path='/' render={() => <Header onChange={this.onChange} />} />
           <Route exact path='/' render={(props) => <WrappedContainer searchString={this.state.searchString} {...props} />} />
@@ -35,7 +35,7 @@ class App extends React.Component {
           <Route path='/login' component={Login} />
         </div>
       
-      </Router>
+      </BrowserRouter>
     );
   }
 }

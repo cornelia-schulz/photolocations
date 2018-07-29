@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route, Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import React from 'react'
 import Search from './Search'
 

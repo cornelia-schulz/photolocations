@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactDOM from 'react-dom'
 import ReactDOMServer from 'react-dom/server'
-import { connect } from 'react-redux'
 
 class InfoWindow extends React.Component {
 
