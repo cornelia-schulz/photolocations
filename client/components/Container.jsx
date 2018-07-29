@@ -41,7 +41,6 @@ class Container extends React.Component {
     }
   }
 
-
   render() {
     const style = {
       width: '100vh',

@@ -12,19 +12,19 @@ class InfoWindow extends React.Component {
     const { google, map } = this.props;
 
     if (!google || !map) {
-      return;
+      return
     }
 
     if (map !== prevProps.map) {
-      this.renderInfoWindow();
+      this.renderInfoWindow()
     }
 
     if (this.props.position !== prevProps.position) {
-      this.updatePosition();
+      this.updatePosition()
     }
 
     if (this.props.children !== prevProps.children) {
-      this.updateContent();
+      this.updateContent()
     }
 
     if ((this.props.visible !== prevProps.visible ||
@@ -32,7 +32,7 @@ class InfoWindow extends React.Component {
       this.props.position !== prevProps.position)) {
       this.props.visible ?
         this.openWindow() :
-        this.closeWindow();
+        this.closeWindow()
     }
   }
 
@@ -41,7 +41,7 @@ class InfoWindow extends React.Component {
       map,
       google,
       mapCenter
-    } = this.props;
+    } = this.props
 
     if (!google || !google.maps) {
       return;
@@ -49,54 +49,54 @@ class InfoWindow extends React.Component {
 
     const iw = this.infowindow = new google.maps.InfoWindow({
       content: ''
-    });
+    })
 
     google.maps.event
       .addListener(iw, 'closeclick', this.onClose.bind(this))
     google.maps.event
-      .addListener(iw, 'domready', this.onOpen.bind(this));
+      .addListener(iw, 'domready', this.onOpen.bind(this))
   }
 
   onOpen() {
     if (this.props.onOpen) {
-      this.props.onOpen();
+      this.props.onOpen()
     }
   }
 
   onClose() {
     if (this.props.onClose) {
-      this.props.onClose();
+      this.props.onClose()
     }
   }
 
   openWindow() {
-    this.infowindow.open(this.props.map, this.props.marker);
+    this.infowindow.open(this.props.map, this.props.marker)
   }
 
   updatePosition() {
-    let pos = this.props.position;
+    let pos = this.props.position
     if (!(pos instanceof google.maps.LatLng)) {
-      pos = pos && new google.maps.LatLng(pos.lat, pos.lng);
+      pos = pos && new google.maps.LatLng(pos.lat, pos.lng)
     }
-    this.infowindow.setPosition(pos);
+    this.infowindow.setPosition(pos)
   }
 
   updateContent() {
-    const content = this.renderChildren();
-    this.infowindow.setContent(content);
+    const content = this.renderChildren()
+    this.infowindow.setContent(content)
   }
 
   closeWindow() {
-    this.infowindow.close();
+    this.infowindow.close()
   }
 
   renderChildren() {
-    const { children } = this.props;
-    return ReactDOMServer.renderToString(children);
+    const { children } = this.props
+    return ReactDOMServer.renderToString(children)
   }
 
   render() {
-    return null;
+    return null
   }
 }
 
