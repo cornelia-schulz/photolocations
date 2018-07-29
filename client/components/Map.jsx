@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 const PropTypes = require('prop-types')
-const evtNames = ['ready', 'click', 'dragend']
+const evtNames = ['ready', 'click', 'dragend', 'rightclick']
 
 class Map extends React.Component {
   constructor(props) {
@@ -84,11 +84,11 @@ class Map extends React.Component {
       })
       this.map = new maps.Map(node, mapConfig)
 
-      google.maps.event.addListener(this.map, "rightclick", function (event) {
-        const lat = event.latLng.lat();
-        const lng = event.latLng.lng();
-        alert("Lat=" + lat + "; Lng=" + lng)
-      })
+      // google.maps.event.addListener(this.map, "rightclick", function (event) {
+      //   const lat = event.latLng.lat()
+      //   const lng = event.latLng.lng()
+        // alert("Lat=" + lat + ", Lng=" + lng)
+      // })
 
       evtNames.forEach(e => {
         this.map.addListener(e, this.handleEvent(e))
@@ -123,7 +123,13 @@ class Map extends React.Component {
       }
       timeout = setTimeout(() => {
         if (this.props[handlerName]) {
+          const location = {
+            lat: e.latLng.lat(),
+            lng: e.latLng.lng()
+          }
+          console.log(location)
           this.props[handlerName](this.props, this.map, e)
+          this.props.setNewLocation(location)
         }
       }, 0);
     }
@@ -181,4 +187,12 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, null)(Map)
+function mapDispatchToProps(dispatch) {
+  return {
+    setNewLocation: (location) => {
+      return dispatch(setNewLocation(location))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map)
