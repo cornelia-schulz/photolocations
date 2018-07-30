@@ -5,7 +5,7 @@ import ReactDOMServer from 'react-dom/server'
 class InfoWindow extends React.Component {
 
   componentDidMount() {
-    this.renderInfoWindow();
+    this.renderInfoWindow()
   }
 
   componentDidUpdate(prevProps) {
@@ -44,7 +44,7 @@ class InfoWindow extends React.Component {
     } = this.props
 
     if (!google || !google.maps) {
-      return;
+      return
     }
 
     const iw = this.infowindow = new google.maps.InfoWindow({
@@ -55,6 +55,8 @@ class InfoWindow extends React.Component {
       .addListener(iw, 'closeclick', this.onClose.bind(this))
     google.maps.event
       .addListener(iw, 'domready', this.onOpen.bind(this))
+    google.maps.event
+      .addListener(iw, 'click', this.onClick.bind(this))
   }
 
   onOpen() {
@@ -69,8 +71,18 @@ class InfoWindow extends React.Component {
     }
   }
 
+  onClick(){
+    if(this.props.onClick) {
+      this.props.onClick()
+    }
+  }
+
   openWindow() {
+    this.infowindow.setContent(this.infowindow.getContent() + '<div id="closeButton">See More</div>')
     this.infowindow.open(this.props.map, this.props.marker)
+    
+    // This might be a leak ... Need to remove this when unloading.
+    document.getElementById("closeButton").addEventListener('click', this.onClick.bind(this))
   }
 
   updatePosition() {
@@ -112,7 +124,8 @@ InfoWindow.propTypes = {
 
   // callbacks
   onClose: PropTypes.func,
-  onOpen: PropTypes.func
+  onOpen: PropTypes.func,
+  onClick: PropTypes.func
 }
 
 InfoWindow.defaultProps = {
