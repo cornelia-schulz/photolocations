@@ -128,13 +128,6 @@ class Container extends React.Component {
                  hashtag 3 wolf moon ennui. Blue bottle truffaut la croix, 
                  narwhal tousled vexillologist hot chicken sustainable celiac four loko.
               </p>
-              <p> <button type='button' className='button'>Read more</button>
-              
-
-
-               {/* to={`/location/${this.state.selectedPlace.id}`}>here</Link> */}
-               </p>
-              {/* <p>Read more <a href={`/location/${this.state.selectedPlace.id}`}>here</a></p> */}
             </div>
           </InfoWindow>
           <Modal

@@ -78,7 +78,7 @@ class InfoWindow extends React.Component {
   }
 
   openWindow() {
-    this.infowindow.setContent(this.infowindow.getContent() + '<div id="closeButton">See More</div>')
+    this.infowindow.setContent(this.infowindow.getContent() + '<div><button id="closeButton" type="button" className="button">Read more</button></div>')
     this.infowindow.open(this.props.map, this.props.marker)
     
     // This might be a leak ... Need to remove this when unloading.
