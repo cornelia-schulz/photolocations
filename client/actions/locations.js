@@ -47,9 +47,9 @@ export function getLocation(id) {
 export function addLocation(location) {
   return (dispatch) => {
     return request
-      .post('api/v1/locations/')
+      .post('api/v1/locations/add')
       .send(location)
-      .then(getAllLocations)
+      .then(getAllLocations())
       .catch(() => {
         dispatch(showError('Could not save location'))
       })
