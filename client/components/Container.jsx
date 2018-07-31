@@ -3,7 +3,7 @@ import Marker from './Marker'
 import {GoogleApiWrapper} from 'google-maps-react'
 import Map from './Map'
 import InfoWindow from './InfoWindow'
-import {getAllLocations} from '../actions/locations'
+import {getAllLocations, addLocation} from '../actions/locations'
 import config from '../../config.json'
 import {connect} from 'react-redux'
 import Modal from 'react-modal'
@@ -28,7 +28,10 @@ class Container extends React.Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      redirectId : null
+      redirectId : null,
+      name: '',
+      title: '',
+      description: ''
     }
     this.onMarkerClick = this.onMarkerClick.bind(this)
     this.onMapClicked = this.onMapClicked.bind(this)
@@ -37,6 +40,7 @@ class Container extends React.Component {
     this.closeModal = this.closeModal.bind(this)
     this.onMoreInfo = this.onMoreInfo.bind(this)
     this.submitNewLocation = this.submitNewLocation.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -73,7 +77,6 @@ class Container extends React.Component {
   }
 
   onMoreInfo(){
-    console.log('here' + this.state.selectedPlace);
     this.setState({redirectId : this.state.selectedPlace.id})
   }
 
@@ -87,8 +90,23 @@ class Container extends React.Component {
     }
   }
 
-  submitNewLocation(){
+  handleChange(e) {
+    const {name, value} = e.target
+    this.setState({
+      [name]: value
+    })
+  }
 
+  submitNewLocation(e){
+    const location = {
+      lat: this.props.newLocation.lat,
+      lng: this.props.newLocation.lng,
+      name: this.state.name,
+      title: this.state.title,
+      description: this.state.description
+    }
+    this.props.addLocation(location)
+    this.closeModal()
   }
 
   render() {
@@ -149,11 +167,11 @@ class Container extends React.Component {
                   Latitude: <span className='right'>{this.props.newLocation.lat}</span><br />
                   Longitude: <span className='right'>{this.props.newLocation.lng}</span></p>}
                   <label htmlFor='name'>Place name: </label>
-                  <input type='text' name='name' id='name' /><br />
+                  <input type='text' name='name' id='name' onChange={this.handleChange} /><br />
                   <label htmlFor='title'>Title: </label>
-                  <input type='text' title='title' id='title' /><br />
+                  <input type='text' name='title' id='title' onChange={this.handleChange} /><br />
                   <label htmlFor='description'>Description: </label>
-                  <input type='description' name='description' id='description' /><br />
+                  <input type='description' name='description' id='description' onChange={this.handleChange} /><br />
                   <button type='button' className='button' onClick={this.closeModal}>Cancel</button>
                   <button type='button' className='button' onClick={this.submitNewLocation}>Submit</button>
                 </fieldset>
@@ -177,6 +195,9 @@ function mapDispatchToProps(dispatch) {
   return {
     getAllLocations: () => {
       return dispatch(getAllLocations())
+    },
+    addLocation: (location) => {
+      return dispatch(addLocation(location))
     }
   }
 }

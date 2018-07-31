@@ -17,4 +17,15 @@ router.get('/:id', (req, res) => {
   })
 } )
 
+router.post('/add', (req, res) => {
+  const location = {
+    title: req.body.name,
+    lat: req.body.lat,
+    lng: req.body.lng,
+    info_title: req.body.title,
+    info: req.body.description
+  } 
+  db.addLocation(location)
+})
+
 module.exports = router

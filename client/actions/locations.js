@@ -31,7 +31,7 @@ export function getAllLocations() {
   }
 }
 
-export function getLocation(id){
+export function getLocation(id) {
   return (dispatch) => {
     return request
       .get('/api/v1/locations/'+id)
@@ -40,6 +40,18 @@ export function getLocation(id){
       })
       .catch(() => {
         dispatch(showError('Could not retrieve location information'))
+      })
+  }
+}
+
+export function addLocation(location) {
+  return (dispatch) => {
+    return request
+      .post('api/v1/locations/')
+      .send(location)
+      .then(getAllLocations)
+      .catch(() => {
+        dispatch(showError('Could not save location'))
       })
   }
 }
