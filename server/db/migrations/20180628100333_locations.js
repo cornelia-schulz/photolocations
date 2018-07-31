@@ -6,6 +6,7 @@ exports.up = (knex, Promise) => {
     table.string('label')
     table.integer('lat')
     table.integer('lng')
+    table.string('info_title')
     table.string('info')
   })
 }

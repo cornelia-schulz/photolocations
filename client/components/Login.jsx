@@ -10,7 +10,7 @@ class Login extends React.Component {
       isAuthenticated: false,
       user: null,
       token: ''
-    };
+    }
     this.logout = this.logout.bind(this)
   }
 
@@ -37,9 +37,9 @@ class Login extends React.Component {
         if (token) {
           this.setState({ isAuthenticated: true, user, token })
         }
-      });
+      })
     })
-  };
+  }
 
   googleResponse(response) {
     // console.log(response);
@@ -49,17 +49,17 @@ class Login extends React.Component {
       body: tokenBlob,
       mode: 'cors',
       cache: 'default'
-    };
+    }
     fetch('http://localhost:3000/api/v1/auth/google', options).then(r => {
-      const token = r.headers.get('x-auth-token');
+      const token = r.headers.get('x-auth-token')
       r.json().then(user => {
         if (token) {
           // console.log('token received')
           this.setState({ isAuthenticated: true, user, token })
         }
-      });
+      })
     })
-  };
+  }
 
   onFailure(error) {
     console.log(error)
@@ -90,13 +90,13 @@ class Login extends React.Component {
             onSuccess={this.googleResponse.bind(this)}
             onFailure={this.googleResponse} />
         </div>
-      );
+      )
 
     return (
       <div className="Login">
         {content}
       </div>
-    );
+    )
   }
 
 }

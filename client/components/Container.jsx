@@ -36,6 +36,7 @@ class Container extends React.Component {
     this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
     this.onMoreInfo = this.onMoreInfo.bind(this)
+    this.submitNewLocation = this.submitNewLocation.bind(this)
   }
 
   componentDidMount() {
@@ -72,7 +73,6 @@ class Container extends React.Component {
   }
 
   onMoreInfo(){
-    // e.preventDefault()
     console.log('here' + this.state.selectedPlace);
     this.setState({redirectId : this.state.selectedPlace.id})
   }
@@ -85,6 +85,10 @@ class Container extends React.Component {
     if(this.state.redirectId){
       return <div>hi</div>
     }
+  }
+
+  submitNewLocation(){
+
   }
 
   render() {
@@ -139,19 +143,19 @@ class Container extends React.Component {
             ariaHideApp={false}
           >
             <form>
-              <fieldset>
-                <h4>Add new location</h4>
+              <fieldset className='addNewLocation'>
+                <h2>Add new location</h2>
                 {this.props.newLocation && <p>
-                  Latitude: {this.props.newLocation.lat}<br />
-                  Longitude: {this.props.newLocation.lng}</p>}
+                  Latitude: <span className='right'>{this.props.newLocation.lat}</span><br />
+                  Longitude: <span className='right'>{this.props.newLocation.lng}</span></p>}
                   <label htmlFor='name'>Place name: </label>
                   <input type='text' name='name' id='name' /><br />
                   <label htmlFor='title'>Title: </label>
                   <input type='text' title='title' id='title' /><br />
                   <label htmlFor='description'>Description: </label>
                   <input type='description' name='description' id='description' /><br />
-                  <button type='button' className='button' onClick={this.closeModal}>Submit</button>
                   <button type='button' className='button' onClick={this.closeModal}>Cancel</button>
+                  <button type='button' className='button' onClick={this.submitNewLocation}>Submit</button>
                 </fieldset>
             </form>
             
