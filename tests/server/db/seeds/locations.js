@@ -16,7 +16,7 @@ exports.seed = function(knex, Promise) {
         {id: 9, title: 'Piha', label: '', lat: -36.954760, lng: 174.468187, info_title: 'Great for city shots', info: 'Great for sunsets and landscape work'},
         {id: 10, title: 'Hunua Falls', label: '', lat: -37.068781, lng: 175.089827, info_title: 'Great for city shots', info: 'Great for landscapes and macro photography'},
         {id: 11, title: 'Mt Vic', label: '', lat: -41.295962, lng: 174.794103, info_title: 'Great for city shots', info: ''},
-        {id: 12, title: 'Jack\'s Lighthouse', label: '', lat: -44.3051, lng: 171.261126, info_title: 'Great for city shots', info: ''},
+        {id: 12, title: 'Jack\'s Lighthouse', label: '', lat: -44.443428202490125, lng: 171.26087375983275, info_title: 'Great for city shots', info: ''},
         {id: 13, title: 'Tangermuende Gate', label: '', lat: 52.599832, lng: 11.864420, info_title: 'Great for city shots', info: ''},
         {id: 14, title: 'Uenglingen Gate', label: '', lat: 52.608111, lng: 11.851788, info_title: 'Great for city shots', info: ''},
         {id: 15, title: 'Powder Tower', label: '', lat: 52.611668, lng: 11.830325, info_title: 'Great for city shots', info: ''},

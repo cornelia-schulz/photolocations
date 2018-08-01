@@ -5,6 +5,7 @@ const router = express.Router()
 router.get('/', (req, res) => {
   db.getAllLocations()
     .then(locations => {
+      console.log(locations)
       res.json(locations)
     })
 })
