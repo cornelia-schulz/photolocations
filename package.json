@@ -12,6 +12,7 @@
     "dev": "node server & webpack --watch",
     "test": "jest --watchAll"
   },
+  "postinstall": "webpack && knex migrate:latest",
   "babel": {
     "presets": [
       "env",
@@ -38,22 +39,15 @@
     "react-scripts": "1.0.13",
     "redux": "^4.0.0",
     "request": "^2.87.0",
-    "sqlite3": "^4.0.1",
-    "superagent": "^3.8.3"
-  },
-  "devDependencies": {
+    "superagent": "^3.8.3",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "cors": "^2.8.4",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
     "google-maps": "^3.2.1",
     "google-maps-react": "^2.0.2",
-    "jest": "^22.1.4",
-    "jest-enzyme": "^6.0.2",
     "jsonwebtoken": "^8.3.0",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
@@ -62,5 +56,12 @@
     "redux-thunk": "^2.3.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
+  },
+  "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.1.4",
+    "jest-enzyme": "^6.0.2",
+    "sqlite3": "^4.0.1"
   }
 }
