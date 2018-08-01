@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require('../db/db')
+const db = require('../db/comments')
 const router = express.Router()
 
 router.get('/:id', (req, res) => {

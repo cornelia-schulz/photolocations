@@ -31,7 +31,7 @@ export function getAllLocations() {
   }
 }
 
-export function getLocation(id){
+export function getLocation(id) {
   return (dispatch) => {
     return request
       .get('/api/v1/locations/'+id)
@@ -40,6 +40,25 @@ export function getLocation(id){
       })
       .catch(() => {
         dispatch(showError('Could not retrieve location information'))
+      })
+  }
+}
+
+export function addLocation(location) {
+  const newLocation = {
+    title: location.name,
+    info_title: location.title,
+    info: location.description,
+    lat: location.lat,
+    lng: location.lng
+  }
+  return (dispatch) => {
+    return request
+      .post('/api/v1/locations/add')
+      .send(newLocation)
+      .then(getAllLocations())
+      .catch(() => {
+        dispatch(showError('Could not save location'))
       })
   }
 }

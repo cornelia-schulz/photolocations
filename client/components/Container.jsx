@@ -1,11 +1,24 @@
 import React from 'react'
 import Marker from './Marker'
-import { GoogleApiWrapper } from 'google-maps-react'
+import {GoogleApiWrapper} from 'google-maps-react'
 import Map from './Map'
 import InfoWindow from './InfoWindow'
-import { getAllLocations } from '../actions/locations'
+import {getAllLocations, addLocation} from '../actions/locations'
 import config from '../../config.json'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
+import Modal from 'react-modal'
+import {BrowserRouter, Link, Redirect } from 'react-router-dom'
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
+}
 
 class Container extends React.Component {
   constructor(props) {
@@ -14,14 +27,36 @@ class Container extends React.Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {}
+      selectedPlace: {},
+      redirectId : null,
+      name: '',
+      title: '',
+      description: ''
     }
     this.onMarkerClick = this.onMarkerClick.bind(this)
     this.onMapClicked = this.onMapClicked.bind(this)
-  };
+    this.onMapRightClicked = this.onMapRightClicked.bind(this)
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
+    this.onMoreInfo = this.onMoreInfo.bind(this)
+    this.submitNewLocation = this.submitNewLocation.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
 
   componentDidMount() {
     this.props.getAllLocations()
+  }
+
+  openModal () {
+    this.setState({
+      modalIsOpen: true
+    })
+  }
+
+  closeModal () {
+    this.setState({
+      modalIsOpen: false
+    })
   }
 
   onMarkerClick(props, marker, e) {
@@ -41,15 +76,57 @@ class Container extends React.Component {
     }
   }
 
+  onMoreInfo(){
+    this.setState({redirectId : this.state.selectedPlace.id})
+  }
+
+  onMapRightClicked() {
+    this.openModal()
+  }
+
+  redirect(){
+    if(this.state.redirectId){
+      return <div>hi</div>
+    }
+  }
+
+  handleChange(e) {
+    const {name, value} = e.target
+    this.setState({
+      [name]: value
+    })
+  }
+
+  submitNewLocation(e){
+    const location = {
+      lat: this.props.newLocation.lat,
+      lng: this.props.newLocation.lng,
+      name: this.state.name,
+      title: this.state.title,
+      description: this.state.description
+    }
+    this.props.addLocation(location)
+    this.closeModal()
+    this.setState = ({
+      name: '',
+      title: '',
+      description: ''
+    })
+  }
 
   render() {
     const style = {
       width: '100vh',
       height: '100vh'
     }
-
+    if(this.state.redirectId){
+      return <Redirect to={`/location/${this.state.redirectId}`} />
+    } 
     return (
-        <Map google={this.props.google} style={style} click={this.onMapClicked}>
+      <BrowserRouter>
+
+
+        <Map google={this.props.google} style={style} click={this.onMapClicked} rightclick={this.onMapRightClicked}>
           {this.props.locations.map(marker => {
             return <Marker key={marker.id}
               click={this.onMarkerClick}
@@ -63,7 +140,9 @@ class Container extends React.Component {
 
           <InfoWindow {...this.props}
             marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}>
+            visible={this.state.showingInfoWindow}
+            selectedPlace={this.state.selectedPlace}
+            onClick={this.onMoreInfo}>
             <div className="infoWindow">
               <h2>{this.state.selectedPlace.title}</h2>
               <img src={this.state.selectedPlace.url} width="300px" />
@@ -76,18 +155,44 @@ class Container extends React.Component {
                  hashtag 3 wolf moon ennui. Blue bottle truffaut la croix, 
                  narwhal tousled vexillologist hot chicken sustainable celiac four loko.
               </p>
-              <p>Read more <a href={`/#/location/${this.state.selectedPlace.id}`}>here</a></p>
             </div>
           </InfoWindow>
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onAfterOpen={this.afterOpenModal}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            contentLabel='Add new location'
+            ariaHideApp={false}
+          >
+            <form>
+              <fieldset className='addNewLocation'>
+                <h2>Add new location</h2>
+                {this.props.newLocation && <p>
+                  Latitude: <span className='right'>{this.props.newLocation.lat}</span><br />
+                  Longitude: <span className='right'>{this.props.newLocation.lng}</span></p>}
+                  <label htmlFor='name'>Place name: </label>
+                  <input type='text' name='name' id='name' onChange={this.handleChange} /><br />
+                  <label htmlFor='title'>Title: </label>
+                  <input type='text' name='title' id='title' onChange={this.handleChange} /><br />
+                  <label htmlFor='description'>Description: </label>
+                  <input type='description' name='description' id='description' onChange={this.handleChange} /><br />
+                  <button type='button' className='button' onClick={this.closeModal}>Cancel</button>
+                  <button type='button' className='button' onClick={this.submitNewLocation}>Submit</button>
+                </fieldset>
+            </form>
+            
+          </Modal>
         </Map>
+        </BrowserRouter>
     )
   }
 }
 
 function mapStateToProps(state) {
-  console.log("locations: ", state.receiveLocations)
   return {
-    locations: state.receiveLocations
+    locations: state.receiveLocations,
+    newLocation: state.setNewLocation
   }
 }
 
@@ -95,6 +200,9 @@ function mapDispatchToProps(dispatch) {
   return {
     getAllLocations: () => {
       return dispatch(getAllLocations())
+    },
+    addLocation: (location) => {
+      return dispatch(addLocation(location))
     }
   }
 }
