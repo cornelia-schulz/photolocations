@@ -107,6 +107,11 @@ class Container extends React.Component {
     }
     this.props.addLocation(location)
     this.closeModal()
+    this.setState = ({
+      name: '',
+      title: '',
+      description: ''
+    })
   }
 
   render() {

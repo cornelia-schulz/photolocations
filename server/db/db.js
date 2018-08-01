@@ -4,10 +4,6 @@ const config = require('./knexfile').development
 const connection = knex(config)
 
 module.exports = {
-  getAllComments,
-  updateComment,
-  delComment,
-  addComment,
   facebookUpsertUser,
   googleUpsertUser
 }
