@@ -201,7 +201,33 @@ the map will be set to 0 */
   margin-bottom: 10px;
 }
 
+#closeButton {
+  margin-left: 25px;
+  background: -webkit-linear-gradient( #c59d59, #1f1e1e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
+.addNewLocation {
+  line-height: 2em;
+}
+
+.addNewLocation input, .addNewLocation .right {
+  float: right;
+}
+
+.addNewLocation h2 {
+  margin-bottom: 10px;
+}
+
+.addNewLocation .button {
+  background: -webkit-linear-gradient( #c59d59, #1f1e1e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.6em;
+  margin-left: 10px;
+  float: right;
+}
 
 /*
 ====================================

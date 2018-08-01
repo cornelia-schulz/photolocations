@@ -86,7 +86,7 @@ class Marker extends React.Component {
 
     evtNames.forEach(e => {
       this.marker.addListener(e, this.handleEvent(e))
-    });
+    })
 
     this.markerPromise.resolve(this.marker)
   }

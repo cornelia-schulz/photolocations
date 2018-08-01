@@ -27,5 +27,8 @@ server.use(express.static(path.join(__dirname, './public')))
 server.use('/api/v1/locations', locationRoutes)
 server.use('/api/v1/comments', commentRoutes)
 server.use('/api/v1/', loginRoutes)
+server.get('*', (req, res) => {                       
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))        
+})
 
 module.exports = server
