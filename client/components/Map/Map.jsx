@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
-import {setLocation} from '../actions/map'
+import {setLocation} from '../../actions/map'
 
 const PropTypes = require('prop-types')
 const evtNames = ['ready', 'click', 'dragend', 'rightclick']

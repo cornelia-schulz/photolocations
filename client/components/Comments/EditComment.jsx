@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateComment } from '../actions/comments'
+import { updateComment } from '../../actions/comments'
 
 class EditComment extends React.Component {
   constructor(props){

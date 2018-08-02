@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setSearchString } from '../actions/search'
+import { setSearchString } from '../../actions/search'
 
 class Search extends React.Component {
   constructor(props) {

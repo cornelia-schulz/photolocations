@@ -1,6 +1,6 @@
 import { Route, Link } from 'react-router-dom'
 import React from 'react'
-import Search from './Search'
+import Search from './Map/Search'
 
 
 class Header extends React.Component {

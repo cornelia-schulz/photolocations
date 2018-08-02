@@ -1,6 +1,6 @@
 import React from 'react'
-import {getLocation} from '../actions/locations'
-import Comments from './Comments'
+import {getLocation} from '../../actions/locations'
+import Comments from '../Comments/Comments'
 import { connect } from 'react-redux'
 
 class Location extends React.Component {

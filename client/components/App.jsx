@@ -1,11 +1,11 @@
-import React from 'react';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
-import Header from './Header';
-import WrappedContainer from './Container';
-import About from './About';
-import Contact from './Contact';
-import Location from './Location';
-import Login from './Login';
+import React from 'react'
+import {BrowserRouter, Route, Link} from 'react-router-dom'
+import Header from './Header'
+import WrappedContainer from './Map/Container'
+import About from './About'
+import Contact from './Contact'
+import Location from './Locations/Location'
+import Login from './Login'
 
 
 class App extends React.Component {

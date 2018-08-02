@@ -1,6 +1,6 @@
 import React from 'react'
 import EditComment from './EditComment'
-import {delComment} from '../actions/comments'
+import {delComment} from '../../actions/comments'
 import { connect } from 'react-redux'
 
 export class Comment extends React.Component {
@@ -28,9 +28,10 @@ handleChange () {
 }
 
 deleteComment() {
-  const id = this.props.id
   this.setState({ error: null })
+  const id = this.props.id
   this.props.delComment(id)
+    .catch(err => this.setState({error: err.message}))
 }
 
 render() {

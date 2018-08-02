@@ -1,11 +1,14 @@
 import React from 'react'
 import FacebookLogin from 'react-facebook-login'
-import { GoogleLogin } from 'react-google-login'
+import {GoogleLogin} from 'react-google-login'
 import config from '../../config.json'
+
+const facebookAppId = process.env.FACEBOOK_APP_ID || config.FACEBOOK_APP_ID
+const googleClientId = process.env.GOOGLE_CLIENT_ID || config.GOOGLE_CLIENT_ID
 
 class Login extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       isAuthenticated: false,
       user: null,
@@ -80,12 +83,12 @@ class Login extends React.Component {
     ) : (
         <div className="login">
           <FacebookLogin
-            appId={config.FACEBOOK_APP_ID}
+            appId={facebookAppId}
             autoLoad={false}
             fields="name, email, picture"
             callback={this.facebookResponse} />
           <GoogleLogin
-            clientId={config.GOOGLE_CLIENT_ID}
+            clientId={googleClientId}
             buttonText="LOGIN WITH GOOGLE"
             onSuccess={this.googleResponse.bind(this)}
             onFailure={this.googleResponse} />

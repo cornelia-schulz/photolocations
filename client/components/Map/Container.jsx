@@ -2,13 +2,15 @@ import React from 'react'
 import Marker from './Marker'
 import {GoogleApiWrapper} from 'google-maps-react'
 import Map from './Map'
+import config from '../../../config.json'
 import InfoWindow from './InfoWindow'
-import {getAllLocations, addLocation} from '../actions/locations'
+import {getAllLocations, addLocation} from '../../actions/locations'
 import {connect} from 'react-redux'
 import Modal from 'react-modal'
 import {BrowserRouter, Link, Redirect } from 'react-router-dom'
 
-const apiKey = process.env.GOOGLE_API_KEY
+const apiKey = process.env.GOOGLE_API_KEY || config.GOOGLE_API_KEY
+
 
 const customStyles = {
   content: {
@@ -32,7 +34,8 @@ class Container extends React.Component {
       redirectId : null,
       name: '',
       title: '',
-      description: ''
+      description: '',
+      error: null
     }
     this.onMarkerClick = this.onMarkerClick.bind(this)
     this.onMapClicked = this.onMapClicked.bind(this)
@@ -42,19 +45,24 @@ class Container extends React.Component {
     this.onMoreInfo = this.onMoreInfo.bind(this)
     this.submitNewLocation = this.submitNewLocation.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.reloadLocations = this.reloadLocations.bind(this)
   }
 
   componentDidMount() {
+    this.reloadLocations()
+  }
+
+  reloadLocations() {
     this.props.getAllLocations()
   }
 
-  openModal () {
+  openModal() {
     this.setState({
       modalIsOpen: true
     })
   }
 
-  closeModal () {
+  closeModal() {
     this.setState({
       modalIsOpen: false
     })
@@ -107,12 +115,18 @@ class Container extends React.Component {
       description: this.state.description
     }
     this.props.addLocation(location)
+      .then(() => {
+        this.setState = ({
+          name: '',
+          title: '',
+          description: ''
+        })
+      })
+      .then(() => {
+        this.reloadLocations()
+      })
+      .catch(err => this.setState({error: err.message}))
     this.closeModal()
-    this.setState = ({
-      name: '',
-      title: '',
-      description: ''
-    })
   }
 
   render() {

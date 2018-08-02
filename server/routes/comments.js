@@ -35,10 +35,14 @@ router.put('/', (req, res) => {
 })
 
 router.delete('/', (req, res) => {
-  const id = req.body.id
+  const id = Number(req.body.id)
   db.delComment(id)
     .then(() => {
-      res.status(500).send('Unable to delete comment from database')
+      res.status(200).end()
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send('Unable to update comment')
     })
 })
 
