@@ -7,7 +7,8 @@ export class Comment extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      isHidden: true
+      isHidden: true,
+      error: null
     }
     this.deleteComment = this.deleteComment.bind(this)
     this.toggleHidden = this.toggleHidden.bind(this)
@@ -31,6 +32,9 @@ deleteComment() {
   this.setState({ error: null })
   const id = this.props.id
   this.props.delComment(id)
+    .then(() => {
+      this.props.onChange()
+    })
     .catch(err => this.setState({error: err.message}))
 }
 
