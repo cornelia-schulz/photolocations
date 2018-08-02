@@ -4,10 +4,11 @@ import {GoogleApiWrapper} from 'google-maps-react'
 import Map from './Map'
 import InfoWindow from './InfoWindow'
 import {getAllLocations, addLocation} from '../actions/locations'
-import config from '../../config.json'
 import {connect} from 'react-redux'
 import Modal from 'react-modal'
 import {BrowserRouter, Link, Redirect } from 'react-router-dom'
+
+const apiKey = process.env.GOOGLE_API_KEY
 
 const customStyles = {
   content: {
@@ -208,7 +209,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 const WrappedContainer =  GoogleApiWrapper({
-  apiKey: `${config.GOOGLE_API_KEY}`
+  apiKey: `${apiKey}`
 })(Container)
 
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedContainer)

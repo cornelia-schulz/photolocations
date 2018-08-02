@@ -12,6 +12,7 @@
     "dev": "node server & webpack --watch",
     "test": "jest --watchAll"
   },
+  "moduleFileExtensions": ["js", "json", "node"],
   "postinstall": "webpack && knex migrate:latest",
   "babel": {
     "presets": [

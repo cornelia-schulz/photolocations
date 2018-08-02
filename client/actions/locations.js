@@ -1,13 +1,27 @@
 import request from 'superagent'
 import {showError} from './error'
 
+export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS'
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS'
+export const REQUEST_LOCATION = 'REQUEST_LOCATION'
 export const RECEIVE_LOCATION = 'RECEIVE_LOCATION'
+
+export const requestAllLocations = () => {
+  return {
+    type: REQUEST_LOCATIONS
+  }
+}
 
 export const receiveAllLocations = (locations) => {
   return {
     type: RECEIVE_LOCATIONS,
     locations: locations
+  }
+}
+
+export const requestLocaion = () => {
+  return {
+    type: REQUEST_LOCATION
   }
 }
 
@@ -56,7 +70,9 @@ export function addLocation(location) {
     return request
       .post('/api/v1/locations/add')
       .send(newLocation)
-      .then(getAllLocations())
+      .then(() => {
+        return getAllLocations() 
+      })
       .catch(() => {
         dispatch(showError('Could not save location'))
       })
