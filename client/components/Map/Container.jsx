@@ -26,7 +26,6 @@ const customStyles = {
 class Container extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
@@ -116,17 +115,10 @@ class Container extends React.Component {
     }
     this.props.addLocation(location)
       .then(() => {
-        this.setState = ({
-          name: '',
-          title: '',
-          description: ''
-        })
-      })
-      .then(() => {
         this.reloadLocations()
       })
       .catch(err => this.setState({error: err.message}))
-    this.closeModal()
+      this.closeModal()
   }
 
   render() {
