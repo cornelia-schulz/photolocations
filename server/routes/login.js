@@ -2,7 +2,6 @@ var express = require('express')
 var router = express.Router()
 var { generateToken, sendToken } = require('../token.utils')
 var passport = require('passport')
-var config = require('../config.js')
 var request = require('request')
 require('../passport')()
 
