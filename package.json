@@ -10,6 +10,7 @@
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "start": "webpack && node server",
     "dev": "node server & webpack --watch",
+    "postinstall": "yarn build && yarn knex migrate:latest",
     "test": "jest --watchAll"
   },
   "moduleFileExtensions": [
@@ -17,7 +18,6 @@
     "json",
     "node"
   ],
-  "postinstall": "webpack && knex migrate:latest",
   "babel": {
     "presets": [
       "env",
