@@ -5,9 +5,9 @@ exports.up = function(knex, Promise) {
     table.string('full_name')
     table.string('email')
     table.string('facebook_accessToken')
-    table.integer('facebook_id')
+    table.bigint('facebook_id')
     table.string('google_accessToken')
-    table.integer('google_id')
+    table.bigint('google_id')
   })
 }
 
