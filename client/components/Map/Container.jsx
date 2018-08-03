@@ -2,15 +2,15 @@ import React from 'react'
 import Marker from './Marker'
 import {GoogleApiWrapper} from 'google-maps-react'
 import Map from './Map'
-import config from '../../../config.json'
 import InfoWindow from './InfoWindow'
 import {getAllLocations, addLocation} from '../../actions/locations'
 import {connect} from 'react-redux'
 import Modal from 'react-modal'
 import {BrowserRouter, Link, Redirect } from 'react-router-dom'
 
-const apiKey = process.env.GOOGLE_API_KEY || config.GOOGLE_API_KEY
+require('dotenv').config()
 
+const apiKey = process.env.GOOGLE_API_KEY 
 
 const customStyles = {
   content: {
