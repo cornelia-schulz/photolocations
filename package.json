@@ -7,7 +7,7 @@
   "author": "Cornelia Schulz",
   "license": "ISC",
   "scripts": {
-    "build": "webpack --config ./client/webpack.config.js",
+    "build": "webpack --config ./webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "start": "webpack && node server",
     "dev": "node server & webpack --watch",
