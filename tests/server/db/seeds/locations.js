@@ -3,6 +3,7 @@ exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('locations').del()
     .then(function () {
+      console.log('locations seed')
       // Inserts seed entries
       return knex('locations').insert([
         {id: 1, title: 'Westhaven', label: '', lat: -36.839914, lng: 174.747697, info_title: 'Great views towards the Harbour Bridge', info: 'Westhaven Marina is located on the western edge of Auckland Central Business District. It\'s immediately recognisable as one of Auckland\'s famous icons and it\'s the heart of boating in Auckland. It’s one of the most idyllic places in Auckland to ride a bike, walk a dog, or picnic and home to several excellent cafes and restaurants.'},
