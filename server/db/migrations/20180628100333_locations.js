@@ -7,7 +7,7 @@ exports.up = (knex, Promise) => {
     table.decimal('lat')
     table.decimal('lng')
     table.string('info_title')
-    table.string('info')
+    table.text('info')
   })
 }
 
