@@ -7,10 +7,15 @@ const GoogleTokenStrategy = require('passport-google-token').Strategy
 const user = require('./db/db')
 require('dotenv').config()
 
+const facebookClientId = process.env.FACEBOOK_APP_ID
+const facebookSecret = process.env.FACEBOOK_SECRET
+const googleClientId = process.env.GOOGLE_CLIENT_ID
+const googleSecret = process.env.GOOGLE_SECRET
+
 module.exports = function () {
   passport.use(new FacebookTokenStrategy({
-        //   clientID: config.facebookAuth.clientID,
-        //   clientSecret: config.facebookAuth.clientSecret
+          clientID: facebookClientId,
+          clientSecret: facebookSecret
       },
       function (accessToken, refreshToken, profile, done) {
         console.log('facebook user')
@@ -20,8 +25,8 @@ module.exports = function () {
       }))
 
   passport.use(new GoogleTokenStrategy({
-        //   clientID: config.googleAuth.clientID,
-        //   clientSecret: config.googleAuth.clientSecret
+          clientID: googleClientId,
+          clientSecret: googleSecret
       },
      // upsert === update if doesn't exist
       function (accessToken, refreshToken, profile, done) {
