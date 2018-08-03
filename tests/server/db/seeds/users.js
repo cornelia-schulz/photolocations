@@ -16,7 +16,7 @@ exports.seed = function(knex, Promise) {
         facebook_accessToken: null,
         facebook_id: null,
         google_accessToken: 'a29.GlvyBc7zQiJHeO7fMjaHEn2AWaxCB0Rg9T-CxyHrLXx-m…tBg8l31yX6CNn7tA_2--lpovwicjXw2WeDmrfvmCxC5WHrqyC',
-        google_id: 114952009621172879795},
+        google_id: 11495200962117287},
       ])
     })
 }
