@@ -141,7 +141,8 @@ class Container extends React.Component {
               title={marker.title}
               label={marker.label}
               id={marker.id}
-              position={{ lat: marker.lat, lng: marker.lng }}
+              description={marker.description}
+              position={{lat: marker.lat, lng: marker.lng}}
               url={marker.url} />
           })}
 
@@ -156,11 +157,7 @@ class Container extends React.Component {
               <img id="starRating" src="/images/stars.png" alt="star-rating" />
               <p>{this.state.selectedPlace.info}</p>
               <p>
-                Lorem ipsum dolor amet enamel pin blue bottle
-                 portland humblebrag XOXO. Godard pour-over knausgaard 
-                 sustainable migas. Man bun organic pop-up, ethical gastropub 
-                 hashtag 3 wolf moon ennui. Blue bottle truffaut la croix, 
-                 narwhal tousled vexillologist hot chicken sustainable celiac four loko.
+                {this.state.selectedPlace.description}
               </p>
             </div>
           </InfoWindow>
