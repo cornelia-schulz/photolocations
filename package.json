@@ -39,6 +39,7 @@
     "express": "^4.16.2",
     "google-maps": "^3.2.1",
     "google-maps-react": "^2.0.2",
+    "jade": "^1.11.0",
     "jsonwebtoken": "^8.3.0",
     "knex": "^0.14.6",
     "passport": "^0.4.0",

@@ -8,10 +8,6 @@ import {connect} from 'react-redux'
 import Modal from 'react-modal'
 import {BrowserRouter, Link, Redirect } from 'react-router-dom'
 
-require('dotenv').config()
-
-const apiKey = process.env.GOOGLE_API_KEY 
-
 const customStyles = {
   content: {
     top: '50%',
@@ -210,6 +206,7 @@ function mapDispatchToProps(dispatch) {
     }
   }
 }
+const apiKey = googleApiKey
 
 const WrappedContainer =  GoogleApiWrapper({
   apiKey: `${apiKey}`

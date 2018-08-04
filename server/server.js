@@ -9,6 +9,10 @@ const locationRoutes = require('./routes/locations')
 const commentRoutes = require('./routes/comments')
 const loginRoutes = require('./routes/login')
 
+
+require('dotenv').config()
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY
+
 const corsOption = {
   origin: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -27,8 +31,13 @@ server.use(express.static(path.join(__dirname, './public')))
 server.use('/api/v1/locations', locationRoutes)
 server.use('/api/v1/comments', commentRoutes)
 server.use('/api/v1/', loginRoutes)
-server.get('*', (req, res) => {                       
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))        
+
+
+server.get('*', (req, res) => {         
+  res.render('default',
+  { googleApiKey : GOOGLE_API_KEY, title : 'Photo Locations' }
+  )
+//  res.sendFile(path.resolve(__dirname, 'public', 'default.html'))        
 })
 
 module.exports = server

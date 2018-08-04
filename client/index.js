@@ -8,6 +8,9 @@ import {BrowserRouter} from 'react-router-dom'
 import reducers from './reducers'
 import App from './components/App'
 
+// require('dotenv').config()
+// console.log(GOOGLE_API_KEY)
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducers, composeEnhancers(
   applyMiddleware(thunkMiddleware)
@@ -17,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   render(
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <App  />
       </BrowserRouter>
     </Provider>,
     document.getElementById('app')

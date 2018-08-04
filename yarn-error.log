@@ -1,5 +1,5 @@
 Arguments: 
-  /home/cornelia/.nvm/versions/node/v9.11.0/bin/node /usr/share/yarn/bin/yarn.js add -D sqlite3
+  /home/cornelia/.nvm/versions/node/v9.11.0/bin/node /usr/share/yarn/bin/yarn.js add jade
 
 PATH: 
   /home/cornelia/.nvm/versions/node/v9.11.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files (x86)/Intel/iCLS Client:/mnt/c/Program Files/Intel/iCLS Client:/mnt/c/ImageMagick-6.9.2-Q16:/mnt/c/Windows/System32:/mnt/c/Windows:/mnt/c/Windows/System32/wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit:/mnt/c/Program Files/Microsoft SQL Server/110/Tools/Binn:/mnt/c/Program Files (x86)/Microsoft SDKs/TypeScript/1.0:/mnt/c/Program Files/Microsoft SQL Server/120/Tools/Binn:/mnt/c/Development/Tools:/mnt/c/Development/Tools/Console2:/mnt/c/Python27:/mnt/c/Python27/Scripts:/mnt/c/Program Files/Microsoft/Web Platform Installer:/mnt/c/Program Files (x86)/Microsoft SQL Server/100/Tools/Binn:/mnt/c/Program Files/Microsoft SQL Server/100/Tools/Binn:/mnt/c/Program Files/Microsoft SQL Server/100/DTS/Binn:/mnt/c/Program Files (x86)/Microsoft ASP.NET/ASP.NET Web Pages/v1.0:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/110/Tools/Binn:/mnt/c/Program Files (x86)/Microsoft SQL Server/120/Tools/Binn:/mnt/c/Program Files/Microsoft SQL Server/120/DTS/Binn:/mnt/c/Program Files (x86)/Microsoft SQL Server/120/Tools/Binn/ManagementStudio:/mnt/c/Program Files (x86)/Microsoft SQL Server/120/DTS/Binn:/mnt/c/RailsInstaller/Ruby2.1.0/bin:/mnt/c/Program Files (x86)/Git/cmd:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files (x86)/MySQL/MySQL Fabric 1.5 & MySQL Utilities 1.5:/mnt/c/Program Files (x86)/MySQL/MySQL Fabric 1.5 & MySQL Utilities 1.5/Doctrine extensions for PHP:/mnt/c/Program Files/Microsoft DNX/Dnvm:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn:/mnt/c/Program Files (x86)/QuickTime/QTSystem:/mnt/c/HashiCorp/Vagrant/bin:/mnt/c/Program Files (x86)/Skype/Phone:/mnt/c/Windows/System32/OpenSSH:/mnt/c/Users/corne/AppData/Roaming/nvm:/mnt/c/Program Files/nodejs:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/nodejs:/mnt/c/Users/corne/AppData/Local/Programs/Python/Python35-32/Scripts:/mnt/c/Users/corne/AppData/Local/Programs/Python/Python35-32:/mnt/c/Ruby23/bin:/mnt/c/Users/corne/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/corne/.babun:/mnt/c/Program Files/heroku/bin:/mnt/c/Users/corne/AppData/Local/Programs/Fiddler:/mnt/c/Users/corne/AppData/Roaming/npm
@@ -14,8 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com:443
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
+  Error: ENOENT: no such file or directory, scandir '/mnt/c/Users/corne/workspace/photolocations/node_modules/postcss-modules-extract-imports/node_modules/postcss/docs'
 
 npm manifest: 
   {
@@ -27,12 +26,18 @@ npm manifest:
     "author": "Cornelia Schulz",
     "license": "ISC",
     "scripts": {
+      "build": "webpack --config ./webpack.config.js",
       "knex": "knex --knexfile ./server/db/knexfile.js",
       "start": "webpack && node server",
       "dev": "node server & webpack --watch",
+      "postinstall": "yarn build && yarn knex migrate:latest",
       "test": "jest --watchAll"
     },
-    "postinstall": "webpack && knex migrate:latest",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "node"
+    ],
     "babel": {
       "presets": [
         "env",
@@ -49,6 +54,7 @@ npm manifest:
       "babel-preset-react": "^6.24.1",
       "babel-register": "^6.26.0",
       "cors": "^2.8.4",
+      "dotenv": "^6.0.0",
       "express": "^4.16.2",
       "google-maps": "^3.2.1",
       "google-maps-react": "^2.0.2",
@@ -2454,6 +2460,10 @@ Lockfile:
   dotenv@4.0.0:
     version "4.0.0"
     resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
+  
+  dotenv@^6.0.0:
+    version "6.0.0"
+    resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.0.0.tgz#24e37c041741c5f4b25324958ebbc34bca965935"
   
   duplexer3@^0.1.4:
     version "0.1.4"

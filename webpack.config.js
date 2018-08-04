@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   entry: './client/index.js',
@@ -19,5 +20,11 @@ module.exports = {
   node: {
     fs: 'empty'
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+      GOOGLE_API_KEY: JSON.stringify(process.env.GOOGLE_API_KEY),
+    }}),
+  ],
 }
