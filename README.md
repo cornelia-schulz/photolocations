@@ -1,5 +1,5 @@
 # Photo Locations
-Check it out at http://www.photolocations.nz
+Check it out at http://www.photolocations.nz or http://photolocationnz.herokuapp.com
 
 
 This app is for recording your favourite photo spots and to research locations where you are travelling to.
