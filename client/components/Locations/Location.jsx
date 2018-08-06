@@ -1,15 +1,21 @@
 import React from 'react'
 import {getLocation} from '../../actions/locations'
 import Comments from '../Comments/Comments'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 class Location extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      location: {}
+    }
+  }
 
   componentDidMount() {
     const id = this.props.match.params.id
     this.props.getLocation(id)
       .then(location => {
-        this.setState({ location })
+        this.setState({location})
       })
   }
 

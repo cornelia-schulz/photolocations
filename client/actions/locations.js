@@ -78,3 +78,7 @@ export function addLocation(location) {
       })
   }
 }
+
+export function editLocation(location) {
+  
+}
