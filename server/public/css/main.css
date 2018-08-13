@@ -208,12 +208,24 @@ the map will be set to 0 */
   -webkit-text-fill-color: transparent;
 }
 
+/*
+====================================
+MODAL
+=====================================
+*/
+.ReactModal__Content {
+  -webkit-box-shadow: 10px 7px 24px -1px rgba(0,0,0,0.57);
+  -moz-box-shadow: 10px 7px 24px -1px rgba(0,0,0,0.57);
+  box-shadow: 10px 7px 24px -1px rgba(0,0,0,0.57);
+}
+
 .addNewLocation {
   line-height: 2em;
 }
 
 .addNewLocation input, .addNewLocation .right {
   float: right;
+  border-bottom: 1px #c59d59;
 }
 
 .addNewLocation h2 {

@@ -20,8 +20,8 @@ function getAllLocations(testDb) {
 function getLocation(id, testDb) {
   const db = testDb || connection
   return db('locations')
-  .join('photos', 'locations.id', 'photos.location_id')
-  .join('comments', 'locations.id', 'comments.location_id')
+  .leftJoin('photos', 'locations.id', 'photos.location_id')
+  .leftJoin('comments', 'locations.id', 'comments.location_id')
   .where('locations.id', id)
   .select('locations.id as id', 'locations.title as title', 'locations.label as label', 'locations.lat as lat', 'locations.lng as lng', 'locations.info_title as info', 'locations.info as description', 'photos.title as imageTitle', 'photos.url as url', 'comments.comment as comment')
   .first()
