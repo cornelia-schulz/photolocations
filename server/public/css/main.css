@@ -54,6 +54,12 @@ textarea {
   padding: 0;
 }
 
+fieldset .button {
+  float: right;
+  margin-right: 0;
+  margin-left: 10px;
+}
+
 /* 
 ========================================
 NAVIGATION
@@ -261,18 +267,13 @@ LOCATION & EDIT LOCATION
 =========================================
 */
 
-.locationText, .aboutText, .contactText {
+.locationText, .aboutText, .contactText, .editLocation {
   width: 95%;
   margin: 0 auto;
 }
 
 .editLocation {
   
-}
-
-.editLocation fieldset {
-  width: 90%;
-  margin: 0 auto;
 }
 
 /*
@@ -322,6 +323,60 @@ MEDIA QUERIES
 */
 
 @media (min-width: 992px) {
+  .row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+  
+  .col-1 {
+    width: 8.33%;
+  }
+  
+  .col-2 {
+    width: 16.66%;
+  }
+  
+  .col-3 {
+    width: 25%;
+  }
+
+  .col-4 {
+    width: 33.33%;
+  }
+  
+  .col-5 {
+    width: 41.66%;
+  }
+  
+  .col-6 {
+    width: 50%;
+  }
+  
+  .col-7 {
+    width: 58.33%;
+  }
+  
+  .col-8 {
+    width: 66.66%;
+  }
+  
+  .col-9 {
+    width: 75%;
+  }
+  
+  .col-10 {
+    width: 83.33%;
+  }
+  
+  .col-11 {
+    width: 91.66%;
+  }
+
+  .col-12 {
+    width: 100%;
+  }
 
   .button {
     background: -webkit-linear-gradient(#eee, #c59d59);
@@ -336,13 +391,20 @@ MEDIA QUERIES
     width: 600px;
   }
 
-  .aboutText, .contactText, .locationText {
+  .aboutText, .contactText {
     width: 960px;
     margin: 0 auto;
   }
 
-  input {
-    width: 386px;
+  .location {
+    height: 90vh;
+    width: 98%;
+    margin: 0 auto;
+  }
+
+  .locationRight {
+    overflow: auto;
+    height: 92%;
   }
 
   .addNewLocation input, .addNewLocation .right {
@@ -351,8 +413,22 @@ MEDIA QUERIES
     width: 200px;
   }
 
+  .editLocation fieldset {
+    width: 50%;
+  }
+
 }
 
-@media (min-width: 768px) and (max-width: 991px) {}
+@media (min-width: 768px) and (max-width: 991px) {
+  .col-1, .col-2, .col-3, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    float: left;
+        display: block;
+    }
+}
 
-@media (min-width: 480px) and (max-width: 767px) {}
+@media (min-width: 480px) and (max-width: 767px) {
+  .col-1, .col-2, .col-3, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    float: left;
+        display: block;
+    }
+}

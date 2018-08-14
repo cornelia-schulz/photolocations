@@ -13,7 +13,7 @@ class Header extends React.Component {
     return (
 
         <header>
-          <nav className="navbar clearfix row" role="navigation">
+          <nav className="navbar" role="navigation">
             <div className="logo">
               <img src="/images/Logo.PNG" alt="Photo Locations" />
             </div>

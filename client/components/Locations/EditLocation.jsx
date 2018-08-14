@@ -43,9 +43,9 @@ class EditLocation extends React.Component {
           <label htmlFor='title'>Title: </label><br />
           <input type='text' name='title' value={this.state.location.info} id='title' onChange={this.handleChange} /><br />
           <label htmlFor='description'>Description: </label><br />
-          <textarea rows="4" cols="100" name='description' value={this.state.location.description} id='description' onChange={this.handleChange}></textarea>
-          <button type='button' className='button'>Cancel</button>
+          <textarea rows="4" cols="100" name='description' value={this.state.location.description} id='description' onChange={this.handleChange}></textarea><br />
           <button type='button' className='button' onClick={this.submitLocation}>Submit</button>
+          <button type='button' className='button'>Cancel</button>
         </fieldset>
       </form>}
       </div>

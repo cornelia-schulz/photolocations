@@ -21,17 +21,21 @@ class Location extends React.Component {
 
   render() {
     return (
-      <div className="location">
+      <div className="location row">
+      <div className="col-8">
         <img src={this.props.location.url} alt={this.props.location.title} />
-        <div className="locationText">
-          <h1>{this.props.location.title}</h1>
-          <p>
-            {this.props.location.info}
-          </p>
-          <p>
-            {this.props.location.description}
-          </p>
-          <Comments id={this.props.match.params.id}/>
+        </div>
+        <div className="col-4 locationRight">
+          <div className="locationText">
+            <h1>{this.props.location.title}</h1>
+            <p>
+              {this.props.location.info}
+            </p>
+            <p>
+              {this.props.location.description}
+            </p>
+            <Comments id={this.props.match.params.id}/>
+          </div>
         </div>
       </div>
     )
