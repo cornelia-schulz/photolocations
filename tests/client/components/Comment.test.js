@@ -17,7 +17,7 @@ test('When the delete button is clicked in <Comment />', () => {
   const id = 1
   const testDel = jest.fn()
   const wrapper = mount(<Comment delComment={testDel} />)
-    wrapper.find('#deleteCommentButton').simulate(
+    wrapper.find('#button').simulate(
       'click',
       {preventDefault() {}}
     )

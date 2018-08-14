@@ -35,8 +35,9 @@ class EditComment extends React.Component {
 
   return (
     <form className="editComment" onSubmit={this.editComment} >
-      <input type="text" id="editComment" value={this.state.comment} onChange={this.getComment} />
-      <button id="submitComment">Submit</button>
+      <textarea id="editComment" rows="4" cols="100" value={this.state.comment} onChange={this.getComment}></textarea><br />
+      <button className='button' id="cancelButton">Cancel</button>
+      <button className='button' id="button">Submit</button>
     </form>
   )
 }

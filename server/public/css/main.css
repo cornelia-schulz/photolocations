@@ -14,6 +14,7 @@ h2 {
 
 h1 {
   font-weight: 600;
+  line-height: 1em;
   font-size: 3em;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -22,7 +23,22 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
-.commentButtons button, .addCommentForm input[type=submit], #contactFormSubmit, #submitComment {
+input {
+  height: 2.3em;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+textarea {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.button {
   background: -webkit-linear-gradient(#eee, #c59d59);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -136,15 +152,11 @@ NAVIGATION
   display: block;
 }
 
-.map-container {
-  height: 90%;
-}
-
 .about img, .contact img, .location img {
   width: 100%;
 }
 
-.aboutText p, .contactForm, .locationText p {
+.aboutText p, .contactForm, .editLocation, .locationText p {
   letter-spacing: 1px;
   line-height: 1.5em;
   margin-top: 1.8em;
@@ -152,11 +164,9 @@ NAVIGATION
   font-size: 1.2em;
 }
 
-.contactForm input, .contactForm textarea {
-  width: 386px;
-}
 
-#contactFormSubmit {
+
+#contactFormSubmit, .button {
   color: #1f1e1e;
   background-color: #c59d59;
   width: 100px;
@@ -175,6 +185,10 @@ height of the parent container explicitly otherwise the size of
 the map will be set to 0 */
 #map {
   height: 100vh;
+}
+
+.map-container {
+  height: 90%;
 }
 
 .infoWindow {
@@ -210,7 +224,7 @@ the map will be set to 0 */
 
 /*
 ====================================
-MODAL
+ADD LOCATION MODAL
 =====================================
 */
 .ReactModal__Content {
@@ -242,16 +256,30 @@ MODAL
 }
 
 /*
+=========================================
+LOCATION & EDIT LOCATION
+=========================================
+*/
+
+.locationText, .aboutText, .contactText {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.editLocation {
+  
+}
+
+.editLocation fieldset {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/*
 ====================================
 COMMENTS SECTION
 =====================================
 */
-
-.addCommentForm textarea {
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
 
 .comment {
   margin-top: 20px;
@@ -286,7 +314,23 @@ LOGIN
   font-family: 'Lato', sans-serif;
 }
 
-@media only screen and (min-width: 900px) {
+
+/*
+=============================================
+MEDIA QUERIES
+=============================================
+*/
+
+@media (min-width: 992px) {
+
+  .button {
+    background: -webkit-linear-gradient(#eee, #c59d59);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    height: 2.3em;
+    margin-right: 10px;
+    border-radius: 5%;
+  }
 
   .login {
     width: 600px;
@@ -296,4 +340,19 @@ LOGIN
     width: 960px;
     margin: 0 auto;
   }
+
+  input {
+    width: 386px;
+  }
+
+  .addNewLocation input, .addNewLocation .right {
+    float: right;
+    border-bottom: 1px #c59d59;
+    width: 200px;
+  }
+
 }
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+@media (min-width: 480px) and (max-width: 767px) {}

@@ -78,7 +78,7 @@ class Login extends React.Component {
          <p>{this.state.user.email}</p>
         </div>
         <div>
-          <button onClick={this.logout} className="logoutButton"> Log out </button>
+          <button onClick={this.logout} className="logoutButton button"> Log out </button>
         </div>
       </div>
     ) : (

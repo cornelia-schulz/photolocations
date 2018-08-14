@@ -7,7 +7,8 @@ export class Comment extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      isHidden: true,
+      isHidden: false,
+      editIsHidden: true,
       error: null
     }
     this.deleteComment = this.deleteComment.bind(this)
@@ -18,7 +19,8 @@ export class Comment extends React.Component {
 
 toggleHidden () {
   this.setState({
-    isHidden: !this.state.isHidden
+    isHidden: !this.state.isHidden,
+    editIsHidden: !this.state.editIsHidden
   })
 }
 
@@ -41,14 +43,14 @@ deleteComment() {
 render() {
   return (
     <div className="comment">
-      <div className="commentInput">
+      {!this.state.isHidden && <div className="commentInput">
         {this.props.comment}
-      </div>
-      <div className="commentButtons">
-        <button id="editCommentButton" onClick={this.toggleHidden}>Update</button>
-        <button id="deleteCommentButton" onClick={this.deleteComment} >Delete</button>
-      </div>
-      {!this.state.isHidden && <EditComment comment={this.props.comment} id={this.props.id} onChange={this.handleChange} />}
+      </div>}
+      {!this.state.isHidden && <div className="commentButtons">
+        <button className='button' id="updateButton" onClick={this.toggleHidden}>Update</button>
+        <button className='button' id="deleteButton" onClick={this.deleteComment}>Delete</button>
+      </div>}
+      {!this.state.editIsHidden && <EditComment comment={this.props.comment} id={this.props.id} onChange={this.handleChange} />}
     </div>
   )
 }

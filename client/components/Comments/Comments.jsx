@@ -57,7 +57,7 @@ class Comments extends React.Component {
         <h2>Comments</h2>
         <form className="addCommentForm" onSubmit={this.addNewComment}>
           <textarea id="addNewComment" rows="4" cols="100" value={this.state.comment} onChange={this.updateComment}></textarea><br />
-          <input type="submit" id="addCommentButton" value = "Add comment" />
+          <input type="submit" className='button' id="addCommentButton" value = "Add" />
         </form>
         <ul>
           {this.props.newComments && this.props.newComments.length > 0 && 

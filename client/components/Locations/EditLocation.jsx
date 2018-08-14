@@ -29,21 +29,21 @@ class EditLocation extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='editLocation'>
       {this.state.location && 
       <form>
-        <fieldset className='editLocation'>
-          <h2>Edit location</h2>
-          <label htmlFor='lat'>Latitude: </label>
+        <fieldset className>
+          <h1>Edit Location</h1>
+          <label htmlFor='lat'>Latitude: </label><br />
           <input type='text' name='lat' value={this.state.location.lat} /><br />
-          <label htmlFor='lng'>Longitude: </label>
+          <label htmlFor='lng'>Longitude: </label><br />
           <input type='text' name='lat' value={this.state.location.lng} /><br />
-          <label htmlFor='name'>Place name: </label>
+          <label htmlFor='name'>Place name: </label><br />
           <input type='text' name='name' value={this.state.location.title} id='name' onChange={this.handleChange} /><br />
-          <label htmlFor='title'>Title: </label>
+          <label htmlFor='title'>Title: </label><br />
           <input type='text' name='title' value={this.state.location.info} id='title' onChange={this.handleChange} /><br />
-          <label htmlFor='description'>Description: </label>
-          <input type='description' name='description' value={this.state.location.description} id='description' onChange={this.handleChange} /><br />
+          <label htmlFor='description'>Description: </label><br />
+          <textarea rows="4" cols="100" name='description' value={this.state.location.description} id='description' onChange={this.handleChange}></textarea>
           <button type='button' className='button'>Cancel</button>
           <button type='button' className='button' onClick={this.submitLocation}>Submit</button>
         </fieldset>
