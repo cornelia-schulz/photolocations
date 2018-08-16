@@ -97,9 +97,6 @@ NAVIGATION
 .dropdown{
   overflow: hidden;
   height: 41px;
-  /* margin-right: 2px; */
-  /* display: flex; */
-  /* flex-direction: column; */
 }
 
 .fa, .fas {
@@ -111,9 +108,6 @@ NAVIGATION
 
 .dropdown, .dropbtn {
   border: none;
-  /* margin-bottom: 0; */
-  /* font-size: 1em; */
-  /* border-radius: 3%; */
   display: inline-block;
 }
 
@@ -125,17 +119,9 @@ NAVIGATION
   height: 1em;
 }
 
-/* #search {
-  line-height: 2.4em;
-  border: 3px solid #1f1e1e;
-  border-radius: 7%;
-} */
-
 .dropbtn {
   background-color: #1f1e1e;
   float: right;
-  /* margin-right: 10px; */
-  /* margin-left: 15px; */
   height: 100%;
   width: 100%;
 }
@@ -156,12 +142,10 @@ NAVIGATION
 }
 
 .dropdown-content a {
-  /* float: none; */
   color: #c59d59;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  /* text-align: left; */
   border-bottom: 1px solid #ddd;
 }
 
@@ -467,55 +451,43 @@ MEDIA QUERIES
 									   color-stop(.6,#f49c06))
 }
 
-/* Navigation */
+/* 
+===================================================
+Navigation
+===================================================
+*/
 
-.dropdown{
-  /* overflow: hidden;
-
-  height: 41px;
-  margin-right: 2px; */
+.search {
+  margin-right: 200px;
 }
 
-.dropdown {
-  /* border: none;
-  margin-bottom: 0;
-  font-size: 1em;
-  border-radius: 3%;
-  display: inline-block; */
-}
-
-/* .dropbtn {
+.dropbtn {
   display: none;
-} */
+}
 
-/* .dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content {
   display: flex;
-} */
+}
 
-/* .dropdown-content {
+.dropdown-content {
   display: flex;
   position: absolute;
   top: 0;
-  right: 0;
   background-color: #1f1e1e;
-  min-width: 260px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-} */
+}
 
-/* .dropdown-content a {
-  float: none;
+.dropdown-content a {
   color: #c59d59;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
-  text-align: left;
+  display: inline;
   border-bottom: none;
-} */
+}
 
-/* .dropdown-content a:hover {
+.dropdown-content a:hover {
   background-color: #7e7e7e;
-} */
+}
 
 
 
