@@ -14,13 +14,13 @@ class Header extends React.Component {
 
       <header>
         <nav className="navbar" role="navigation">
-          <div className="logo  header-left">
+          <div className="logo header  header-left">
             <img src="/images/Logo.PNG" alt="Photo Locations" />
           </div>
-          <div className="header-center">
+          <div className="header">
             <Route exact path='/' component={Search} />
           </div>
-          <div className="dropdown header-right">
+          <div className="dropdown header">
             <button className="dropbtn">
               <i className="fa fa-bars" aria-hidden="true"></i>
             </button>

@@ -28,8 +28,8 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search">
-        <input type="text" name="search" id="search" value={this.state.search} onChange={this.updateSearch} onKeyDown={this.keyPress} />
-        <label htmlFor="search"><i className="fa fa-search" aria-hidden="true"></i></label>
+        {/* <label className="inline" htmlFor="search"><i className="fa fa-search inline" aria-hidden="true"></i></label> */}
+        <input className="inline" type="text" name="search" id="search" value={this.state.search} onChange={this.updateSearch} onKeyDown={this.keyPress} />
       </div>
     )
   }
