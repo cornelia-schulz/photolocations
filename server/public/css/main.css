@@ -169,9 +169,10 @@ footer {
   bottom: 0;
   text-align: center;
   font-size: 0.8rem;
-  border-top: 1px solid;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  border-top: 0.1px solid;
+  padding-top: 5px;
+  padding-bottom: 7px;
+  background-color: #1f1e1e;
 }
 
 /* 
@@ -424,7 +425,7 @@ MEDIA QUERIES
 
   .locationRight {
     overflow: auto;
-    height: 92%;
+    height: 97%;
   }
 
   .addNewLocation input, .addNewLocation .right {

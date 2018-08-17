@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, matchPath} from 'react-router-dom'
 import Header from './Header'
 import WrappedContainer from './Map/Container'
 import About from './About'
@@ -31,7 +31,7 @@ class App extends React.Component {
         <div className="container">
           <Route path='/' render={() => <Header onChange={this.onChange} />} />
           <Route exact path='/' render={(props) => <WrappedContainer searchString={this.state.searchString} {...props} />} />
-          <Route path='/' component={Footer} />
+          {!matchPath.isExact && <Route path='/' component={Footer} />}
           <Route path='/contact' component={Contact} />
           <Route path='/about' component={About} />
           <Switch>
