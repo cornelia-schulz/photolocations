@@ -165,7 +165,6 @@ FOOTER
 
 footer {
   width: 100%;
-  position: absolute;
   bottom: 0;
   text-align: center;
   font-size: 0.8rem;
@@ -173,6 +172,11 @@ footer {
   padding-top: 5px;
   padding-bottom: 7px;
   background-color: #1f1e1e;
+  clear: both;
+}
+
+footer .fa {
+  font-size: 1em;
 }
 
 /* 

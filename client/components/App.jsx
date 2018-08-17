@@ -31,13 +31,13 @@ class App extends React.Component {
         <div className="container">
           <Route path='/' render={() => <Header onChange={this.onChange} />} />
           <Route exact path='/' render={(props) => <WrappedContainer searchString={this.state.searchString} {...props} />} />
-          {!matchPath.isExact && <Route path='/' component={Footer} />}
           <Route path='/contact' component={Contact} />
           <Route path='/about' component={About} />
           <Switch>
             <Route path='/location/:id/edit' component={EditLocation} />
             <Route path='/location/:id/' component={Location} />
           </Switch>
+          {!matchPath.isExact && <Route path='/' component={Footer} />}
           <Route path='/login' component={Login} />
         </div>
       
