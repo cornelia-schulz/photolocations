@@ -168,10 +168,11 @@ footer {
   bottom: 0;
   text-align: center;
   font-size: 0.8rem;
-  border-top: 0.1px solid;
+  /* border-top: 0.1px solid; */
   padding-top: 5px;
   padding-bottom: 7px;
   background-color: #1f1e1e;
+  margin-top: 10px;
   clear: both;
 }
 
