@@ -312,8 +312,15 @@ COMMENTS SECTION
   margin-top: 20px;
 }
 
-.commentButtons {
-  margin-top: 10px;
+.comment-button {
+  background: -webkit-linear-gradient(#eee, #c59d59);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 5px;
+  border-bottom: 1px solid #edd2ab;
+  font-size: 0.8rem;
 }
 
 /*

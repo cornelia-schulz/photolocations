@@ -47,8 +47,8 @@ render() {
         {this.props.comment}
       </div>}
       {!this.state.isHidden && <div className="commentButtons">
-        <button className='button' id="updateButton" onClick={this.toggleHidden}>Update</button>
-        <button className='button' id="deleteButton" onClick={this.deleteComment}>Delete</button>
+        <button className='comment-button' id="updateButton" onClick={this.toggleHidden}>Update</button>
+        <button className='comment-button' id="deleteButton" onClick={this.deleteComment}>Delete</button>
       </div>}
       {!this.state.editIsHidden && <EditComment comment={this.props.comment} id={this.props.id} onChange={this.handleChange} />}
     </div>
