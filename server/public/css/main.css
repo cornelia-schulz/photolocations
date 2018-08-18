@@ -317,6 +317,10 @@ COMMENTS SECTION
   margin-top: 20px;
 }
 
+.commentInput {
+  font-size: 14px;
+}
+
 .comment-button {
   background: -webkit-linear-gradient(#eee, #c59d59);
   -webkit-background-clip: text;
