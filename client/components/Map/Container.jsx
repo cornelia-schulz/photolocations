@@ -181,7 +181,6 @@ class Container extends React.Component {
                   <button type='button' className='button' onClick={this.submitNewLocation}>Submit</button>
                 </fieldset>
             </form>
-            
           </Modal>
         </Map>
         </BrowserRouter>

@@ -6,7 +6,6 @@ import About from './About'
 import Contact from './Contact'
 import Location from './Locations/Location'
 import Login from './Login'
-import EditLocation from './Locations/EditLocation'
 import Footer from './Footer'
 
 
@@ -34,7 +33,6 @@ class App extends React.Component {
           <Route path='/contact' component={Contact} />
           <Route path='/about' component={About} />
           <Switch>
-            <Route path='/location/:id/edit' component={EditLocation} />
             <Route path='/location/:id/' component={Location} />
           </Switch>
           {!matchPath.isExact && <Route path='/' component={Footer} />}

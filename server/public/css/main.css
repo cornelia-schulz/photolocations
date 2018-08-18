@@ -144,7 +144,6 @@ NAVIGATION
   top: 41px;
   right: 0;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
 }
 
 .dropdown-content a {
@@ -190,7 +189,7 @@ ABOUT
 .aboutText p, .contactForm, .editLocation, .locationText p {
   letter-spacing: 1px;
   line-height: 1.5em;
-  margin-top: 1.8em;
+  margin-top: 1.3em;
   margin-bottom: 10px;
   font-size: 1.2em;
 }
@@ -295,6 +294,14 @@ LOCATION & EDIT LOCATION
   margin: 0 auto;
 }
 
+.location a, .location a:visited {
+  background: -webkit-linear-gradient(#eee, #c59d59);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #edd2ab;
+}
 
 .editLocation {
   
@@ -442,10 +449,6 @@ MEDIA QUERIES
     float: right;
     border-bottom: 1px #c59d59;
     width: 200px;
-  }
-
-  .editLocation fieldset {
-    width: 50%;
   }
 
   footer {
