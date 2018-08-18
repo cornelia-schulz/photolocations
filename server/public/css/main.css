@@ -222,10 +222,11 @@ the map will be set to 0 */
 .infoWindow {
   text-align: center;
   margin-left: 15px;
-  max-width: 320px;
+  max-width: 200px;
 }
 
 .infoWindow img {
+  width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -241,6 +242,10 @@ the map will be set to 0 */
   text-align: left;
   margin-left: 12px;
   margin-bottom: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 #closeButton {
@@ -278,7 +283,6 @@ ADD LOCATION MODAL
   background: -webkit-linear-gradient( #c59d59, #1f1e1e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* line-height: 1.6em; */
   margin-left: 10px;
   float: right;
 }
@@ -301,10 +305,6 @@ LOCATION & EDIT LOCATION
   padding: 0;
   font-size: 0.8rem;
   border-bottom: 1px solid #edd2ab;
-}
-
-.editLocation {
-  
 }
 
 /*
@@ -416,15 +416,6 @@ MEDIA QUERIES
     width: 100%;
   }
 
-  /* .button {
-    background: -webkit-linear-gradient(#eee, #c59d59);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    height: 2em;
-    margin-right: 10px;
-    border-radius: 5px;
-  } */
-
   .login {
     width: 600px;
   }
@@ -445,10 +436,22 @@ MEDIA QUERIES
     height: 97%;
   }
 
-  .addNewLocation input, .addNewLocation .right {
-    float: right;
-    border-bottom: 1px #c59d59;
-    width: 200px;
+  .infoWindow {
+    text-align: center;
+    margin-left: 15px;
+    max-width: 320px;
+  }
+
+  .infoWindow p {
+    font-size: 1.3em;
+    font-weight: 400;
+    text-align: left;
+    margin-left: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
   }
 
   footer {
@@ -461,7 +464,6 @@ MEDIA QUERIES
     overflow: hidden;
     text-align: center;
     font-size: 0.8rem;
-    /* border-top: 0.1px solid; */
     padding-top: 5px;
     padding-bottom: 7px;
     background-color: #1f1e1e;
@@ -539,37 +541,55 @@ MEDIA QUERIES
         display: block;
     }
 
-.search {
-  margin-right: 260px;
-}
+  .infoWindow {
+    text-align: center;
+    margin-left: 15px;
+    max-width: 320px;
+  }
 
-.dropbtn {
-  display: none;
-}
+  .infoWindow p {
+    font-size: 1.3em;
+    font-weight: 400;
+    text-align: left;
+    margin-left: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+  }
 
-.dropdown:hover .dropdown-content {
-  display: flex;
-}
+  .search {
+    margin-right: 260px;
+  }
 
-.dropdown-content {
-  display: flex;
-  position: absolute;
-  top: 0;
-  background-color: #1f1e1e;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-}
+  .dropbtn {
+    display: none;
+  }
 
-.dropdown-content a {
-  color: #c59d59;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: inline;
-  border-bottom: none;
-}
+  .dropdown:hover .dropdown-content {
+    display: flex;
+  }
 
-.dropdown-content a:hover {
-  background-color: #7e7e7e;
-}
+  .dropdown-content {
+    display: flex;
+    position: absolute;
+    top: 0;
+    background-color: #1f1e1e;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .dropdown-content a {
+    color: #c59d59;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: inline;
+    border-bottom: none;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #7e7e7e;
+  }
 
 }
 
@@ -579,5 +599,22 @@ MEDIA QUERIES
         display: block;
     }
 
+    .infoWindow {
+      text-align: center;
+      margin-left: 15px;
+      max-width: 320px;
+    }
+
+    .infoWindow p {
+      font-size: 1.3em;
+      font-weight: 400;
+      text-align: left;
+      margin-left: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 10;
+      -webkit-box-orient: vertical;
+    }
   
 }

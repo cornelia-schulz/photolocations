@@ -15,7 +15,8 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#1f1e1e'
   }
 }
 
@@ -129,7 +130,7 @@ class Container extends React.Component {
       <BrowserRouter>
 
 
-        <Map google={this.props.google} style={style} click={this.onMapClicked} rightclick={this.onMapRightClicked}>
+        <Map google={this.props.google} style={style} click={this.onMapClicked} rightclick={this.onMapRightClicked} onContextMenu={this.onMapRightClicked}>
           {this.props.locations.map(marker => {
             return <Marker key={marker.id}
               click={this.onMarkerClick}
@@ -177,8 +178,8 @@ class Container extends React.Component {
                   <input type='text' name='title' id='title' onChange={this.handleChange} /><br />
                   <label htmlFor='description'>Description: </label>
                   <input type='description' name='description' id='description' onChange={this.handleChange} /><br />
-                  <button type='button' className='button' onClick={this.closeModal}>Cancel</button>
                   <button type='button' className='button' onClick={this.submitNewLocation}>Submit</button>
+                  <button type='button' className='button' onClick={this.closeModal}>Cancel</button>
                 </fieldset>
             </form>
           </Modal>

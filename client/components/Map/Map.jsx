@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {setLocation} from '../../actions/map'
 
 const PropTypes = require('prop-types')
-const evtNames = ['ready', 'click', 'dragend', 'rightclick']
+const evtNames = ['ready', 'click', 'dragend', 'rightclick', 'contextmenu']
 
 class Map extends React.Component {
   constructor(props) {
