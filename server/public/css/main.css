@@ -212,7 +212,7 @@ GOOGLE MAPS
 height of the parent container explicitly otherwise the size of 
 the map will be set to 0 */
 #map {
-  height: 100vh;
+  height: calc(100vh - 61px);
 }
 
 .map-container {
@@ -435,7 +435,7 @@ MEDIA QUERIES
   }
 
   .location {
-    height: 90vh;
+    height: calc(100vh - 61px);
     width: 98%;
     margin: 0 auto;
   }

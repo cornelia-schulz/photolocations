@@ -80,5 +80,23 @@ export function addLocation(location) {
 }
 
 export function editLocation(location) {
-  
+  const updatedLocation = {
+    id: location.id,
+    title: location.title,
+    info_title: location.info,
+    info: location.description,
+    lat: location.lat,
+    lng: location.lng
+  }
+  return (dispatch) => {
+    return request
+      .put('/api/v1/locations/edit')
+      .send(updatedLocation)
+      .then(() => {
+        return getLocation(location.id)
+      })
+      .catch(() => {
+        dispatch(showError('Could not update location'))
+      })
+  }
 }

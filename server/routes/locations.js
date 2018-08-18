@@ -30,4 +30,16 @@ router.post('/add', (req, res) => {
     })
 })
 
+router.put('/edit', (req, res) => {
+  const location = req.body
+  db.updateLocation(location)
+    .then(() => {
+      res.status(200).end()
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send('Unable to update location')
+    })
+})
+
 module.exports = router

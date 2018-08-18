@@ -7,7 +7,8 @@ const connection = knex(config)
 module.exports = {
   getAllLocations,
   getLocation,
-  addLocation
+  addLocation,
+  updateLocation
 }
 
 function getAllLocations(testDb) {
@@ -31,4 +32,11 @@ function addLocation(location, testDb) {
   const db = testDb || connection
   return db('locations')
     .insert(location)
+}
+
+function updateLocation(location, testDb) {
+  const db = testDb || connection
+  return db('locations')
+  .where('id', location.id)
+  .update(location)
 }
