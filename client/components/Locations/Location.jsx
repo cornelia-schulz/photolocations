@@ -1,9 +1,9 @@
 import React from 'react'
-import {getLocation} from '../../actions/locations'
+import { getLocation } from '../../actions/locations'
 import Comments from '../Comments/Comments'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import Modal from 'react-modal'
-import {editLocation} from '../../actions/locations'
+import { editLocation } from '../../actions/locations'
 
 const customStyles = {
   content: {
@@ -26,7 +26,8 @@ class Location extends React.Component {
       lng: this.props.location.lng,
       title: this.props.location.title,
       info: this.props.location.info,
-      description: this.props.location.description
+      description: this.props.location.description,
+      modalIsOpen: false
     }
     this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
@@ -35,7 +36,11 @@ class Location extends React.Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id
+    this.loadLocation(this.state.location)
+  }
+
+  loadLocation(location) {
+    const id = this.props.match.params.id || location.id
     this.props.getLocation(id)
       .then(location => {
         this.setState({
@@ -59,7 +64,7 @@ class Location extends React.Component {
   }
 
   handleChange(e) {
-    const {name, value} = e.target
+    const { name, value } = e.target
     this.setState({
       [name]: value
     })
@@ -68,22 +73,22 @@ class Location extends React.Component {
   submitLocation() {
     let lat, lng, title, info, description
     let id = this.state.location.id
-    if(this.state.lat === undefined) {
+    if (this.state.lat === undefined) {
       lat = this.state.location.lat
     } else { lat = this.state.lat }
-    if(this.state.lng === undefined) {
+    if (this.state.lng === undefined) {
       lng = this.state.location.lng
     } else { lng = this.state.lng }
-    if(this.state.title === undefined) {
+    if (this.state.title === undefined) {
       title = this.state.location.title
     } else { title = this.state.title }
-    if(this.state.info !== undefined) {
+    if (this.state.info !== undefined) {
       info = this.state.info
     } else { info = this.state.location.info }
-    if(this.state.description === undefined) {
+    if (this.state.description === undefined) {
       description = this.state.location.description
     } else { description = this.state.description }
-    
+
 
     const updatedLocation = {
       id: id,
@@ -94,14 +99,17 @@ class Location extends React.Component {
       description: description
     }
     this.props.editLocation(updatedLocation)
-    this.closeModal
+      .then(location => {
+        this.loadLocation(location)
+      })
+      .then(this.closeModal) 
   }
 
   render() {
     return (
       <div className="location row">
-      <div className="col-8">
-        <img src={this.props.location.url} alt={this.props.location.title} />
+        <div className="col-8">
+          <img src={this.props.location.url} alt={this.props.location.title} />
         </div>
         <div className="col-4 locationRight">
           <div className="locationText">
@@ -113,26 +121,30 @@ class Location extends React.Component {
             <p>
               {this.props.location.description}
             </p>
-            <Comments id={this.props.match.params.id}/>
+            <Comments id={this.props.match.params.id} />
           </div>
         </div>
         <Modal
-            isOpen={this.state.modalIsOpen}
-            onAfterOpen={this.afterOpenModal}
-            onRequestClose={this.closeModal}
-            style={customStyles}
-            contentLabel='Edit location'
-            ariaHideApp={false}
-          >
-            <div className='editLocation'>
-              {this.props.location && 
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel='Edit location'
+          ariaHideApp={false}
+        >
+          <div className='editLocation'>
+            {this.props.location &&
               <form>
                 <fieldset className>
                   <h1>Edit Location</h1>
-                  <label htmlFor='lat'>Latitude: </label><br />
-                  <input type='text' name='lat' defaultValue={this.props.location.lat} onChange={this.handleChange} /><br />
-                  <label htmlFor='lng'>Longitude: </label><br />
-                  <input type='text' name='lng' defaultValue={this.props.location.lng} onChange={this.handleChange} /><br />
+                  <div className='row'>
+                    <div className='col-6'>
+                      <p name='lat'>Latitude: {this.props.location.lat}</p>
+                    </div>
+                    <div className='col-6'>
+                      <p name='lng'>Longitude: {this.props.location.lng} </p>
+                    </div>
+                  </div>
                   <label htmlFor='title'>Place name: </label><br />
                   <input type='text' name='title' defaultValue={this.props.location.title} id='name' onChange={this.handleChange} /><br />
                   <label htmlFor='info'>Title: </label><br />
@@ -143,8 +155,8 @@ class Location extends React.Component {
                   <button type='button' className='button' onClick={this.closeModal}>Cancel</button>
                 </fieldset>
               </form>}
-            </div>
-          </Modal>
+          </div>
+        </Modal>
       </div>
     )
   }
