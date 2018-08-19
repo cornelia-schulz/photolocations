@@ -108,7 +108,6 @@ class Location extends React.Component {
   }
 
   render() {
-    const { rating } = this.state
     return (
       <div className='location row'>
         <div className='col-8'>
