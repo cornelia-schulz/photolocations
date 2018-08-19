@@ -41,10 +41,16 @@ deleteComment() {
 }
 
 render() {
+  let date = new Date(`${this.props.date}`)
+  let year = date.getFullYear()
+  let month = date.getMonth()
+  let day = date.getDay()
+  let publishDate = day + '/' + month + '/' + year
   return (
-    <div className="comment">
+    <div className='comment'>
       {!this.state.isHidden && <div className="commentInput">
-        {this.props.comment}
+        <p className='comment-user'>{this.props.user} wrote on {publishDate}:</p>
+        <p className='comment-content'>{this.props.comment}</p>
       </div>}
       {!this.state.isHidden && <div className="commentButtons">
         <button className='comment-button' id="updateButton" onClick={this.toggleHidden}>Update</button>

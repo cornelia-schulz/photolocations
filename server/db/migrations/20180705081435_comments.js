@@ -5,6 +5,8 @@ exports.up = function(knex, Promise) {
     table.integer('location_id')
     table.integer('user_id')
     table.string('comment')
+    table.dateTime('date')
+    table.integer('reply_To_Id')
   })
 }
 

@@ -107,18 +107,18 @@ class Location extends React.Component {
 
   render() {
     return (
-      <div className="location row">
-        <div className="col-8">
+      <div className='location row'>
+        <div className='col-8'>
           <img src={this.props.location.url} alt={this.props.location.title} />
         </div>
-        <div className="col-4 locationRight">
-          <div className="locationText">
+        <div className='col-4 locationRight'>
+          <div className='locationText'>
             <h1>{this.props.location.title}</h1>
-            <button className="comment-button" onClick={this.openModal}>Edit</button>
-            <p>
+            <button className='comment-button' onClick={this.openModal}>Edit</button>
+            <p class='location-content'>
               {this.props.location.info}
             </p>
-            <p>
+            <p className='location-content'>
               {this.props.location.description}
             </p>
             <Comments id={this.props.match.params.id} />

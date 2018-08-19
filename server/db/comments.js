@@ -14,6 +14,7 @@ module.exports = {
 function getAllComments(id, testDb) {
   const db = testDb || connection
   return db('comments')
+    .leftJoin('users', 'users.id', 'comments.user_id')
     .where('location_id', id)
     .select()
 }
