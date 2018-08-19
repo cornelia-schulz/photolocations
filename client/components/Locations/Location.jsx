@@ -4,6 +4,7 @@ import Comments from '../Comments/Comments'
 import { connect } from 'react-redux'
 import Modal from 'react-modal'
 import { editLocation } from '../../actions/locations'
+import StarRating from './StarRating'
 
 const customStyles = {
   content: {
@@ -27,7 +28,8 @@ class Location extends React.Component {
       title: this.props.location.title,
       info: this.props.location.info,
       description: this.props.location.description,
-      modalIsOpen: false
+      modalIsOpen: false,
+      rating: 3
     }
     this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
@@ -106,6 +108,7 @@ class Location extends React.Component {
   }
 
   render() {
+    const { rating } = this.state
     return (
       <div className='location row'>
         <div className='col-8'>
@@ -115,7 +118,8 @@ class Location extends React.Component {
           <div className='locationText'>
             <h1>{this.props.location.title}</h1>
             <button className='comment-button' onClick={this.openModal}>Edit</button>
-            <p class='location-content'>
+            <StarRating />
+            <p className='location-content'>
               {this.props.location.info}
             </p>
             <p className='location-content'>
