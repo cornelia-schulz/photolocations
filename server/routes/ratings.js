@@ -10,12 +10,19 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/:location/:user', (req, res) => {
+  const location = Number(req.params.location)
+  const user = Number(req.params.user)
+  db.getAllUserRatingsForLocation(location, user)
+    .then(ratings => {
+      res.json(ratings)
+    })
+})
+
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
-  console.log(id)
   db.getAllRatingsForLocation(id)
     .then(ratings => {
-      console.log(ratings)
       res.json(ratings)
     })
 })

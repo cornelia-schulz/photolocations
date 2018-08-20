@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import Modal from 'react-modal'
 import StarRating from './StarRating'
 import { getLocation, editLocation } from '../../actions/locations'
-import { getAllRatingsForLocation } from '../../actions/ratings'
 
 const customStyles = {
   content: {
@@ -38,8 +37,6 @@ class Location extends React.Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id 
-    this.props.getAllRatingsForLocation(id)
     this.loadLocation(this.state.location)
   }
 
@@ -172,9 +169,6 @@ function mapStateToProps(state) {
   return {
     location: state.receiveLocation
   }
-  return {
-    ratings: state.receiveLocationRatings
-  }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -184,9 +178,6 @@ function mapDispatchToProps(dispatch) {
     },
     editLocation: (location) => {
       return dispatch(editLocation(location))
-    },
-    getAllRatingsForLocation: (id) => {
-      return dispatch(getAllRatingsForLocation(id))
     }
   }
 }

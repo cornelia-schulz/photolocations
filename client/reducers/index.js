@@ -8,6 +8,7 @@ import receiveSearchString from './receiveSearchString'
 import setNewLocation from './setNewLocation'
 import receiveRatings from './receiveRatings'
 import receiveLocationRatings from './receiveLocationRatings'
+import receiveUserLocationRatings from './receiveUserLocationRatings'
 
 
 export default combineReducers({
@@ -19,5 +20,6 @@ export default combineReducers({
   receiveSearchString,
   setNewLocation,
   receiveRatings,
-  receiveLocationRatings
+  receiveLocationRatings,
+  receiveUserLocationRatings
 })

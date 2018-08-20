@@ -6,7 +6,8 @@ const connection = knex(config)
 
 module.exports = {
   getAllRatings,
-  getAllRatingsForLocation
+  getAllRatingsForLocation,
+  getAllUserRatingsForLocation
 }
 
 function getAllRatings(testDb) {
@@ -21,7 +22,6 @@ function getAllRatings(testDb) {
 
 function getAllRatingsForLocation(id, testDb) {
   const db = testDb || connection
-  console.log('getting data from db')
   return db('ratings')
     .avg('ratings.carparking as carparking')
     .avg('ratings.convenience as convenience')
@@ -29,3 +29,17 @@ function getAllRatingsForLocation(id, testDb) {
     .where('ratings.location_id', id)
     .select()
 }
+
+function getAllUserRatingsForLocation(location, user, testDb) {
+  const db = testDb || connection
+  return db('ratings')
+    .avg('ratings.carparking as carparking')
+    .avg('ratings.convenience as convenience')
+    .avg('ratings.views as views')
+    .where({
+      location_id: location,
+      user_id:  user
+    })
+    .select()
+}
+

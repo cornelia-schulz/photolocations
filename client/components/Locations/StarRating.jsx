@@ -1,21 +1,28 @@
 import React from 'react'
 import StarRatingComponent from 'react-star-rating-component'
 import { connect } from 'react-redux'
-import { getAllRatingsForLocation } from '../../actions/ratings'
+import { getAllRatingsForLocation, getAllUserRatingsForLocation } from '../../actions/ratings'
 
 class StarRating extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      userRating: 3,
+      userRating: 0,
       avgRating: 0,
       average: true
     }
     this.swapRating = this.swapRating.bind(this)
     this.onStarClick = this.onStarClick.bind(this)
+    this.getAvgRating = this.getAvgRating.bind(this)
+    this.getUserAvgRating = this.getUserAvgRating.bind(this)
   }
 
   componentDidMount() {
+    this.getAvgRating()
+    this.getUserAvgRating()
+  }
+
+  getAvgRating(){
     const id = this.props.id
     this.props.getAllRatingsForLocation(id)
       .then(ratings => {
@@ -23,6 +30,17 @@ class StarRating extends React.Component {
           avgRating: ratings
         })
     })
+  }
+
+  getUserAvgRating() {
+    const id  = this.props.id
+    const user = '1'
+    this.props.getAllUserRatingsForLocation(id, user)
+      .then(ratings => {
+        this.setState({
+          userRating: ratings
+        })
+      })
   }
 
   swapRating(rating){
@@ -41,11 +59,11 @@ class StarRating extends React.Component {
     let {userRating, avgRating} = this.state
     return (
      <div>
-      {this.state.average==false && <StarRatingComponent
+      {this.state.average==false  && this.props.userRating && <StarRatingComponent
         name='userRating'
         editing={true}
         starCount={5}
-        value={userRating}
+        value={this.props.userRating}
         onStarClick={this.onStarClick}
       />}
       {this.state.average && this.props.ratings && <StarRatingComponent
@@ -65,7 +83,8 @@ class StarRating extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    ratings: state.receiveLocationRatings
+    ratings: state.receiveLocationRatings,
+    userRating: state.receiveUserLocationRatings
   }
 }
 
@@ -73,6 +92,9 @@ function mapDispatchToProps(dispatch) {
   return {
     getAllRatingsForLocation: (id) => {
       return dispatch(getAllRatingsForLocation(id))
+    },
+    getAllUserRatingsForLocation: (location, user) => {
+      return dispatch(getAllUserRatingsForLocation(location, user))
     }
   }
 }

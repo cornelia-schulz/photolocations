@@ -5,6 +5,8 @@ export const REQUEST_RATINGS = 'REQUEST_RATINGS'
 export const RECEIVE_RATINGS = 'RECEIVE_RATINGS'
 export const REQUEST_LOCATION_RATINGS = 'REQUEST_LOCATION_RATINGS'
 export const RECEIVE_LOCATION_RATINGS = 'RECEIVE_LOCATION_RATINGS'
+export const REQUEST_USER_LOCATION_RATINGS = 'REQUEST_USER_LOCATION_RATINGS'
+export const RECEIVE_USER_LOCATION_RATINGS = 'RECEIVE_USER_LOCATION_RATINGS'
 
 export const requestAllRatings = () => {
   return {
@@ -33,6 +35,20 @@ export const receiveAllRatingsForLocation = (ratings) => {
   }
 }
 
+export const requestAllUserRatingsForLocation = () => {
+  return {
+    type: REQUEST_USER_LOCATION_RATINGS
+  }
+}
+
+export const receiveAllUserRatingsForLocation = (ratings) => {
+  const avgRating = Math.round((Number(ratings[0].carparking) + Number(ratings[0].convenience) + Number(ratings[0].views)) / 3)
+  return {
+    type: RECEIVE_USER_LOCATION_RATINGS,
+    ratings: avgRating
+  }
+}
+
 export function getAllRatings() {
   return (dispatch) => {
     return request
@@ -55,6 +71,19 @@ export function getAllRatingsForLocation(id) {
       })
       .catch(() => {
         dispatch(showError('Could not retrieve ratings for this location'))
+      })
+  }
+}
+
+export function getAllUserRatingsForLocation(location, user) {
+  return (dispatch) => {
+    return request
+      .get('/api/v1/ratings/'+ location + '/' + user)
+      .then(res => {
+        dispatch(receiveAllUserRatingsForLocation(res.body))
+      })
+      .catch(() => {
+        dispatch(showError('Could not retrieve ratings for this user for this location'))
       })
   }
 }
