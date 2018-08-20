@@ -7,6 +7,7 @@ import {getAllLocations, addLocation} from '../../actions/locations'
 import {connect} from 'react-redux'
 import Modal from 'react-modal'
 import {BrowserRouter, Link, Redirect } from 'react-router-dom'
+import StarRating from '../Locations/StarRating'
 
 const customStyles = {
   content: {
@@ -150,8 +151,8 @@ class Container extends React.Component {
             onClick={this.onMoreInfo}>
             <div className="infoWindow">
               <h2>{this.state.selectedPlace.title}</h2>
-              <img src={this.state.selectedPlace.url} width="300px" />
-              <img id="starRating" src="/images/stars.png" alt="star-rating" />
+              <img src={this.state.selectedPlace.url} />
+              {/* <StarRating id={this.state.selectedPlace.id} /> */}
               <p>{this.state.selectedPlace.info}</p>
               <p>
                 {this.state.selectedPlace.description}
