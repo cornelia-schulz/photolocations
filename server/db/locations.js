@@ -25,7 +25,18 @@ function getLocation(id, testDb) {
   .leftJoin('comments', 'locations.id', 'comments.location_id')
   .innerJoin('users', 'comments.user_id', 'users.id')
   .where('locations.id', id)
-  .select('locations.id as id', 'locations.title as title', 'locations.label as label', 'locations.lat as lat', 'locations.lng as lng', 'locations.info_title as info', 'locations.info as description', 'photos.title as imageTitle', 'photos.url as url', 'comments.comment as comment', 'comments.date as date', 'users.full_name as user')
+  .select('locations.id as id', 
+          'locations.title as title', 
+          'locations.label as label', 
+          'locations.lat as lat', 
+          'locations.lng as lng', 
+          'locations.info_title as info', 
+          'locations.info as description', 
+          'photos.title as imageTitle', 
+          'photos.url as url', 
+          'comments.comment as comment', 
+          'comments.date as date', 
+          'users.full_name as user')
   .first()
 }
 

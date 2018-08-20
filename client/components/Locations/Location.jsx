@@ -1,10 +1,10 @@
 import React from 'react'
-import { getLocation } from '../../actions/locations'
 import Comments from '../Comments/Comments'
 import { connect } from 'react-redux'
 import Modal from 'react-modal'
-import { editLocation } from '../../actions/locations'
 import StarRating from './StarRating'
+import { getLocation, editLocation } from '../../actions/locations'
+import { getAllRatingsForLocation } from '../../actions/ratings'
 
 const customStyles = {
   content: {
@@ -38,6 +38,8 @@ class Location extends React.Component {
   }
 
   componentDidMount() {
+    const id = this.props.match.params.id 
+    this.props.getAllRatingsForLocation(id)
     this.loadLocation(this.state.location)
   }
 
@@ -108,6 +110,7 @@ class Location extends React.Component {
   }
 
   render() {
+    const id = this.props.match.params.id
     return (
       <div className='location row'>
         <div className='col-8'>
@@ -117,7 +120,7 @@ class Location extends React.Component {
           <div className='locationText'>
             <h1>{this.props.location.title}</h1>
             <button className='comment-button' onClick={this.openModal}>Edit</button>
-            <StarRating />
+            <StarRating id={id} />
             <p className='location-content'>
               {this.props.location.info}
             </p>
@@ -169,6 +172,9 @@ function mapStateToProps(state) {
   return {
     location: state.receiveLocation
   }
+  return {
+    ratings: state.receiveLocationRatings
+  }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -178,6 +184,9 @@ function mapDispatchToProps(dispatch) {
     },
     editLocation: (location) => {
       return dispatch(editLocation(location))
+    },
+    getAllRatingsForLocation: (id) => {
+      return dispatch(getAllRatingsForLocation(id))
     }
   }
 }

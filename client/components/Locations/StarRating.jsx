@@ -1,17 +1,28 @@
 import React from 'react'
 import StarRatingComponent from 'react-star-rating-component'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getAllRatingsForLocation } from '../../actions/ratings'
 
 class StarRating extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       userRating: 3,
-      avgRating: 4,
+      avgRating: 0,
       average: true
     }
     this.swapRating = this.swapRating.bind(this)
     this.onStarClick = this.onStarClick.bind(this)
+  }
+
+  componentDidMount() {
+    const id = this.props.id
+    this.props.getAllRatingsForLocation(id)
+      .then(ratings => {
+        this.setState({
+          avgRating: ratings
+        })
+    })
   }
 
   swapRating(rating){
@@ -29,7 +40,7 @@ class StarRating extends React.Component {
   render() {
     let {userRating, avgRating} = this.state
     return (
-      <div>
+     <div>
       {this.state.average==false && <StarRatingComponent
         name='userRating'
         editing={true}
@@ -37,20 +48,33 @@ class StarRating extends React.Component {
         value={userRating}
         onStarClick={this.onStarClick}
       />}
-      {this.state.average && <StarRatingComponent
+      {this.state.average && this.props.ratings && <StarRatingComponent
         name='avgRating'
         editing={false}
         starCount={5}
-        value={avgRating}
+        value={this.props.ratings}
         onStarClick={this.onStarClick}
       />}
       <p>
-        <button className='rating-button' onClick={()=>this.swapRating(true)}>Average rating</button> | 
-        <button className='rating-button' onClick={()=>this.swapRating(false)}>Your rating</button>
+        <button className='rating-button' onClick={()=>this.swapRating(true)}>Average rating</button> | <button className='rating-button' onClick={()=>this.swapRating(false)}>Your rating</button>
       </p>
       </div>
     )
   }
 }
 
-export default StarRating
+function mapStateToProps(state) {
+  return {
+    ratings: state.receiveLocationRatings
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getAllRatingsForLocation: (id) => {
+      return dispatch(getAllRatingsForLocation(id))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StarRating)
