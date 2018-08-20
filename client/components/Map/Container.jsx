@@ -8,6 +8,7 @@ import {connect} from 'react-redux'
 import Modal from 'react-modal'
 import {BrowserRouter, Link, Redirect } from 'react-router-dom'
 import StarRating from '../Locations/StarRating'
+import { getAllRatingsForLocation, getAllUserRatingsForLocation } from '../../actions/ratings'
 
 const customStyles = {
   content: {
@@ -124,13 +125,12 @@ class Container extends React.Component {
       width: '100vh',
       height: '100vh'
     }
+    let { ratings, userRating } = this.props
     if(this.state.redirectId){
       return <Redirect to={`/location/${this.state.redirectId}`} />
     } 
     return (
       <BrowserRouter>
-
-
         <Map google={this.props.google} style={style} click={this.onMapClicked} rightclick={this.onMapRightClicked} onContextMenu={this.onMapRightClicked}>
           {this.props.locations.map(marker => {
             return <Marker key={marker.id}
@@ -143,7 +143,6 @@ class Container extends React.Component {
               position={{lat: marker.lat, lng: marker.lng}}
               url={marker.url} />
           })}
-
           <InfoWindow {...this.props}
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
@@ -152,7 +151,6 @@ class Container extends React.Component {
             <div className="infoWindow">
               <h2>{this.state.selectedPlace.title}</h2>
               <img src={this.state.selectedPlace.url} />
-              {/* <StarRating id={this.state.selectedPlace.id} /> */}
               <p>{this.state.selectedPlace.info}</p>
               <p>
                 {this.state.selectedPlace.description}

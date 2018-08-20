@@ -5,6 +5,7 @@ import Modal from 'react-modal'
 import StarRating from './StarRating'
 import EditLocation from './EditLocation'
 import { getLocation, editLocation } from '../../actions/locations'
+import { getAllRatingsForLocation, getAllUserRatingsForLocation } from '../../actions/ratings'
 
 const customStyles = {
   content: {
@@ -24,7 +25,6 @@ class Location extends React.Component {
     this.state = {
       location: this.props.location,
       modalIsOpen: false,
-      rating: 3
     }
     this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
@@ -58,10 +58,14 @@ class Location extends React.Component {
     })
   }
 
-  
-
   render() {
     const id = this.props.match.params.id
+    let { ratings, userRating } = this.state
+    if(this.props){
+      ratings = this.props.ratings
+      userRating = this.props.userRating
+    }
+    
     return (
       <div className='location row'>
         <div className='col-8'>

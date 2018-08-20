@@ -56,21 +56,21 @@ class StarRating extends React.Component {
   }
 
   render() {
-    let {userRating, avgRating} = this.state
+    let {userRating, ratings} = this.props
     return (
      <div>
-      {this.state.average==false  && this.props.userRating && <StarRatingComponent
+      {this.state.average==false && <StarRatingComponent
         name='userRating'
         editing={true}
         starCount={5}
-        value={this.props.userRating}
+        value={userRating}
         onStarClick={this.onStarClick}
       />}
-      {this.state.average && this.props.ratings && <StarRatingComponent
+      {this.state.average && <StarRatingComponent
         name='avgRating'
         editing={false}
         starCount={5}
-        value={this.props.ratings}
+        value={ratings}
         onStarClick={this.onStarClick}
       />}
       <p>
