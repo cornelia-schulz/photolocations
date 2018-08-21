@@ -16,7 +16,8 @@ class EditLocation extends React.Component {
       id: this.props.id,
       carparking: this.props.userRatings.carparking,
       convenience: this.props.userRatings.convenience,
-      views: this.props.userRatings.views
+      views: this.props.userRatings.views,
+      ratingId: this.props.userRatings.id
     }
     this.handleChange = this.handleChange.bind(this)
     this.submitLocation = this.submitLocation.bind(this)
@@ -77,6 +78,7 @@ class EditLocation extends React.Component {
       .then(() => {
         this.props.loadLocation(this.props.id)
       })
+      // if userRatingsId, then update otherwise add new rating
       .then(this.props.onClick) 
   }
 

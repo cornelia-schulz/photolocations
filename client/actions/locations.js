@@ -88,6 +88,13 @@ export function editLocation(location) {
     lat: location.lat,
     lng: location.lng
   }
+  const updatedRating = {
+    user_id: location.user,
+    location_id: location.id,
+    carparking: location.carparking,
+    convenience: location.convenience,
+    views: views
+  }
   return (dispatch) => {
     return request
       .put('/api/v1/locations/edit')
