@@ -7,8 +7,7 @@ const connection = knex(config)
 module.exports = {
   getAllRatings,
   getAllRatingsForLocation,
-  getAllUserRatingsForLocation,
-  getUserRatingsForLocation
+  getAllUserRatingsForLocation
 }
 
 function getAllRatings(testDb) {
