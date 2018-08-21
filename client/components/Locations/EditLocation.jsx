@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { editLocation } from '../../actions/locations'
+import StarRatingComponent from 'react-star-rating-component'
 
 class EditLocation extends React.Component {
   constructor(props) {
@@ -12,10 +13,22 @@ class EditLocation extends React.Component {
       title: this.props.location.title,
       info: this.props.location.info,
       description: this.props.location.description,
-      id: this.props.id
+      id: this.props.id,
+      carparking: this.props.userRatings.carparking,
+      convenience: this.props.userRatings.convenience,
+      views: this.props.userRatings.views
     }
     this.handleChange = this.handleChange.bind(this)
     this.submitLocation = this.submitLocation.bind(this)
+    this.onStarClick = this.onStarClick.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({
+      carparking: this.props.userRatings.carparking,
+      convenience: this.props.userRatings.convenience,
+      views: this.props.userRatings.views
+    })
   }
 
   handleChange(e) {
@@ -43,7 +56,10 @@ class EditLocation extends React.Component {
     if (this.state.description === undefined) {
       description = this.state.location.description
     } else { description = this.state.description }
-
+    let carparking = this.state.carparking
+    let convenience = this.state.convenience
+    let views = this.state.views
+    let user = 2
 
     const updatedLocation = {
       id: id,
@@ -51,13 +67,24 @@ class EditLocation extends React.Component {
       lng: lng,
       title: title,
       info: info,
-      description: description
+      description: description,
+      carparking: carparking,
+      convenience: convenience,
+      views: views,
+      user: user
     }
     this.props.editLocation(updatedLocation)
       .then(() => {
         this.props.loadLocation(this.props.id)
       })
       .then(this.props.onClick) 
+  }
+
+  onStarClick(nextValue, prevValue, name) {
+    console.log(name)
+    this.setState({
+      [name]: nextValue
+    })
   }
 
   render() {
@@ -78,7 +105,40 @@ class EditLocation extends React.Component {
           <label htmlFor='info'>Title: </label><br />
           <input type='text' name='info' defaultValue={this.props.location.info} id='title' onChange={this.handleChange} /><br />
           <label htmlFor='description'>Description: </label><br />
-          <textarea rows="4" cols="100" name='description' defaultValue={this.props.location.description} id='description' onChange={this.handleChange}></textarea><br />
+          <textarea rows='4' cols='100' name='description' defaultValue={this.props.location.description} id='description' onChange={this.handleChange}></textarea><br />
+          <div className='row update-star-rating'>
+            <div className='col-3'>
+            Carparking
+              <StarRatingComponent 
+                name='carparking'
+                editing={true}
+                starCount={5}
+                value={this.state.carparking}
+                onStarClick={this.onStarClick}
+              />
+            </div>
+            <div className='col-3'>
+                Convenience
+                <StarRatingComponent 
+                name='convenience'
+                editing={true}
+                starCount={5}
+                value={this.state.convenience}
+                onStarClick={this.onStarClick}
+              />
+            </div>
+            <div className='col-3'>
+                Views <br/>
+                <StarRatingComponent 
+                name='views'
+                editing={true}
+                starCount={5}
+                value={this.state.views}
+                onStarClick={this.onStarClick}
+              />
+            </div>
+          </div>
+          
           <button type='button' className='button' onClick={this.submitLocation}>Submit</button>
           <button type='button' className='button' onClick={this.props.onClick}>Cancel</button>
         </fieldset>

@@ -9,6 +9,7 @@ import setNewLocation from './setNewLocation'
 import receiveRatings from './receiveRatings'
 import receiveLocationRatings from './receiveLocationRatings'
 import receiveUserLocationRatings from './receiveUserLocationRatings'
+import receiveUserRatingsForLocation from './receiveUserRatingsForLocation'
 
 
 export default combineReducers({
@@ -21,5 +22,6 @@ export default combineReducers({
   setNewLocation,
   receiveRatings,
   receiveLocationRatings,
-  receiveUserLocationRatings
+  receiveUserLocationRatings,
+  receiveUserRatingsForLocation
 })

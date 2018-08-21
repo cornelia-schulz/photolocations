@@ -5,7 +5,7 @@ import Modal from 'react-modal'
 import StarRating from './StarRating'
 import EditLocation from './EditLocation'
 import { getLocation, editLocation } from '../../actions/locations'
-import { getAllRatingsForLocation, getAllUserRatingsForLocation } from '../../actions/ratings'
+import { getUserRatingsForLocation } from '../../actions/ratings'
 
 const customStyles = {
   content: {
@@ -25,13 +25,17 @@ class Location extends React.Component {
     this.state = {
       location: this.props.location,
       modalIsOpen: false,
+      userRatings: this.props.userRatings
     }
     this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
   }
 
   componentDidMount() {
+    const id = this.props.match.params.id
+    const user = 2
     this.loadLocation(this.state.location)
+    this.props.getUserRatingsForLocation(id, user)
   }
 
   loadLocation(locationid) {
@@ -48,6 +52,7 @@ class Location extends React.Component {
     this.setState({
       location: this.props.location,
       lat: this.props.lat,
+      userRatings: this.props.userRatings,
       modalIsOpen: true
     })
   }
@@ -60,12 +65,6 @@ class Location extends React.Component {
 
   render() {
     const id = this.props.match.params.id
-    let { ratings, userRating } = this.state
-    if(this.props){
-      ratings = this.props.ratings
-      userRating = this.props.userRating
-    }
-    
     return (
       <div className='location row'>
         <div className='col-8'>
@@ -94,7 +93,7 @@ class Location extends React.Component {
           ariaHideApp={false}
         >
           <div className='editLocation'>
-            {this.props.location && <EditLocation location={this.props.location} onClick={this.closeModal} id={id} loadLocation={()=>this.loadLocation(id)} />}
+            {this.props.location && <EditLocation location={this.props.location} userRatings={this.props.userRatings} onClick={this.closeModal} id={id} loadLocation={()=>this.loadLocation(id)} />}
           </div>
         </Modal>
       </div>
@@ -104,7 +103,8 @@ class Location extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    location: state.receiveLocation
+    location: state.receiveLocation,
+    userRatings: state.receiveUserRatingsForLocation
   }
 }
 
@@ -115,6 +115,9 @@ function mapDispatchToProps(dispatch) {
     },
     editLocation: (location) => {
       return dispatch(editLocation(location))
+    },
+    getUserRatingsForLocation: (id, user) => {
+      return dispatch(getUserRatingsForLocation(id, user))
     }
   }
 }
