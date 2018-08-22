@@ -7,7 +7,8 @@ const connection = knex(config)
 module.exports = {
   getAllRatings,
   getAllRatingsForLocation,
-  getAllUserRatingsForLocation
+  getAllUserRatingsForLocation,
+  upsertUserRating
 }
 
 function getAllRatings(testDb) {
@@ -38,4 +39,29 @@ function getAllUserRatingsForLocation(location, user, testDb) {
       user_id:  user
     })
     .select()
+}
+
+function upsertUserRating(rating, testDb) {
+  const db = testDb || connection
+  if (rating.id === null && rating.carparking === null && rating.convenience === null && rating.views === null){
+    return
+  }
+  else if (rating.id === null){
+    const newRating = {
+      location_id: rating.location_id,
+      user_id: rating.user_id,
+      carparking: rating.carparking,
+      convenience: rating.convenience,
+      views: rating.views
+    }
+    console.log(newRating)
+    return db('ratings')
+      .insert(newRating)
+  }
+  else {
+    console.log('else')
+    return db('ratings')
+      .where('id', rating.id)
+      .update(rating)
+  }
 }

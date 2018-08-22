@@ -14,10 +14,10 @@ class EditLocation extends React.Component {
       info: this.props.location.info,
       description: this.props.location.description,
       id: this.props.id,
-      carparking: this.props.userRatings.carparking,
-      convenience: this.props.userRatings.convenience,
-      views: this.props.userRatings.views,
-      ratingId: this.props.userRatings.id
+      carparking: null,
+      convenience: null,
+      views: null,
+      ratingId: null
     }
     this.handleChange = this.handleChange.bind(this)
     this.submitLocation = this.submitLocation.bind(this)
@@ -28,7 +28,8 @@ class EditLocation extends React.Component {
     this.setState({
       carparking: this.props.userRatings.carparking,
       convenience: this.props.userRatings.convenience,
-      views: this.props.userRatings.views
+      views: this.props.userRatings.views,
+      ratingId: this.props.userRatings.id
     })
   }
 
@@ -40,7 +41,7 @@ class EditLocation extends React.Component {
   }
 
   submitLocation() {
-    let lat, lng, title, info, description
+    let lat, lng, title, info, description, carparking, convenience, views, ratingId
     let id = this.state.location.id
     if (this.state.lat === undefined) {
       lat = this.state.location.lat
@@ -57,9 +58,18 @@ class EditLocation extends React.Component {
     if (this.state.description === undefined) {
       description = this.state.location.description
     } else { description = this.state.description }
-    let carparking = this.state.carparking
-    let convenience = this.state.convenience
-    let views = this.state.views
+    if (this.state.carparking === undefined) {
+      carparking = null
+    } else { carparking = this.state.carparking }
+    if (this.state.convenience === undefined) {
+      convenience = null
+    } else { convenience = this.state.convenience }
+    if (this.state.views === undefined) {
+      views = null
+    } else { views = this.state.views}
+    if (this.state.ratingId === undefined) {
+      ratingId = null
+    } else { ratingId = this.state.ratingId}
     let user = 2
 
     const updatedLocation = {
@@ -72,13 +82,13 @@ class EditLocation extends React.Component {
       carparking: carparking,
       convenience: convenience,
       views: views,
-      user: user
+      user: user,
+      ratingId: ratingId
     }
     this.props.editLocation(updatedLocation)
       .then(() => {
         this.props.loadLocation(this.props.id)
       })
-      // if userRatingsId, then update otherwise add new rating
       .then(this.props.onClick) 
   }
 

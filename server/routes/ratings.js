@@ -17,6 +17,23 @@ router.get('/:location/:user', (req, res) => {
     .then(ratings => {
       res.json(ratings)
     })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send('Unable to get ratings')
+    })
+})
+
+router.post('/edit', (req, res) => {
+  const rating = req.body
+  console.log(rating)
+  db.upsertUserRating(rating)
+  .then(() => {
+    res.status(200).end()
+  })
+  .catch(err => {
+    console.error(err)
+    res.status(500).send('Unable to update rating')
+  })
 })
 
 router.get('/:id', (req, res) => {
@@ -24,6 +41,10 @@ router.get('/:id', (req, res) => {
   db.getAllRatingsForLocation(id)
     .then(ratings => {
       res.json(ratings)
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send('Unable to get ratings')
     })
 })
 

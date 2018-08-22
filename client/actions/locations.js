@@ -1,5 +1,6 @@
 import request from 'superagent'
 import {showError} from './error'
+import {getUserRatingsForLocation} from './ratings'
 
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS'
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS'
@@ -89,16 +90,20 @@ export function editLocation(location) {
     lng: location.lng
   }
   const updatedRating = {
+    id: location.ratingId,
     user_id: location.user,
     location_id: location.id,
     carparking: location.carparking,
     convenience: location.convenience,
-    views: views
+    views: location.views
   }
   return (dispatch) => {
     return request
       .put('/api/v1/locations/edit')
       .send(updatedLocation)
+      .then(() => {
+        upsertRating(updatedRating)
+      })
       .then(() => {
         return getLocation(location.id)
       })
@@ -106,4 +111,16 @@ export function editLocation(location) {
         dispatch(showError('Could not update location'))
       })
   }
+}
+
+export function upsertRating(rating){
+  return request
+    .post('/api/v1/ratings/edit')
+    .send(rating)
+    .then(() => {
+      return getUserRatingsForLocation(rating.location_id, rating.user_id)
+    })
+    .catch(() => {
+      dispatch(showError('Could not update rating'))
+    })
 }
