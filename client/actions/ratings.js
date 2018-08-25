@@ -30,7 +30,14 @@ export const requestAllRatingsForLocation = () => {
 }
 
 export const receiveAllRatingsForLocation = (ratings) => {
-  const avgRating = Math.round((Number(ratings[0].carparking) + Number(ratings[0].convenience) + Number(ratings[0].views)) / 3)
+
+  // filter the ratings where not null
+  // sum them
+  // divide by count
+  const r = [ratings[0].carparking, ratings[0].convenience, ratings[0].views]
+  const sum = r.filter(a=> a !== null).reduce((a, b) => a + b)
+  const divider = r.filter(a=> a !== null).length
+  const avgRating = Math.round(sum/divider)
   return {
     type: RECEIVE_LOCATION_RATINGS,
     ratings: avgRating
