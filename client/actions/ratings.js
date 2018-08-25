@@ -33,11 +33,13 @@ export const receiveAllRatingsForLocation = (ratings) => {
 
   // filter the ratings where not null
   // sum them
-  // divide by count
+  // divide by count if not 0
   const r = [ratings[0].carparking, ratings[0].convenience, ratings[0].views]
   const sum = r.filter(a=> a !== null).reduce((a, b) => a + b)
   const divider = r.filter(a=> a !== null).length
-  const avgRating = Math.round(sum/divider)
+  if(divider !== 0){
+    var avgRating = Math.round(sum/divider)
+  }
   return {
     type: RECEIVE_LOCATION_RATINGS,
     ratings: avgRating

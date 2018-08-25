@@ -3,6 +3,7 @@ html, body {
   position: relative;
   margin: 0;
   padding: 0;
+  padding-bottom: 20px;
   font-family: 'Lato', sans-serif;
   background-color: #1f1e1e;
   color: #c59d59;
@@ -170,11 +171,13 @@ FOOTER
 
 footer {
   display: none;
+  height: 20px;
 }
 
 footer .fa {
   font-size: 1em;
 }
+
 
 /* 
 ====================================
@@ -502,8 +505,6 @@ MEDIA QUERIES
     display: block;
     width: 100%;
     position: absolute;
-    left: 0;
-    bottom: 0;
     height: 20px;
     overflow: hidden;
     text-align: center;
@@ -511,7 +512,6 @@ MEDIA QUERIES
     padding-top: 5px;
     padding-bottom: 7px;
     background-color: #1f1e1e;
-    margin-top: -20px;
     clear: both;
   }
 
