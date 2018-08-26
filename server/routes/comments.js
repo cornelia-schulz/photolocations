@@ -8,6 +8,10 @@ router.get('/:id', (req, res) => {
     .then(comments => {
       res.json(comments)
     })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send('Unable to get comments from database')
+    })
 })
 
 router.post('/', (req, res) => {

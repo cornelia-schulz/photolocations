@@ -8,6 +8,10 @@ router.get('/', (req, res) => {
     .then(locations => {
       res.json(locations)
     })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send('Unable to get locations from database')
+    })
 })
 
 router.get('/:id', (req, res) => {
@@ -15,6 +19,10 @@ router.get('/:id', (req, res) => {
   db.getLocation(id)
     .then(location => {
       res.json(location)
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send('Unable to get location from database')
     })
 } )
 

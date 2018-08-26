@@ -13,10 +13,18 @@ module.exports = {
 
 function getAllLocations(testDb) {
   const db = testDb || connection
-  return db('locations')
-    .leftJoin('photos', 'locations.id', 'photos.location_id')
-    .select('locations.id as id', 'locations.title as title', 'locations.label as label', 'locations.lat as lat', 'locations.lng as lng', 'locations.info as description', 'photos.title as imageTitle', 'photos.url as url', 'locations.info_title as info')
-}
+    return db('locations')
+        .leftJoin('ratings', 'locations.id', 'ratings.location_id')
+        .leftJoin('photos', 'locations.id', 'photos.location_id' )
+        .groupBy('locations.id')
+        .select(knex.raw('locations.id, locations.title, locations.label, locations.lat, locations.lng, locations.info_title as info, locations.info as description, photos.title as imageTitle, photos.url as url,' +
+                          'AVG( IFNULL(ratings.carparking, 0) + IFNULL(ratings.convenience, 0) + IFNULL(ratings.views, 0) ) / ' +
+                          '   (CASE WHEN ratings.carparking IS NULL THEN 0 ELSE 1 END + ' +
+                          '   CASE WHEN ratings.convenience IS NULL THEN 0 ELSE 1 END + ' +
+                          '   CASE WHEN ratings.views IS NULL THEN 0 ELSE 1 END) AS location_average_rating'
+                        ))
+                  }
+
 
 function getLocation(id, testDb) {
   const db = testDb || connection

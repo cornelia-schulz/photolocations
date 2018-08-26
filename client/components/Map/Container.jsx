@@ -7,7 +7,6 @@ import {getAllLocations, addLocation} from '../../actions/locations'
 import {connect} from 'react-redux'
 import Modal from 'react-modal'
 import {BrowserRouter, Link, Redirect } from 'react-router-dom'
-import StarRating from '../Locations/StarRating'
 import { getAllRatingsForLocation, getAllUserRatingsForLocation } from '../../actions/ratings'
 
 const customStyles = {
@@ -147,10 +146,13 @@ class Container extends React.Component {
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
             selectedPlace={this.state.selectedPlace}
+            stars={5}
             onClick={this.onMoreInfo}>
             <div className="infoWindow">
               <h2>{this.state.selectedPlace.title}</h2>
               <img src={this.state.selectedPlace.url} />
+              {}
+              <i class="fa fa-star" aria-hidden="true"></i>
               <p>{this.state.selectedPlace.info}</p>
               <p>
                 {this.state.selectedPlace.description}
