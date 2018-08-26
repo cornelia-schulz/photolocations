@@ -258,7 +258,7 @@ the map will be set to 0 */
   -webkit-text-fill-color: transparent;
 }
 
-.stars {
+.infoWindow .stars {
   width: 95%;
   text-align: center;
 }
