@@ -258,6 +258,11 @@ the map will be set to 0 */
   -webkit-text-fill-color: transparent;
 }
 
+.stars {
+  width: 95%;
+  text-align: center;
+}
+
 /*
 ====================================
 ADD LOCATION MODAL
@@ -499,6 +504,11 @@ MEDIA QUERIES
     display: -webkit-box;
     -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
+  }
+
+  .infoWindow .stars {
+    width: 95%;
+    text-align: center;
   }
 
   footer {

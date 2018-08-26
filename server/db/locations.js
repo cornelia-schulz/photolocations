@@ -21,7 +21,7 @@ function getAllLocations(testDb) {
                           'AVG( IFNULL(ratings.carparking, 0) + IFNULL(ratings.convenience, 0) + IFNULL(ratings.views, 0) ) / ' +
                           '   (CASE WHEN ratings.carparking IS NULL THEN 0 ELSE 1 END + ' +
                           '   CASE WHEN ratings.convenience IS NULL THEN 0 ELSE 1 END + ' +
-                          '   CASE WHEN ratings.views IS NULL THEN 0 ELSE 1 END) AS location_average_rating'
+                          '   CASE WHEN ratings.views IS NULL THEN 0 ELSE 1 END) AS rating'
                         ))
                   }
 

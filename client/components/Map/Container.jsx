@@ -7,7 +7,6 @@ import {getAllLocations, addLocation} from '../../actions/locations'
 import {connect} from 'react-redux'
 import Modal from 'react-modal'
 import {BrowserRouter, Link, Redirect } from 'react-router-dom'
-import { getAllRatingsForLocation, getAllUserRatingsForLocation } from '../../actions/ratings'
 
 const customStyles = {
   content: {
@@ -140,7 +139,8 @@ class Container extends React.Component {
               id={marker.id}
               description={marker.description}
               position={{lat: marker.lat, lng: marker.lng}}
-              url={marker.url} />
+              url={marker.url}
+              rating={marker.rating} />
           })}
           <InfoWindow {...this.props}
             marker={this.state.activeMarker}
@@ -151,8 +151,11 @@ class Container extends React.Component {
             <div className="infoWindow">
               <h2>{this.state.selectedPlace.title}</h2>
               <img src={this.state.selectedPlace.url} />
-              {}
-              <i class="fa fa-star" aria-hidden="true"></i>
+              {this.state.selectedPlace.rating > 1 && this.state.selectedPlace.rating < 2 && <p className="stars"><i className="fa fa-star" aria-hidden="true"></i></p>}
+              {this.state.selectedPlace.rating > 2 && this.state.selectedPlace.rating < 3 && <p className="stars"><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i></p> }
+              {this.state.selectedPlace.rating > 3 && this.state.selectedPlace.rating < 4 && <p className="stars"><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i></p> }
+              {this.state.selectedPlace.rating > 4 && this.state.selectedPlace.rating < 5 && <p className="stars"><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i></p> }
+              {this.state.selectedPlace.rating == 5 && <p className="stars"><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i></p> }
               <p>{this.state.selectedPlace.info}</p>
               <p>
                 {this.state.selectedPlace.description}
