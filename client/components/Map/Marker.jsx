@@ -61,7 +61,7 @@ class Marker extends React.Component {
       info,
       url,
       id,
-      rating,
+      // rating,
       description
     } = this.props;
     if (!google) {
@@ -82,7 +82,7 @@ class Marker extends React.Component {
       info: this.props.info,
       url: this.props.url,
       id: this.props.id,
-      rating: this.props.rating,
+      // rating: this.props.rating,
       description: this.props.description,
       draggable: this.props.draggable
     }
