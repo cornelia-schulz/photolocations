@@ -5,7 +5,7 @@ import Modal from 'react-modal'
 import StarRating from './StarRating'
 import EditLocation from './EditLocation'
 import { getLocation, editLocation } from '../../actions/locations'
-import { getUserRatingsForLocation } from '../../actions/ratings'
+// import { getUserRatingsForLocation } from '../../actions/ratings'
 
 const customStyles = {
   content: {
@@ -35,7 +35,7 @@ class Location extends React.Component {
     const id = this.props.match.params.id
     const user = 2
     this.loadLocation(this.state.location)
-    this.props.getUserRatingsForLocation(id, user)
+    // this.props.getUserRatingsForLocation(id, user)
   }
 
   loadLocation(locationid) {
@@ -116,9 +116,9 @@ function mapDispatchToProps(dispatch) {
     editLocation: (location) => {
       return dispatch(editLocation(location))
     },
-    getUserRatingsForLocation: (id, user) => {
-      return dispatch(getUserRatingsForLocation(id, user))
-    }
+    // getUserRatingsForLocation: (id, user) => {
+    //   return dispatch(getUserRatingsForLocation(id, user))
+    // }
   }
 }
 
