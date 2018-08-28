@@ -104,7 +104,7 @@ class Location extends React.Component {
 function mapStateToProps(state) {
   return {
     location: state.receiveLocation,
-    userRatings: state.receiveUserRatingsForLocation
+    // userRatings: state.receiveUserRatingsForLocation
   }
 }
 
