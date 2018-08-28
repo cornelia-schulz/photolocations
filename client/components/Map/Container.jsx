@@ -129,7 +129,7 @@ class Container extends React.Component {
     } 
     return (
       <BrowserRouter>
-        <Map google={this.props.google} style={style} click={this.onMapClicked} rightclick={this.onMapRightClicked} onContextMenu={this.onMapRightClicked}>
+        <Map google={this.props.google} style={style} click={this.onMapClicked} rightclick={this.onMapRightClicked} maplongclick={this.onMapRightClicked}>
           {this.props.locations.map(marker => {
             return <Marker key={marker.id}
               click={this.onMarkerClick}
