@@ -50,6 +50,7 @@ render(){
       <img src='/images/Muriwai.jpg' alt='Muriwai' />
       <div className='contactText'>
         <h1>Get in touch!</h1>
+        {this.props.message && <span className='error'>{this.props.message}</span>}
         <form className='contactForm' id='contactForm' onSubmit={this.handleSubmit} method="POST">
           <label htmlFor='name'>Your name:</label>
           <br />
@@ -77,4 +78,11 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Contact)
+function mapStateToProps (state) {
+  return {
+    message: state.errorMessage,
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contact)
