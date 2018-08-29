@@ -9,10 +9,10 @@ export function sendMail(message) {
       .then((res) => {
         if(res.body.msg === 'success'){
               console.log('Message sent')
-              this.resetForm()
             } else if(res.body.msg === 'fail'){
               console.log('Message failed to send')
             }
+        return res.body.msg
       })
       .catch(() => {
         dispatch(showError('Could not send mail'))

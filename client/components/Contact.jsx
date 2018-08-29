@@ -24,10 +24,13 @@ handleSubmit(e) {
     message: this.state.message
   }
   this.props.sendMail(newMessage)
-}
-
-sendMessage() {
-
+    .then((response) => {
+      console.log(response)
+      if(response === 'success'){
+        this.resetForm()
+      }
+    })
+  
 }
 
 handleChange(e) {
