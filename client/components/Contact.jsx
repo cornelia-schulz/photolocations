@@ -1,4 +1,7 @@
 import React from 'react'
+import axios from 'axios'
+import {connect} from 'react-redux'
+import {sendMail} from '../actions/contact'
 
 class Contact extends React.Component {
 constructor(props){
@@ -14,24 +17,18 @@ constructor(props){
 }
 
 handleSubmit(e) {
+
   e.preventDefault()
   const newMessage = {
     name: this.state.name,
     email: this.state.email,
     message: this.state.message
   }
-  axios({
-    method: "POST",
-    url:"http://localhost:3002/send",
-    data: newMessage
-  }).then((response) => {
-    if(response.data.msg === 'success'){
-      console.log('Message sent')
-      this.resetForm()
-    } else if(response.data.msg === 'fail'){
-      console.log('Message failed to send')
-    }
-  })
+  this.props.sendMail(newMessage)
+}
+
+sendMessage() {
+
 }
 
 handleChange(e) {
@@ -59,7 +56,7 @@ render(){
           <label htmlFor='email'>Your email:</label><br />
           <input type='email' name='email' id='email' onChange={this.handleChange}/> <br />
           <label htmlFor='message'>Your message:</label><br />
-          <textarea rows='10' cols='50' id='message' onChange={this.handleChange}>
+          <textarea rows='10' cols='50' name='message' id='message' onChange={this.handleChange}>
           </textarea>
           <br />
           <input className='button' type='submit' id='contactFormSubmit' />
@@ -70,4 +67,12 @@ render(){
 }
 }
 
-export default Contact
+function mapDispatchToProps(dispatch) {
+  return {
+    sendMail: (newMessage) => {
+      return dispatch(sendMail(newMessage))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Contact)
