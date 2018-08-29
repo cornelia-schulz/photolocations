@@ -33,6 +33,7 @@ router.post('/send', (req, res, next) => {
   const mail = {
     from: name,
     to: 'cornelia.schulz.photography@gmail.com',
+    subject: 'Mail from Photolocations.nz',
     text: content
   }
 
