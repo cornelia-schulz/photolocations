@@ -133,9 +133,9 @@ NAVIGATION
   width: 100%;
 }
 
-/* .dropbtn:hover {
+.dropbtn:hover {
   background-color: #7e7e7e;
-} */
+}
 
 .dropdown-content {
   display: none;
@@ -156,13 +156,13 @@ NAVIGATION
   border-bottom: 1px solid #ddd;
 }
 
-/* .dropdown-content a:hover {
+.dropdown-content a:hover {
   background-color: #7e7e7e;
 } */
 
-/* .dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content {
   display: block;
-} */
+}
 
 /*
 ====================================

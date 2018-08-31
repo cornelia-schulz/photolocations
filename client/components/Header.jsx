@@ -10,11 +10,15 @@ class Header extends React.Component {
   }
 
   toggleVisibility() {
+    const w = window
+    const width = w.innerWidth
     const menu = document.getElementsByClassName('dropdown-content')[0]
-    if (menu.style.display === "none") {
-      menu.style.display = "block"
+    if (menu.style.display === 'none') {
+      menu.style.display = 'block'
+    } else if (width >= 768) {
+      menu.style.display = 'flex'
     } else {
-      menu.style.display = "none"
+      menu.style.display = 'none'
     }
   }
 
