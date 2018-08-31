@@ -6,8 +6,17 @@ import Search from './Map/Search'
 class Header extends React.Component {
   constructor(props) {
     super(props)
+    this.toggleVisibility = this.toggleVisibility.bind(this)
   }
 
+  toggleVisibility() {
+    const menu = document.getElementsByClassName('dropdown-content')[0]
+    if (menu.style.display === "none") {
+      menu.style.display = "block"
+    } else {
+      menu.style.display = "none"
+    }
+  }
 
   render() {
     return (
@@ -21,13 +30,13 @@ class Header extends React.Component {
             <Route exact path='/' component={Search} />
           </div>
           <div className="dropdown header">
-            <button className="dropbtn">
+            <button className="dropbtn" onClick={this.toggleVisibility}>
               <i className="fa fa-bars" aria-hidden="true"></i>
             </button>
             <div className="dropdown-content">
-              <Link to="/">Home</Link>
-              <Link to="/about">About</Link>
-              <Link to="/contact">Contact</Link>
+              <Link to="/" onClick={this.toggleVisibility}>Home</Link>
+              <Link to="/about" onClick={this.toggleVisibility}>About</Link>
+              <Link to="/contact" onClick={this.toggleVisibility}>Contact</Link>
             </div>
           </div>
         </nav>
