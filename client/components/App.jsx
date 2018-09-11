@@ -7,6 +7,7 @@ import Contact from './Contact'
 import Location from './Locations/Location'
 import Login from './Login'
 import Footer from './Footer'
+import ReactGA from 'react-ga'
 
 
 class App extends React.Component {
@@ -22,6 +23,11 @@ class App extends React.Component {
     this.setState({
       searchString: searchString
     })
+  }
+
+  initializeReactGA() {
+    ReactGA.initialize('UA-124825499-1');
+    ReactGA.pageview('/homepage');
   }
 
   render(){
@@ -40,7 +46,7 @@ class App extends React.Component {
         </div>
       
       </BrowserRouter>
-    );
+    )
   }
 }
 export default App
