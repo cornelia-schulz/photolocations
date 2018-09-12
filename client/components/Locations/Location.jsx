@@ -6,6 +6,10 @@ import StarRating from './StarRating'
 import EditLocation from './EditLocation'
 import { getLocation, editLocation } from '../../actions/locations'
 // import { getUserRatingsForLocation } from '../../actions/ratings'
+import ReactGA from 'react-ga'
+
+ReactGA.initialize('UA-124825499-1')
+ReactGA.pageview(window.location.pathname + window.location.search)
 
 const customStyles = {
   content: {

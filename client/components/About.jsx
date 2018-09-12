@@ -1,4 +1,8 @@
 import React from 'react'
+import ReactGA from 'react-ga'
+
+ReactGA.initialize('UA-124825499-1')
+ReactGA.pageview(window.location.pathname + window.location.search)
 
 const About = (props) => {
   return (
