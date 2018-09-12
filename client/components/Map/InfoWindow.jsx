@@ -9,7 +9,7 @@ class InfoWindow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { google, map } = this.props;
+    const { google, map } = this.props
 
     if (!google || !map) {
       return

@@ -144,6 +144,7 @@ class Container extends React.Component {
               />
           })}
           <InfoWindow {...this.props}
+            defaultOptions={{ disableAutoPan: false }}
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
             selectedPlace={this.state.selectedPlace}
