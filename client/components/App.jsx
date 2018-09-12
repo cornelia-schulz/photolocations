@@ -16,7 +16,12 @@ class App extends React.Component {
     this.state = {
       searchString: ''
     }
-    this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this)
+    this.initializeReactGA = this.initializeReactGA.bind(this)
+  }
+
+  componentDidMount() {
+    this.initializeReactGA()
   }
   
   onChange(searchString) {
