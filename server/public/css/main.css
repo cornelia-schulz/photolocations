@@ -503,7 +503,7 @@ MEDIA QUERIES
     margin-bottom: 10px;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 10;
+    -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
   }
 
