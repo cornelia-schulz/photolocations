@@ -3,5 +3,9 @@
     "home": "Start",
     "about": "Über",
     "contact": "Kontakt"
+  },
+  "languages": {
+    "en": "Englisch",
+    "de": "Deutsch"
   }
 }
