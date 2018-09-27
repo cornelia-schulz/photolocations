@@ -46,18 +46,17 @@ textarea {
 }
 
 .button {
-  /* background: -webkit-linear-gradient(#eee, #c59d59);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: #c59d59;
-  -webkit-text-fill-color: transparent;
+  background-color: #c59d59;
+  background: -webkit-linear-gradient(top, #c59d59 0%,#fcce37 100%);
+  background: -moz-linear-gradient(top, #c59d59 0%, #fcce37 100%); 
+  background: linear-gradient(to bottom, #c59d59 0%, #fcce37 100%);
   height: 2em;
   margin-right: 10px;
   border-radius: 5px;
   font-size: 1em;
   -moz-border-radius:6px;
 	-webkit-border-radius:6px;
-	border-radius:6px; */
+	border-radius:6px;
 }
 
 .button:active {
@@ -212,6 +211,9 @@ ABOUT
 #contactFormSubmit, .button {
   color: #1f1e1e;
   background-color: #c59d59;
+  background: -webkit-linear-gradient(top, #c59d59 0%,#fcce37 100%);
+  background: -moz-linear-gradient(top, #c59d59 0%, #fcce37 100%); 
+  background: linear-gradient(to bottom, #c59d59 0%, #fcce37 100%);
   width: 90px;
   border: 1px solid whitesmoke;
   -moz-border-radius:6px;
@@ -267,10 +269,10 @@ the map will be set to 0 */
 
 #closeButton {
   margin-left: 25px;
-  /* background: -webkit-linear-gradient( #c59d59, #1f1e1e);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent; */
+  background-color: #c59d59;
+  background: -webkit-linear-gradient(top, #c59d59 0%,#fcce37 100%);
+  background: -moz-linear-gradient(top, #c59d59 0%, #fcce37 100%); 
+  background: linear-gradient(to bottom, #c59d59 0%, #fcce37 100%);
   -moz-border-radius:6px;
 	-webkit-border-radius:6px;
 	border-radius:6px;
@@ -343,13 +345,11 @@ LOCATION & EDIT LOCATION
 }
 
 .rating-button {
-    background: -webkit-linear-gradient(#eee, #c59d59);
-    -webkit-background-clip: text;
-    /* -webkit-text-fill-color: transparent; */
-    border: none;
-    padding: 0;
-    border-bottom: 1px solid #edd2ab;
-    font-size: 0.7rem;
+  color: #c59d59;
+  background-color: #1f1e1e;
+  border: 1px solid #1f1e1e;
+  font-size: 1em;
+  text-decoration: underline;
 }
 
 .dv-star-rating {
@@ -379,14 +379,11 @@ COMMENTS SECTION
 }
 
 .comment-button {
-  background: -webkit-linear-gradient(#eee, #c59d59);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  border: none;
-  padding: 0;
-  margin: 5px;
-  border-bottom: 1px solid #edd2ab;
-  font-size: 0.8rem;
+  color: #c59d59;
+  background-color: #1f1e1e;
+  border: 1px solid #1f1e1e;
+  font-size: 1em;
+  text-decoration: underline;
 }
 
 .comment-user {
