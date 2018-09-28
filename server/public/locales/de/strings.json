@@ -7,5 +7,11 @@
   "languages": {
     "en": "Englisch",
     "de": "Deutsch"
+  },
+  "about": {
+    "about_header": "Über Photo Locations",
+    "about_paragraph_1": "Willkommen bei Photo Locations. Diese App ist für jeden, der gern auf Reisen fotografiert. Ich bin gern unterwegs und lerne neue Orte kennen aber manchmal fehlt einem einfach die Zeit, um einen Ort vollständig zu erkunden aber man möchte trotzdem mit tollen Fotos nach Hause kommen.",
+    "about_paragraph_2": "Ich hoffe, dass euch die Seite von Nutzen ist. Ihr könnt mir jederzeit gern eine Nachricht auf der Kontaktseite hinterlassen.",
+    "about_paragraph_3": "Viel Spass!"
   }
 }

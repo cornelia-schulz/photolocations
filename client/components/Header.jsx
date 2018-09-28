@@ -2,12 +2,16 @@ import { Route, Link } from 'react-router-dom'
 import React from 'react'
 import Search from './Map/Search'
 import { I18n } from 'react-i18next'
+import i18n from 'i18next'
+import { connect } from 'react-redux'
+import { setLanguage } from '../actions/localise'
 
 
 class Header extends React.Component {
   constructor(props) {
     super(props)
     this.toggleVisibility = this.toggleVisibility.bind(this)
+    this.changeLanguage = this.changeLanguage.bind(this)
   }
 
   toggleVisibility() {
@@ -23,6 +27,11 @@ class Header extends React.Component {
     }
   }
 
+  changeLanguage(language) {
+    i18n.changeLanguage(language)
+    this.props.setLanguage(language)
+  }
+
   render() {
     return (
       <I18n ns="strings">
@@ -34,8 +43,8 @@ class Header extends React.Component {
                   <img src="/images/Logo.PNG" alt="Photo Locations" />
                 </div>
                 <div className="languages">
-                <button className="button language" onClick={() => i18n.changeLanguage('de')}>{t('languages.de')}</button>
-                <button className="button language" onClick={() => i18n.changeLanguage('en')}>{t('languages.en')}</button>
+                <button className="button language" onClick={() => this.changeLanguage('de')}>{t('languages.de')}</button>
+                <button className="button language" onClick={() => this.changeLanguage('en')}>{t('languages.en')}</button>
                 </div>
                 <div className="header">
                   <Route exact path='/' component={Search} />
@@ -55,11 +64,16 @@ class Header extends React.Component {
           )
         }
       </I18n>
-
-
     )
-
   }
 }
 
-export default Header
+function mapDispatchToProps(dispatch) {
+  return {
+    setLanguage: (language) => {
+      return dispatch(setLanguage(language))
+    }
+  }
+}
+
+export default connect (null, mapDispatchToProps)(Header)
