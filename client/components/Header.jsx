@@ -33,9 +33,9 @@ class Header extends React.Component {
                 <div className="logo header  header-left">
                   <img src="/images/Logo.PNG" alt="Photo Locations" />
                 </div>
-                <div>
-                <button onClick={() => i18n.changeLanguage('de')}>{t('languages.de')}</button>
-                <button onClick={() => i18n.changeLanguage('en')}>{t('languages.en')}</button>
+                <div className="languages">
+                <button className="button language" onClick={() => i18n.changeLanguage('de')}>{t('languages.de')}</button>
+                <button className="button language" onClick={() => i18n.changeLanguage('en')}>{t('languages.en')}</button>
                 </div>
                 <div className="header">
                   <Route exact path='/' component={Search} />
