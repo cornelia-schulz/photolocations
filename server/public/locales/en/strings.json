@@ -1,0 +1,24 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "languages": {
+    "en": "English",
+    "de": "German"
+  },
+  "about": {
+    "about_header": "About Photo Locations",
+    "about_paragraph_1": "Welcome to Photo Locations. The app is aimed at all of you who like travelling and photography. I love to see and explore new places but sometimes struggle to find interesting places to photograph when I have only limited time to explore and would still like to come home with some amazing shots.",
+    "about_paragraph_2": "Hopefully this site will prove useful to you as well. You are welcome to drop me a comment over on the Contacts page at any time.",
+    "about_paragraph_3": "Happy snapping!"
+  },
+  "contact": {
+    "contact_header": "Get in touch!",
+    "name": "Your name:",
+    "email": "Your email:",
+    "message": "Your message",
+    "send": "Send"
+  }
+}
