@@ -14,6 +14,8 @@ const nodemailerRoutes = require('./routes/nodemailer')
 
 require('dotenv').config()
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
+const FACEBOOK_APP_ID = process.env.FACEBOOK_APP_ID
 
 const corsOption = {
   origin: true,
@@ -39,7 +41,8 @@ server.use('/api/v1/', loginRoutes)
 
 server.get('*', (req, res) => {         
   res.render('default',
-  { googleApiKey : GOOGLE_API_KEY, title : 'Photo Locations' }
+  { googleApiKey : GOOGLE_API_KEY, title : 'Photo Locations', googleClientId : GOOGLE_CLIENT_ID, facebookAppId : FACEBOOK_APP_ID }
+
   )
 //  res.sendFile(path.resolve(__dirname, 'public', 'default.html'))        
 })

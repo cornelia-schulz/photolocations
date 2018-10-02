@@ -1,11 +1,9 @@
 import React from 'react'
 import FacebookLogin from 'react-facebook-login'
 import {GoogleLogin} from 'react-google-login'
+import InstagramLogin from 'react-instagram-login'
 
-require('dotenv').config()
-
-const facebookAppId = process.env.FACEBOOK_APP_ID
-const googleClientId = process.env.GOOGLE_CLIENT_ID
+console.log(facebookAppId)
 
 class Login extends React.Component {
   constructor() {
