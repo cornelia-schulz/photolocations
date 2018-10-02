@@ -3,8 +3,6 @@ import FacebookLogin from 'react-facebook-login'
 import {GoogleLogin} from 'react-google-login'
 import InstagramLogin from 'react-instagram-login'
 
-console.log(facebookAppId)
-
 class Login extends React.Component {
   constructor() {
     super()
@@ -32,11 +30,30 @@ class Login extends React.Component {
       body: tokenBlob,
       mode: 'cors',
       cache: 'default'
-    };
+    }
     fetch('http://localhost:3000/api/v1/auth/facebook', options).then(r => {
       const token = r.headers.get('x-auth-token')
       r.json().then(user => {
         if (token) {
+          this.setState({ isAuthenticated: true, user, token })
+        }
+      })
+    })
+  }
+
+  instagramResponse(response) {
+    console.log(response)
+    const tokenBlob = new Blob([JSON.stringify({ access_token: response.accessToken}, null, 2)], { type: 'application/json'})
+    const options = {
+      method: 'POST',
+      body: tokenBlob,
+      mode: 'cors',
+      cache: 'default'
+    }
+    fetch('http://localhost:3000/api/v1/auth/instagram', options).then(r=> {
+      const token = r.headers.get('x-auth-token')
+      r.json().then(user => {
+        if(token) {
           this.setState({ isAuthenticated: true, user, token })
         }
       })
@@ -90,7 +107,9 @@ class Login extends React.Component {
             clientId={googleClientId}
             buttonText="LOGIN WITH GOOGLE"
             onSuccess={this.googleResponse.bind(this)}
-            onFailure={this.googleResponse} />
+            onFailure={this.googleResponse} /><br/><br/>
+          <InstagramLogin id="insta-button"
+            buttonText="LOGIN WITH INSTAGRAM" />
         </div>
       )
 
