@@ -46,6 +46,7 @@
     "passport": "^0.4.0",
     "passport-facebook-token": "^3.3.0",
     "passport-google-token": "^0.1.2",
+    "passport-instagram-token": "^2.3.0",
     "pg": "^7.4.3",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
