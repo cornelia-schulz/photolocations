@@ -72,7 +72,7 @@ class Contact extends React.Component {
                   <br />
                   <label htmlFor='email'>{t('contact.email')}</label><br />
                   <input type='email' name='email' id='email' onChange={this.handleChange} /> <br />
-                  <label htmlFor='message'>{t('contact_message')}</label><br />
+                  <label htmlFor='message'>{t('contact.message')}</label><br />
                   <textarea rows='10' cols='50' name='message' id='message' onChange={this.handleChange}>
                   </textarea>
                   <br />
