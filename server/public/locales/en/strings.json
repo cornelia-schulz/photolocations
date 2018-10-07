@@ -20,5 +20,43 @@
     "email": "Your email:",
     "message": "Your message:",
     "send": "Send"
+  },
+  "location": {
+    "edit": "Edit"
+  },
+  "editLocation": {
+    "edit_header": "Edit Location",
+    "latitude": "Latitude:",
+    "longitude": "Longitude:",
+    "place": "Place name:",
+    "title": "Title:",
+    "description": "Description:",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "starrating": {
+    "rating": "Your rating",
+    "avgrating": "Average rating"
+  },
+  "comment": {
+    "wrote": "wrote on",
+    "update": "Update",
+    "delete": "Delete"
+  },
+  "comments": {
+    "comments": "Comments",
+    "add": "Add"
+  },
+  "editComment": {
+    "cancel": "Cancel",
+    "submit": "Submit"
+  },
+  "login": {
+    "authenticated": "Authenticated",
+    "welcome": "Welcome",
+    "logout": "Log out",
+    "google": "LOGIN WITH GOOGLE",
+    "facebook": "LOGIN WITH FACEBOOK",
+    "instagram": "LOGIN WITH INSTAGRAM"
   }
 }

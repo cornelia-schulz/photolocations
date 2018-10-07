@@ -20,5 +20,43 @@
     "email": "Deine E-Mail:",
     "message": "Deine Nachricht:",
     "send": "Senden"
+  },
+  "location": {
+    "edit": "Bearbeiten"
+  },
+  "editLocation": {
+    "edit_header": "Ort bearbeiten",
+    "latitude": "Breitengrad:",
+    "longitude": "Längengrad:",
+    "place": "Name des Ortes:",
+    "title": "Titel:",
+    "description": "Beschreibung:",
+    "submit": "Speichern",
+    "cancel": "Abbrechen"
+  },
+  "starrating": {
+    "rating": "Deine Bewertung",
+    "avgrating": "Durchschnittliche Bewertung"
+  },
+  "comment": {
+    "wrote": "schrieb am",
+    "update": "Bearbeiten",
+    "delete": "Löschen"
+  },
+  "comments": {
+    "comments": "Kommentare",
+    "add": "Hinzufügen"
+  },
+  "editComment": {
+    "cancel": "Abbrechen",
+    "submit": "Speichern"
+  },
+  "login": {
+    "authenticated": "Angemeldet",
+    "welcome": "Willkommen",
+    "logout": "Abmelden",
+    "google": "MIT GOOGLE ANMELDEN",
+    "facebook": "MIT FACEBOOK ANMELDEN",
+    "instagram": "MIT INSTAGRAM ANNMELDEN"
   }
 }

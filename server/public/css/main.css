@@ -228,7 +228,7 @@ ABOUT
   background: -webkit-linear-gradient(top, #c59d59 0%,#fcce37 100%);
   background: -moz-linear-gradient(top, #c59d59 0%, #fcce37 100%); 
   background: linear-gradient(to bottom, #c59d59 0%, #fcce37 100%);
-  width: 90px;
+  width: 105px;
   border: 1px solid whitesmoke;
   -moz-border-radius:6px;
 	-webkit-border-radius:6px;
@@ -562,6 +562,7 @@ MEDIA QUERIES
     width: 35px;
     display: inline-block;
     padding: 0;
+    text-align: center;
   }
 
   /*
@@ -692,6 +693,7 @@ MEDIA QUERIES
     width: 35px;
     display: inline-block;
     padding: 0;
+    text-align: center;
   }
 }
 

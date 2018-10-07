@@ -1,6 +1,8 @@
 import React from 'react'
 import FacebookLogin from 'react-facebook-login'
 import {GoogleLogin} from 'react-google-login'
+import i18n from 'i18next'
+import { withNamespaces } from 'react-i18next'
 
 require('dotenv').config()
 
@@ -70,27 +72,29 @@ class Login extends React.Component {
   }
 
   render() {
+    let { t, i18n } = this.props
     let content = !!this.state.isAuthenticated ? (
       <div>
-        <p>Authenticated</p>
+        <p>{t('login.authenticated')}</p>
         <div>
-         <p>Welcome {this.state.user.full_name}</p>
+         <p>{t('login.welcome')} {this.state.user.full_name}</p>
          <p>{this.state.user.email}</p>
         </div>
         <div>
-          <button onClick={this.logout} className="logoutButton button"> Log out </button>
+        <button onClick={this.logout} className="logoutButton button"> {t('login.logout')} </button>
         </div>
       </div>
     ) : (
         <div className="login">
           <FacebookLogin
             appId={facebookAppId}
+            buttonText={t('login.facebook')}
             autoLoad={false}
             fields="name, email, picture"
             callback={this.facebookResponse} />
           <GoogleLogin
             clientId={googleClientId}
-            buttonText="LOGIN WITH GOOGLE"
+            buttonText={t('login.google')}
             onSuccess={this.googleResponse.bind(this)}
             onFailure={this.googleResponse} />
         </div>
@@ -105,4 +109,4 @@ class Login extends React.Component {
 
 }
 
-export default Login
+export default withNamespaces('strings')(Login)

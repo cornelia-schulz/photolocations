@@ -2,6 +2,8 @@ import React from 'react'
 import EditComment from './EditComment'
 import {delComment} from '../../actions/comments'
 import { connect } from 'react-redux'
+import i18n from 'i18next'
+import { withNamespaces } from 'react-i18next'
 
 export class Comment extends React.Component {
   constructor(props){
@@ -46,15 +48,16 @@ render() {
   let month = date.getMonth()
   let day = date.getDay()
   let publishDate = day + '/' + month + '/' + year
+  let { t, i18n } = this.props
   return (
     <div className='comment'>
       {!this.state.isHidden && <div className="commentInput">
-        <p className='comment-user'>{this.props.user} wrote on {publishDate}:</p>
+        <p className='comment-user'>{this.props.user} {t('comment.wrote')} {publishDate}:</p>
         <p className='comment-content'>{this.props.comment}</p>
       </div>}
       {!this.state.isHidden && <div className="commentButtons">
-        <button className='comment-button' id="updateButton" onClick={this.toggleHidden}>Update</button>
-        <button className='comment-button' id="deleteButton" onClick={this.deleteComment}>Delete</button>
+        <button className='comment-button' id="updateButton" onClick={this.toggleHidden}>{t('comment.update')}</button>
+        <button className='comment-button' id="deleteButton" onClick={this.deleteComment}>{t('comment.delete')}</button>
       </div>}
       {!this.state.editIsHidden && <EditComment comment={this.props.comment} id={this.props.id} onChange={this.handleChange} />}
     </div>
@@ -72,4 +75,4 @@ function mapDispatchToProps(dispatch) {
 
 
 
-export default connect(null, mapDispatchToProps)(Comment)
+export default withNamespaces('strings')(connect(null, mapDispatchToProps)(Comment))
