@@ -21,6 +21,9 @@
     "message": "Your message:",
     "send": "Send"
   },
+  "location": {
+    "edit": "Edit"
+  },
   "editLocation": {
     "edit_header": "Edit Location",
     "latitude": "Latitude:",
@@ -30,5 +33,14 @@
     "description": "Description:",
     "submit": "Submit",
     "cancel": "Cancel"
+  },
+  "starrating": {
+    "rating": "Your rating",
+    "avgrating": "Average rating"
+  },
+  "comment": {
+    "wrote": "wrote on",
+    "update": "Update",
+    "delete": "Delete"
   }
 }

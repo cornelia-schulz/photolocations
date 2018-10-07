@@ -21,6 +21,9 @@
     "message": "Deine Nachricht:",
     "send": "Senden"
   },
+  "location": {
+    "edit": "Bearbeiten"
+  },
   "editLocation": {
     "edit_header": "Ort bearbeiten",
     "latitude": "Breitengrad:",
@@ -30,5 +33,14 @@
     "description": "Beschreibung:",
     "submit": "Speichern",
     "cancel": "Abbrechen"
+  },
+  "starrating": {
+    "rating": "Deine Bewertung",
+    "avgrating": "Durchschnittliche Bewertung"
+  },
+  "comment": {
+    "wrote": "schrieb am",
+    "update": "Bearbeiten",
+    "delete": "Löschen"
   }
 }
