@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { editLocation } from '../../actions/locations'
 import StarRatingComponent from 'react-star-rating-component'
+import i18n from 'i18next'
+import { withNamespaces } from 'react-i18next'
 
 class EditLocation extends React.Component {
   constructor(props) {
@@ -100,23 +102,24 @@ class EditLocation extends React.Component {
   }
 
   render() {
+    let { t, i18n } = this.props
     return (
       <form>
         <fieldset className>
-          <h1>Edit Location</h1>
+          <h1>{t('editLocation.edit_header')}</h1>
           <div className='row'>
             <div className='col-6'>
-              <p name='lat'>Latitude: {this.props.location.lat}</p>
+              <p name='lat'>{t('editLocation.latitude')} {this.props.location.lat}</p>
             </div>
             <div className='col-6'>
-              <p name='lng'>Longitude: {this.props.location.lng} </p>
+              <p name='lng'>{t('editLocation.longitude')} {this.props.location.lng} </p>
             </div>
           </div>
-          <label htmlFor='title'>Place name: </label><br />
+          <label htmlFor='title'>{t('editLocation.place')} </label><br />
           <input type='text' name='title' defaultValue={this.props.location.title} id='name' onChange={this.handleChange} /><br />
-          <label htmlFor='info'>Title: </label><br />
+          <label htmlFor='info'>{t('editLocation.title')} </label><br />
           <input type='text' name='info' defaultValue={this.props.location.info} id='title' onChange={this.handleChange} /><br />
-          <label htmlFor='description'>Description: </label><br />
+          <label htmlFor='description'>{t('editLocation.description')} </label><br />
           <textarea rows='4' cols='100' name='description' defaultValue={this.props.location.description} id='description' onChange={this.handleChange}></textarea><br />
           <div className='row update-star-rating'>
             {/* <div className='col-3'>
@@ -151,8 +154,8 @@ class EditLocation extends React.Component {
             </div> */}
           </div>
           
-          <button type='button' className='button' onClick={this.submitLocation}>Submit</button>
-          <button type='button' className='button' onClick={this.props.onClick}>Cancel</button>
+          <button type='button' className='button' onClick={this.submitLocation}>{t('editLocation.submit')}</button>
+          <button type='button' className='button' onClick={this.props.onClick}>{t('editLocation.cancel')}</button>
         </fieldset>
       </form>
     )
@@ -167,4 +170,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(EditLocation)
+export default withNamespaces('strings')(connect(null, mapDispatchToProps)(EditLocation))

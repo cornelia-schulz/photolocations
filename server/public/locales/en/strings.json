@@ -20,5 +20,15 @@
     "email": "Your email:",
     "message": "Your message:",
     "send": "Send"
+  },
+  "editLocation": {
+    "edit_header": "Edit Location",
+    "latitude": "Latitude:",
+    "longitude": "Longitude:",
+    "place": "Place name:",
+    "title": "Title:",
+    "description": "Description:",
+    "submit": "Submit",
+    "cancel": "Cancel"
   }
 }

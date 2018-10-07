@@ -20,5 +20,15 @@
     "email": "Deine E-Mail:",
     "message": "Deine Nachricht:",
     "send": "Senden"
+  },
+  "editLocation": {
+    "edit_header": "Ort bearbeiten",
+    "latitude": "Breitengrad:",
+    "longitude": "Längengrad:",
+    "place": "Name des Ortes:",
+    "title": "Titel:",
+    "description": "Beschreibung:",
+    "submit": "Speichern",
+    "cancel": "Abbrechen"
   }
 }
