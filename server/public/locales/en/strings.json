@@ -42,5 +42,21 @@
     "wrote": "wrote on",
     "update": "Update",
     "delete": "Delete"
+  },
+  "comments": {
+    "comments": "Comments",
+    "add": "Add"
+  },
+  "editComment": {
+    "cancel": "Cancel",
+    "submit": "Submit"
+  },
+  "login": {
+    "authenticated": "Authenticated",
+    "welcome": "Welcome",
+    "logout": "Log out",
+    "google": "LOGIN WITH GOOGLE",
+    "facebook": "LOGIN WITH FACEBOOK",
+    "instagram": "LOGIN WITH INSTAGRAM"
   }
 }
