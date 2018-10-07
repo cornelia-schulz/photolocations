@@ -8,7 +8,7 @@ import Location from './Locations/Location'
 import Login from './Login'
 import Footer from './Footer'
 import ReactGA from 'react-ga'
-
+import { withNamespaces } from 'react-i18next'
 
 class App extends React.Component {
   constructor(props){
@@ -55,6 +55,6 @@ class App extends React.Component {
     )
   }
 }
-export default App
+export default withNamespaces('strings')(App)
 
 
