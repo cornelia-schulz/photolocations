@@ -1,10 +1,10 @@
 import { Route, Link } from 'react-router-dom'
 import React from 'react'
 import Search from './Map/Search'
-import { I18n } from 'react-i18next'
 import i18n from 'i18next'
 import { connect } from 'react-redux'
 import { setLanguage } from '../actions/localise'
+import { withNamespaces } from 'react-i18next'
 
 
 class Header extends React.Component {
@@ -33,37 +33,32 @@ class Header extends React.Component {
   }
 
   render() {
+    let { t, i18n } = this.props
     return (
-      <I18n ns="strings">
-        {
-          (t, { i18n }) => (
-            <header>
-              <nav className="navbar" role="navigation">
-                <div className="logo header  header-left">
-                  <img src="/images/Logo.PNG" alt="Photo Locations" />
-                </div>
-                <div className="languages">
-                <button className="button language" onClick={() => this.changeLanguage('de')}>{t('languages.de')}</button>
-                <button className="button language" onClick={() => this.changeLanguage('en')}>{t('languages.en')}</button>
-                </div>
-                <div className="header">
-                  <Route exact path='/' component={Search} />
-                </div>
-                <div className="dropdown header">
-                  <button className="dropbtn" onClick={this.toggleVisibility}>
-                    <i className="fa fa-bars" aria-hidden="true"></i>
-                  </button>
-                  <div className="dropdown-content">
-                    <Link to="/" onClick={this.toggleVisibility}>{t('header.home')}</Link>
-                    <Link to="/about" onClick={this.toggleVisibility}>{t('header.about')}</Link>
-                    <Link to="/contact" onClick={this.toggleVisibility}>{t('header.contact')}</Link>
-                  </div>
-                </div>
-              </nav>
-            </header>
-          )
-        }
-      </I18n>
+        <header>
+          <nav className="navbar" role="navigation">
+            <div className="logo header  header-left">
+              <img src="/images/Logo.PNG" alt="Photo Locations" />
+            </div>
+            <div className="languages">
+            <button className="button language" onClick={() => this.changeLanguage('de')}>{t('languages.de')}</button>
+            <button className="button language" onClick={() => this.changeLanguage('en')}>{t('languages.en')}</button>
+            </div>
+            <div className="header">
+              <Route exact path='/' component={Search} defaultText={t('languages.de')} />
+            </div>
+            <div className="dropdown header">
+              <button className="dropbtn" onClick={this.toggleVisibility}>
+                <i className="fa fa-bars" aria-hidden="true"></i>
+              </button>
+              <div className="dropdown-content">
+                <Link to="/" onClick={this.toggleVisibility}>{t('header.home')}</Link>
+                <Link to="/about" onClick={this.toggleVisibility}>{t('header.about')}</Link>
+                <Link to="/contact" onClick={this.toggleVisibility}>{t('header.contact')}</Link>
+              </div>
+            </div>
+          </nav>
+        </header>
     )
   }
 }
@@ -76,4 +71,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect (null, mapDispatchToProps)(Header)
+export default withNamespaces('strings')(connect (null, mapDispatchToProps)(Header))

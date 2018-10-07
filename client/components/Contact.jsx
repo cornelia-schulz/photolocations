@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { sendMail } from '../actions/contact'
 import ReactGA from 'react-ga'
-import { I18n } from 'react-i18next'
 import i18n from 'i18next'
+import { withNamespaces } from 'react-i18next'
 
 ReactGA.initialize('UA-124825499-1')
 ReactGA.pageview(window.location.pathname + window.location.search)
@@ -56,33 +56,28 @@ class Contact extends React.Component {
   }
 
   render() {
+    let { t, i18n } = this.props
     return (
-      <I18n ns="strings">
-        {
-          (t, { i18n }) => (
-            <div className='contact'>
-              <img src='/images/Muriwai.jpg' alt='Muriwai' />
-              <div className='contactText'>
-                <h1>{t('contact.contact_header')}</h1>
-                {this.props.message && <span className='error'>{this.props.message}</span>}
-                <form className='contactForm' id='contactForm' onSubmit={this.handleSubmit} method="POST">
-                  <label htmlFor='name'>{t('contact.name')}</label>
-                  <br />
-                  <input type='text' name='name' id='name' onChange={this.handleChange} />
-                  <br />
-                  <label htmlFor='email'>{t('contact.email')}</label><br />
-                  <input type='email' name='email' id='email' onChange={this.handleChange} /> <br />
-                  <label htmlFor='message'>{t('contact.message')}</label><br />
-                  <textarea rows='10' cols='50' name='message' id='message' onChange={this.handleChange}>
-                  </textarea>
-                  <br />
-                  <button className='button' type='submit' id='contactFormSubmit'>{t('contact.send')}</button>
-                </form>
-              </div>
-            </div>
-          )
-        }
-      </I18n>
+      <div className='contact'>
+        <img src='/images/Muriwai.jpg' alt='Muriwai' />
+        <div className='contactText'>
+          <h1>{t('contact.contact_header')}</h1>
+          {this.props.message && <span className='error'>{this.props.message}</span>}
+          <form className='contactForm' id='contactForm' onSubmit={this.handleSubmit} method="POST">
+            <label htmlFor='name'>{t('contact.name')}</label>
+            <br />
+            <input type='text' name='name' id='name' onChange={this.handleChange} />
+            <br />
+            <label htmlFor='email'>{t('contact.email')}</label><br />
+            <input type='email' name='email' id='email' onChange={this.handleChange} /> <br />
+            <label htmlFor='message'>{t('contact.message')}</label><br />
+            <textarea rows='10' cols='50' name='message' id='message' onChange={this.handleChange}>
+            </textarea>
+            <br />
+            <button className='button' type='submit' id='contactFormSubmit'>{t('contact.send')}</button>
+          </form>
+        </div>
+      </div>
     )
   }
 }
@@ -103,4 +98,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Contact)
+export default withNamespaces('strings')(connect(mapStateToProps, mapDispatchToProps)(Contact))
