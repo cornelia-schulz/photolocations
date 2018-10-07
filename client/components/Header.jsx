@@ -40,10 +40,6 @@ class Header extends React.Component {
             <div className="logo header  header-left">
               <img src="/images/Logo.PNG" alt="Photo Locations" />
             </div>
-            <div className="languages">
-            <button className="button language" onClick={() => this.changeLanguage('de')}>{t('languages.de')}</button>
-            <button className="button language" onClick={() => this.changeLanguage('en')}>{t('languages.en')}</button>
-            </div>
             <div className="header">
               <Route exact path='/' component={Search} defaultText={t('languages.de')} />
             </div>
@@ -55,6 +51,8 @@ class Header extends React.Component {
                 <Link to="/" onClick={this.toggleVisibility}>{t('header.home')}</Link>
                 <Link to="/about" onClick={this.toggleVisibility}>{t('header.about')}</Link>
                 <Link to="/contact" onClick={this.toggleVisibility}>{t('header.contact')}</Link>
+                <button className="language" onClick={() => this.changeLanguage('de')}>DE</button>
+                <button className="language" onClick={() => this.changeLanguage('en')}>EN</button>
               </div>
             </div>
           </nav>

@@ -107,11 +107,17 @@ NAVIGATION
 }
 
 .language {
-  margin-top: 4px;
-}
-
-.languages {
-  display: none;
+  background: transparent;
+  border: none;
+  color: #c59d59;
+  font-size: 100%;
+  display: block;
+  line-height: 16px;
+  font-size: 100%;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  text-align: left;
 }
 
 .header-left {
@@ -495,10 +501,6 @@ MEDIA QUERIES
     width: 600px;
   }
 
-  .languages {
-    display: block;
-  }
-
   .aboutText, .contactText {
     width: 960px;
     margin: 0 auto;
@@ -552,6 +554,16 @@ MEDIA QUERIES
     clear: both;
   }
 
+  .language {
+    background: transparent;
+    border: none;
+    color: #c59d59;
+    font-size: 100%;
+    width: 35px;
+    display: inline-block;
+    padding: 0;
+  }
+
   /*
   =================================================
   SCROLLBAR
@@ -583,7 +595,7 @@ MEDIA QUERIES
 }
 
 .search {
-  margin-right: 260px;
+  margin-right: 280px;
 }
 
 .dropbtn {
@@ -610,7 +622,7 @@ MEDIA QUERIES
   border-bottom: none;
 }
 
-.dropdown-content a:hover {
+.dropdown-content a:hover, .dropdown-content button:hover {
   background-color: #7e7e7e;
 }
 
@@ -620,10 +632,6 @@ MEDIA QUERIES
   .col-1, .col-2, .col-3, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     float: left;
         display: block;
-    }
-
-    .languages {
-      display: block;
     }
 
   .infoWindow {
@@ -645,7 +653,7 @@ MEDIA QUERIES
   }
 
   .search {
-    margin-right: 260px;
+    margin-right: 280px;
   }
 
   .dropbtn {
@@ -676,16 +684,21 @@ MEDIA QUERIES
     background-color: #7e7e7e;
   }
 
+  .language {
+    background: transparent;
+    border: none;
+    color: #c59d59;
+    font-size: 100%;
+    width: 35px;
+    display: inline-block;
+    padding: 0;
+  }
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
   .col-1, .col-2, .col-3, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     float: left;
         display: block;
-    }
-
-    .languages {
-      display: block;
     }
 
     .infoWindow {
