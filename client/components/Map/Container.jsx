@@ -7,6 +7,8 @@ import {getAllLocations, addLocation} from '../../actions/locations'
 import {connect} from 'react-redux'
 import Modal from 'react-modal'
 import {BrowserRouter, Link, Redirect } from 'react-router-dom'
+import i18n from 'i18next'
+import { withNamespaces } from 'react-i18next'
 
 const customStyles = {
   content: {
@@ -127,6 +129,7 @@ class Container extends React.Component {
     if(this.state.redirectId){
       return <Redirect to={`/location/${this.state.redirectId}`} />
     } 
+    let { t, i18n } = this.props
     return (
       <BrowserRouter>
         <Map google={this.props.google} style={style} click={this.onMapClicked} rightclick={this.onMapRightClicked} maplongclick={this.onMapRightClicked}>
@@ -149,7 +152,8 @@ class Container extends React.Component {
             visible={this.state.showingInfoWindow}
             selectedPlace={this.state.selectedPlace}
             stars={5}
-            onClick={this.onMoreInfo}>
+            onClick={this.onMoreInfo}
+            button={t('infoWindow.read')}>
             <div className="infoWindow">
               <h2>{this.state.selectedPlace.title}</h2>
               <img src={this.state.selectedPlace.url} />
@@ -170,23 +174,23 @@ class Container extends React.Component {
             onAfterOpen={this.afterOpenModal}
             onRequestClose={this.closeModal}
             style={customStyles}
-            contentLabel='Add new location'
+            contentLabel={t('addNewLocation.add_header')}
             ariaHideApp={false}
           >
             <form>
               <fieldset className='addNewLocation'>
-                <h2>Add new location</h2>
+                <h2>{t('addNewLocation.add_header')}</h2>
                 {this.props.newLocation && <p>
-                  Latitude: <span className='right'>{this.props.newLocation.lat}</span><br />
-                  Longitude: <span className='right'>{this.props.newLocation.lng}</span></p>}
-                  <label htmlFor='name'>Place name: </label>
+                  {t('addNewLocation.latitude')} <span className='right'>{this.props.newLocation.lat}</span><br />
+                  {t('addNewLocation.longitude')} <span className='right'>{this.props.newLocation.lng}</span></p>}
+                  <label htmlFor='name'>{t('addNewLocation.place')} </label>
                   <input type='text' name='name' id='name' onChange={this.handleChange} /><br />
-                  <label htmlFor='title'>Title: </label>
+                  <label htmlFor='title'>{t('addNewLocation.title')} </label>
                   <input type='text' name='title' id='title' onChange={this.handleChange} /><br />
-                  <label htmlFor='description'>Description: </label>
+                  <label htmlFor='description'>{t('addNewLocation.description')} </label>
                   <input type='description' name='description' id='description' onChange={this.handleChange} /><br />
-                  <button type='button' className='button' onClick={this.submitNewLocation}>Submit</button>
-                  <button type='button' className='button' onClick={this.closeModal}>Cancel</button>
+                  <button type='button' className='button' onClick={this.submitNewLocation}>{t('addNewLocation.submit')}</button>
+                  <button type='button' className='button' onClick={this.closeModal}>{t('addNewLocation.cancel')}</button>
                 </fieldset>
             </form>
           </Modal>
@@ -219,4 +223,4 @@ const WrappedContainer =  GoogleApiWrapper({
   apiKey: `${apiKey}`
 })(Container)
 
-export default connect(mapStateToProps, mapDispatchToProps)(WrappedContainer)
+export default withNamespaces('strings')(connect(mapStateToProps, mapDispatchToProps)(WrappedContainer))

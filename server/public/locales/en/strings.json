@@ -58,5 +58,18 @@
     "google": "LOGIN WITH GOOGLE",
     "facebook": "LOGIN WITH FACEBOOK",
     "instagram": "LOGIN WITH INSTAGRAM"
+  },
+  "addNewLocation": {
+    "add_header": "Add new location",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "place": "Place name:",
+    "title": "Title:",
+    "description": "Description:",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  }, 
+  "infoWindow": {
+    "read": "Read more"
   }
 }
