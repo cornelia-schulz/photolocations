@@ -58,5 +58,18 @@
     "google": "MIT GOOGLE ANMELDEN",
     "facebook": "MIT FACEBOOK ANMELDEN",
     "instagram": "MIT INSTAGRAM ANNMELDEN"
+  },
+  "addNewLocation": {
+    "add_header": "Ort hinzufügen",
+    "latitude": "Breitengrad:",
+    "longitude": "Längengrad:",
+    "place": "Name des Ortes:",
+    "title": "Titel:",
+    "description": "Beschreibung:",
+    "submit": "Hinzufügen",
+    "cancel": "Abbrechen"
+  }, 
+  "infoWindow": {
+    "read": "Weiterlesen"
   }
 }
