@@ -2,6 +2,8 @@ import React from 'react'
 import StarRatingComponent from 'react-star-rating-component'
 import { connect } from 'react-redux'
 import { getAllRatingsForLocation, getAllUserRatingsForLocation } from '../../actions/ratings'
+import { withNamespaces } from 'react-i18next'
+import i18n from 'i18next'
 
 class StarRating extends React.Component {
   constructor(props) {
@@ -57,6 +59,7 @@ class StarRating extends React.Component {
 
   render() {
     let {userRating, ratings} = this.props
+    let { t, i18n } = this.props
     return (
      <div>
       {this.state.average==false && <StarRatingComponent
@@ -74,7 +77,7 @@ class StarRating extends React.Component {
         onStarClick={this.onStarClick}
       />}
       <p>
-        <button className='rating-button' onClick={()=>this.swapRating(true)}>Average rating</button> | <button className='rating-button' onClick={()=>this.swapRating(false)}>Your rating</button>
+        <button className='rating-button' onClick={()=>this.swapRating(true)}>{t('starrating.avgrating')}</button> | <button className='rating-button' onClick={()=>this.swapRating(false)}>{t('starrating.rating')}</button>
       </p>
       </div>
     )
@@ -99,4 +102,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StarRating)
+export default withNamespaces('strings')(connect(mapStateToProps, mapDispatchToProps)(StarRating))

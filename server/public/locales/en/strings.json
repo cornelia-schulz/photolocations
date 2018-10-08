@@ -1,0 +1,75 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "languages": {
+    "en": "English",
+    "de": "German"
+  },
+  "about": {
+    "about_header": "About Photo Locations",
+    "about_paragraph_1": "Welcome to Photo Locations. The app is aimed at all of you who like travelling and photography. I love to see and explore new places but sometimes struggle to find interesting places to photograph when I have only limited time to explore and would still like to come home with some amazing shots.",
+    "about_paragraph_2": "Hopefully this site will prove useful to you as well. You are welcome to drop me a comment over on the Contacts page at any time.",
+    "about_paragraph_3": "Happy snapping!"
+  },
+  "contact": {
+    "contact_header": "Get in touch!",
+    "name": "Your name:",
+    "email": "Your email:",
+    "message": "Your message:",
+    "send": "Send"
+  },
+  "location": {
+    "edit": "Edit"
+  },
+  "editLocation": {
+    "edit_header": "Edit Location",
+    "latitude": "Latitude:",
+    "longitude": "Longitude:",
+    "place": "Place name:",
+    "title": "Title:",
+    "description": "Description:",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "starrating": {
+    "rating": "Your rating",
+    "avgrating": "Average rating"
+  },
+  "comment": {
+    "wrote": "wrote on",
+    "update": "Update",
+    "delete": "Delete"
+  },
+  "comments": {
+    "comments": "Comments",
+    "add": "Add"
+  },
+  "editComment": {
+    "cancel": "Cancel",
+    "submit": "Submit"
+  },
+  "login": {
+    "authenticated": "Authenticated",
+    "welcome": "Welcome",
+    "logout": "Log out",
+    "google": "LOGIN WITH GOOGLE",
+    "facebook": "LOGIN WITH FACEBOOK",
+    "instagram": "LOGIN WITH INSTAGRAM"
+  },
+  "addNewLocation": {
+    "add_header": "Add new location",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "place": "Place name:",
+    "title": "Title:",
+    "description": "Description:",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  }, 
+  "infoWindow": {
+    "read": "Read more"
+  }
+}

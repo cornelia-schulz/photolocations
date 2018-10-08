@@ -106,6 +106,20 @@ NAVIGATION
   width: 100%;
 }
 
+.language {
+  background: transparent;
+  border: none;
+  color: #c59d59;
+  font-size: 100%;
+  display: block;
+  line-height: 16px;
+  font-size: 100%;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  text-align: left;
+}
+
 .header-left {
   margin-right: auto;
   
@@ -154,7 +168,7 @@ NAVIGATION
   position: absolute;
   top: 41px;
   right: 0;
-  z-index: 10;
+  /* z-index: 10; */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -214,7 +228,7 @@ ABOUT
   background: -webkit-linear-gradient(top, #c59d59 0%,#fcce37 100%);
   background: -moz-linear-gradient(top, #c59d59 0%, #fcce37 100%); 
   background: linear-gradient(to bottom, #c59d59 0%, #fcce37 100%);
-  width: 90px;
+  width: 105px;
   border: 1px solid whitesmoke;
   -moz-border-radius:6px;
 	-webkit-border-radius:6px;
@@ -539,6 +553,17 @@ MEDIA QUERIES
     clear: both;
   }
 
+  .language {
+    background: transparent;
+    border: none;
+    color: #c59d59;
+    font-size: 100%;
+    width: 35px;
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+  }
+
   /*
   =================================================
   SCROLLBAR
@@ -570,7 +595,7 @@ MEDIA QUERIES
 }
 
 .search {
-  margin-right: 260px;
+  margin-right: 280px;
 }
 
 .dropbtn {
@@ -597,7 +622,7 @@ MEDIA QUERIES
   border-bottom: none;
 }
 
-.dropdown-content a:hover {
+.dropdown-content a:hover, .dropdown-content button:hover {
   background-color: #7e7e7e;
 }
 
@@ -628,7 +653,7 @@ MEDIA QUERIES
   }
 
   .search {
-    margin-right: 260px;
+    margin-right: 280px;
   }
 
   .dropbtn {
@@ -659,6 +684,16 @@ MEDIA QUERIES
     background-color: #7e7e7e;
   }
 
+  .language {
+    background: transparent;
+    border: none;
+    color: #c59d59;
+    font-size: 100%;
+    width: 35px;
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+  }
 }
 
 @media (min-width: 480px) and (max-width: 767px) {

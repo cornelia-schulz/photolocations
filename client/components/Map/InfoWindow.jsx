@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOMServer from 'react-dom/server'
+import i18n from 'i18next'
+import { withNamespaces } from 'react-i18next'
 
 class InfoWindow extends React.Component {
 
@@ -78,7 +80,7 @@ class InfoWindow extends React.Component {
   }
 
   openWindow() {
-    this.infowindow.setContent(this.infowindow.getContent() + '<div><button id="closeButton" type="button" className="button">Read more</button></div>')
+    this.infowindow.setContent(this.infowindow.getContent() + `<div><button id="closeButton" type="button" className="button">${this.props.button}</button></div>`)
     this.infowindow.open(this.props.map, this.props.marker)
     // This might be a leak ... Need to remove this when unloading.
     document.getElementById("closeButton").addEventListener('click', this.onClick.bind(this))
@@ -120,6 +122,7 @@ InfoWindow.propTypes = {
   url: PropTypes.object,
   visible: PropTypes.bool,
   id: PropTypes.object,
+  button: PropTypes.object,
   // rating: PropTypes.object,
 
   // callbacks
@@ -132,4 +135,4 @@ InfoWindow.defaultProps = {
   visible: false
 }
 
-export default InfoWindow
+export default withNamespaces('strings')(InfoWindow)

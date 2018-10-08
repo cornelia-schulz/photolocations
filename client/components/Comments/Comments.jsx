@@ -2,6 +2,8 @@ import React from 'react'
 import Comment from './Comment'
 import { getAllComments, addComment } from '../../actions/comments'
 import { connect } from 'react-redux'
+import i18n from 'i18next'
+import { withNamespaces } from 'react-i18next'
 
 class Comments extends React.Component {
   constructor(props){
@@ -52,12 +54,13 @@ class Comments extends React.Component {
 
 
   render() {
+    let { t, i18n } = this.props
     return (
       <div className="comments">
-        <h2>Comments</h2>
+        <h2>{t('comments.comments')}</h2>
         <form className="addCommentForm" onSubmit={this.addNewComment}>
           <textarea id="addNewComment" placeholder="Have you been here? What was your experience?" rows="4" cols="100" value={this.state.comment} onChange={this.updateComment}></textarea><br />
-          <input type="submit" className='button' id="addCommentButton" value = "Add" />
+          <input type="submit" className='button' id="addCommentButton" value = {t('comments.add')} />
         </form>
         <ul>
           {this.props.newComments && this.props.newComments.length > 0 && 
@@ -89,4 +92,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Comments)
+export default withNamespaces('strings')(connect(mapStateToProps, mapDispatchToProps)(Comments))

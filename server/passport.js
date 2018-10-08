@@ -39,14 +39,14 @@ module.exports = function () {
           })
       }))
 
-      passport.use(new InstagramTokenStrategy({
-          clientID: instagramClientId,
-          clientSecret: instagramSecret,
-          passReqToCallback: true
-      },
-        function(req, accessToken, refreshToken, profile, next) {
-            User.findOrCreate({'instagram.id': profile.id}, function(error, user) {
-                return next(error, user)
-            })
-        }))
+    //   passport.use(new InstagramTokenStrategy({
+    //       clientID: instagramClientId,
+    //       clientSecret: instagramSecret,
+    //       passReqToCallback: true
+    //   },
+    //     function(req, accessToken, refreshToken, profile, next) {
+    //         User.findOrCreate({'instagram.id': profile.id}, function(error, user) {
+    //             return next(error, user)
+    //         })
+    //     }))
 }

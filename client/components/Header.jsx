@@ -1,12 +1,17 @@
 import { Route, Link } from 'react-router-dom'
 import React from 'react'
 import Search from './Map/Search'
+import i18n from 'i18next'
+import { connect } from 'react-redux'
+import { setLanguage } from '../actions/localise'
+import { withNamespaces } from 'react-i18next'
 
 
 class Header extends React.Component {
   constructor(props) {
     super(props)
     this.toggleVisibility = this.toggleVisibility.bind(this)
+    this.changeLanguage = this.changeLanguage.bind(this)
   }
 
   toggleVisibility() {
@@ -22,32 +27,46 @@ class Header extends React.Component {
     }
   }
 
+  changeLanguage(language) {
+    i18n.changeLanguage(language)
+    this.props.setLanguage(language)
+  }
+
   render() {
+    let { t, i18n } = this.props
     return (
-
-      <header>
-        <nav className="navbar" role="navigation">
-          <div className="logo header  header-left">
-            <img src="/images/Logo.PNG" alt="Photo Locations" />
-          </div>
-          <div className="header">
-            <Route exact path='/' component={Search} />
-          </div>
-          <div className="dropdown header">
-            <button className="dropbtn" onClick={this.toggleVisibility}>
-              <i className="fa fa-bars" aria-hidden="true"></i>
-            </button>
-            <div className="dropdown-content">
-              <Link to="/" onClick={this.toggleVisibility}>Home</Link>
-              <Link to="/about" onClick={this.toggleVisibility}>About</Link>
-              <Link to="/contact" onClick={this.toggleVisibility}>Contact</Link>
+        <header>
+          <nav className="navbar" role="navigation">
+            <div className="logo header  header-left">
+              <img src="/images/Logo.PNG" alt="Photo Locations" />
             </div>
-          </div>
-        </nav>
-      </header>
-
+            <div className="header">
+              <Route exact path='/' component={Search} defaultText={t('languages.de')} />
+            </div>
+            <div className="dropdown header">
+              <button className="dropbtn" onClick={this.toggleVisibility}>
+                <i className="fa fa-bars" aria-hidden="true"></i>
+              </button>
+              <div className="dropdown-content">
+                <Link to="/" onClick={this.toggleVisibility}>{t('header.home')}</Link>
+                <Link to="/about" onClick={this.toggleVisibility}>{t('header.about')}</Link>
+                <Link to="/contact" onClick={this.toggleVisibility}>{t('header.contact')}</Link>
+                <button className="language" onClick={() => this.changeLanguage('de')}>DE</button>
+                <button className="language" onClick={() => this.changeLanguage('en')}>EN</button>
+              </div>
+            </div>
+          </nav>
+        </header>
     )
   }
 }
 
-export default Header
+function mapDispatchToProps(dispatch) {
+  return {
+    setLanguage: (language) => {
+      return dispatch(setLanguage(language))
+    }
+  }
+}
+
+export default withNamespaces('strings')(connect (null, mapDispatchToProps)(Header))

@@ -7,6 +7,8 @@ import EditLocation from './EditLocation'
 import { getLocation, editLocation } from '../../actions/locations'
 // import { getUserRatingsForLocation } from '../../actions/ratings'
 import ReactGA from 'react-ga'
+import i18n from 'i18next'
+import { withNamespaces } from 'react-i18next'
 
 ReactGA.initialize('UA-124825499-1')
 ReactGA.pageview(window.location.pathname + window.location.search)
@@ -69,6 +71,7 @@ class Location extends React.Component {
 
   render() {
     const id = this.props.match.params.id
+    let { t, i18n } = this.props
     return (
       <div className='location row'>
         <div className='col-8'>
@@ -77,7 +80,7 @@ class Location extends React.Component {
         <div className='col-4 locationRight'>
           <div className='locationText'>
             <h1>{this.props.location.title}</h1>
-            <button className='comment-button' onClick={this.openModal}>Edit</button>
+            <button className='comment-button' onClick={this.openModal}>{t('location.edit')}</button>
             <StarRating id={id} />
             <p className='location-content'>
               {this.props.location.info}
@@ -126,4 +129,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Location)
+export default withNamespaces('strings')(connect(mapStateToProps, mapDispatchToProps)(Location))
