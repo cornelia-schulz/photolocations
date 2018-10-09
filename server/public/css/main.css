@@ -132,7 +132,7 @@ NAVIGATION
 
 .fa, .fas {
   color: #c59d59;
-  font-size: 1.8em;
+  font-size: 2.5em;
   vertical-align: middle;
   margin-left: 3px;
 }
@@ -140,6 +140,7 @@ NAVIGATION
 .dropdown, .dropbtn {
   border: none;
   display: inline-block;
+  z-index: 10;
 }
 
 .search {
@@ -563,6 +564,14 @@ MEDIA QUERIES
     display: inline-block;
     padding: 0;
     text-align: center;
+  }
+
+  .navbar {
+    height: 41px;
+  }
+
+  .dropdown, .dropbtn {
+    z-index: 0;
   }
 
   /*
