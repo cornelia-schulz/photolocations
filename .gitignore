@@ -5,5 +5,5 @@ bundle.*
 configurations.js
 config.json
 .env
-.cert
-.key
+*.cert
+*.key
