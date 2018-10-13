@@ -51,7 +51,8 @@ class Container extends React.Component {
   }
 
   reloadLocations() {
-    this.props.getAllLocations()
+    const language = this.props.language
+    this.props.getAllLocations(language)
   }
 
   openModal() {
@@ -203,14 +204,15 @@ class Container extends React.Component {
 function mapStateToProps(state) {
   return {
     locations: state.receiveLocations,
-    newLocation: state.setNewLocation
+    newLocation: state.setNewLocation,
+    language: state.receiveLanguage
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getAllLocations: () => {
-      return dispatch(getAllLocations())
+    getAllLocations: (language) => {
+      return dispatch(getAllLocations(language))
     },
     addLocation: (location) => {
       return dispatch(addLocation(location))

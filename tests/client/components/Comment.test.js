@@ -1,5 +1,5 @@
 import React from 'react'
-import { Comment } from '../../../client/components/Comment'
+import { Comment } from '../../../client/components/Comments/Comment'
 import { configure, shallow, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 

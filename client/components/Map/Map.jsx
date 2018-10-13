@@ -114,15 +114,14 @@ class Map extends React.Component {
     return (e) => {
       if (timeout) {
         clearTimeout(timeout)
-        timeout = null
       }
       timeout = setTimeout(() => {
         if (this.props[handlerName]) {
           const location = {
             lat: e.latLng.lat(),
-            lng: e.latLng.lng()
+            lng: e.latLng.lng(),
           }
-          //console.log(location)
+          // console.log(location)
           this.props.setLocation(location)
           this.props[handlerName](this.props, this.map, e)
         }
@@ -141,7 +140,8 @@ class Map extends React.Component {
       return React.cloneElement(c, {
         map: this.map,
         google: this.props.google,
-        mapCenter: this.state.currentLocation
+        mapCenter: this.state.currentLocation,
+        language: this.props.language
       })
     })
 
@@ -178,7 +178,8 @@ Map.defaultProps = {
 
 function mapStateToProps(state) {
   return {
-    searchString: state.receiveSearchString
+    searchString: state.receiveSearchString,
+    language: state.receiveLanguage
   }
 }
 

@@ -33,10 +33,10 @@ export const receiveLocation = (location) => {
   }
 }
 
-export function getAllLocations() {
+export function getAllLocations(language) {
   return (dispatch) => {
     return request
-      .get('/api/v1/locations')
+      .get('/api/v1/locations/'+language)
       .then(res => {
         dispatch(receiveAllLocations(res.body))
       })

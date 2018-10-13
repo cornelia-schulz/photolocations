@@ -1,7 +1,7 @@
 import React from 'react'
 import { configure, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import Comments from '../../../client/components/Comments'
+import Comments from '../../../client/components/Comments/Comments'
 import {Provider} from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import configureStore from 'redux-mock-store'

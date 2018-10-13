@@ -3,8 +3,9 @@ const db = require('../db/locations')
 const router = express.Router()
 
 
-router.get('/', (req, res) => {
-  db.getAllLocations()
+router.get('/language', (req, res) => {
+  const language = (req.params.language)
+  db.getAllLocations(language)
     .then(locations => {
       res.json(locations)
     })
