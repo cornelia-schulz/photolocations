@@ -7,7 +7,7 @@ configure({adapter: new Adapter()})
 
 test('<Contact />', () => {
   const expected = 'Get in touch!'
-  const wrapper = shallow(<Contact />)
+  const wrapper = shallow(<Contact t={key => key} />)
   const actual = wrapper.find('h1').text()
 
   expect(actual).toEqual(expected)

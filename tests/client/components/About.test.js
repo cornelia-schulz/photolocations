@@ -7,7 +7,7 @@ configure({adapter: new Adapter()})
 
 test('<About />', () => {
   const expected = 'About Photo Locations'
-  const wrapper = shallow(<About />)
+  const wrapper = shallow(<About t={key => key} />)
   const actual = wrapper.find('h1').text()
 
   expect(actual).toEqual(expected)
