@@ -61,7 +61,6 @@ class Marker extends React.Component {
       info,
       url,
       id,
-      language,
       // rating,
       description
     } = this.props;
