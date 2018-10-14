@@ -30,14 +30,14 @@ server.use(passport.initialize())
 server.use(cors(corsOption))
 server.use(express.json())
 server.use(express.static(path.join(__dirname, './public')))
+server.use('/api/v1/locations', locationRoutes)
 server.use('/api/v1/ratings', ratingRoutes)
 server.use('/api/v1/nodemailer', nodemailerRoutes)
-server.use('/api/v1/locations', locationRoutes)
 server.use('/api/v1/comments', commentRoutes)
 server.use('/api/v1/', loginRoutes)
 
 
-server.get('*', (req, res) => {         
+server.get('*', (req, res) => {    
   res.render('default',
   { googleApiKey : GOOGLE_API_KEY, title : 'Photo Locations' }
   )
