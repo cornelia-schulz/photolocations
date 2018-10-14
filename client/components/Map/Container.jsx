@@ -52,7 +52,7 @@ class Container extends React.Component {
 
   reloadLocations() {
     const language = this.props.language
-    this.props.getAllLocations(language)
+    this.props.getAllLocations()
   }
 
   openModal() {
@@ -144,6 +144,7 @@ class Container extends React.Component {
               description={marker.description}
               position={{lat: marker.lat, lng: marker.lng}}
               url={marker.url}
+              language={marker.language}
               // rating={marker.rating} 
               />
           })}
