@@ -21,7 +21,7 @@ configure({adapter: new Adapter()})
 test('<Comments />', () => {
   store = mockStore(initialState)
   const expected = 'Comments'
-  const wrapper = mount(<Provider store={store}><Comments /></Provider>)
+  const wrapper = mount(<Provider store={store}><Comments  /></Provider>)
   const actual = wrapper.find('h2').text()
 
   expect(actual).toEqual(expected)
@@ -30,7 +30,7 @@ test('<Comments />', () => {
 test('<Comments /> with children', () => {
   store = mockStore(initialState)
   const expected = 2
-  const wrapper = mount(<Provider store={store}><Comments /></Provider>)
+  const wrapper = mount(<Provider store={store}><Comments t={key => key} /></Provider>)
   const actual = wrapper.find('li').length
 
   expect(actual).toEqual(expected)

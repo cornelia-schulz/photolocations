@@ -8,6 +8,6 @@ configure({adapter: new Adapter()})
 
 test('<App />', () => {
   const expected = '<HashRouter />'
-  const wrapper = shallow(<App />)
+  const wrapper = shallow(<App t={key => key} />)
   expect(wrapper.text()).toBe(expected)
 })
