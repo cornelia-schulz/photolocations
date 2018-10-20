@@ -1,4 +1,4 @@
-const db = require ('../../../server/db/db')
+const db = require ('../../../server/db/locations')
 const env = require('./testEnvironment')
 
 let testDb = null
@@ -15,6 +15,6 @@ afterEach(() => {
 test('getAllLocations returns a list of all locations', () => {
   return db.getAllLocations(testDb)
     .then(locations => {
-      expect(locations.length).toBe(31)
+      expect(locations.length).toBe(62)
     })
 })
