@@ -36,10 +36,10 @@ deleteComment() {
   this.setState({ error: null })
   const id = this.props.id
   this.props.delComment(id)
-    .then(() => {
-      this.props.onChange()
-    })
-    .catch(err => this.setState({error: err.message}))
+    // .then(() => {
+    //   this.props.onChange()
+    // })
+    // .catch(err => this.setState({error: err.message}))
 }
 
 render() {

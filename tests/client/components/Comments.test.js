@@ -20,9 +20,9 @@ configure({adapter: new Adapter()})
 
 test('<Comments /> renders named export', () => {
   store = mockStore(initialState)
-  const wrapper = mount(<Provider store={store}><Comments t={(k) => 'translate hardcoded'} /></Provider>)
+  const wrapper = mount(<Provider store={store}><Comments t={(k) => 'translate comments'} /></Provider>)
 
-  expect(wrapper.contains(<h2>translate hardcoded</h2>)).toBe(true);
+  expect(wrapper.contains(<h2>translate comments</h2>)).toBe(true);
 })
 
 test('<Comments /> with children', () => {
