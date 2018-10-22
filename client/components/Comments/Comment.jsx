@@ -45,8 +45,8 @@ deleteComment() {
 render() {
   let date = new Date(`${this.props.date}`)
   let year = date.getFullYear()
-  let month = date.getMonth()
-  let day = date.getDay()
+  let month = date.getMonth()+1
+  let day = date.getDate()
   let publishDate = day + '/' + month + '/' + year
   let { t, i18n } = this.props
   return (
