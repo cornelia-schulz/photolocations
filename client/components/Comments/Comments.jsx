@@ -14,8 +14,9 @@ class Comments extends React.Component {
       isHidden: true,
       error: null
     }
-    this.updateComment = this.updateComment.bind(this);
-    this.addNewComment = this.addNewComment.bind(this);
+    this.updateComment = this.updateComment.bind(this)
+    this.addNewComment = this.addNewComment.bind(this)
+    this.reloadComments = this.reloadComments.bind(this)
   }
 
   componentDidMount () {
@@ -30,10 +31,13 @@ class Comments extends React.Component {
   addNewComment(e){
     e.preventDefault()
     this.setState({error: null})
+    let datetime = new Date()
+    let date = datetime.getFullYear()+'-'+(datetime.getMonth()+1)+'-'+datetime.getDate()+' '+datetime.getHours()+':'+datetime.getMinutes()+':'+datetime.getSeconds();
     const newComment = {
       comment: this.state.comment,
       location_id: this.props.id,
-      user_id: 1
+      user_id: 1,
+      date: date
     }
     this.props.addComment(newComment)
       .then(() => {
@@ -55,6 +59,7 @@ class Comments extends React.Component {
 
   render() {
     let { t, i18n } = this.props
+    
     return (
       <div className="comments">
         <h2>{t('comments.comments')}</h2>
@@ -66,7 +71,7 @@ class Comments extends React.Component {
           {this.props.newComments && this.props.newComments.length > 0 && 
             this.props.newComments.map(comment => {
             return <li key={comment.id}>
-              <Comment comment={comment.comment} date={comment.date} user={comment.full_name} id={comment.id} onChange={this.reloadComments.bind(this)} />
+              <Comment comment={comment.comment} date={comment.date} user={comment.full_name} id={comment.id} onChange={this.reloadComments} />
             </li>
           })}
         </ul>
