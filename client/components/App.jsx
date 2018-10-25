@@ -10,7 +10,7 @@ import Footer from './Footer'
 import ReactGA from 'react-ga'
 import { withNamespaces } from 'react-i18next'
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {

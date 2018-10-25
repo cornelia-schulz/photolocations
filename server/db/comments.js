@@ -16,7 +16,7 @@ function getAllComments(id, testDb) {
   return db('comments')
     .leftJoin('users', 'users.id', 'comments.user_id')
     .where('location_id', id)
-    .select()
+    .select('comments.id as id', 'comments.location_id as location_id', 'comments.user_id as user_id', 'comments.comment as comment', 'comments.date as date', 'comments.reply_To_Id as reply_To_Id', 'users.full_name as full_name', 'users.email as email', 'users.facebook_id as facebook.id', 'users.google_accessToken as google_accessToken', 'users.google_id  as google_id')
 }
 
 function addComment(comment, testDb){
