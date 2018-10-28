@@ -9,6 +9,8 @@ const port = process.env.PORT || 3000
 //   console.log('Listening on port', port)
 // })
 
+// https://timonweb.com/posts/running-expressjs-server-over-https/
+
 https.createServer({
   key: fs.readFileSync('s.key'),
   cert: fs.readFileSync('s.cert')

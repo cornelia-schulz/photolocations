@@ -419,6 +419,7 @@ LOGIN
 .login {
   margin: 0 auto;
   text-align: center;
+  height: 95vh;
 }
 
 .login button {
@@ -543,7 +544,7 @@ MEDIA QUERIES
   footer {
     display: block;
     width: 100%;
-    position: absolute;
+    /* position: absolute; */
     height: 20px;
     overflow: hidden;
     text-align: center;
@@ -551,7 +552,7 @@ MEDIA QUERIES
     padding-top: 5px;
     padding-bottom: 7px;
     background-color: #1f1e1e;
-    clear: both;
+    /* clear: both; */
   }
 
   .language {

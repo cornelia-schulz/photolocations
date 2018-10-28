@@ -47,8 +47,8 @@ export class App extends React.Component {
           <Switch>
             <Route path='/location/:id/' component={Location} />
           </Switch>
-          {!matchPath.isExact && <Route path='/' component={Footer} />}
           <Route path='/login' component={Login} />
+          {!matchPath.isExact && <Route path='/' component={Footer} />} 
         </div>
       
       </BrowserRouter>

@@ -33,7 +33,7 @@ class Login extends React.Component {
       mode: 'cors',
       cache: 'default'
     }
-    fetch('http://localhost:3000/api/v1/auth/facebook', options).then(r => {
+    fetch('https://localhost:3000/api/v1/auth/facebook', options).then(r => {
       const token = r.headers.get('x-auth-token')
       r.json().then(user => {
         if (token) {
@@ -71,7 +71,7 @@ class Login extends React.Component {
       mode: 'cors',
       cache: 'default'
     }
-    fetch('http://localhost:3000/api/v1/auth/google', options).then(r => {
+    fetch('https://localhost:3000/api/v1/auth/google', options).then(r => {
       const token = r.headers.get('x-auth-token')
       r.json().then(user => {
         if (token) {
