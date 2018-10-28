@@ -10,8 +10,8 @@ const port = process.env.PORT || 3000
 // })
 
 https.createServer({
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.cert')
+  key: fs.readFileSync('s.key'),
+  cert: fs.readFileSync('s.cert')
 }, app)
 .listen(3000, function() {
   console.log('Example app listening on port 3000! Go to https://localhost:3000/')
