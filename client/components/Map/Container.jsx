@@ -47,11 +47,12 @@ class Container extends React.Component {
   }
 
   componentDidMount () {
-    this.reloadLocations ();
+    const language = i18n.languages[0];
+    this.reloadLocations (language);
   }
 
-  reloadLocations () {
-    this.props.getAllLocations ();
+  reloadLocations(language) {
+    this.props.getAllLocations(language);
   }
 
   openModal () {
@@ -261,8 +262,9 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    getAllLocations: () => {
-      return dispatch (getAllLocations ());
+    getAllLocations: (language) => {
+      // const language = 'en'
+      return dispatch (getAllLocations (language));
     },
     addLocation: location => {
       return dispatch (addLocation (location));

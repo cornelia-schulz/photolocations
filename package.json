@@ -10,7 +10,7 @@
     "build": "webpack --config ./webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "start": "webpack && node server",
-    "dev": "node server & webpack --watch",
+    "dev": "node server & webpack --watch --mode development",
     "postinstall": "yarn build && yarn knex migrate:latest",
     "test": "jest --watchAll"
   },
@@ -86,8 +86,7 @@
     "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0",
     "request": "^2.87.0",
-    "webpack": "^4.20.2",
-    "webpack-dev-server": "^3.1.9"
+    "webpack": "^4.20.2"
   },
   "devDependencies": {
     "@alienfast/i18next-loader": "^1.0.16",
@@ -98,7 +97,6 @@
     "jest-enzyme": "^7.0.0",
     "sqlite3": "^4.0.2",
     "superagent": "^3.8.3",
-    "webpack-cli": "^3.1.2",
-    "webpack-merge": "^4.1.4"
+    "webpack-cli": "^3.1.2"
   }
 }
