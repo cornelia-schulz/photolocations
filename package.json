@@ -10,7 +10,7 @@
     "build": "webpack --config ./webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "start": "webpack && node server",
-    "dev": "node server & webpack --watch",
+    "dev": "node server & webpack --watch --mode development",
     "postinstall": "yarn build && yarn knex migrate:latest",
     "test": "jest --watchAll"
   },

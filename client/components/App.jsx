@@ -1,12 +1,20 @@
 import React, { Suspense, lazy } from 'react'
+// import React from 'react'
 import { BrowserRouter, Route, Switch, matchPath } from 'react-router-dom'
 const Header = lazy(() => import('./Header'))
-const WrappedContainer = lazy(() => import('./Map/Container'))
-const About = lazy(() => import('./About'))
-const Contact = lazy(() => import('./Contact'))
-const Location = lazy(() => import('./Locations/Location'))
-const Login = lazy(() => import('./Login'))
-const Footer = lazy(() => import('./Footer'))
+// import Header from './Header'
+// const WrappedContainer = lazy(() => import('./Map/Container'))
+import WrappedContainer from './Map/Container'
+// const About = lazy(() => import('./About'))
+import About from './About'
+import Contact from './Contact'
+// const Contact = lazy(() => import('./Contact'))
+// const Location = lazy(() => import('./Locations/Location'))
+import Location from './Locations/Location'
+// const Login = lazy(() => import('./Login'))
+import Login from './Login'
+// const Footer = lazy(() => import('./Footer'))
+import Footer from './Footer'
 import ReactGA from 'react-ga'
 import { withNamespaces } from 'react-i18next'
 
@@ -39,7 +47,7 @@ export class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
+        {/* <Suspense fallback={<div>Loading...</div>}> */}
           <div className="container">
             <Route path='/' render={() => <Header onChange={this.onChange} />} />
             <Route exact path='/' render={(props) => <WrappedContainer searchString={this.state.searchString} {...props} />} />
@@ -51,7 +59,7 @@ export class App extends React.Component {
             {!matchPath.isExact && <Route path='/' component={Footer} />}
             <Route path='/login' component={Login} />
           </div>
-        </Suspense>
+        {/* </Suspense> */}
       </BrowserRouter>
     )
   }
