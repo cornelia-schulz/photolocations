@@ -2,7 +2,7 @@
   "name": "photo-locations",
   "version": "0.2.1",
   "description": "A site for anyone seeking good photo locations",
-  "repository": "https://github.com/cornelia-schulz/photo-opportunities",
+  "repository": "https://github.com/cornelia-schulz/photolocations",
   "main": "server/index.js",
   "author": "Cornelia Schulz",
   "license": "ISC",
@@ -10,7 +10,7 @@
     "build": "webpack --config ./webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "start": "webpack && node server",
-    "dev": "node server & webpack --watch --mode development",
+    "dev": "node server & webpack --watch",
     "postinstall": "yarn build && yarn knex migrate:latest",
     "test": "jest --watchAll"
   },
@@ -19,6 +19,9 @@
     "json",
     "node"
   ],
+  "engines": {
+    "node": "9.11.0"
+  },
   "babel": {
     "presets": [
       "@babel/env",
