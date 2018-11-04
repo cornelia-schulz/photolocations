@@ -10,6 +10,9 @@ import { withNamespaces } from 'react-i18next'
 class Header extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      language: ''
+    }
     this.toggleVisibility = this.toggleVisibility.bind(this)
     this.changeLanguage = this.changeLanguage.bind(this)
   }
@@ -30,6 +33,9 @@ class Header extends React.Component {
   changeLanguage(language) {
     i18n.changeLanguage(language)
     this.props.setLanguage(language)
+    this.setState ({
+      language: language
+    })
   }
 
   render() {
