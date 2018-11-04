@@ -18,19 +18,17 @@ let store
 
 configure({adapter: new Adapter()})
 
-test('<Comments />', () => {
+test('<Comments /> renders named export', () => {
   store = mockStore(initialState)
-  const expected = 'Comments'
-  const wrapper = mount(<Provider store={store}><Comments /></Provider>)
-  const actual = wrapper.find('h2').text()
+  const wrapper = mount(<Provider store={store}><Comments t={(k) => 'translate comments'} /></Provider>)
 
-  expect(actual).toEqual(expected)
+  expect(wrapper.contains(<h2>translate comments</h2>)).toBe(true);
 })
 
 test('<Comments /> with children', () => {
   store = mockStore(initialState)
   const expected = 2
-  const wrapper = mount(<Provider store={store}><Comments /></Provider>)
+  const wrapper = mount(<Provider store={store}><Comments t={key => key} /></Provider>)
   const actual = wrapper.find('li').length
 
   expect(actual).toEqual(expected)

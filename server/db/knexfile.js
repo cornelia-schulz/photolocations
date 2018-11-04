@@ -1,4 +1,5 @@
 // Update with your config settings.
+// When running seeds on Heroku, use: knex seed:run --knexfile=./server/db/knexfile.js
 const path = require('path')
 
 module.exports = {

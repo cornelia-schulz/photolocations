@@ -8,7 +8,7 @@ import { withNamespaces } from 'react-i18next'
 ReactGA.initialize('UA-124825499-1')
 ReactGA.pageview(window.location.pathname + window.location.search)
 
-class Contact extends React.Component {
+export class Contact extends React.Component {
   constructor(props) {
     super(props)
     this.state = {

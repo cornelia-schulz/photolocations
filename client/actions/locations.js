@@ -34,10 +34,13 @@ export const receiveLocation = (location) => {
 }
 
 export function getAllLocations() {
+<<<<<<< HEAD
   const language="en"
+=======
+>>>>>>> 2c9b400bbc2fed789540f1ad2dd2e045efde8260
   return (dispatch) => {
     return request
-      .get('/api/v1/locations/'+language)
+      .get('/api/v1/locations')
       .then(res => {
         dispatch(receiveAllLocations(res.body))
       })

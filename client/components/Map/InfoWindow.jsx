@@ -123,7 +123,6 @@ InfoWindow.propTypes = {
   visible: PropTypes.bool,
   id: PropTypes.object,
   button: PropTypes.object,
-  language: PropTypes,
   // rating: PropTypes.object,
 
   // callbacks
