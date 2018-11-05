@@ -51,6 +51,12 @@ class Container extends React.Component {
     this.reloadLocations (language);
   }
 
+  componentDidUpdate (prevProps, prevState) {
+    if (prevProps.language !== this.props.language) {
+      this.reloadLocations(this.props.language);
+    }
+  }
+
   reloadLocations(language) {
     this.props.getAllLocations(language);
   }
