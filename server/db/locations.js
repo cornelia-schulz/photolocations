@@ -8,14 +8,24 @@ module.exports = {
   getAllLocations,
   getLocation,
   addLocation,
-  updateLocation
+  updateLocation,
+  getLanguage
 }
 
-function getAllLocations(testDb) {
+function getLanguage(language, testDb) {
+  const db = testDb || connection
+  return db('languages')
+    .where('languages.language', language)
+    .select('languages.id')
+    .first()
+}
+
+function getAllLocations(language, testDb) {
   const db = testDb || connection
   return db('locations')
-    .leftJoin('photos', 'locations.id', 'photos.location_id')      
+    .leftJoin('photos', 'locations.id', 'photos.location_id')    
     // .leftJoin('ratings', 'locations.id', 'ratings.location_id')
+    .where('locations.language_id', language)
     .select('locations.id as id', 'locations.title as title', 'locations.label as label', 'locations.lat as lat', 'locations.lng as lng', 'locations.info as description', 'photos.title as imageTitle', 'photos.url as url', 'locations.info_title as info')
 }
 
@@ -36,13 +46,15 @@ function getAllLocations(testDb) {
 
 function getLocation(id, testDb) {
   const db = testDb || connection
+  console.log(id)
   return db('locations')
   .leftJoin('photos', 'locations.id', 'photos.location_id')
   .leftJoin('comments', 'locations.id', 'comments.location_id')
-  .innerJoin('users', 'comments.user_id', 'users.id')
+  .leftJoin('users', 'comments.user_id', 'users.id')
   .where('locations.id', id)
   .select('locations.id as id', 
           'locations.title as title', 
+          'locations.language_id as language',
           'locations.label as label', 
           'locations.lat as lat', 
           'locations.lng as lng', 
