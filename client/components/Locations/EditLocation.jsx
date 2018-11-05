@@ -27,12 +27,12 @@ class EditLocation extends React.Component {
   }
 
   componentDidMount() {
-    // this.setState({
-    //   carparking: this.props.userRatings.carparking,
-    //   convenience: this.props.userRatings.convenience,
-    //   views: this.props.userRatings.views,
-    //   ratingId: this.props.userRatings.id
-    // })
+    this.setState({
+      carparking: this.props.userRatings.carparking,
+      convenience: this.props.userRatings.convenience,
+      views: this.props.userRatings.views,
+      ratingId: this.props.userRatings.id
+    })
   }
 
   handleChange(e) {
@@ -122,7 +122,7 @@ class EditLocation extends React.Component {
           <label htmlFor='description'>{t('editLocation.description')} </label><br />
           <textarea rows='4' cols='100' name='description' defaultValue={this.props.location.description} id='description' onChange={this.handleChange}></textarea><br />
           <div className='row update-star-rating'>
-            {/* <div className='col-3'>
+            <div className='col-3'>
             Carparking
               <StarRatingComponent 
                 name='carparking'
@@ -151,7 +151,7 @@ class EditLocation extends React.Component {
                 value={this.state.views}
                 onStarClick={this.onStarClick}
               />
-            </div> */}
+            </div>
           </div>
           
           <button type='button' className='button' onClick={this.submitLocation}>{t('editLocation.submit')}</button>
