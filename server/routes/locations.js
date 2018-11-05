@@ -3,15 +3,19 @@ const db = require('../db/locations')
 const router = express.Router()
 
 
-router.get('/', (req, res) => {
-  db.getAllLocations()
-    .then(locations => {
-      res.json(locations)
+router.get('/language/:language', (req, res) => {
+  const language = req.params.language
+  db.getLanguage(language)
+    .then(lang => {
+      db.getAllLocations(lang.id)
+        .then(locations => {
+        res.json(locations)
     })
     .catch(err => {
       console.error(err)
       res.status(500).send('Unable to get locations from database')
     })
+    })  
 })
 
 router.get('/:id', (req, res) => {
