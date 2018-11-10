@@ -4,6 +4,8 @@ Photo Locations is a personal project. When travelling with family or friends, y
 
 Check it out at http://www.photolocations.nz or http://photolocationnz.herokuapp.com
 
+![Photolocations homepage screenshot](/images/photolocations.PNG)
+
 Record your favourite photo spots and to research locations where you are travelling to.
 
 The map will center in the location that you are currently at. From there you can check out any markers which will point you to cool photography locations.
