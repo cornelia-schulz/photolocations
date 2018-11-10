@@ -1,6 +1,10 @@
 import request from 'superagent'
-import {showError} from './error'
-import {getUserRatingsForLocation} from './ratings'
+import {
+  showError
+} from './error'
+import {
+  getUserRatingsForLocation
+} from './ratings'
 
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS'
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS'
@@ -20,7 +24,7 @@ export const receiveAllLocations = (locations) => {
   }
 }
 
-export const requestLocaion = () => {
+export const requestLocation = () => {
   return {
     type: REQUEST_LOCATION
   }
@@ -36,7 +40,7 @@ export const receiveLocation = (location) => {
 export function getAllLocations(language) {
   return (dispatch) => {
     return request
-      .get('/api/v1/locations/language/'+language)
+      .get('/api/v1/locations/language/' + language)
       .then(res => {
         dispatch(receiveAllLocations(res.body))
       })
@@ -49,7 +53,7 @@ export function getAllLocations(language) {
 export function getLocation(id) {
   return (dispatch) => {
     return request
-      .get('/api/v1/locations/'+id)
+      .get('/api/v1/locations/' + id)
       .then(res => {
         dispatch(receiveLocation(res.text))
       })
@@ -72,7 +76,7 @@ export function addLocation(location) {
       .post('/api/v1/locations/add')
       .send(newLocation)
       .then(() => {
-        return getAllLocations() 
+        return getAllLocations()
       })
       .catch(() => {
         dispatch(showError('Could not save location'))
@@ -102,7 +106,7 @@ export function editLocation(location) {
       .put('/api/v1/locations/edit')
       .send(updatedLocation)
       .then(() => {
-        upsertRating(updatedRating)
+        return upsertRating(location)
       })
       .then(() => {
         return getLocation(location.id)
@@ -113,14 +117,17 @@ export function editLocation(location) {
   }
 }
 
-export function upsertRating(rating){
+function upsertRating(rating) {
+  debugger
+  console.log('upserting ', rating)
   return request
     .post('/api/v1/ratings/edit')
     .send(rating)
     .then(() => {
+      console.log('rating submitted')
       return getUserRatingsForLocation(rating.location_id, rating.user_id)
     })
     .catch(() => {
-      dispatch(showError('Could not update rating'))
+      console.error('Could not update rating')
     })
 }
