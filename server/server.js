@@ -24,7 +24,7 @@ const corsOption = {
 
 // view engine setup
 server.set('views', path.join(__dirname, 'views'))
-server.set('view engine', 'jade')
+server.set('view engine', 'pug')
 
 server.use(passport.initialize())
 server.use(cors(corsOption))
