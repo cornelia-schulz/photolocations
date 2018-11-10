@@ -15,5 +15,3 @@ From the marker you can click on more info to find out more about the location a
 ![Photolocations location page screenshot](/server/public/images/location.PNG)
 
 Right click on the map to add new locations.
-
-![Photolocations add new location screenshot](/server/public/images/addLocation.PNG)
