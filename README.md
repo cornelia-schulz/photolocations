@@ -12,4 +12,8 @@ The map will center in the location that you are currently at. From there you ca
 
 From the marker you can click on more info to find out more about the location and to leave comments.
 
+![Photolocations location page screenshot](/server/public/images/locations.PNG)
+
 Right click on the map to add new locations.
+
+![Photolocations add new location screenshot](/server/public/images/addLocations.PNG)
