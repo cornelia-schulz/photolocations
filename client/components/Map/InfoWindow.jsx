@@ -123,7 +123,7 @@ InfoWindow.propTypes = {
   visible: PropTypes.bool,
   id: PropTypes.object,
   button: PropTypes.object,
-  // rating: PropTypes.object,
+  rating: PropTypes.object,
 
   // callbacks
   onClose: PropTypes.func,
