@@ -47,6 +47,7 @@ router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getAllRatingsForLocation(id)
     .then(ratings => {
+      console.log(ratings)
       res.json(ratings)
     })
     .catch(err => {

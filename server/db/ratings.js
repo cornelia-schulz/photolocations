@@ -21,14 +21,17 @@ function getAllRatings(testDb) {
     .select()
 }
 
+// sum up ratings from all users for one location and calculate average
 function getAllRatingsForLocation(id, testDb) {
   const db = testDb || connection
   return db('ratings')
-    .avg('ratings.carparking as carparking')
-    .avg('ratings.convenience as convenience')
-    .avg('ratings.views as views')
+    // .avg('ratings.carparking as carparking')
+    // .avg('ratings.convenience as convenience')
+    // .avg('ratings.views as views')
     .where('ratings.location_id', id)
-    .select()
+    .whereRaw('(carparking is not null or convenience is not null or "views" is not null)')
+    .select(knex.raw('(sum(coalesce(carparking, 0)) * 1.0 + sum(coalesce(convenience, 0)) + sum(coalesce("views", 0))) /' +
+      '(count(ratings.carparking) + count(ratings.convenience) + count(ratings.views)) as rating'))
 }
 
 function getAllUserRatingsForLocation(location, user, testDb) {
@@ -36,17 +39,16 @@ function getAllUserRatingsForLocation(location, user, testDb) {
   return db('ratings')
     .where({
       location_id: location,
-      user_id:  user
+      user_id: user
     })
     .select()
 }
 
 function upsertUserRating(rating, testDb) {
   const db = testDb || connection
-  if (rating.id === null && rating.carparking === null && rating.convenience === null && rating.views === null){
+  if (rating.id === null && rating.carparking === null && rating.convenience === null && rating.views === null) {
     return
-  }
-  else if (rating.id === null){
+  } else if (rating.id === null) {
     const newRating = {
       location_id: rating.location_id,
       user_id: rating.user_id,
@@ -57,8 +59,7 @@ function upsertUserRating(rating, testDb) {
     console.log(newRating)
     return db('ratings')
       .insert(newRating)
-  }
-  else {
+  } else {
     console.log('else')
     return db('ratings')
       .where('id', rating.id)

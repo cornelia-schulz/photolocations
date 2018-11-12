@@ -34,15 +34,15 @@ export const receiveAllRatingsForLocation = (ratings) => {
   // filter the ratings where not null
   // sum them
   // divide by count if not 0
-  const r = [ratings[0].carparking, ratings[0].convenience, ratings[0].views]
-  const sum = r.filter(a=> a !== null).reduce((a, b) => a + b)
-  const divider = r.filter(a=> a !== null).length
-  if(divider !== 0){
-    var avgRating = Math.round(sum/divider)
-  }
+  // const r = [ratings[0].carparking, ratings[0].convenience, ratings[0].views]
+  // const sum = r.filter(a=> a !== null).reduce((a, b) => a + b)
+  // const divider = r.filter(a=> a !== null).length
+  // if(divider !== 0){
+  //   var avgRating = Math.round(sum/divider)
+  // }
   return {
     type: RECEIVE_LOCATION_RATINGS,
-    ratings: avgRating
+    ratings: ratings
   }
 }
 
@@ -101,7 +101,8 @@ export function getAllRatingsForLocation(id) {
     return request
       .get('/api/v1/ratings/'+id)
       .then(res => {
-        dispatch(receiveAllRatingsForLocation(res.body))
+        console.log('action rating ', res.body[0])
+        dispatch(receiveAllRatingsForLocation(res.body[0]))
       })
       .catch(() => {
         dispatch(showError('Could not retrieve ratings for this location'))

@@ -27,9 +27,9 @@ class StarRating extends React.Component {
   getAvgRating(){
     const id = this.props.id
     this.props.getAllRatingsForLocation(id)
-      .then(ratings => {
+      .then(rating => {
         this.setState({
-          avgRating: ratings
+          avgRating: rating
         })
     })
   }
@@ -59,6 +59,7 @@ class StarRating extends React.Component {
 
   render() {
     let {userRating, ratings} = this.props
+    let rating = Math.round(ratings.rating)
     let { t, i18n } = this.props
     return (
      <div>
@@ -73,7 +74,7 @@ class StarRating extends React.Component {
         name='avgRating'
         editing={false}
         starCount={5}
-        value={ratings}
+        value={rating}
         onStarClick={this.onStarClick}
       />}
       <p>

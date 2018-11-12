@@ -44,11 +44,13 @@ class Location extends React.Component {
     this.props.getUserRatingsForLocation(id, user)
   }
 
-  componentDidUpdate (prevProps, prevState) {
-    if (prevProps.userRatings !== this.props.userRatings) {
-      this.loadLocation(this.state.location)
-    }
-  }
+  // componentDidUpdate (prevProps, prevState) {
+  //   if (prevProps.userRatings !== this.props.userRatings) {
+  //     const id = this.props.match.params.id
+  //     const user = 2
+  //     this.props.getUserRatingsForLocation(id, user)
+  //   }
+  // }
 
   loadLocation(locationid) {
     const id = this.props.match.params.id || locationid
