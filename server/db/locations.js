@@ -37,10 +37,8 @@ function getAllLocations(language, testDb) {
 //         .where('locations.language_id', language)
 //         .groupBy('locations.id')
 //         .select(knex.raw('locations.id as id', 'locations.title as title', 'locations.label as label', 'locations.lat as lat', 'locations.lng as lng', 'locations.info_title as info', 'locations.info as description', 'photos.title as imageTitle', 'photos.url as url' +
-//                           'AVG( IFNULL(ratings.carparking, 0) + IFNULL(ratings.convenience, 0) + IFNULL(ratings.views, 0) ) / ' +
-//                           '   (CASE WHEN ratings.carparking IS NULL THEN 0 ELSE 1 END + ' +
-//                           '   CASE WHEN ratings.convenience IS NULL THEN 0 ELSE 1 END + ' +
-//                           '   CASE WHEN ratings.views IS NULL THEN 0 ELSE 1 END) AS rating'
+//                           '(sum(r.carparking) + sum(convenience) + sum("views")) /' +
+//                           '(count(r.carparking) + count(convenience) + count("views")) as rating'
 //                         ))
 //                   }
 
