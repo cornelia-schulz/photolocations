@@ -41,8 +41,8 @@ function getUserRatingForLocation(location, user, testDb) {
   return db('ratings')
     .where('ratings.location_id', location)
     .where('ratings.user_id', user)
-    .select(knex.raw('(sum(coalesce(carparking, 0)) * 1.0 + sum(coalesce(convenience, 0)) + sum(coalesce("views", 0))) /' +
-      '(count(ratings.carparking) + count(ratings.convenience) + count(ratings.views)) as rating,ratings.carparking, ratings.convenience, ratings.views'))
+    .select('ratings.carparking', 'ratings.convenience', 'ratings.views', knex.raw('(sum(coalesce(carparking, 0)) * 1.0 + sum(coalesce(convenience, 0)) + sum(coalesce("views", 0))) /' +
+      '(count(ratings.carparking) + count(ratings.convenience) + count(ratings.views)) as rating'))
 }
 
 function getAllUserRatingsForLocation(location, user, testDb) {
