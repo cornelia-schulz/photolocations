@@ -7,5 +7,5 @@ test ('receiveLanguage reducer', () => {
       type: 'SET_LANGUAGE',
       language: 'en',
     })
-  ).toBe ('en');
+  ).toBe ('en')
 })

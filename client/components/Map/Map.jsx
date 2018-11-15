@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {connect} from 'react-redux';
-import {setLocation} from '../../actions/map';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {connect} from 'react-redux'
+import {setLocation} from '../../actions/map'
 
-const PropTypes = require ('prop-types');
+const PropTypes = require ('prop-types')
 const evtNames = [
   'ready',
   'click',
@@ -12,28 +12,28 @@ const evtNames = [
   'contextmenu',
   'dblclick',
   'maplongclick',
-];
+]
 
 class Map extends React.Component {
   constructor (props) {
-    super (props);
+    super (props)
 
-    const {lat, lng} = this.props.initialCenter;
+    const {lat, lng} = this.props.initialCenter
     this.state = {
       currentLocation: {
         lat: lat,
         lng: lng,
       },
-    };
-    this.onPlaceSearch = this.onPlaceSearch.bind (this);
+    }
+    this.onPlaceSearch = this.onPlaceSearch.bind (this)
   }
 
   componentDidUpdate (prevProps, prevState) {
     if (prevProps.google !== this.props.google) {
-      this.loadMap ();
+      this.loadMap ()
     }
     if (prevState.currentLocation !== this.state.currentLocation) {
-      this.recenterMap ();
+      this.recenterMap ()
     }
     if (prevProps.searchString !== this.props.searchString) {
       const request = {
@@ -46,21 +46,21 @@ class Map extends React.Component {
           'opening_hours',
           'geometry',
         ],
-      };
-      const service = new google.maps.places.PlacesService (this.map);
-      service.findPlaceFromQuery (request, this.onPlaceSearch);
+      }
+      const service = new google.maps.places.PlacesService (this.map)
+      service.findPlaceFromQuery (request, this.onPlaceSearch)
     }
   }
 
   onPlaceSearch (results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (let i = 0; i < results.length; i++) {
-        let place = results[i];
-        const lat = place.geometry.location.lat ();
-        const lng = place.geometry.location.lng ();
+        let place = results[i]
+        const lat = place.geometry.location.lat ()
+        const lng = place.geometry.location.lng ()
         this.setState ({
           currentLocation: {lat: lat, lng: lng},
-        });
+        })
       }
     }
   }
@@ -69,88 +69,88 @@ class Map extends React.Component {
     if (this.props.centerAroundCurrentLocation) {
       if (navigator && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition (pos => {
-          const coords = pos.coords;
+          const coords = pos.coords
           this.setState ({
             currentLocation: {
               lat: coords.latitude,
               lng: coords.longitude,
             },
-          });
-        });
+          })
+        })
       }
     }
-    this.loadMap ();
+    this.loadMap ()
   }
 
   loadMap () {
     if (this.props && this.props.google) {
       // google is available
-      const {google} = this.props;
-      const maps = google.maps;
+      const {google} = this.props
+      const maps = google.maps
 
-      const mapRef = this.refs.map;
-      const node = ReactDOM.findDOMNode (mapRef);
+      const mapRef = this.refs.map
+      const node = ReactDOM.findDOMNode (mapRef)
 
-      let {initialCenter, zoom} = this.props;
-      const {lat, lng} = this.state.currentLocation;
-      const center = new maps.LatLng (lat, lng);
+      let {initialCenter, zoom} = this.props
+      const {lat, lng} = this.state.currentLocation
+      const center = new maps.LatLng (lat, lng)
       const mapConfig = Object.assign (
         {},
         {
           center: center,
           zoom: zoom,
         }
-      );
-      this.map = new maps.Map (node, mapConfig);
+      )
+      this.map = new maps.Map (node, mapConfig)
 
       evtNames.forEach (e => {
-        this.map.addListener (e, this.handleEvent (e));
-      });
-      maps.event.trigger (this.map, 'ready');
+        this.map.addListener (e, this.handleEvent (e))
+      })
+      maps.event.trigger (this.map, 'ready')
 
-      this.forceUpdate ();
+      this.forceUpdate ()
     }
   }
 
   recenterMap () {
-    const map = this.map;
-    const curr = this.state.currentLocation;
-    const google = this.props.google;
-    const maps = google.maps;
+    const map = this.map
+    const curr = this.state.currentLocation
+    const google = this.props.google
+    const maps = google.maps
 
     if (map) {
-      let center = new maps.LatLng (curr.lat, curr.lng);
-      map.panTo (center);
+      let center = new maps.LatLng (curr.lat, curr.lng)
+      map.panTo (center)
     }
   }
 
   handleEvent (evtName) {
-    let timeout;
-    const handlerName = evtName;
+    let timeout
+    const handlerName = evtName
 
     return e => {
       if (timeout) {
-        clearTimeout (timeout);
+        clearTimeout (timeout)
       }
       timeout = setTimeout (() => {
         if (this.props[handlerName]) {
           const location = {
             lat: e.latLng.lat (),
             lng: e.latLng.lng (),
-          };
+          }
           // console.log(location)
-          this.props.setLocation (location);
-          this.props[handlerName] (this.props, this.map, e);
+          this.props.setLocation (location)
+          this.props[handlerName] (this.props, this.map, e)
         }
-      }, 0);
-    };
+      }, 0)
+    }
   }
 
   renderChildren () {
-    const {children} = this.props;
+    const {children} = this.props
     // if there are no children still display the map
     if (!children || children.some (a => !a)) {
-      return;
+      return
     }
 
     return React.Children.map (children, c => {
@@ -158,8 +158,8 @@ class Map extends React.Component {
         map: this.map,
         google: this.props.google,
         mapCenter: this.state.currentLocation,
-      });
-    });
+      })
+    })
   }
 
   render () {
@@ -168,7 +168,7 @@ class Map extends React.Component {
         Loading map...
         {this.renderChildren ()}
       </div>
-    );
+    )
   }
 }
 
@@ -178,7 +178,7 @@ Map.propTypes = {
   initialCenter: PropTypes.object,
   centerAroundCurrentLocation: PropTypes.bool,
   onMove: PropTypes.func,
-};
+}
 Map.defaultProps = {
   zoom: 12,
   // Auckland, by default
@@ -188,20 +188,20 @@ Map.defaultProps = {
   },
   centerAroundCurrentLocation: true,
   onMove: function () {},
-};
+}
 
 function mapStateToProps (state) {
   return {
     searchString: state.receiveSearchString,
-  };
+  }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
     setLocation: location => {
-      return dispatch (setLocation (location));
+      return dispatch (setLocation (location))
     },
-  };
+  }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps) (Map);
+export default connect (mapStateToProps, mapDispatchToProps) (Map)

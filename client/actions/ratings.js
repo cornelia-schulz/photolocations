@@ -30,16 +30,6 @@ export const requestAllRatingsForLocation = () => {
 }
 
 export const receiveAllRatingsForLocation = (ratings) => {
-
-  // filter the ratings where not null
-  // sum them
-  // divide by count if not 0
-  // const r = [ratings[0].carparking, ratings[0].convenience, ratings[0].views]
-  // const sum = r.filter(a=> a !== null).reduce((a, b) => a + b)
-  // const divider = r.filter(a=> a !== null).length
-  // if(divider !== 0){
-  //   var avgRating = Math.round(sum/divider)
-  // }
   return {
     type: RECEIVE_LOCATION_RATINGS,
     ratings: ratings
@@ -53,10 +43,9 @@ export const requestAllUserRatingsForLocation = () => {
 }
 
 export const receiveAllUserRatingsForLocation = (ratings) => {
-  const avgRating = Math.round((Number(ratings[0].carparking) + Number(ratings[0].convenience) + Number(ratings[0].views)) / 3)
   return {
     type: RECEIVE_USER_LOCATION_RATINGS,
-    ratings: avgRating
+    ratings: ratings
   }
 }
 
@@ -96,13 +85,15 @@ export function getAllRatings() {
   }
 }
 
-export function getAllRatingsForLocation(id) {
+export function getAllRatingsForLocation(id, user) {
   return (dispatch) => {
     return request
       .get('/api/v1/ratings/'+id)
       .then(res => {
-        console.log('action rating ', res.body[0])
         dispatch(receiveAllRatingsForLocation(res.body[0]))
+      })
+      .then(() => {
+        return getAllUserRatingsForLocation(id, user)
       })
       .catch(() => {
         dispatch(showError('Could not retrieve ratings for this location'))
@@ -111,7 +102,6 @@ export function getAllRatingsForLocation(id) {
 }
 
 export function getAllUserRatingsForLocation(location, user) {
-  return (dispatch) => {
     return request
       .get('/api/v1/ratings/'+ location + '/' + user)
       .then(res => {
@@ -120,7 +110,6 @@ export function getAllUserRatingsForLocation(location, user) {
       .catch(() => {
         dispatch(showError('Could not retrieve ratings for this user for this location'))
       })
-  }
 }
 
 export function getUserRatingsForLocation(location, user) {
