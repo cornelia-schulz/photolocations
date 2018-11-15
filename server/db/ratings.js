@@ -36,13 +36,13 @@ function getAllRatingsForLocation(id, testDb) {
 }
 
 // Sum up ratings from one user for one location and calculate the average for that location
-function getUserRatingForLocation(location, user, testDb){
+function getUserRatingForLocation(location, user, testDb) {
   const db = testDb || connection
   return db('ratings')
-    .where('ratings.location_id', location) 
+    .where('ratings.location_id', location)
     .where('ratings.user_id', user)
     .select(knex.raw('(sum(coalesce(carparking, 0)) * 1.0 + sum(coalesce(convenience, 0)) + sum(coalesce("views", 0))) /' +
-      '(count(ratings.carparking) + count(ratings.convenience) + count(ratings.views)) as rating'))
+      '(count(ratings.carparking) + count(ratings.convenience) + count(ratings.views)) as rating,ratings.carparking, ratings.convenience, ratings.views'))
 }
 
 function getAllUserRatingsForLocation(location, user, testDb) {
