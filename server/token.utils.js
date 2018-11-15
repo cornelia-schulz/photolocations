@@ -6,8 +6,8 @@ var createToken = function(auth) {
       }, 'my-secret',
       {
           expiresIn: 60 * 120
-      });
-};
+      })
+}
 
 module.exports = {
 generateToken: function(req, res, next) {

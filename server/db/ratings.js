@@ -7,6 +7,7 @@ const connection = knex(config)
 module.exports = {
   getAllRatings,
   getAllRatingsForLocation,
+  getUserRatingForLocation,
   getAllUserRatingsForLocation,
   upsertUserRating
 }
@@ -30,6 +31,16 @@ function getAllRatingsForLocation(id, testDb) {
     // .avg('ratings.views as views')
     .where('ratings.location_id', id)
     .whereRaw('(carparking is not null or convenience is not null or "views" is not null)')
+    .select(knex.raw('(sum(coalesce(carparking, 0)) * 1.0 + sum(coalesce(convenience, 0)) + sum(coalesce("views", 0))) /' +
+      '(count(ratings.carparking) + count(ratings.convenience) + count(ratings.views)) as rating'))
+}
+
+// Sum up ratings from one user for one location and calculate the average for that location
+function getUserRatingForLocation(location, user, testDb){
+  const db = testDb || connection
+  return db('ratings')
+    .where('ratings.location_id', location) 
+    .where('ratings.user_id', user)
     .select(knex.raw('(sum(coalesce(carparking, 0)) * 1.0 + sum(coalesce(convenience, 0)) + sum(coalesce("views", 0))) /' +
       '(count(ratings.carparking) + count(ratings.convenience) + count(ratings.views)) as rating'))
 }

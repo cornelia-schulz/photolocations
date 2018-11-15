@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 router.get('/:location/:user', (req, res) => {
   const location = Number(req.params.location)
   const user = Number(req.params.user)
-  db.getAllUserRatingsForLocation(location, user)
+  db.getUserRatingForLocation(location, user)
     .then(ratings => {
       res.json(ratings)
     })
