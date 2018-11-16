@@ -1,8 +1,8 @@
 'use strict'
 const environment = process.env.NODE_ENV || 'development'
-const knex = require('knex')
 const config = require('./knexfile')[environment]
-const connection = knex(config)
+const knex = require('knex')(config)
+const connection = knex
 
 module.exports = {
   getAllRatings,
@@ -26,9 +26,6 @@ function getAllRatings(testDb) {
 function getAllRatingsForLocation(id, testDb) {
   const db = testDb || connection
   return db('ratings')
-    // .avg('ratings.carparking as carparking')
-    // .avg('ratings.convenience as convenience')
-    // .avg('ratings.views as views')
     .where('ratings.location_id', id)
     .whereRaw('(carparking is not null or convenience is not null or "views" is not null)')
     .select(knex.raw('(sum(coalesce(carparking, 0)) * 1.0 + sum(coalesce(convenience, 0)) + sum(coalesce("views", 0))) /' +
@@ -41,8 +38,7 @@ function getUserRatingForLocation(location, user, testDb) {
   return db('ratings')
     .where('ratings.location_id', location)
     .where('ratings.user_id', user)
-    .select('ratings.carparking', 'ratings.convenience', 'ratings.views', knex.raw('(sum(coalesce(carparking, 0)) * 1.0 + sum(coalesce(convenience, 0)) + sum(coalesce("views", 0))) /' +
-      '(count(ratings.carparking) + count(ratings.convenience) + count(ratings.views)) as rating'))
+    .select()
 }
 
 function getAllUserRatingsForLocation(location, user, testDb) {

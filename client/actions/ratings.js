@@ -56,16 +56,28 @@ export const requestUserRatingsForLocation = () => {
 }
 
 export const receiveUserRatingsForLocation = (ratings) => {
-  const userRatings = ratings[0]
-  if (userRatings.carparking === null) {
+  const userRatings = {
+    carparking: ratings[0].carparking,
+    convenience: ratings[0].convenience,
+    views: ratings[0].views,
+    rating: 0
+  }
+  
+  let count = 3
+  if (ratings.carparking == null) {
     userRatings.carparking = 0
+    count--
   }
-  if (userRatings.convenience === null) {
+  if (ratings.convenience == null) {
     userRatings.convenience = 0
+    count--
   }
-  if (userRatings.views === null) {
-    userRatings.views
+  if (ratings.views == null) {
+    userRatings.views = 0
+    count--
   }
+
+  userRatings.rating = (userRatings.carparking + userRatings.convenience + userRatings.views) / count
   return {
     type: RECEIVE_USER_LOCATION_DETAILED_RATINGS,
     ratings: userRatings
