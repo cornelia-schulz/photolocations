@@ -64,15 +64,15 @@ export const receiveUserRatingsForLocation = (ratings) => {
   }
   
   let count = 3
-  if (ratings.carparking == null) {
+  if (userRatings.carparking === null) {
     userRatings.carparking = 0
     count--
   }
-  if (ratings.convenience == null) {
+  if (userRatings.convenience === null) {
     userRatings.convenience = 0
     count--
   }
-  if (ratings.views == null) {
+  if (userRatings.views === null) {
     userRatings.views = 0
     count--
   }
