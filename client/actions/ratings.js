@@ -57,6 +57,7 @@ export const requestUserRatingsForLocation = () => {
 
 export const receiveUserRatingsForLocation = (ratings) => {
   const userRatings = {
+    id: ratings[0].id,
     carparking: ratings[0].carparking,
     convenience: ratings[0].convenience,
     views: ratings[0].views,
@@ -135,4 +136,12 @@ export function getUserRatingsForLocation(location, user) {
         dispatch(showError('Could not retrieve user ratings'))
       })
   }
+}
+
+export function getUpdatedUserRatingsForLocation(location, user) {
+  return request 
+    .get('/api/v1/ratings/'+ location + '/' + user)
+    .then(res => {
+    dispatch(receiveUserRatingsForLocation(res.body))
+  })
 }

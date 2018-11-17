@@ -12,15 +12,15 @@ module.exports = {
   upsertUserRating
 }
 
-// function getAllRatings(testDb) {
-//   const db = testDb || connection
-//   return db('ratings')
-//     .groupBy('ratings.location_id')
-//     .sum('ratings.carparking as carparking')
-//     .sum('ratings.convenience as convenience')
-//     .sum('ratings.views as views')
-//     .select()
-// }
+function getAllRatings(testDb) {
+  const db = testDb || connection
+  return db('ratings')
+    .groupBy('ratings.location_id')
+    .sum('ratings.carparking as carparking')
+    .sum('ratings.convenience as convenience')
+    .sum('ratings.views as views')
+    .select()
+}
 
 // Sum up ratings from all users for one location and calculate average
 function getAllRatingsForLocation(id, testDb) {

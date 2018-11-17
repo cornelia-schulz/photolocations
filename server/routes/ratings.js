@@ -3,12 +3,12 @@ const db = require('../db/ratings')
 const router = express.Router()
 
 
-// router.get('/', (req, res) => {
-//   db.getAllRatings()
-//     .then(ratings => {
-//       res.json(ratings)
-//     })
-// })
+router.get('/', (req, res) => {
+  db.getAllRatings()
+    .then(ratings => {
+      res.json(ratings)
+    })
+})
 
 router.get('/:location/:user', (req, res) => {
   const location = Number(req.params.location)
