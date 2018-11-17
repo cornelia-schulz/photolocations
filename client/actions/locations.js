@@ -3,7 +3,7 @@ import {
   showError
 } from './error'
 import {
-  getUserRatingsForLocation
+  getUpdatedUserRatingsForLocation
 } from './ratings'
 
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS'
@@ -118,14 +118,11 @@ export function editLocation(location) {
 }
 
 function upsertRating(rating) {
-  debugger
-  console.log('upserting ', rating)
   return request
     .post('/api/v1/ratings/edit')
     .send(rating)
     .then(() => {
-      console.log('rating submitted')
-      return getUserRatingsForLocation(rating.location_id, rating.user_id)
+      return getUpdatedUserRatingsForLocation(rating.id, rating.user)
     })
     .catch(() => {
       console.error('Could not update rating')

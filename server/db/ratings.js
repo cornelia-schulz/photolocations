@@ -32,7 +32,6 @@ function getAllRatingsForLocation(id, testDb) {
       '(count(ratings.carparking) + count(ratings.convenience) + count(ratings.views)) as rating'))
 }
 
-// Sum up ratings from one user for one location and calculate the average for that location
 function getUserRatingForLocation(location, user, testDb) {
   const db = testDb || connection
   return db('ratings')

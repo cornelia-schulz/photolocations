@@ -138,7 +138,6 @@ class Map extends React.Component {
             lat: e.latLng.lat (),
             lng: e.latLng.lng (),
           }
-          // console.log(location)
           this.props.setLocation (location)
           this.props[handlerName] (this.props, this.map, e)
         }

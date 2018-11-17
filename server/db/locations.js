@@ -29,20 +29,6 @@ function getAllLocations(language, testDb) {
     .select('locations.id as id', 'locations.title as title', 'locations.label as label', 'locations.lat as lat', 'locations.lng as lng', 'locations.info as description', 'photos.title as imageTitle', 'photos.url as url', 'locations.info_title as info')
 }
 
-// function getAllLocations(language, testDb) {
-//   const db = testDb || connection
-//     return db('locations')
-//         .leftJoin('ratings', 'locations.id', 'ratings.location_id')
-//         .leftJoin('photos', 'locations.id', 'photos.location_id' )
-//         .where('locations.language_id', language)
-//         .groupBy('locations.id')
-//         .select(knex.raw('locations.id as id', 'locations.title as title', 'locations.label as label', 'locations.lat as lat', 'locations.lng as lng', 'locations.info_title as info', 'locations.info as description', 'photos.title as imageTitle', 'photos.url as url' +
-//                           '(sum(r.carparking) + sum(convenience) + sum("views")) /' +
-//                           '(count(r.carparking) + count(convenience) + count("views")) as rating'
-//                         ))
-//                   }
-
-
 function getLocation(id, testDb) {
   const db = testDb || connection
   return db('locations')
