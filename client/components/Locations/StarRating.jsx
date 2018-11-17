@@ -16,33 +16,21 @@ class StarRating extends React.Component {
     this.swapRating = this.swapRating.bind(this)
     this.onStarClick = this.onStarClick.bind(this)
     this.getAvgRating = this.getAvgRating.bind(this)
-    this.getUserAvgRating = this.getUserAvgRating.bind(this)
   }
 
   componentDidMount() {
-    this.getAvgRating()
-    this.getUserAvgRating()
+    const id = this.props.id
+    this.getAvgRating(id)
   }
 
-  getAvgRating(){
-    const id = this.props.id
-    this.props.getAllRatingsForLocation(id)
-      .then(ratings => {
+  getAvgRating(id){
+    const user = '1'
+    this.props.getAllRatingsForLocation(id, user)
+      .then(rating => {
         this.setState({
-          avgRating: ratings
+          avgRating: rating
         })
     })
-  }
-
-  getUserAvgRating() {
-    const id  = this.props.id
-    const user = '1'
-    this.props.getAllUserRatingsForLocation(id, user)
-      .then(ratings => {
-        this.setState({
-          userRating: ratings
-        })
-      })
   }
 
   swapRating(rating){
@@ -59,6 +47,8 @@ class StarRating extends React.Component {
 
   render() {
     let {userRating, ratings} = this.props
+    let rating = Math.round(ratings.rating)
+    let usersRating = Math.round(userRating.rating)
     let { t, i18n } = this.props
     return (
      <div>
@@ -66,14 +56,14 @@ class StarRating extends React.Component {
         name='userRating'
         editing={true}
         starCount={5}
-        value={userRating}
+        value={usersRating}
         onStarClick={this.onStarClick}
       />}
       {this.state.average && <StarRatingComponent
         name='avgRating'
         editing={false}
         starCount={5}
-        value={ratings}
+        value={rating}
         onStarClick={this.onStarClick}
       />}
       <p>
@@ -87,17 +77,14 @@ class StarRating extends React.Component {
 function mapStateToProps(state) {
   return {
     ratings: state.receiveLocationRatings,
-    userRating: state.receiveUserLocationRatings
+    userRating: state.receiveUserRatingsForLocation
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getAllRatingsForLocation: (id) => {
-      return dispatch(getAllRatingsForLocation(id))
-    },
-    getAllUserRatingsForLocation: (location, user) => {
-      return dispatch(getAllUserRatingsForLocation(location, user))
+    getAllRatingsForLocation: (id, user) => {
+      return dispatch(getAllRatingsForLocation(id, user))
     }
   }
 }

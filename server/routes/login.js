@@ -9,11 +9,11 @@ router.route('/auth/facebook')
     .post(passport.authenticate('facebook-token', {session: false}), 
         function(req, res, next) {
         if (!req.user) {
-            return res.send(401, 'User Not Authenticated');
+            return res.send(401, 'User Not Authenticated')
         }
         req.auth = {
             id: req.user.id
-        };
+        }
 
         next()
     }, generateToken, sendToken)
@@ -27,9 +27,9 @@ router.route('/auth/google')
         }
         req.auth = {
             id: req.user.id
-        };
+        }
 
-        next();
+        next()
     }, generateToken, sendToken)
 
 module.exports = router
