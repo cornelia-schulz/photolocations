@@ -118,7 +118,6 @@ export function editLocation(location) {
 }
 
 function upsertRating(rating) {
-  debugger
   console.log('upserting ', rating)
   return request
     .post('/api/v1/ratings/edit')
