@@ -51,13 +51,13 @@ export class Comment extends React.Component {
     let { t, i18n } = this.props
     return (
       <div className='comment'>
-        {!this.state.isHidden && <div className="commentInput">
+        {!this.state.isHidden && <div className='commentInput'>
           <p className='comment-user'>{this.props.user} {t('comment.wrote')} {publishDate}:</p>
           <p className='comment-content'>{this.props.comment}</p>
         </div>}
-        {!this.state.isHidden && <div className="commentButtons">
-          <button className='comment-button' id="updateButton" onClick={this.toggleHidden}>{t('comment.update')}</button>
-          <button className='comment-button' id="deleteButton" onClick={this.deleteComment}>{t('comment.delete')}</button>
+        {!this.state.isHidden && <div className='commentButtons'>
+          <button className='comment-button' id='updateButton' onClick={this.toggleHidden}>{t('comment.update')}</button>
+          <button className='comment-button' id='deleteButton' onClick={this.deleteComment}>{t('comment.delete')}</button>
         </div>}
         {!this.state.editIsHidden && <EditComment comment={this.props.comment} id={this.props.id} onChange={this.handleChange} />}
       </div>

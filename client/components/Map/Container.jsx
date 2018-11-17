@@ -173,15 +173,15 @@ class Container extends React.Component {
             onClick={this.onMoreInfo}
             button={t ('infoWindow.read')}
           >
-            <div className="infoWindow">
+            <div className='infoWindow'>
               <h2>{this.state.selectedPlace.title}</h2>
               <img src={this.state.selectedPlace.url} />
-              {/* {this.state.selectedPlace.rating < 1 && <p className="stars"><i className="fa fa-star-o"></i><i className="fa fa-star-o"></i><i className="fa fa-star-o"></i><i className="fa fa-star-o"></i><i className="fa fa-star-o"></i></p>}
-              {this.state.selectedPlace.rating > 1 && this.state.selectedPlace.rating < 2 && <p className="stars"><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star-o"></i><i className="fa fa-star-o"></i><i className="fa fa-star-o"></i><i className="fa fa-star-o"></i></p>}
-              {this.state.selectedPlace.rating > 2 && this.state.selectedPlace.rating < 3 && <p className="stars"><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star-o"></i><i className="fa fa-star-o"></i><i className="fa fa-star-o"></i><i className="fa fa-star-o"></i></p> }
-              {this.state.selectedPlace.rating > 3 && this.state.selectedPlace.rating < 4 && <p className="stars"><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star-o"></i><i className="fa fa-star-o"></i></p> }
-              {this.state.selectedPlace.rating > 4 && this.state.selectedPlace.rating < 5 && <p className="stars"><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star-o"></i></p> }
-              {this.state.selectedPlace.rating == 5 && <p className="stars"><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i></p> } */}
+              {/* {this.state.selectedPlace.rating < 1 && <p className='stars'><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i></p>}
+              {this.state.selectedPlace.rating > 1 && this.state.selectedPlace.rating < 2 && <p className='stars'><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i></p>}
+              {this.state.selectedPlace.rating > 2 && this.state.selectedPlace.rating < 3 && <p className='stars'><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i></p> }
+              {this.state.selectedPlace.rating > 3 && this.state.selectedPlace.rating < 4 && <p className='stars'><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i></p> }
+              {this.state.selectedPlace.rating > 4 && this.state.selectedPlace.rating < 5 && <p className='stars'><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star-o'></i></p> }
+              {this.state.selectedPlace.rating == 5 && <p className='stars'><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i></p> } */}
               <p>{this.state.selectedPlace.info}</p>
               <p>
                 {this.state.selectedPlace.description}
@@ -197,54 +197,54 @@ class Container extends React.Component {
             ariaHideApp={false}
           >
             <form>
-              <fieldset className="addNewLocation">
+              <fieldset className='addNewLocation'>
                 <h2>{t ('addNewLocation.add_header')}</h2>
                 {this.props.newLocation &&
                   <p>
                     {t ('addNewLocation.latitude')}
                     {' '}
-                    <span className="right">{this.props.newLocation.lat}</span>
+                    <span className='right'>{this.props.newLocation.lat}</span>
                     <br />
                     {t ('addNewLocation.longitude')}
                     {' '}
-                    <span className="right">{this.props.newLocation.lng}</span>
+                    <span className='right'>{this.props.newLocation.lng}</span>
                   </p>}
-                <label htmlFor="name">{t ('addNewLocation.place')} </label>
+                <label htmlFor='name'>{t ('addNewLocation.place')} </label>
                 <input
-                  type="text"
-                  name="name"
-                  id="name"
+                  type='text'
+                  name='name'
+                  id='name'
                   onChange={this.handleChange}
                 />
                 <br />
-                <label htmlFor="title">{t ('addNewLocation.title')} </label>
+                <label htmlFor='title'>{t ('addNewLocation.title')} </label>
                 <input
-                  type="text"
-                  name="title"
-                  id="title"
+                  type='text'
+                  name='title'
+                  id='title'
                   onChange={this.handleChange}
                 />
                 <br />
-                <label htmlFor="description">
+                <label htmlFor='description'>
                   {t ('addNewLocation.description')}{' '}
                 </label>
                 <input
-                  type="description"
-                  name="description"
-                  id="description"
+                  type='description'
+                  name='description'
+                  id='description'
                   onChange={this.handleChange}
                 />
                 <br />
                 <button
-                  type="button"
-                  className="button"
+                  type='button'
+                  className='button'
                   onClick={this.submitNewLocation}
                 >
                   {t ('addNewLocation.submit')}
                 </button>
                 <button
-                  type="button"
-                  className="button"
+                  type='button'
+                  className='button'
                   onClick={this.closeModal}
                 >
                   {t ('addNewLocation.cancel')}

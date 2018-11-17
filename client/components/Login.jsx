@@ -81,16 +81,16 @@ class Login extends React.Component {
          <p>{this.state.user.email}</p>
         </div>
         <div>
-        <button onClick={this.logout} className="logoutButton button"> {t('login.logout')} </button>
+        <button onClick={this.logout} className='logoutButton button'> {t('login.logout')} </button>
         </div>
       </div>
     ) : (
-        <div className="login">
+        <div className='login'>
           <FacebookLogin
             appId={facebookAppId}
             buttonText={t('login.facebook')}
             autoLoad={false}
-            fields="name, email, picture"
+            fields='name, email, picture'
             callback={this.facebookResponse} />
           <GoogleLogin
             clientId={googleClientId}
@@ -101,7 +101,7 @@ class Login extends React.Component {
       )
 
     return (
-      <div className="Login">
+      <div className='Login'>
         {content}
       </div>
     )

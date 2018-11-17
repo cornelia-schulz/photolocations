@@ -36,10 +36,10 @@ class EditComment extends React.Component {
   render() {
     let { t, i18n } = this.props
     return (
-      <form className="editComment" onSubmit={this.editComment} >
-        <textarea id="editComment" rows="4" cols="100" value={this.state.comment} onChange={this.getComment}></textarea><br />
-        <button className='button' id="cancelButton">{t('editComment.cancel')}</button>
-        <button className='button' id="button">{t('editComment.submit')}</button>
+      <form className='editComment' onSubmit={this.editComment} >
+        <textarea id='editComment' rows='4' cols='100' value={this.state.comment} onChange={this.getComment}></textarea><br />
+        <button className='button' id='cancelButton'>{t('editComment.cancel')}</button>
+        <button className='button' id='button'>{t('editComment.submit')}</button>
       </form>
     )
   }

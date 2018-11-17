@@ -42,23 +42,23 @@ class Header extends React.Component {
     let { t, i18n } = this.props
     return (
         <header>
-          <nav className="navbar" role="navigation">
-            <div className="logo header  header-left">
-              <img src="/images/Logo.PNG" alt="Photo Locations" />
+          <nav className='navbar' role='navigation'>
+            <div className='logo header  header-left'>
+              <Link to='/'><img src='/images/Logo.PNG' alt='Photo Locations' /></Link>
             </div>
-            <div className="header">
+            <div className='header'>
               <Route exact path='/' component={Search} defaultText={t('languages.de')} />
             </div>
-            <div className="dropdown header">
-              <button className="dropbtn" onClick={this.toggleVisibility}>
-                <i className="fa fa-bars" aria-hidden="true"></i>
+            <div className='dropdown header'>
+              <button className='dropbtn' onClick={this.toggleVisibility}>
+                <i className='fa fa-bars' aria-hidden='true'></i>
               </button>
-              <div className="dropdown-content">
-                <Link to="/" onClick={this.toggleVisibility}>{t('header.home')}</Link>
-                <Link to="/about" onClick={this.toggleVisibility}>{t('header.about')}</Link>
-                <Link to="/contact" onClick={this.toggleVisibility}>{t('header.contact')}</Link>
-                <button className="language" onClick={() => this.changeLanguage('de')}>DE</button>
-                <button className="language" onClick={() => this.changeLanguage('en')}>EN</button>
+              <div className='dropdown-content'>
+                <Link to='/' onClick={this.toggleVisibility}>{t('header.home')}</Link>
+                <Link to='/about' onClick={this.toggleVisibility}>{t('header.about')}</Link>
+                <Link to='/contact' onClick={this.toggleVisibility}>{t('header.contact')}</Link>
+                <button className='language' onClick={() => this.changeLanguage('de')}>DE</button>
+                <button className='language' onClick={() => this.changeLanguage('en')}>EN</button>
               </div>
             </div>
           </nav>

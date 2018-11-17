@@ -77,7 +77,7 @@ class InfoWindow extends React.Component {
   openWindow () {
     this.infowindow.setContent (
       this.infowindow.getContent () +
-        `<div><button id="closeButton" type="button" className="button">${this.props.button}</button></div>`
+        `<div><button id='closeButton' type='button' className='button'>${this.props.button}</button></div>`
     )
     this.infowindow.open (this.props.map, this.props.marker)
   }
