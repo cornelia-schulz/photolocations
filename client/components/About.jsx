@@ -22,9 +22,9 @@ export class About extends React.Component {
   render() {
     let { t, i18n } = this.props
     return (
-      <div className="about">
-        <img src="/images/Whatipu.jpg" alt="Milkyway over Whatipu" />
-        <div className="aboutText">
+      <div className='about'>
+        <img src='/images/Whatipu.jpg' alt='Milkyway over Whatipu' />
+        <div className='aboutText'>
           <h1>{t('about.about_header')}</h1>
           <p>{t('about.about_paragraph_1')}</p>
           <p>{t('about.about_paragraph_2')}</p>

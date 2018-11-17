@@ -39,7 +39,7 @@ export class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="container">
+        <div className='container'>
           <Route path='/' render={() => <Header onChange={this.onChange} />} />
           <Route exact path='/' render={(props) => <WrappedContainer searchString={this.state.searchString} {...props} />} />
           <Route path='/contact' component={Contact} />

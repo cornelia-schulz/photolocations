@@ -27,9 +27,9 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className="search">
-        {/* <label className="inline" htmlFor="search"><i className="fa fa-search inline" aria-hidden="true"></i></label> */}
-        <input className="inline" type="text" name="search" id="search" value={this.state.search} onChange={this.updateSearch} onKeyDown={this.keyPress} />
+      <div className='search'>
+        {/* <label className='inline' htmlFor='search'><i className='fa fa-search inline' aria-hidden='true'></i></label> */}
+        <input className='inline' type='text' name='search' id='search' value={this.state.search} onChange={this.updateSearch} onKeyDown={this.keyPress} />
       </div>
     )
   }
