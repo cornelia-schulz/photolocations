@@ -118,6 +118,7 @@ class Container extends React.Component {
       name: this.state.name,
       title: this.state.title,
       description: this.state.description,
+      language: i18n.languages[0]
     }
     this.props
       .addLocation (location)
