@@ -31,15 +31,27 @@ router.get('/:id', (req, res) => {
 } )
 
 router.post('/add', (req, res) => {
-  const location = req.body
-  db.addLocation(location)
-    .then(() => {
-      res.status(200).end()
-    })
+  const language = req.body.language
+  db.getLanguage(language)
+    .then(lang => {
+      const location = {
+        title: req.body.name,
+        info_title: req.body.title,
+        info: req.body.description,
+        lat: req.body.lat,
+        lng: req.body.lng,
+        language_id: lang.id
+      }
+      console.log('adding location: ', location)
+      db.addLocation(location)
+      .then(() => {
+        res.status(200).end()
+      })
     .catch(err => {
       console.error(err)
       res.status(500).send('Unable to add location to database')
     })
+  })
 })
 
 router.put('/edit', (req, res) => {

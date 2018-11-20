@@ -64,17 +64,10 @@ export function getLocation(id) {
 }
 
 export function addLocation(location) {
-  const newLocation = {
-    title: location.name,
-    info_title: location.title,
-    info: location.description,
-    lat: location.lat,
-    lng: location.lng
-  }
   return (dispatch) => {
     return request
       .post('/api/v1/locations/add')
-      .send(newLocation)
+      .send(location)
       .then(() => {
         return getAllLocations()
       })
