@@ -32,7 +32,7 @@ class Comments extends React.Component {
     e.preventDefault()
     this.setState({error: null})
     let datetime = new Date()
-    let date = datetime.getFullYear()+'-'+(datetime.getMonth()+1)+'-'+datetime.getDate()+' '+datetime.getHours()+':'+datetime.getMinutes()+':'+datetime.getSeconds();
+    let date = datetime.getFullYear()+'-'+(datetime.getMonth()+1)+'-'+datetime.getDate()+' '+datetime.getHours()+':'+datetime.getMinutes()+':'+datetime.getSeconds()
     const newComment = {
       comment: this.state.comment,
       location_id: this.props.id,

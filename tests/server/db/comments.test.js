@@ -37,7 +37,6 @@ test('addComment adds a comment to comments table', () => {
 //   return db.updateComment(comment, testDb)
 //     return (getAllComments())
 //     .then(comment => {
-//       console.log(comment)
 //       expect(comment).toBe(1)
 //     })
 // })

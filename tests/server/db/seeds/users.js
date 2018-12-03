@@ -3,7 +3,6 @@ exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('users').del()
     .then(function () {
-      console.log('users seed')
       // Inserts seed entries
       return knex('users').insert([
         {id: 1, full_name: 'Cornelia Schulz', 

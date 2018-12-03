@@ -3,7 +3,6 @@ exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('photos').del()
     .then(function () {
-      console.log('photos seed')
       // Inserts seed entries
       return knex('photos').insert([
         {id: 1, location_id: 5, title: 'City Reflections', url: 'https://farm1.staticflickr.com/955/41144092244_9155fa4c44_h.jpg'},

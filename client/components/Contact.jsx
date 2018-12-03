@@ -36,7 +36,6 @@ export class Contact extends React.Component {
     }
     this.props.sendMail(newMessage)
       .then((response) => {
-        console.log(response)
         if (response === 'success') {
           this.resetForm()
         }

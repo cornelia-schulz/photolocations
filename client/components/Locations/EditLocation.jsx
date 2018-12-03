@@ -95,7 +95,6 @@ class EditLocation extends React.Component {
   }
 
   onStarClick(nextValue, prevValue, name) {
-    console.log(name)
     this.setState({
       [name]: nextValue
     })

@@ -3,7 +3,6 @@ exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('comments').del()
     .then(function () {
-      console.log('comments seed')
       // Inserts seed entries
       return knex('comments').insert([
         {id: 1, location_id: 1, user_id: 2, comment: 'I have been there and thoroughly enjoyed it', date: '2018-06-07 09:04:01', reply_To_Id: null},

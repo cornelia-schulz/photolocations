@@ -1,19 +1,19 @@
-import React from 'react';
-import FacebookLogin from 'react-facebook-login';
-import {GoogleLogin} from 'react-google-login';
-import InstagramLogin from 'react-instagram-login';
-import i18n from 'i18next';
-import {withNamespaces} from 'react-i18next';
+import React from 'react'
+import FacebookLogin from 'react-facebook-login'
+import {GoogleLogin} from 'react-google-login'
+import InstagramLogin from 'react-instagram-login'
+import i18n from 'i18next'
+import {withNamespaces} from 'react-i18next'
 
 class Login extends React.Component {
   constructor () {
-    super ();
+    super ()
     this.state = {
       isAuthenticated: false,
       user: null,
       token: '',
-    };
-    this.logout = this.logout.bind (this);
+    }
+    this.logout = this.logout.bind (this)
   }
 
   logout () {
@@ -21,7 +21,7 @@ class Login extends React.Component {
       isAuthenticated: false,
       user: null,
       token: '',
-    });
+    })
   }
 
   facebookResponse (response) {
@@ -29,74 +29,74 @@ class Login extends React.Component {
     const tokenBlob = new Blob (
       [JSON.stringify ({access_token: response.accessToken}, null, 2)],
       {type: 'application.json'}
-    );
+    )
     const options = {
       method: 'POST',
       body: tokenBlob,
       mode: 'cors',
       cache: 'default',
-    };
+    }
     fetch ('/api/v1/auth/facebook', options).then (r => {
-      const token = r.headers.get ('x-auth-token');
+      const token = r.headers.get ('x-auth-token')
       r.json ().then (user => {
         if (token) {
-          this.setState ({isAuthenticated: true, user, token});
+          this.setState ({isAuthenticated: true, user, token})
         }
-      });
-    });
+      })
+    })
   }
 
   instagramResponse (response) {
-    console.log (response);
+    console.log (response)
     const tokenBlob = new Blob (
       [JSON.stringify ({access_token: response.accessToken}, null, 2)],
       {type: 'application/json'}
-    );
+    )
     const options = {
       method: 'POST',
       body: tokenBlob,
       mode: 'cors',
       cache: 'default',
-    };
+    }
     fetch ('/api/v1/auth/instagram', options).then (r => {
-      const token = r.headers.get ('x-auth-token');
+      const token = r.headers.get ('x-auth-token')
       r.json ().then (user => {
         if (token) {
-          this.setState ({isAuthenticated: true, user, token});
+          this.setState ({isAuthenticated: true, user, token})
         }
-      });
-    });
+      })
+    })
   }
 
   googleResponse (response) {
-    // console.log(response);
+    // console.log(response)
     const tokenBlob = new Blob (
       [JSON.stringify ({access_token: response.accessToken}, null, 2)],
       {type: 'application/json'}
-    );
+    )
     const options = {
       method: 'POST',
       body: tokenBlob,
       mode: 'cors',
       cache: 'default',
-    };
+    }
     fetch ('https://localhost:3000/api/v1/auth/google', options).then (r => {
-      const token = r.headers.get ('x-auth-token');
+      const token = r.headers.get ('x-auth-token')
       r.json ().then (user => {
         if (token) {
           // console.log('token received')
-          this.setState ({isAuthenticated: true, user, token});
+          this.setState ({isAuthenticated: true, user, token})
         }
-      });
-    });
+      })
+    })
   }
 
   onFailure (error) {
-    console.log (error);
+    console.log (error)
   }
 
   render () {
-    let {t, i18n} = this.props;
+    let {t, i18n} = this.props
     let content = !!this.state.isAuthenticated
       ? <div>
           <p>{t ('login.authenticated')}</p>
@@ -127,14 +127,14 @@ class Login extends React.Component {
           <br />
           <br />
           <InstagramLogin id="insta-button" buttonText="LOGIN WITH INSTAGRAM" />
-        </div>;
+        </div>
 
     return (
       <div className="Login">
         {content}
       </div>
-    );
+    )
   }
 }
 
-export default withNamespaces ('strings') (Login);
+export default withNamespaces ('strings') (Login)

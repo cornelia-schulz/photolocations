@@ -54,12 +54,10 @@ function upsertUserRating(rating, testDb) {
       convenience: rating.convenience,
       views: rating.views
     }
-    console.log(newRating)
     return db('ratings')
       .insert(newRating)
   }
   else {
-    console.log('else')
     return db('ratings')
       .where('id', rating.id)
       .update(rating)

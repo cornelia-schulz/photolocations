@@ -10,7 +10,6 @@ configure({adapter: new Adapter()})
 test('<About/> renders h1 component with given content', () => {
   const expected = 'About Photo Locations'
   const wrapper = shallow(<About t={(k) => 'About Photo Locations'} />)
-  console.log(wrapper.find('h1').text())
   const actual = wrapper.find('h1').text()
 
   expect(actual).toEqual(expected)

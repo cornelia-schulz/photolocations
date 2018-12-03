@@ -25,7 +25,6 @@ router.get('/:location/:user', (req, res) => {
 
 router.post('/edit', (req, res) => {
   const rating = req.body
-  console.log(rating)
   db.upsertUserRating(rating)
   .then(() => {
     res.status(200).end()

@@ -1,14 +1,14 @@
-import React from 'react';
-import Marker from './Marker';
-import {GoogleApiWrapper} from 'google-maps-react';
-import Map from './Map';
-import InfoWindow from './InfoWindow';
-import {getAllLocations, addLocation} from '../../actions/locations';
-import {connect} from 'react-redux';
-import Modal from 'react-modal';
-import {BrowserRouter, Link, Redirect} from 'react-router-dom';
-import i18n from 'i18next';
-import {withNamespaces} from 'react-i18next';
+import React from 'react'
+import Marker from './Marker'
+import {GoogleApiWrapper} from 'google-maps-react'
+import Map from './Map'
+import InfoWindow from './InfoWindow'
+import {getAllLocations, addLocation} from '../../actions/locations'
+import {connect} from 'react-redux'
+import Modal from 'react-modal'
+import {BrowserRouter, Link, Redirect} from 'react-router-dom'
+import i18n from 'i18next'
+import {withNamespaces} from 'react-i18next'
 
 const customStyles = {
   content: {
@@ -20,11 +20,11 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#1f1e1e',
   },
-};
+}
 
 class Container extends React.Component {
   constructor (props) {
-    super (props);
+    super (props)
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
@@ -34,36 +34,36 @@ class Container extends React.Component {
       title: '',
       description: '',
       error: null,
-    };
-    this.onMarkerClick = this.onMarkerClick.bind (this);
-    this.onMapClicked = this.onMapClicked.bind (this);
-    this.onMapRightClicked = this.onMapRightClicked.bind (this);
-    this.openModal = this.openModal.bind (this);
-    this.closeModal = this.closeModal.bind (this);
-    this.onMoreInfo = this.onMoreInfo.bind (this);
-    this.submitNewLocation = this.submitNewLocation.bind (this);
-    this.handleChange = this.handleChange.bind (this);
-    this.reloadLocations = this.reloadLocations.bind (this);
+    }
+    this.onMarkerClick = this.onMarkerClick.bind (this)
+    this.onMapClicked = this.onMapClicked.bind (this)
+    this.onMapRightClicked = this.onMapRightClicked.bind (this)
+    this.openModal = this.openModal.bind (this)
+    this.closeModal = this.closeModal.bind (this)
+    this.onMoreInfo = this.onMoreInfo.bind (this)
+    this.submitNewLocation = this.submitNewLocation.bind (this)
+    this.handleChange = this.handleChange.bind (this)
+    this.reloadLocations = this.reloadLocations.bind (this)
   }
 
   componentDidMount () {
-    this.reloadLocations ();
+    this.reloadLocations ()
   }
 
   reloadLocations () {
-    this.props.getAllLocations ();
+    this.props.getAllLocations ()
   }
 
   openModal () {
     this.setState ({
       modalIsOpen: true,
-    });
+    })
   }
 
   closeModal () {
     this.setState ({
       modalIsOpen: false,
-    });
+    })
   }
 
   onMarkerClick (props, marker, e) {
@@ -71,7 +71,7 @@ class Container extends React.Component {
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true,
-    });
+    })
   }
 
   onMapClicked (props) {
@@ -79,29 +79,29 @@ class Container extends React.Component {
       this.setState ({
         showingInfoWindow: false,
         activeMarker: null,
-      });
+      })
     }
   }
 
   onMoreInfo () {
-    this.setState ({redirectId: this.state.selectedPlace.id});
+    this.setState ({redirectId: this.state.selectedPlace.id})
   }
 
   onMapRightClicked () {
-    this.openModal ();
+    this.openModal ()
   }
 
   redirect () {
     if (this.state.redirectId) {
-      return <div>hi</div>;
+      return <div>hi</div>
     }
   }
 
   handleChange (e) {
-    const {name, value} = e.target;
+    const {name, value} = e.target
     this.setState ({
       [name]: value,
-    });
+    })
   }
 
   submitNewLocation (e) {
@@ -111,26 +111,26 @@ class Container extends React.Component {
       name: this.state.name,
       title: this.state.title,
       description: this.state.description,
-    };
+    }
     this.props
       .addLocation (location)
       .then (() => {
-        this.reloadLocations ();
+        this.reloadLocations ()
       })
-      .catch (err => this.setState ({error: err.message}));
-    this.closeModal ();
+      .catch (err => this.setState ({error: err.message}))
+    this.closeModal ()
   }
 
   render () {
     const style = {
       width: '100vh',
       height: '100vh',
-    };
-    let {ratings, userRating} = this.props;
-    if (this.state.redirectId) {
-      return <Redirect to={`/location/${this.state.redirectId}`} />;
     }
-    let {t, i18n} = this.props;
+    let {ratings, userRating} = this.props
+    if (this.state.redirectId) {
+      return <Redirect to={`/location/${this.state.redirectId}`} />
+    }
+    let {t, i18n} = this.props
     return (
       <BrowserRouter>
         <Map
@@ -154,7 +154,7 @@ class Container extends React.Component {
                 url={marker.url}
                 // rating={marker.rating}
               />
-            );
+            )
           })}
           <InfoWindow
             {...this.props}
@@ -247,7 +247,7 @@ class Container extends React.Component {
           </Modal>
         </Map>
       </BrowserRouter>
-    );
+    )
   }
 }
 
@@ -256,25 +256,25 @@ function mapStateToProps (state) {
     locations: state.receiveLocations,
     newLocation: state.setNewLocation,
     language: state.receiveLanguage,
-  };
+  }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
     getAllLocations: () => {
-      return dispatch (getAllLocations ());
+      return dispatch (getAllLocations ())
     },
     addLocation: location => {
-      return dispatch (addLocation (location));
+      return dispatch (addLocation (location))
     },
-  };
+  }
 }
-const apiKey = googleApiKey;
+const apiKey = googleApiKey
 
 const WrappedContainer = GoogleApiWrapper ({
   apiKey: `${apiKey}`,
-}) (Container);
+}) (Container)
 
 export default withNamespaces ('strings') (
   connect (mapStateToProps, mapDispatchToProps) (WrappedContainer)
-);
+)
