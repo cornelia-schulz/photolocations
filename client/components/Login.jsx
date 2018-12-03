@@ -52,6 +52,11 @@ class Login extends React.Component {
       [JSON.stringify ({access_token: response.accessToken}, null, 2)],
       {type: 'application/json'}
     )
+  }
+
+  googleResponse(response) {
+    // console.log(response)
+    const tokenBlob = new Blob([JSON.stringify({ access_token: response.accessToken }, null, 2)], { type: 'application/json' })
     const options = {
       method: 'POST',
       body: tokenBlob,
@@ -130,7 +135,7 @@ class Login extends React.Component {
         </div>
 
     return (
-      <div className="Login">
+      <div className='Login'>
         {content}
       </div>
     )

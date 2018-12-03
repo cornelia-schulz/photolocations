@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 router.get('/:location/:user', (req, res) => {
   const location = Number(req.params.location)
   const user = Number(req.params.user)
-  db.getAllUserRatingsForLocation(location, user)
+  db.getUserRatingForLocation(location, user)
     .then(ratings => {
       res.json(ratings)
     })
@@ -24,7 +24,14 @@ router.get('/:location/:user', (req, res) => {
 })
 
 router.post('/edit', (req, res) => {
-  const rating = req.body
+  const rating = {
+    id: req.body.ratingId,
+    user_id: req.body.user,
+    location_id: req.body.id,
+    carparking: req.body.carparking,
+    convenience: req.body.convenience,
+    views: req.body.views
+  }
   db.upsertUserRating(rating)
   .then(() => {
     res.status(200).end()

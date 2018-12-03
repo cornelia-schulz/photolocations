@@ -24,35 +24,25 @@ const corsOption = {
 }
 
 // view engine setup
-server.set ('views', path.join (__dirname, 'views'))
-server.set ('view engine', 'jade')
+server.set('views', path.join(__dirname, 'views'))
+server.set('view engine', 'pug')
 
-server.use (passport.initialize ())
-server.use (passport.session ())
-passport.serializeUser (function (user, done) {
-  done (null, user)
-})
+server.use(passport.initialize())
+server.use(cors(corsOption))
+server.use(express.json())
+server.use(express.static(path.join(__dirname, './public')))
+server.use('/api/v1/locations', locationRoutes)
+server.use('/api/v1/ratings', ratingRoutes)
+server.use('/api/v1/nodemailer', nodemailerRoutes)
+server.use('/api/v1/comments', commentRoutes)
+server.use('/api/v1/', loginRoutes)
 
-passport.deserializeUser (function (user, done) {
-  done (null, user)
-})
-server.use (cors (corsOption))
-server.use (express.json ())
-server.use (express.static (path.join (__dirname, './public')))
-server.use ('/api/v1/locations', locationRoutes)
-server.use ('/api/v1/ratings', ratingRoutes)
-server.use ('/api/v1/nodemailer', nodemailerRoutes)
-server.use ('/api/v1/comments', commentRoutes)
-server.use ('/api/v1/', loginRoutes)
 
-server.get ('*', (req, res) => {
-  res.render ('default', {
-    googleApiKey: GOOGLE_API_KEY,
-    title: 'Photo Locations',
-    googleClientId: GOOGLE_CLIENT_ID,
-    facebookAppId: FACEBOOK_APP_ID,
-  })
-  //  res.sendFile(path.resolve(__dirname, 'public', 'default.html'))
+server.get('*', (req, res) => {    
+  res.render('default',
+  { googleApiKey : GOOGLE_API_KEY, title : 'Photo Locations' }
+  )
+//  res.sendFile(path.resolve(__dirname, 'public', 'default.html'))        
 })
 
 module.exports = server

@@ -163,7 +163,7 @@ class Map extends React.Component {
 
   render () {
     return (
-      <div id="map" ref="map">
+      <div id='map' ref='map'>
         Loading map...
         {this.renderChildren ()}
       </div>

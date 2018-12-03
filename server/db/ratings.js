@@ -1,12 +1,13 @@
 'use strict'
 const environment = process.env.NODE_ENV || 'development'
-const knex = require('knex')
 const config = require('./knexfile')[environment]
-const connection = knex(config)
+const knex = require('knex')(config)
+const connection = knex
 
 module.exports = {
   getAllRatings,
   getAllRatingsForLocation,
+  getUserRatingForLocation,
   getAllUserRatingsForLocation,
   upsertUserRating
 }
@@ -21,13 +22,21 @@ function getAllRatings(testDb) {
     .select()
 }
 
+// Sum up ratings from all users for one location and calculate average
 function getAllRatingsForLocation(id, testDb) {
   const db = testDb || connection
   return db('ratings')
-    .avg('ratings.carparking as carparking')
-    .avg('ratings.convenience as convenience')
-    .avg('ratings.views as views')
     .where('ratings.location_id', id)
+    .whereRaw('(carparking is not null or convenience is not null or "views" is not null)')
+    .select(knex.raw('(sum(coalesce(carparking, 0)) * 1.0 + sum(coalesce(convenience, 0)) + sum(coalesce("views", 0))) /' +
+      '(count(ratings.carparking) + count(ratings.convenience) + count(ratings.views)) as rating'))
+}
+
+function getUserRatingForLocation(location, user, testDb) {
+  const db = testDb || connection
+  return db('ratings')
+    .where('ratings.location_id', location)
+    .where('ratings.user_id', user)
     .select()
 }
 
@@ -36,17 +45,16 @@ function getAllUserRatingsForLocation(location, user, testDb) {
   return db('ratings')
     .where({
       location_id: location,
-      user_id:  user
+      user_id: user
     })
     .select()
 }
 
 function upsertUserRating(rating, testDb) {
   const db = testDb || connection
-  if (rating.id === null && rating.carparking === null && rating.convenience === null && rating.views === null){
+  if (rating.id === null && rating.carparking === null && rating.convenience === null && rating.views === null) {
     return
-  }
-  else if (rating.id === null){
+  } else if (rating.id === null) {
     const newRating = {
       location_id: rating.location_id,
       user_id: rating.user_id,
@@ -56,8 +64,7 @@ function upsertUserRating(rating, testDb) {
     }
     return db('ratings')
       .insert(newRating)
-  }
-  else {
+  } else {
     return db('ratings')
       .where('id', rating.id)
       .update(rating)

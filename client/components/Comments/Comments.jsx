@@ -51,7 +51,7 @@ class Comments extends React.Component {
 
   updateComment(e) {
     this.setState({
-      comment: document.getElementById("addNewComment").value.substr(0, 300),
+      comment: document.getElementById('addNewComment').value.substr(0, 300),
       newComments: this.props.newComments
     })
   }
@@ -61,11 +61,11 @@ class Comments extends React.Component {
     let { t, i18n } = this.props
     
     return (
-      <div className="comments">
+      <div className='comments'>
         <h2>{t('comments.comments')}</h2>
-        <form className="addCommentForm" onSubmit={this.addNewComment}>
-          <textarea id="addNewComment" placeholder="Have you been here? What was your experience?" rows="4" cols="100" value={this.state.comment} onChange={this.updateComment}></textarea><br />
-          <input type="submit" className='button' id="addCommentButton" value = {t('comments.add')} />
+        <form className='addCommentForm' onSubmit={this.addNewComment}>
+          <textarea id='addNewComment' placeholder='Have you been here? What was your experience?' rows='4' cols='100' value={this.state.comment} onChange={this.updateComment}></textarea><br />
+          <input type='submit' className='button' id='addCommentButton' value = {t('comments.add')} />
         </form>
         <ul>
           {this.props.newComments && this.props.newComments.length > 0 && 

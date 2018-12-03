@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter, Route, Switch, matchPath} from 'react-router-dom'
+import { BrowserRouter, Route, Switch, matchPath } from 'react-router-dom'
 import Header from './Header'
 import WrappedContainer from './Map/Container'
 import About from './About'
@@ -11,7 +11,7 @@ import ReactGA from 'react-ga'
 import { withNamespaces } from 'react-i18next'
 
 export class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       searchString: ''
@@ -23,7 +23,7 @@ export class App extends React.Component {
   componentDidMount() {
     this.initializeReactGA()
   }
-  
+
   onChange(searchString) {
     this.setState({
       searchString: searchString
@@ -36,10 +36,10 @@ export class App extends React.Component {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }
 
-  render(){
+  render() {
     return (
       <BrowserRouter>
-        <div className="container">
+        <div className='container'>
           <Route path='/' render={() => <Header onChange={this.onChange} />} />
           <Route exact path='/' render={(props) => <WrappedContainer searchString={this.state.searchString} {...props} />} />
           <Route path='/contact' component={Contact} />
@@ -50,7 +50,6 @@ export class App extends React.Component {
           <Route path='/login' component={Login} />
           {!matchPath.isExact && <Route path='/' component={Footer} />} 
         </div>
-      
       </BrowserRouter>
     )
   }

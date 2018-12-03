@@ -30,19 +30,9 @@ export const requestAllRatingsForLocation = () => {
 }
 
 export const receiveAllRatingsForLocation = (ratings) => {
-
-  // filter the ratings where not null
-  // sum them
-  // divide by count if not 0
-  const r = [ratings[0].carparking, ratings[0].convenience, ratings[0].views]
-  const sum = r.filter(a=> a !== null).reduce((a, b) => a + b)
-  const divider = r.filter(a=> a !== null).length
-  if(divider !== 0){
-    var avgRating = Math.round(sum/divider)
-  }
   return {
     type: RECEIVE_LOCATION_RATINGS,
-    ratings: avgRating
+    ratings: ratings
   }
 }
 
@@ -53,10 +43,9 @@ export const requestAllUserRatingsForLocation = () => {
 }
 
 export const receiveAllUserRatingsForLocation = (ratings) => {
-  const avgRating = Math.round((Number(ratings[0].carparking) + Number(ratings[0].convenience) + Number(ratings[0].views)) / 3)
   return {
     type: RECEIVE_USER_LOCATION_RATINGS,
-    ratings: avgRating
+    ratings: ratings
   }
 }
 
@@ -67,16 +56,29 @@ export const requestUserRatingsForLocation = () => {
 }
 
 export const receiveUserRatingsForLocation = (ratings) => {
-  const userRatings = ratings[0]
+  const userRatings = {
+    id: ratings[0].id,
+    carparking: ratings[0].carparking,
+    convenience: ratings[0].convenience,
+    views: ratings[0].views,
+    rating: 0
+  }
+  
+  let count = 3
   if (userRatings.carparking === null) {
     userRatings.carparking = 0
+    count--
   }
   if (userRatings.convenience === null) {
     userRatings.convenience = 0
+    count--
   }
   if (userRatings.views === null) {
-    userRatings.views
+    userRatings.views = 0
+    count--
   }
+
+  userRatings.rating = (userRatings.carparking + userRatings.convenience + userRatings.views) / count
   return {
     type: RECEIVE_USER_LOCATION_DETAILED_RATINGS,
     ratings: userRatings
@@ -96,12 +98,15 @@ export function getAllRatings() {
   }
 }
 
-export function getAllRatingsForLocation(id) {
+export function getAllRatingsForLocation(id, user) {
   return (dispatch) => {
     return request
       .get('/api/v1/ratings/'+id)
       .then(res => {
-        dispatch(receiveAllRatingsForLocation(res.body))
+        dispatch(receiveAllRatingsForLocation(res.body[0]))
+      })
+      .then(() => {
+        return getAllUserRatingsForLocation(id, user)
       })
       .catch(() => {
         dispatch(showError('Could not retrieve ratings for this location'))
@@ -110,7 +115,6 @@ export function getAllRatingsForLocation(id) {
 }
 
 export function getAllUserRatingsForLocation(location, user) {
-  return (dispatch) => {
     return request
       .get('/api/v1/ratings/'+ location + '/' + user)
       .then(res => {
@@ -119,7 +123,6 @@ export function getAllUserRatingsForLocation(location, user) {
       .catch(() => {
         dispatch(showError('Could not retrieve ratings for this user for this location'))
       })
-  }
 }
 
 export function getUserRatingsForLocation(location, user) {
@@ -133,4 +136,12 @@ export function getUserRatingsForLocation(location, user) {
         dispatch(showError('Could not retrieve user ratings'))
       })
   }
+}
+
+export function getUpdatedUserRatingsForLocation(location, user) {
+  return request 
+    .get('/api/v1/ratings/'+ location + '/' + user)
+    .then(res => {
+    dispatch(receiveUserRatingsForLocation(res.body))
+  })
 }

@@ -1,4 +1,5 @@
 const path = require('path')
+
 const webpack = require('webpack')
 
 module.exports = {
@@ -27,7 +28,7 @@ module.exports = {
   node: {
     fs: 'empty'
   },
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
