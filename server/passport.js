@@ -1,21 +1,22 @@
 'use strict'
 require ('express')
-const passport = require ('passport')
-const FacebookTokenStrategy = require ('passport-facebook-token')
-const GoogleTokenStrategy = require ('passport-google-token').Strategy
-const InstagramTokenStrategy = require ('passport-instagram-token')
+const passport = require('passport')
+const FacebookTokenStrategy = require('passport-facebook-token')
+const GoogleTokenStrategy = require('passport-google-token').Strategy
+const InstagramTokenStrategy = require('passport-instagram-token')
 //const config = require('./config.js')
 const user = require ('./db/db')
 require ('dotenv').config ()
-
 const facebookClientId = process.env.FACEBOOK_APP_ID
 const facebookSecret = process.env.FACEBOOK_SECRET
 const googleClientId = process.env.GOOGLE_CLIENT_ID
 const googleSecret = process.env.GOOGLE_SECRET
 const instagramClientId = process.env.INSTAGRAM_CLIENT_ID
 const instagramSecret = process.env.INSTAGRAM_SECRET
-console.log (facebookClientId)
-console.log (facebookSecret)
+// console.log (facebookClientId)
+// console.log (facebookSecret)
+
+
 module.exports = function () {
   passport.use (
     new FacebookTokenStrategy (

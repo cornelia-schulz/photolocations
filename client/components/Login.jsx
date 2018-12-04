@@ -46,15 +46,7 @@ class Login extends React.Component {
     })
   }
 
-  instagramResponse (response) {
-    console.log (response)
-    const tokenBlob = new Blob (
-      [JSON.stringify ({access_token: response.accessToken}, null, 2)],
-      {type: 'application/json'}
-    )
-  }
-
-  googleResponse(response) {
+  instagramResponse(response) {
     // console.log(response)
     const tokenBlob = new Blob([JSON.stringify({ access_token: response.accessToken }, null, 2)], { type: 'application/json' })
     const options = {
@@ -89,7 +81,6 @@ class Login extends React.Component {
       const token = r.headers.get ('x-auth-token')
       r.json ().then (user => {
         if (token) {
-          // console.log('token received')
           this.setState ({isAuthenticated: true, user, token})
         }
       })
@@ -116,13 +107,13 @@ class Login extends React.Component {
           </div>
         </div>
       : <div className="login">
-          <FacebookLogin
+          {/* <FacebookLogin
             appId={facebookAppId}
             buttonText={t ('login.facebook')}
             autoLoad={false}
             fields="name, email, picture"
             callback={this.facebookResponse}
-          />
+          /> */}
           <GoogleLogin
             clientId={googleClientId}
             buttonText={t ('login.google')}
@@ -131,7 +122,7 @@ class Login extends React.Component {
           />
           <br />
           <br />
-          <InstagramLogin id="insta-button" buttonText="LOGIN WITH INSTAGRAM" />
+          {/* <InstagramLogin id="insta-button" buttonText="LOGIN WITH INSTAGRAM" /> */}
         </div>
 
     return (
