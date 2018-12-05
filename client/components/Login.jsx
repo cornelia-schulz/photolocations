@@ -85,6 +85,7 @@ class Login extends React.Component {
         }
       })
     })
+    
   }
 
   onFailure (error) {
