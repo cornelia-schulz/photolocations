@@ -9,6 +9,7 @@ import Modal from 'react-modal'
 import {BrowserRouter, Link, Redirect} from 'react-router-dom'
 import i18n from 'i18next'
 import {withNamespaces} from 'react-i18next'
+import AddPhoto from '../Locations/AddPhoto'
 
 const customStyles = {
   content: {
@@ -235,6 +236,7 @@ class Container extends React.Component {
                   id='description'
                   onChange={this.handleChange}
                 />
+                <AddPhoto></AddPhoto>
                 <br />
                 <button
                   type='button'

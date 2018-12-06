@@ -14,7 +14,7 @@ const nodemailerRoutes = require('./routes/nodemailer')
 
 require('dotenv').config()
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY
-
+const FLICKR_API_KEY = process.env.FLICKR_API_KEY
 const corsOption = {
   origin: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -39,7 +39,11 @@ server.use('/api/v1/', loginRoutes)
 
 server.get('*', (req, res) => {    
   res.render('default',
-  { googleApiKey : GOOGLE_API_KEY, title : 'Photo Locations' }
+  { 
+    googleApiKey : GOOGLE_API_KEY, 
+    flickrApiKey: FLICKR_API_KEY, 
+    title : 'Photo Locations' 
+  }
   )
 //  res.sendFile(path.resolve(__dirname, 'public', 'default.html'))        
 })
