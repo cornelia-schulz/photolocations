@@ -4,11 +4,14 @@ import Photos from './Photos'
 class AddPhoto extends React.Component {
   constructor(){
     super()
-    this.state = {}
+    this.state = {
+      showPhotos: false,
+      location: 'Auckland'
+    }
   }
 
   findPhotos(){
-    
+    this.setState({showPhotos: true})
   }
 
   render() {
@@ -16,8 +19,8 @@ class AddPhoto extends React.Component {
       <div className='addPhotos'>
         <label>Enter placename to find photos</label>
         <input type='text' /><br/>
-        <button>Find photos</button>
-        <Photos location={this.state.location}/>
+        <button onClick={this.findPhotos}>Find photos</button>
+        { this.state.showResults ? <Photos location={this.state.location} /> : null }
       </div>
     )
   }

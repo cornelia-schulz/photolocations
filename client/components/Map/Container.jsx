@@ -63,6 +63,7 @@ class Container extends React.Component {
   }
 
   openModal () {
+    // somehow remember modal state, so it doesn't close on button click.
     this.setState ({
       modalIsOpen: true,
     })
