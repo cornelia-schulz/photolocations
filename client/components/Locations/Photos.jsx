@@ -44,4 +44,4 @@ class Photos extends React.Component {
 
 }
 
-export default Photo
+export default Photos
