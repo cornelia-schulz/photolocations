@@ -10,6 +10,8 @@ export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS'
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS'
 export const REQUEST_LOCATION = 'REQUEST_LOCATION'
 export const RECEIVE_LOCATION = 'RECEIVE_LOCATION'
+export const REQUEST_LOCATION_DATA = 'REQUEST_LOCATION_DATA'
+export const RECEIVE_LOCATION_DATA = 'RECEIVE_LOCATION_DATA'
 
 export const requestAllLocations = () => {
   return {
@@ -21,6 +23,19 @@ export const receiveAllLocations = (locations) => {
   return {
     type: RECEIVE_LOCATIONS,
     locations: locations
+  }
+}
+
+export const requestLocationData = () => {
+  return {
+    type: REQUEST_LOCATION_DATA
+  }
+}
+
+export const receiveLocationData = (location) => {
+  return {
+    type: RECEIVE_LOCATION_DATA,
+    location: location
   }
 }
 
