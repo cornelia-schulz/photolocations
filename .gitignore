@@ -7,3 +7,4 @@ config.json
 .env
 *.cert
 *.key
+*.csr
