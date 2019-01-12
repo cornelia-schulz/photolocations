@@ -207,7 +207,7 @@ footer .fa {
 
 /* 
 ====================================
-ABOUT
+ABOUT & CONTACT
 ====================================
 */
 
@@ -215,9 +215,13 @@ ABOUT
   width: 100%;
 }
 
+#copy {
+  height: 0.9em;
+  width: 5%;
+}
+
 .contact img {
   width: 100%;
-  padding-left: 10px;
 }
 
 .aboutText p, .contactForm, .editLocation, .location-content {
@@ -505,6 +509,11 @@ MEDIA QUERIES
 
   .login {
     width: 600px;
+  }
+
+  .contact img {
+    width: 100%;
+    padding-left: 10px;
   }
 
   .contact {

@@ -19,6 +19,7 @@
     "name": "Dein Name:",
     "email": "Deine E-Mail:",
     "message": "Deine Nachricht:",
+    "copy": "Schickt mir eine Kopie dieser E-Mail.",
     "send": "Senden"
   },
   "location": {

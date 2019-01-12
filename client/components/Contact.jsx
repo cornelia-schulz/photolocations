@@ -15,6 +15,7 @@ export class Contact extends React.Component {
       name: null,
       email: null,
       message: null,
+      copy: false,
       language: this.props.language
     }
     this.handleChange = this.handleChange.bind(this)
@@ -32,7 +33,8 @@ export class Contact extends React.Component {
     const newMessage = {
       name: this.state.name,
       email: this.state.email,
-      message: this.state.message
+      message: this.state.message,
+      copy: this.state.copy
     }
     this.props.sendMail(newMessage)
       .then((response) => {
@@ -74,6 +76,9 @@ export class Contact extends React.Component {
             <label htmlFor='message'>{t('contact.message')}</label><br />
             <textarea rows='10' cols='50' name='message' id='message' onChange={this.handleChange}>
             </textarea>
+            <br />
+            <input type='checkbox' name='copy' id='copy' onChange={this.handleChange}/>
+            <label htmlFor='copy'>{t('contact.copy')}</label>
             <br />
             <button className='button' type='submit' id='contactFormSubmit'>{t('contact.send')}</button>
           </form>
