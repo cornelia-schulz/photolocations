@@ -28,12 +28,17 @@ router.post('/send', (req, res, next) => {
   const email = req.body.email
   const message = req.body.message
   const content = `name: ${name} \n email: ${email} \n message: ${message}`
+  const copy = req.body.copy
 
   const mail = {
     from: name,
     to: 'cornelia.schulz.photography@gmail.com',
-    subject: 'Mail from Photolocations.nz',
+    subject: 'Mail sent to Photolocations.nz',
     text: content
+  }
+
+  if(copy === 'on'){
+      mail.cc = email
   }
 
   transporter.sendMail(mail, (err, data) => {
