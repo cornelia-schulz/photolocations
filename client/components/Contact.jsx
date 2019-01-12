@@ -63,7 +63,7 @@ export class Contact extends React.Component {
         </div>
         <div className='contactText col-4'>
           <h1>{t('contact.contact_header')}</h1>
-          {this.props.message && <span className='error'>{this.props.message}</span>}
+          {/* {this.props.message && <span className='error'>{this.props.message}</span>} */}
           <form className='contactForm' id='contactForm' onSubmit={this.handleSubmit} method='POST'>
             <label htmlFor='name'>{t('contact.name')}</label>
             <br />

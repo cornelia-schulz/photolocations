@@ -21,7 +21,7 @@ h2 {
 h1 {
   font-weight: 600;
   line-height: 1em;
-  font-size: 3em;
+  font-size: 2.5em;
   margin-bottom: 20px;
   margin-top: 20px;
   background: -webkit-linear-gradient(#eee, #c59d59);
@@ -211,8 +211,13 @@ ABOUT
 ====================================
 */
 
-.about img, .contact img, .location img {
+.about img, .location img {
   width: 100%;
+}
+
+.contact img {
+  width: 100%;
+  padding-left: 5px;
 }
 
 .aboutText p, .contactForm, .editLocation, .location-content {
@@ -508,7 +513,7 @@ MEDIA QUERIES
 
   .contactText {
     margin: 0 auto;
-    padding-left: 10px;
+    padding-left: 15px;
     padding-right: 15px;
   }
 
@@ -650,8 +655,8 @@ MEDIA QUERIES
 
 @media (min-width: 768px) and (max-width: 991px) {
   .col-1, .col-2, .col-3, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
-    float: left;
-        display: block;
+    /* float: left; */
+    display: block;
     }
 
   .infoWindow {
@@ -718,8 +723,8 @@ MEDIA QUERIES
 
 @media (min-width: 480px) and (max-width: 767px) {
   .col-1, .col-2, .col-3, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
-    float: left;
-        display: block;
+    /* float: left; */
+    display: block;
     }
 
     .infoWindow {
