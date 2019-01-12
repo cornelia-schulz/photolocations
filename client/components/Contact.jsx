@@ -58,8 +58,10 @@ export class Contact extends React.Component {
     let { t, i18n } = this.props
     return (
       <div className='contact'>
-        <img src='/images/Muriwai.jpg' alt='Muriwai' />
-        <div className='contactText'>
+        <div className='col-8'>
+          <img src='/images/MissionBay.jpg' alt='Rangitoto from Mission Bay' />
+        </div>
+        <div className='contactText col-4'>
           <h1>{t('contact.contact_header')}</h1>
           {this.props.message && <span className='error'>{this.props.message}</span>}
           <form className='contactForm' id='contactForm' onSubmit={this.handleSubmit} method='POST'>

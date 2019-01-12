@@ -502,7 +502,17 @@ MEDIA QUERIES
     width: 600px;
   }
 
-  .aboutText, .contactText {
+  .contact {
+    display: flex;
+  }
+
+  .contactText {
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 15px;
+  }
+
+  .aboutText {
     width: 960px;
     margin: 0 auto;
   }
