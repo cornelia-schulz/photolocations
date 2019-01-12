@@ -217,7 +217,7 @@ ABOUT
 
 .contact img {
   width: 100%;
-  padding-left: 5px;
+  padding-left: 10px;
 }
 
 .aboutText p, .contactForm, .editLocation, .location-content {
@@ -513,8 +513,8 @@ MEDIA QUERIES
 
   .contactText {
     margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
 
   .aboutText {
