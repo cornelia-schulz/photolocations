@@ -23,9 +23,11 @@ export class Contact extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.resetForm = this.resetForm.bind(this)
     this.notify = this.notify.bind(this)
+    this.error = this.error.bind(this)
   }
 
   notify = () => toast.success("Message sent!")
+  error = () => toast.warn("Your message couldn't be sent.")
 
   componentDidMount() {
     i18n.changeLanguage(this.state.language)
@@ -45,6 +47,9 @@ export class Contact extends React.Component {
         if (response === 'success') {
           this.resetForm()
           this.notify()
+        }
+        else {
+          this.error()
         }
       })
 
