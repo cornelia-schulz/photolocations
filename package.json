@@ -39,6 +39,11 @@
       "@babel/plugin-proposal-json-strings"
     ]
   },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "IE 10"
+  ]
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
     "testURL": "http://localhost:3000/"
