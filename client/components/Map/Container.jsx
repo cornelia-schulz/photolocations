@@ -79,7 +79,6 @@ class Container extends React.Component {
       activeMarker: marker,
       showingInfoWindow: true,
     })
-    //map.setCenter(marker.getPosition())
   }
 
   onMapClicked (props) {

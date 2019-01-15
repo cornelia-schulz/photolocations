@@ -26,8 +26,8 @@ export class Contact extends React.Component {
     this.error = this.error.bind(this)
   }
 
-  notify = () => toast.success("Message sent!")
-  error = () => toast.warn("Your message couldn't be sent.")
+  notify = () => toast.success(i18n.t('contact.sent'))
+  error = () => toast.warn(i18n.t('contact.error'))
 
   componentDidMount() {
     i18n.changeLanguage(this.state.language)

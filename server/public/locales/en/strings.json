@@ -20,7 +20,9 @@
     "email": "Your email:",
     "message": "Your message:",
     "copy": "Send me a copy of this email.",
-    "send": "Send"
+    "send": "Send",
+    "sent": "Message sent.",
+    "error": "Your message couldn't be sent."
   },
   "location": {
     "edit": "Edit"
