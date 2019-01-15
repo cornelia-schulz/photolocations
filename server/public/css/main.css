@@ -291,6 +291,10 @@ the map will be set to 0 */
   -webkit-box-orient: vertical;
 }
 
+.markerImg {
+  min-height: 200px;
+}
+
 #closeButton {
   margin-left: 25px;
   background-color: #c59d59;
