@@ -6,7 +6,7 @@ html, body {
   padding-bottom: 20px;
   font-family: 'Lato', sans-serif;
   background-color: #1f1e1e;
-  color: #c59d59;
+  color: #EDDC94
 }
 
 body {
@@ -14,17 +14,17 @@ body {
 }
 
 h2 {
-  font-size: 2.5em;
+  font-size: 18px;
   font-weight: 600;
 }
 
 h1 {
   font-weight: 600;
-  line-height: 1em;
-  font-size: 2.5em;
+  line-height: 1.3em;
+  font-size: 22px;
   margin-bottom: 20px;
   margin-top: 20px;
-  background: -webkit-linear-gradient(#eee, #c59d59);
+  background: -webkit-linear-gradient(#eee, #EDDC94);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -46,17 +46,17 @@ textarea {
 }
 
 .button {
-  background-color: #c59d59;
-  background: -webkit-linear-gradient(top, #c59d59 0%,#fcce37 100%);
-  background: -moz-linear-gradient(top, #c59d59 0%, #fcce37 100%); 
-  background: linear-gradient(to bottom, #c59d59 0%, #fcce37 100%);
+  background-color: #EDDC94;
+  background: -webkit-linear-gradient(top, #EDDC94 0%,#fcce37 100%);
+  background: -moz-linear-gradient(top, #EDDC94 0%, #fcce37 100%); 
+  background: linear-gradient(to bottom, #EDDC94 0%, #fcce37 100%);
   height: 2em;
   margin-right: 10px;
-  border-radius: 5px;
-  font-size: 1em;
-  -moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
+  border-radius: 10px;
+  border: none;
+  font-size: 12px;
+  -moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 
 .button:active {
@@ -109,7 +109,7 @@ NAVIGATION
 .language {
   background: transparent;
   border: none;
-  color: #c59d59;
+  color: #EDDC94;
   font-size: 100%;
   display: block;
   line-height: 16px;
@@ -131,7 +131,7 @@ NAVIGATION
 }
 
 .fa, .fas {
-  color: #c59d59;
+  color: #EDDC94;
   font-size: 2.5em;
   vertical-align: middle;
   margin-left: 3px;
@@ -174,7 +174,7 @@ NAVIGATION
 }
 
 .dropdown-content a {
-  color: #c59d59;
+  color: #EDDC94;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -229,20 +229,20 @@ ABOUT & CONTACT
   line-height: 1.5em;
   margin-top: 1.3em;
   margin-bottom: 10px;
-  font-size: 1.2em;
+  font-size: 14px;
 }
 
 #contactFormSubmit, .button {
   color: #1f1e1e;
-  background-color: #c59d59;
-  background: -webkit-linear-gradient(top, #c59d59 0%,#fcce37 100%);
-  background: -moz-linear-gradient(top, #c59d59 0%, #fcce37 100%); 
-  background: linear-gradient(to bottom, #c59d59 0%, #fcce37 100%);
+  background-color: #EDDC94;
+  background: -webkit-linear-gradient(top, #EDDC94 0%,#fcce37 100%);
+  background: -moz-linear-gradient(top, #EDDC94 0%, #fcce37 100%); 
+  background: linear-gradient(to bottom, #EDDC94 0%, #fcce37 100%);
   width: 105px;
-  border: 1px solid whitesmoke;
-  -moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
+  border: none;
+  -moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
 
@@ -280,7 +280,7 @@ the map will be set to 0 */
 }
 
 .infoWindow p {
-  font-size: 1.3em;
+  font-size: 14px;
   font-weight: 400;
   text-align: left;
   margin-left: 12px;
@@ -289,6 +289,7 @@ the map will be set to 0 */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  color: #111;
 }
 
 .markerImg {
@@ -297,13 +298,17 @@ the map will be set to 0 */
 
 #closeButton {
   margin-left: 25px;
-  background-color: #c59d59;
-  background: -webkit-linear-gradient(top, #c59d59 0%,#fcce37 100%);
-  background: -moz-linear-gradient(top, #c59d59 0%, #fcce37 100%); 
-  background: linear-gradient(to bottom, #c59d59 0%, #fcce37 100%);
+  background-color: #EDDC94;
+  background: -webkit-linear-gradient(top, #EDDC94 0%,#fcce37 100%);
+  background: -moz-linear-gradient(top, #EDDC94 0%, #fcce37 100%); 
+  background: linear-gradient(to bottom, #EDDC94 0%, #fcce37 100%);
   -moz-border-radius:6px;
 	-webkit-border-radius:6px;
-	border-radius:6px;
+	border-radius: 10px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  width: 140px;
 }
 
 .infoWindow .stars {
@@ -328,7 +333,7 @@ ADD LOCATION MODAL
 
 .addNewLocation input, .addNewLocation .right {
   float: right;
-  border-bottom: 1px #c59d59;
+  border-bottom: 1px #EDDC94;
 }
 
 .addNewLocation h2 {
@@ -336,7 +341,7 @@ ADD LOCATION MODAL
 }
 
 .addNewLocation .button {
-  /* background: -webkit-linear-gradient( #c59d59, #1f1e1e);
+  /* background: -webkit-linear-gradient( #EDDC94, #1f1e1e);
   -webkit-background-clip: text; */
   /* -webkit-text-fill-color: transparent; */
   margin-left: 10px;
@@ -360,7 +365,7 @@ LOCATION & EDIT LOCATION
 }
 
 .location a, .location a:visited {
-  background: -webkit-linear-gradient(#eee, #c59d59);
+  background: -webkit-linear-gradient(#eee, #EDDC94);
   -webkit-background-clip: text;
   /* -webkit-text-fill-color: transparent; */
   padding: 0;
@@ -373,7 +378,7 @@ LOCATION & EDIT LOCATION
 }
 
 .rating-button {
-  color: #c59d59;
+  color: #EDDC94;
   background-color: #1f1e1e;
   border: 1px solid #1f1e1e;
   font-size: 1em;
@@ -407,7 +412,7 @@ COMMENTS SECTION
 }
 
 .comment-button {
-  color: #c59d59;
+  color: #EDDC94;
   background-color: #1f1e1e;
   border: 1px solid #1f1e1e;
   font-size: 1em;
@@ -415,7 +420,7 @@ COMMENTS SECTION
 }
 
 .comment-user {
-  background: -webkit-linear-gradient(#eee, #c59d59);
+  background: -webkit-linear-gradient(#eee, #EDDC94);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 0.8rem;
@@ -586,7 +591,7 @@ MEDIA QUERIES
   .language {
     background: transparent;
     border: none;
-    color: #c59d59;
+    color: #EDDC94;
     font-size: 100%;
     width: 35px;
     display: inline-block;
@@ -627,7 +632,7 @@ MEDIA QUERIES
 	background-image: -webkit-gradient(linear,
 									   40% 0%,
 									   75% 84%,
-									   from(#c59d59),
+									   from(#EDDC94),
 									   to(#f1c986),
 									   color-stop(.6,#f49c06))
 }
@@ -653,7 +658,7 @@ MEDIA QUERIES
 }
 
 .dropdown-content a {
-  color: #c59d59;
+  color: #EDDC94;
   padding: 12px 16px;
   text-decoration: none;
   display: inline;
@@ -711,7 +716,7 @@ MEDIA QUERIES
   }
 
   .dropdown-content a {
-    color: #c59d59;
+    color: #EDDC94;
     padding: 12px 16px;
     text-decoration: none;
     display: inline;
@@ -725,7 +730,7 @@ MEDIA QUERIES
   .language {
     background: transparent;
     border: none;
-    color: #c59d59;
+    color: #EDDC94;
     font-size: 100%;
     width: 35px;
     display: inline-block;
@@ -747,7 +752,7 @@ MEDIA QUERIES
     }
 
     .infoWindow p {
-      font-size: 1.3em;
+      font-size: 12px;
       font-weight: 400;
       text-align: left;
       margin-left: 12px;
