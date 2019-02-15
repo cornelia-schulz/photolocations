@@ -183,7 +183,6 @@ class Container extends React.Component {
               {this.state.selectedPlace.rating > 3 && this.state.selectedPlace.rating < 4 && <p className='stars'><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star-o'></i><i className='fa fa-star-o'></i></p> }
               {this.state.selectedPlace.rating > 4 && this.state.selectedPlace.rating < 5 && <p className='stars'><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star-o'></i></p> }
               {this.state.selectedPlace.rating == 5 && <p className='stars'><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i><i className='fa fa-star' aria-hidden='true'></i></p> } */}
-              <p>{this.state.selectedPlace.info}</p>
               <p>
                 {this.state.selectedPlace.description}
               </p>
