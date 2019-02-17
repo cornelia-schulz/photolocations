@@ -4,7 +4,7 @@ const router = express.Router()
 
 
 router.get('/language/:language', (req, res) => {
-  const language = req.params.language
+  const language = req.params.language.split('-')[0]
   db.getLanguage(language)
     .then(lang => {
       db.getAllLocations(lang.id)

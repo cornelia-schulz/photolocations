@@ -19,7 +19,10 @@
     "name": "Dein Name:",
     "email": "Deine E-Mail:",
     "message": "Deine Nachricht:",
-    "send": "Senden"
+    "copy": "Schickt mir eine Kopie dieser E-Mail.",
+    "send": "Senden",
+    "sent": "Nachricht gesendet.",
+    "error": "Die Nachricht konnte nicht gesendet werden."
   },
   "location": {
     "edit": "Bearbeiten"

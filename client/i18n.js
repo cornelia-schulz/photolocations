@@ -12,7 +12,7 @@ i18n
     ns: ['strings'],
     defaultNS: 'strings',
 
-    debug: true,
+    debug: false,
 
     interpolation: {
       escapeValue: false,

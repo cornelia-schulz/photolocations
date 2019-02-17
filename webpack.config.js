@@ -1,7 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
 
+
 module.exports = {
+  mode: 'development',
   entry: './client/index.js',
   output: {
     path: path.join(__dirname, 'server/public'),

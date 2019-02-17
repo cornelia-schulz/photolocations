@@ -19,7 +19,10 @@
     "name": "Your name:",
     "email": "Your email:",
     "message": "Your message:",
-    "send": "Send"
+    "copy": "Send me a copy of this email.",
+    "send": "Send",
+    "sent": "Message sent.",
+    "error": "Your message couldn't be sent."
   },
   "location": {
     "edit": "Edit"

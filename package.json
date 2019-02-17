@@ -20,7 +20,7 @@
     "node"
   ],
   "engines": {
-    "node": "9.11.0"
+    "node": "10.15.1"
   },
   "babel": {
     "presets": [
@@ -39,6 +39,11 @@
       "@babel/plugin-proposal-json-strings"
     ]
   },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "IE 10"
+  ],
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
     "testURL": "http://localhost:3000/"
@@ -72,8 +77,8 @@
     "pg": "^7.4.3",
     "prop-types": "^15.6.2",
     "pug": "^2.0.3",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "react-facebook-login": "^4.0.1",
     "react-ga": "^2.5.3",
     "react-google-login": "^3.2.1",
@@ -84,6 +89,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.0.5",
     "react-star-rating-component": "^1.4.1",
+    "react-toastify": "^4.5.2",
     "redux": "^4.0.1",
     "redux-immutable-state-invariant": "^2.1.0",
     "redux-thunk": "^2.3.0",

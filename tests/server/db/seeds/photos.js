@@ -68,6 +68,12 @@ exports.seed = function(knex, Promise) {
         {id: 59, location_id: 37, title: 'Rangitoto', url: 'https://farm2.staticflickr.com/1639/26262031736_2d7b1ef01b_b.jpg'},
         {id: 60, location_id: 41, title: 'Wellington Sonnenuntergang', url: 'https://farm9.staticflickr.com/8650/16642665015_47a7e0c49e_b.jpg'},
         {id: 61, location_id: 40, title: 'Hunua Falls', url: 'https://drscdn.500px.org/photo/115764073/m%3D900/v2?user_id=12354065&webp=true&sig=15471fa66fc82cc1f290f84591a3fafa86dc8a437057ce1fe415b478f97cbbc9'},
+        {id: 63, location_id: 63, title: 'Sydney Harbour Bridge and Opera House', url: 'https://farm8.staticflickr.com/7822/46608973231_e20cf32b26_b.jpg'},
+        {id: 64, location_id: 64, title: 'Bondi to Bronte Coastal Walk', url: 'https://farm5.staticflickr.com/4805/32735020098_9f036971f3_b.jpg'},
+        {id: 65, location_id: 65, title: 'View from the Rocks', url: 'https://farm5.staticflickr.com/4854/31667885797_9c6c6457af_b.jpg'},
+        {id: 66, location_id: 66, title: 'Sydney Harbour Bridge und Opernhaus', url: 'https://farm8.staticflickr.com/7822/46608973231_e20cf32b26_b.jpg'},
+        {id: 67, location_id: 67, title: 'Bondi to Bronte Coastal Walk', url: 'https://farm5.staticflickr.com/4805/32735020098_9f036971f3_b.jpg'},
+        {id: 68, location_id: 68, title: 'Aussicht von the Rocks', url: 'https://farm5.staticflickr.com/4854/31667885797_9c6c6457af_b.jpg'},
       ])
     })
 }
