@@ -321,6 +321,10 @@ the map will be set to 0 */
 ADD LOCATION MODAL
 =====================================
 */
+.ReactModal {
+  border-radius: 15px;
+}
+
 .ReactModal__Content {
   -webkit-box-shadow: 10px 7px 24px -1px rgba(0,0,0,0.57);
   -moz-box-shadow: 10px 7px 24px -1px rgba(0,0,0,0.57);
@@ -334,6 +338,11 @@ ADD LOCATION MODAL
 .addNewLocation input, .addNewLocation .right {
   float: right;
   border-bottom: 1px #EDDC94;
+  border-radius: 10px;
+}
+
+.addNewLocation .latlng {
+  font-size: 12px;
 }
 
 .addNewLocation h2 {

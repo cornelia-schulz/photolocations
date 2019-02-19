@@ -9,7 +9,8 @@ module.exports = {
   getLocation,
   addLocation,
   updateLocation,
-  getLanguage
+  getLanguage,
+  addPhoto
 }
 
 function getLanguage(language, testDb) {
@@ -56,6 +57,12 @@ function addLocation(location, testDb) {
   const db = testDb || connection
   return db('locations')
     .insert(location)
+}
+
+function addPhoto(photo, testDb) {
+  const db = testDb || connection
+  return db('photos')
+    .insert(photo)
 }
 
 function updateLocation(location, testDb) {

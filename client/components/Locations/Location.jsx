@@ -90,9 +90,9 @@ class Location extends React.Component {
             <h1>{this.props.location.title}</h1>
             <button className='comment-button' onClick={this.openModal}>{t('location.edit')}</button>
             <StarRating id={id} />
-            <p className='location-content'>
+            {/* <p className='location-content'>
               {this.props.location.info}
-            </p>
+            </p> */}
             <p className='location-content'>
               {this.props.location.description}
             </p>

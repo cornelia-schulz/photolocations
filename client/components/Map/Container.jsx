@@ -35,6 +35,7 @@ class Container extends React.Component {
       title: '',
       description: '',
       error: null,
+      url: ''
     }
     this.onMarkerClick = this.onMarkerClick.bind (this)
     this.onMapClicked = this.onMapClicked.bind (this)
@@ -120,7 +121,8 @@ class Container extends React.Component {
       name: this.state.name,
       title: this.state.title,
       description: this.state.description,
-      language: i18n.languages[0]
+      language: i18n.languages[0],
+      url: this.state.url
     }
     this.props
       .addLocation (location)
@@ -202,28 +204,20 @@ class Container extends React.Component {
               <fieldset className='addNewLocation'>
                 <h2>{t ('addNewLocation.add_header')}</h2>
                 {this.props.newLocation &&
-                  <p>
+                  <p className="latlng">
                     {t ('addNewLocation.latitude')}
-                    {' '}
-                    <span className='right'>{this.props.newLocation.lat}</span>
-                    <br />
+                    {': '}
+                    <span>{this.props.newLocation.lat}</span>
+                    {' | '}
                     {t ('addNewLocation.longitude')}
-                    {' '}
-                    <span className='right'>{this.props.newLocation.lng}</span>
+                    {': '}
+                    <span>{this.props.newLocation.lng}</span>
                   </p>}
                 <label htmlFor='name'>{t ('addNewLocation.place')} </label>
                 <input
                   type='text'
                   name='name'
                   id='name'
-                  onChange={this.handleChange}
-                />
-                <br />
-                <label htmlFor='title'>{t ('addNewLocation.title')} </label>
-                <input
-                  type='text'
-                  name='title'
-                  id='title'
                   onChange={this.handleChange}
                 />
                 <br />
@@ -236,7 +230,16 @@ class Container extends React.Component {
                   id='description'
                   onChange={this.handleChange}
                 />
-                <AddPhoto></AddPhoto>
+                <br />
+                <label htmlFor='url'>
+                  {t ('addNewLocation.url')}{' '}
+                </label>
+                <input
+                  type='url'
+                  name='url'
+                  id='url'
+                  onChange={this.handleChange}
+                />
                 <br />
                 <button
                   type='button'

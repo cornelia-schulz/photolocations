@@ -70,7 +70,8 @@
     "title": "Titel:",
     "description": "Beschreibung:",
     "submit": "Hinzufügen",
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "url": "Gib eine Flickr oder Instagram Foto-URL ein."
   }, 
   "infoWindow": {
     "read": "Weiterlesen"

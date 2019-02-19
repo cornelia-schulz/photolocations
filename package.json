@@ -9,8 +9,8 @@
   "scripts": {
     "build": "webpack --config ./webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
-    "start": "webpack && node server",
-    "dev": "node server & webpack --watch",
+    "start": "webpack --watch && node server",
+    "dev": "node server && webpack --watch",
     "postinstall": "yarn build && yarn knex migrate:latest",
     "test": "jest --watchAll"
   },

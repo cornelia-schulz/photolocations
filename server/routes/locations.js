@@ -44,6 +44,14 @@ router.post('/add', (req, res) => {
       }
       console.log('adding location: ', location)
       db.addLocation(location)
+      .then ((id) => {
+        const photo = {
+          location_id: id,
+          title: req.body.title,
+          url: req.body.url
+        }
+        db.addPhoto(photo)
+      })
       .then(() => {
         res.status(200).end()
       })

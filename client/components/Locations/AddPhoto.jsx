@@ -19,8 +19,8 @@ class AddPhoto extends React.Component {
       <div className='addPhotos'>
         <label>Enter placename to find photos</label>
         <input type='text' /><br/>
-        <button onClick={this.findPhotos}>Find photos</button>
-        { this.state.showResults ? <Photos location={this.state.location} /> : null }
+        {/* <button onClick={this.findPhotos}>Find photos</button>
+        { this.state.showResults ? <Photos location={this.state.location} /> : null } */}
       </div>
     )
   }
