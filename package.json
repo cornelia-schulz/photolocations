@@ -19,9 +19,6 @@
     "json",
     "node"
   ],
-  "engines": {
-    "node": "10.15.1"
-  },
   "babel": {
     "presets": [
       "@babel/env",
@@ -104,7 +101,7 @@
     "jest": "^23.6.0",
     "jest-enzyme": "^7.0.0",
     "redux-mock-store": "^1.5.3",
-    "sqlite3": "^4.0.2",
+    "sqlite3": "5.0.2",
     "superagent": "^3.8.3",
     "webpack-cli": "^3.1.2"
   }
