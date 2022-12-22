@@ -63,7 +63,7 @@
     "i18next-browser-languagedetector": "^2.2.3",
     "i18next-xhr-backend": "^1.5.1",
     "install": "^0.12.2",
-    "jsonwebtoken": "^8.3.0",
+    "jsonwebtoken": "^9.0.0",
     "knex": "^0.14.6",
     "nodemailer": "^4.6.8",
     "npm": "^6.4.1",
